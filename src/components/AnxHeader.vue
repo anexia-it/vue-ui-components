@@ -1,11 +1,11 @@
 <template>
   <div class="header">
-    header
+    AnxHeader
   </div>
 </template>
 
 <script lang="ts">
 import { Vue } from "vue-property-decorator";
 
-export default class Header extends Vue {}
+export default class AnxHeader extends Vue {}
 </script>
