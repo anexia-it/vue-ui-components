@@ -7,11 +7,11 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import Header from "@/components/Header.vue";
+import AnxHeader from "@/components/AnxHeader.vue";
 
 @Component({
   components: {
-    Header
+    AnxHeader
   }
 })
 export default class App extends Vue {}

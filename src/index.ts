@@ -1,4 +1,4 @@
-import AnxHeader from "./components/Header.vue"
+import AnxHeader from "./components/AnxHeader.vue"
 
 export default {
     install (Vue: any) {
