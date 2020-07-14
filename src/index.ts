@@ -1,7 +1,7 @@
+import _Vue from "vue"
 import AnxHeader from "./components/AnxHeader.vue"
 
-export default {
-    install (Vue: any) {
-        Vue.component('AnxHeader', AnxHeader);
-    }
+
+export function UIPlugin(Vue: typeof _Vue) {
+    Vue.component('AnxHeader', AnxHeader);
 }
