@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <AnxHeader />
   </div>
 </template>
 
