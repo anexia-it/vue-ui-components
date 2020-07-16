@@ -1,7 +1,6 @@
-import _Vue from "vue"
-import AnxHeader from "./components/AnxHeader.vue"
-
+import _Vue from "vue";
+import AnxHeader from "./components/AnxHeader.vue";
 
 export function UIPlugin(Vue: typeof _Vue) {
-    Vue.component('AnxHeader', AnxHeader);
+  Vue.component("AnxHeader", AnxHeader);
 }

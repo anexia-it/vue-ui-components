@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <AnxHeader />
+    <!-- you can set a image as prop or default img just a anx-logo -->
+    <anx-header :img="require('@/assets/anexia.svg')" />
   </div>
 </template>
 
