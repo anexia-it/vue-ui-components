@@ -2,6 +2,8 @@
   <div id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
     <anx-header :img="require('@/assets/anexia.svg')" />
+    <div class="space"></div>
+    <anx-header :langSwitch="true" :menus="items" />
   </div>
 </template>
 
@@ -15,5 +17,16 @@ import AnxHeader from "@/components/AnxHeader.vue";
     AnxHeader
   }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public items: Array<object> = [
+    { menu: "Software", link: "/x" },
+    { menu: "Hosting", link: "/y" }
+  ];
+}
 </script>
+<style lang="scss">
+
+.space {
+  height: 20px;
+}
+</style>
