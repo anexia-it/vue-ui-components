@@ -9,7 +9,7 @@
             </div>
             <div class="header-language-nav" v-if="langSwitch === true">
               <!-- implement Language Switch -->
-              en / de
+              <I18nLangSwitcher />
             </div>
           </div>
           <hr />
@@ -26,7 +26,8 @@
             </div>
              <div class="menu-text right" v-if="langSwitch === true">
               <!-- implement Language Switch -->
-              <a class="active">en</a>/ <a>de</a>
+              <i18n-lang-switcher />
+              <!--<a class="active">en</a>/ <a>de</a>-->
             </div>
           </div>
         </div>
@@ -37,8 +38,11 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import I18nLangSwitcher from './I18nLangSwitcher.vue'
 
-@Component({})
+@Component({
+    components: { I18nLangSwitcher }
+})
 export default class AnxHeader extends Vue {
   @Prop({ default: false }) langSwitch!: boolean;
   @Prop({ default: require("@/assets/anexia.svg") }) img!: string;
@@ -86,7 +90,7 @@ a {
   color: $anx-primary-white;
   text-decoration: none;
   &.active {
-    color: white;
+    color: $anx-primary-white;
     border-bottom: 1px solid $anx-primary-green;
   }
 }
