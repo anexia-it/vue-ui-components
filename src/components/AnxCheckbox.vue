@@ -48,7 +48,7 @@ input[type="checkbox"] {
   }
 
   &:disabled {
-    border-color: $input-color-disabled !important;
+    border-color: $anx-second-grey-light !important;
   }
 }
 
@@ -57,6 +57,7 @@ input[type="checkbox"] {
   label {
     display: ruby-base;
     margin: 0;
+    color: $anx-lightest-grey-dark !important;
   }
 }
 </style>

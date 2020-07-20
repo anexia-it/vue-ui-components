@@ -111,7 +111,7 @@ export default class AnxInputField extends Vue {
 
 .anx-input label {
   bottom: 0;
-  color: rgba(0, 0, 0, 0.26);
+  color: $anx-lightest-grey-dark;
   cursor: default;
   display: block;
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -148,7 +148,7 @@ export default class AnxInputField extends Vue {
   background-color: transparent;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid $anx-second-grey-light;
   color: $anx-lightest-grey-dark;
   cursor: text;
   display: block;
