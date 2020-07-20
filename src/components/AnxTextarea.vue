@@ -6,6 +6,7 @@
       :disabled="disabled"
       v-model="message"
       :class="{ filled: message.length >= 1 }"
+      @input="$emit('input', message)"
     />
     <label id="textarea-label" :for="id">{{ labelText }}</label>
   </div>
@@ -33,8 +34,10 @@ export default class AnxTextarea extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+@import "@/assets/scss/fonts.scss";
 
 .anx-textarea {
+  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   width: var(--textarea-width);
   display: block;
   position: relative;
@@ -50,6 +53,7 @@ export default class AnxTextarea extends Vue {
   padding: 20px 17px 20px 17px;
   border: 1px solid $anx-second-grey-light;
   color: $anx-lightest-grey-dark !important;
+  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
 
   &:focus,
   &.filled {
@@ -66,7 +70,7 @@ export default class AnxTextarea extends Vue {
       transition: all 0.1s ease;
       position: absolute;
       left: 0;
-      top: -1px;
+      top: 4px;
       padding: 0 2px 0 2px;
     }
 

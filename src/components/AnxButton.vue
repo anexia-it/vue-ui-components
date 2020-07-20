@@ -29,10 +29,13 @@ export default class AnxButton extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+@import "@/assets/scss/fonts.scss";
+
 button {
   cursor: pointer;
   width: var(--button-width);
   height: 2.5em; //40px
+  padding-top: 2px;
   border: none;
   font-size: 16px;
   vertical-align: middle;
@@ -43,6 +46,7 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 /* anx-button - super cool animation button */

@@ -38,7 +38,7 @@ export default class AnxSelect extends Vue {
   items!: string[];
   @Prop({ default: "420px" }) width!: string;
 
-  private selected = this.items[0];
+  private selected = "";
   private show = false;
 
   get cssProps() {
@@ -47,21 +47,28 @@ export default class AnxSelect extends Vue {
     };
   }
 
+  public mounted() {
+    this.select(this.items[0]);
+  }
+
   public select(item: string) {
     this.selected = item;
     this.show = false;
+    this.$emit("change", this.selected);
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+@import "@/assets/scss/fonts.scss";
 
 .show {
   display: block !important;
 }
 
 .anx-select {
+  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   cursor: pointer;
   display: inline-block;
   position: relative;
@@ -88,7 +95,7 @@ export default class AnxSelect extends Vue {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
   background-color: transparent;
   -moz-transition: all 0.2s ease-in;
@@ -108,7 +115,7 @@ export default class AnxSelect extends Vue {
   background-repeat: no-repeat;
   position: absolute;
   right: 0;
-  top: 7px;
+  top: 4px;
 }
 .anx-select .anx-select-div:hover {
   background-color: transparent;
@@ -120,7 +127,7 @@ export default class AnxSelect extends Vue {
   right: 0;
   left: 0;
   z-index: 999;
-  margin: 4px 0 0 0;
+  margin: 0 0 0 0;
   padding: 0;
   list-style: none;
   background-color: #fff;
@@ -131,6 +138,7 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options li {
   text-align: right;
   padding-right: 18px;
+  padding-top: 5px;
   margin: 0;
   -moz-transition: all 0.15s ease-in;
   -o-transition: all 0.15s ease-in;
@@ -147,7 +155,7 @@ export default class AnxSelect extends Vue {
   background-image: url(../assets/check-green.svg);
   background-repeat: no-repeat;
   position: absolute;
-  top: 4px;
+  top: 5px;
   margin-left: -20px;
   background-position: 50%;
 }

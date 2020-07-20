@@ -1,7 +1,13 @@
 <template>
   <div class="anx-checkbox">
     <label :for="name">
-      <input :id="name" type="checkbox" :value="name" v-model="checked" />
+      <input
+        :id="name"
+        type="checkbox"
+        :value="name"
+        v-model="checked"
+        @change="$emit('change', [checked, name])"
+      />
       <div>{{ name }}</div>
     </label>
   </div>
@@ -20,6 +26,8 @@ export default class AnxCheckbox extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+@import "@/assets/scss/fonts.scss";
+
 input[type="checkbox"] {
   height: 13px !important;
   width: 13px !important;
@@ -53,6 +61,7 @@ input[type="checkbox"] {
 }
 
 .anx-checkbox {
+  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 25px;
   label {
     display: ruby-base;

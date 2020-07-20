@@ -17,6 +17,7 @@
         hide-details="true"
         @blur="inputBlur"
         :class="errors && errors.length > 0 ? 'is-invalid' : ''"
+        @input="$emit('input', updateInputField)"
       />
       <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
         {{ translate }}
@@ -95,6 +96,8 @@ export default class AnxInputField extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+@import "@/assets/scss/fonts.scss";
+
 .anx-input {
   color: $anx-lightest-grey-dark;
   display: block;

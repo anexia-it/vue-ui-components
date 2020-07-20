@@ -1,0 +1,50 @@
+body,  #app {
+  font-family: 'Meta', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Meta';
+    src: url('~@/assets/fonts/MetaCompPro-Normal.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'Meta-Bold';
+  src: url('~@/assets/fonts/MetaCompPro-Bold.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MetaWebPro-Bold';
+  src: url('~@/assets/fonts/MetaWebPro-Bold.eot');
+  src: local('?'), url('~@/assets/fonts/MetaWebPro-Bold.woff') format('woff');
+  font-weight: 800;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'MetaWebPro';
+  src: url('~@/assets/fonts/MetaWebPro-Normal.eot');
+  src: local('?'), url('~@/assets/fonts/MetaWebPro-Normal.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MetaWebPro-Light';
+  src: url('~@/assets/fonts/MetaWebPro-Light.eot');
+  src: local('?'), url('~@/assets/fonts/MetaWebPro-Light.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MetaWeb-Thin';
+  src: url('~@/assets/fonts/MetaWeb-Thin.eot');
+  src: local('?'), url('~@/assets/fonts/MetaWeb-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
