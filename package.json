@@ -14,7 +14,7 @@
   "dependencies": {
     "bootstrap": "^4.5.0",
     "core-js": "^3.6.5",
-    "vee-validate": "^3.3.7",
+    "vee-validate": "^2.2.15",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-i18n": "^8.18.2",
