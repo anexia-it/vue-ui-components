@@ -38,10 +38,10 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import I18nLangSwitcher from './I18nLangSwitcher.vue'
+import I18nLangSwitcher from "./_I18nLangSwitcher.vue";
 
 @Component({
-    components: { I18nLangSwitcher }
+   components: { I18nLangSwitcher }
 })
 export default class AnxHeader extends Vue {
   @Prop({ default: false }) langSwitch!: boolean;
