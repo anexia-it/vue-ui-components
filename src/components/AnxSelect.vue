@@ -31,7 +31,9 @@ export default class AnxSelect extends Vue {
   @Prop({ default: "Auswahl treffen" }) labelText!: string;
   @Prop({
     type: Array,
-    default: ["Auswahl 1", "Auswahl 2", "Auswahl 3", "Auswahl 4"]
+    default: function() {
+      return ["Auswahl 1", "Auswahl 2", "Auswahl 3", "Auswahl 4"];
+    }
   })
   items!: string[];
   @Prop({ default: "420px" }) width!: string;
