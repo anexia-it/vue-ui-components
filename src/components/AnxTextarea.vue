@@ -49,6 +49,7 @@ export default class AnxTextarea extends Vue {
   width: var(--textarea-width);
   padding: 20px 17px 20px 17px;
   border: 1px solid $anx-second-grey-light;
+  color: $anx-lightest-grey-dark !important;
 
   &:focus,
   &.filled {
