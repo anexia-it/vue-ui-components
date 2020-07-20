@@ -28,6 +28,7 @@ export default class AnxButton extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/_variables.scss";
 button {
   cursor: pointer;
   width: var(--button-width);
@@ -81,23 +82,23 @@ button {
   }
 
   &:before {
-    border: 1px solid #77bc1f;
+    border: 1px solid $anx-primary-green;
     opacity: 0;
     -webkit-transform: scale3d(1.2, 1.2, 1);
     transform: scale3d(1.2, 1.2, 1);
   }
 
   &:after {
-    background: #77bc1f;
+    background: $anx-primary-green;
   }
 
   &:visited {
-    color: #77bc1f;
+    color: $anx-primary-green;
     text-decoration: none;
   }
 
   &:hover {
-    color: #77bc1f;
+    color: $anx-primary-green;
     text-decoration: none;
 
     &:before {
@@ -116,14 +117,14 @@ button {
 
 /*btn-outline*/
 .btn-outline {
-  color: #77bc1f !important;
-  border: 1px solid #77bc1f !important;
+  color: $anx-primary-green !important;
+  border: 1px solid $anx-primary-green !important;
   background-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   &:before {
-    background-color: #77bc1f;
+    background-color: $anx-primary-green;
     border: none !important;
   }
 
