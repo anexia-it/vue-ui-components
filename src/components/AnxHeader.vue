@@ -24,7 +24,7 @@
                 {{ menu.menu }}
               </a>
             </div>
-             <div class="menu-text right" v-if="langSwitch === true">
+            <div class="menu-text right" v-if="langSwitch === true">
               <!-- implement Language Switch -->
               <i18n-lang-switcher />
               <!--<a class="active">en</a>/ <a>de</a>-->
@@ -38,10 +38,10 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import I18nLangSwitcher from './I18nLangSwitcher.vue'
+import I18nLangSwitcher from "./I18nLangSwitcher.vue";
 
 @Component({
-    components: { I18nLangSwitcher }
+  components: { I18nLangSwitcher }
 })
 export default class AnxHeader extends Vue {
   @Prop({ default: false }) langSwitch!: boolean;
@@ -64,8 +64,8 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-      box-sizing: inherit;
-  border-top: 1px solid rgba(0,0,0,.1);
+  box-sizing: inherit;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .header-container {
   margin-top: 30px;
@@ -77,6 +77,7 @@ hr {
     color: $anx-primary-white;
   }
 }
+
 .header {
   // background-color: #002d6e;
   background-color: $anx-dark-blue;
@@ -94,42 +95,41 @@ a {
     border-bottom: 1px solid $anx-primary-green;
   }
 }
-a:hover{
+a:hover {
   text-decoration: none;
   color: $anx-primary-green;
 }
 
 .header-nav-menu {
-    display: table;
-    padding-top: 17px;
-    margin-bottom: 35px;
-    width: 100%;
+  display: table;
+  padding-top: 17px;
+  margin-bottom: 35px;
+  width: 100%;
 
-    .menu-text{
-        a{
-          margin-right: 20px;
-        }
-        a:last-of-type{
-            margin-right: 0;
-        }
-        &.left{
-          float: left;
-          padding-top:0;
-          @media screen and (max-width: 500px) {
-          }
-        }
-        &.right{
-          float: right;
-          padding-top:0;
-          .active{
-            color: $anx-primary-green;
-          }
-          @media screen and (max-width: 500px) {
-            float: left;
-            margin-bottom: 20px;
-          }
-        }
+  .menu-text {
+    a {
+      margin-right: 20px;
     }
+    a:last-of-type {
+      margin-right: 0;
+    }
+    &.left {
+      float: left;
+      padding-top: 0;
+      @media screen and (max-width: 500px) {
+      }
+    }
+    &.right {
+      float: right;
+      padding-top: 0;
+      .active {
+        color: $anx-primary-green;
+      }
+      @media screen and (max-width: 500px) {
+        float: left;
+        margin-bottom: 20px;
+      }
+    }
+  }
 }
-
 </style>

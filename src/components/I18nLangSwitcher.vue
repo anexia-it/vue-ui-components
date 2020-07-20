@@ -14,47 +14,48 @@
       >
         EN
       </a>
-      <a href="/de">DE</a>
-      /
-      <a href="/en">EN</a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import 'vue-i18n'
+import "vue-i18n";
 
 @Component({})
 export default class I18nLangSwitcher extends Vue {
-  private setLocale (locale: string) {
-    // this.$store.commit('setLocale', locale)
-    this.$i18n.locale = locale
-  }
-
+  //private setLocale (locale: string) {
+  // this.$store.commit('setLocale', locale)
+  //this.$i18n.locale = locale
+  //}
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+
 .language-switcher {
-
-  display: inline-block;
-  color: $anx-primary-white !important;
-  a {
-   &:any-link { color: green } 
-
+  color: $anx-primary-white;
+  a,
+  a:link,
+  a:visited,
+  a:focus {
+    cursor: pointer;
     margin: 0px;
-    color: $anx-primary-white !important;
+    color: $anx-primary-white;
+    text-decoration: none;
   }
-
-  .selected {
-    color: #fff !important;
-    cursor: initial;
+  a:hover {
+    color: $anx-primary-green;
+  }
+  .selected{
+    color: $anx-primary-green !important;
+    cursor: pointer;
   }
 
   .not-selected {
-    color: $anx-primary-green;
+    // color: $anx-primary-green;
     cursor: pointer;
   }
 }
+</style>
