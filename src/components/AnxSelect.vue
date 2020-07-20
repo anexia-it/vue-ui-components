@@ -72,7 +72,7 @@ export default class AnxSelect extends Vue {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  width: 100%;
+  width: var(----select-width);
   color: $anx-lightest-grey-dark;
   height: 25px;
   margin: 20px 0 30px 0;
