@@ -8,8 +8,9 @@
               <img alt="anx-header-logo" v-bind:src="img" />
             </div>
             <div class="header-language-nav" v-if="langSwitch === true">
-              <!-- implement Language Switch -->
-              <I18nLangSwitcher />
+              <div v-if="!menus">
+                <I18nLangSwitcher />
+              </div>
             </div>
           </div>
           <hr />
@@ -25,9 +26,9 @@
               </a>
             </div>
             <div class="menu-text right" v-if="langSwitch === true">
-              <!-- implement Language Switch -->
-              <i18n-lang-switcher />
-              <!--<a class="active">en</a>/ <a>de</a>-->
+              <div v-if="menus">
+                <I18nLangSwitcher />
+              </div>
             </div>
           </div>
         </div>

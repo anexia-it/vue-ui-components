@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
-    <anx-header :img="require('@/assets/anexia.svg')" />
+    <anx-header :langSwitch="true" :img="require('@/assets/anexia.svg')" />
     <div class="space"></div>
     <anx-header :langSwitch="true" :menus="items" />
   </div>

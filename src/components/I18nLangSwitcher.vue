@@ -20,14 +20,14 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import 'vue-i18n'
+//import 'vue-i18n'
 
 @Component({})
 export default class I18nLangSwitcher extends Vue {
-  //private setLocale (locale: string) {
-  // this.$store.commit('setLocale', locale)
-  //this.$i18n.locale = locale
-  //}
+  private setLocale (locale: string) {
+    this.$i18n.locale = locale
+  }
+ 
 }
 </script>
 
