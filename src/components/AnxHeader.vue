@@ -7,7 +7,7 @@
             <div class="header-image">
               <img alt="anx-header-logo" v-bind:src="img" />
             </div>
-            <div class="header-language-nav" v-if="langSwitch === true">
+            <div class="header-language-nav" v-if="this.$i18n">
               <div v-if="!menus">
                 <I18nLangSwitcher />
               </div>
@@ -25,7 +25,7 @@
                 {{ menu.menu }}
               </a>
             </div>
-            <div class="menu-text right" v-if="langSwitch === true">
+            <div class="menu-text right" v-if="this.$i18n">
               <div v-if="menus">
                 <I18nLangSwitcher />
               </div>
@@ -45,7 +45,6 @@ import I18nLangSwitcher from "./I18nLangSwitcher.vue";
   components: { I18nLangSwitcher }
 })
 export default class AnxHeader extends Vue {
-  @Prop({ default: false }) langSwitch!: boolean;
   @Prop({ default: require("@/assets/anexia.svg") }) img!: string;
   @Prop({ default: null }) menus!: Array<object>;
 
