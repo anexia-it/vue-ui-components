@@ -67,6 +67,7 @@ input[type="checkbox"] {
     display: ruby-base;
     margin: 0;
     color: $anx-lightest-grey-dark !important;
+    font-size: 16px;
   }
 }
 </style>

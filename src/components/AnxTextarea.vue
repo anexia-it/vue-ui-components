@@ -54,6 +54,7 @@ export default class AnxTextarea extends Vue {
   border: 1px solid $anx-second-grey-light;
   color: $anx-lightest-grey-dark !important;
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 16px;
 
   &:focus,
   &.filled {

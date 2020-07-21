@@ -76,6 +76,7 @@ export default class AnxSelect extends Vue {
   color: $anx-lightest-grey-dark;
   height: 25px;
   margin: 20px 0 30px 0;
+  font-size: 16px;
 }
 @media (max-width: 767px), (max-width: 1124px) {
   .anx-select {
