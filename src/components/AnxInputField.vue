@@ -158,6 +158,7 @@ export default class AnxInputField extends Vue {
   color: $anx-lightest-grey-dark;
   cursor: text;
   display: block;
+  box-sizing: border-box;
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-stretch: 100%;
