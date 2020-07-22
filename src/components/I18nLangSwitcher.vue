@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <div class="language-switcher">
@@ -20,7 +21,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-//import 'vue-i18n'
+import 'vue-i18n'
 
 @Component({})
 export default class I18nLangSwitcher extends Vue {

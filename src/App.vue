@@ -4,6 +4,7 @@
     <anx-header :img="require('@/assets/anexia.svg')" />
     <div class="space"></div>
     <anx-header :menus="items" />
+    {{ $t('message') }}
   </div>
 </template>
 
