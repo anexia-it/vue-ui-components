@@ -11,8 +11,8 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
 export default class AnxContent extends Vue {
-  /** This is the size of the header (xl, l, m) */
-  @Prop({ default: "xl" }) size!: string;
+  /** This is the size of the header (h1, h2, h3) */
+  @Prop({ default: "h1" }) size!: string;
 }
 </script>
 
@@ -25,16 +25,19 @@ export default class AnxContent extends Vue {
   font-family: MetaWebPro;
   margin-bottom: 20px;
 
-  &.size-xl {
+  &.size-h1 {
     font-size: 28px;
   }
 
-  &.size-l {
+  &.size-h2 {
     font-size: 23px;
+    line-height: 27.6px;
   }
 
-  &.size-m {
+  &.size-h3 {
     font-size: 18px;
+    line-height: 24px;
+    color: $anx-lightest-grey-dark;
   }
 }
 </style>

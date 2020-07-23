@@ -7,8 +7,16 @@
 
     <anx-container>
       <anx-content title="test title">
-        <anx-paragraph size="s">
-          This is some content
+        <anx-paragraph size="h1">
+          This is a paragraph without a header
+        </anx-paragraph>
+
+        <anx-paragraph title="Size h2" size="h2">
+          This is a paragraph with size H2 and its content
+        </anx-paragraph>
+
+        <anx-paragraph title="Size h3" size="h3">
+          And this is the smallest paragraph
         </anx-paragraph>
 
         <anx-alert
@@ -26,6 +34,12 @@
         >
           This is an error message
         </anx-alert>
+      </anx-content>
+
+      <anx-content title="H2 Content" size="h2">
+        <anx-paragraph>
+          This is another content with size H2
+        </anx-paragraph>
       </anx-content>
     </anx-container>
 

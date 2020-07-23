@@ -24,6 +24,8 @@ html {
   body {
     margin: 0px !important;
     background-color: $anx-dark-blue;
+    color: $anx-lightest-grey-dark;
+    font-size: 16px;
   }
 }
 </style>
