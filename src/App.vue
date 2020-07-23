@@ -5,6 +5,13 @@
     <div class="space"></div>
     <anx-header :menus="items" />
     {{ $t("uiplugin.header") }}
+
+    <anx-container>
+      <anx-content title="test title">
+        This is the content
+      </anx-content>
+    </anx-container>
+
     <anx-footer />
   </div>
 </template>
@@ -14,11 +21,15 @@ import { Component, Vue } from "vue-property-decorator";
 
 import AnxHeader from "@/components/AnxHeader.vue";
 import AnxFooter from "@/components/AnxFooter.vue";
+import AnxContainer from "@/components/AnxContainer.vue";
+import AnxContent from "@/components/AnxContent.vue";
 
 @Component({
   components: {
     AnxHeader,
-    AnxFooter
+    AnxFooter,
+    AnxContainer,
+    AnxContent
   }
 })
 export default class App extends Vue {
