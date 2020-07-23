@@ -15,7 +15,6 @@
         EN
       </a>
     </div>
-    {{ $t("uiplugin.header") }}
   </div>
 </template>
 

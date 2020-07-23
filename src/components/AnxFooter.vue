@@ -27,8 +27,12 @@
                 </a>
               </div>
             </div>
-            <img id="footer-img-mobile" v-bind:src="img">
           </div>
+          <img
+            class="anx-footer-logo"
+            id="footer-img-mobile"
+            v-bind:src="img"
+          />
         </div>
       </div>
     </div>
@@ -62,19 +66,28 @@ export default class AnxFooter extends Vue {
 .anx-footer-logo {
   width: 64px;
 
-@media screen and (max-width: 500px){
-  display: none;
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 }
 #footer-img-mobile {
-    display: none;
-  @media screen and (max-width: 500px){
-    display: inline-block;
+  display: none;
+  @media screen and (max-width: 500px) {
+    margin-right: auto;
+    margin-left: auto;
+    display: inherit;
+    margin-bottom: 50px;
   }
 }
 .anx-footer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
   display: flex;
   height: 100px;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 }
 .anx-footer-elements {
   display: flex;
@@ -82,10 +95,12 @@ export default class AnxFooter extends Vue {
 .anx-footer-right {
   text-align: right;
   width: 100%;
+  @media screen and (max-width: 500px) {
+    margin-bottom: 20px;
+  }
 }
 .anx-footer-text {
-  @media screen and (max-width: 500px){
-    margin-bottom: 20px;
+  @media screen and (max-width: 500px) {
     display: block;
     text-align: center;
   }
@@ -112,7 +127,7 @@ hr {
   background-color: $anx-primary-blue;
   height: 1px;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
   border: 0;
   box-sizing: inherit;
   border-top: 1px solid rgba(0, 0, 0, 0.1);

@@ -70,7 +70,7 @@ hr {
   background-color: $anx-primary-blue;
   height: 1px;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
   border: 0;
   box-sizing: inherit;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -87,8 +87,13 @@ hr {
 }
 
 .header {
-  // background-color: #002d6e;
-  background-color: $anx-dark-blue;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  display: flex;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 }
 img {
   // margin-top: 60px;
@@ -110,10 +115,14 @@ a:hover {
 
 .header-nav-menu {
   display: table;
-  padding-top: 17px;
+  // padding-top: 17px;
   margin-bottom: 35px;
   width: 100%;
-
+  @media screen and (max-width: 500px) {
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: none;
+  }
   .menu-text {
     a {
       margin-right: 20px;
