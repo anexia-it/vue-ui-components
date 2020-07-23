@@ -6,7 +6,7 @@
     <anx-header :menus="items" />
 
     <anx-container>
-      <anx-content title="test title">
+      <anx-content title="Simple styling">
         <anx-paragraph size="h1">
           This is a simple paragraph. Paragraphs are made for text. A paragraph
           can additionally have a title. This paragraph for example, does not
@@ -49,6 +49,15 @@
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
         </anx-paragraph>
+      </anx-content>
+
+      <anx-content title="Form components" size="h2">
+        <anx-input
+          :name="false"
+          translate="Name"
+          assistive-text="Here you can display some help for the user"
+        >
+        </anx-input>
       </anx-content>
 
       <anx-content title="H2 Content" size="h2">
@@ -99,6 +108,8 @@ import AnxContent from "@/components/AnxContent.vue";
 import AnxAlert from "@/components/AnxAlert.vue";
 import AnxParagraph from "@/components/AnxParagraph.vue";
 import AnxCard from "@/components/AnxCard.vue";
+import AnxInput from "@/components/AnxInputField.vue";
+import AnxButton from "@/components/AnxButton.vue";
 
 @Component({
   components: {
@@ -109,7 +120,9 @@ import AnxCard from "@/components/AnxCard.vue";
     AnxAlert,
     AnxGlobal,
     AnxParagraph,
-    AnxCard
+    AnxCard,
+    AnxInput,
+    AnxButton
   }
 })
 export default class App extends Vue {

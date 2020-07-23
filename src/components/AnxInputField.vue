@@ -25,10 +25,10 @@
       <span v-if="errors.length > 0" class="error">{{ errors[0] }}</span>
       <span
         v-else-if="
-          errors.length === 0 && assistiverText && assistiverText.length > 0
+          errors.length === 0 && assistiveText && assistiveText.length > 0
         "
         class="assistiv"
-        >{{ assistiverText }}</span
+        >{{ assistiveText }}</span
       >
     </div>
   </ValidationProvider>
@@ -54,9 +54,9 @@ export default class AnxInputField extends Vue {
 
   @Prop({ default: "anx-input" }) className!: string;
 
-  @Prop({ default: "250px" }) width!: string;
+  @Prop({ default: "100%" }) width!: string;
 
-  @Prop() assistiverText!: string;
+  @Prop() assistiveText!: string;
 
   private active = false;
   private filled = false;
@@ -109,6 +109,10 @@ export default class AnxInputField extends Vue {
   position: relative;
   width: var(--input-width);
   margin-bottom: 25px;
+
+  input {
+    outline: none;
+  }
 }
 
 .anx-input label {
