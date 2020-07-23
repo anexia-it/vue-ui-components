@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <div class="language-switcher">
@@ -16,19 +15,19 @@
         EN
       </a>
     </div>
+    {{ $t("uiplugin.header") }}
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import 'vue-i18n'
+import "vue-i18n";
 
 @Component({})
 export default class I18nLangSwitcher extends Vue {
-  private setLocale (locale: string) {
-    this.$i18n.locale = locale
+  private setLocale(locale: string) {
+    this.$i18n.locale = locale;
   }
- 
 }
 </script>
 
@@ -49,7 +48,7 @@ export default class I18nLangSwitcher extends Vue {
   a:hover {
     color: $anx-primary-green;
   }
-  .selected{
+  .selected {
     color: $anx-primary-green !important;
     cursor: pointer;
   }

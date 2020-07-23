@@ -1,3 +1,5 @@
 {
-    "message": "hello fsda !!"
-  }
+    "uiplugin": {
+      "header": "DEUTSCH !!"
+    }
+}

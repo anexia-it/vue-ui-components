@@ -1,5 +1,5 @@
 import Vue from "vue";
-import VueI18n, { LocaleMessages } from "vue-i18n";
+import VueI18n from "vue-i18n";
 
 Vue.use(VueI18n);
 
@@ -24,9 +24,8 @@ Vue.use(VueI18n);
 export default new VueI18n({
   locale: process.env.VUE_APP_I18N_LOCALE || "en",
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
-  //messages: loadLocaleMessages()
   messages: {
-    'en': require('@/locales/en.json'),
-    'de': require('@/locales/de.json')
+    en: require("./locales/en.json"),
+    de: require("./locales/de.json")
   }
 });

@@ -4,7 +4,8 @@
     <anx-header :img="require('@/assets/anexia.svg')" />
     <div class="space"></div>
     <anx-header :menus="items" />
-    {{ $t('message') }}
+    {{ $t("uiplugin.header") }}
+    <anx-footer />
   </div>
 </template>
 
@@ -12,10 +13,12 @@
 import { Component, Vue } from "vue-property-decorator";
 
 import AnxHeader from "@/components/AnxHeader.vue";
+import AnxFooter from "@/components/AnxFooter.vue";
 
 @Component({
   components: {
-    AnxHeader
+    AnxHeader,
+    AnxFooter
   }
 })
 export default class App extends Vue {
@@ -26,7 +29,8 @@ export default class App extends Vue {
 }
 </script>
 <style lang="scss">
-
+@import "@/assets/scss/_variables.scss";
+@import "@/assets/scss/bootstrap-grid.scss";
 .space {
   height: 20px;
 }
