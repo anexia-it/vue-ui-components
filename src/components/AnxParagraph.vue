@@ -1,5 +1,9 @@
 <template>
-  <div :class="`anx-paragraph anx-paragraph-${size}`">
+  <div
+    :class="
+      `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
+    "
+  >
     <anx-title v-if="title !== null" :size="size" class="anx-paragraph-title">
       {{ title }}
     </anx-title>
@@ -22,6 +26,9 @@ export default class AnxParagraph extends Vue {
 
   /** The size of the paragraph (h1, h2 or h3) */
   @Prop({ default: "h1" }) size!: string;
+
+  /** The paragraph can also be displayed as hint */
+  @Prop({ default: null }) hint!: boolean;
 }
 </script>
 
@@ -54,6 +61,12 @@ export default class AnxParagraph extends Vue {
       content: "\A\2014";
       white-space: pre;
     }
+  }
+
+  &.hint {
+    color: $anx-second-grey-light;
+    font-size: 12px;
+    line-height: 14px;
   }
 }
 </style>

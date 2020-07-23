@@ -44,6 +44,11 @@
         >
           This is an error message
         </anx-alert>
+
+        <anx-paragraph hint>
+          Hint: An AnxParagraph can also be set as hint. You just have to add
+          the <strong>hint</strong> property to the component
+        </anx-paragraph>
       </anx-content>
 
       <anx-content title="H2 Content" size="h2">
