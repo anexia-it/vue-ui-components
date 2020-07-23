@@ -20,8 +20,8 @@ export default class AnxContent extends Vue {
   /** The title for the content */
   @Prop({ default: null }) title!: string;
 
-  /** This is the size of the header (xl, l, m) */
-  @Prop({ default: "xl" }) size!: string;
+  /** This is the size of the header (h1, h2, h3) */
+  @Prop({ default: "h1" }) size!: string;
 
   /** If this property is set to true, the colors will be inversed (blue background and white font) */
   @Prop({ default: false }) inverseColors!: boolean;
@@ -51,7 +51,7 @@ export default class AnxContent extends Vue {
     }
   }
 
-  :last-child {
+  div:last-child {
     margin-bottom: 0;
   }
 }
