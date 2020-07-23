@@ -22,7 +22,7 @@ export default class AnxContent extends Vue {
 .anx-title {
   text-transform: uppercase;
   color: $anx-primary-blue;
-  font-family: MetaWebPro;
+  font-family: "MetaWebPro";
   margin-bottom: 20px;
 
   &.size-h1 {

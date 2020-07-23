@@ -40,6 +40,25 @@
         <anx-paragraph>
           This is another content with size H2
         </anx-paragraph>
+
+        <anx-card
+          :img="require('@/assets/anexia.svg')"
+          title="One card"
+          link="/rbl-quick-check-api"
+          link-text="more >"
+        >
+          This is the text of the card
+        </anx-card>
+
+        <anx-card
+          :img="require('@/assets/anexia.svg')"
+          title="And another card"
+          link="/rbl-quick-check-api"
+          link-text="more >"
+        >
+          And this ...<br />
+          Is a <strong>multiline</strong> card with inline HTML
+        </anx-card>
       </anx-content>
     </anx-container>
 
@@ -57,6 +76,7 @@ import AnxContainer from "@/components/AnxContainer.vue";
 import AnxContent from "@/components/AnxContent.vue";
 import AnxAlert from "@/components/AnxAlert.vue";
 import AnxParagraph from "@/components/AnxParagraph.vue";
+import AnxCard from "@/components/AnxCard.vue";
 
 @Component({
   components: {
@@ -66,7 +86,8 @@ import AnxParagraph from "@/components/AnxParagraph.vue";
     AnxContent,
     AnxAlert,
     AnxGlobal,
-    AnxParagraph
+    AnxParagraph,
+    AnxCard
   }
 })
 export default class App extends Vue {

@@ -29,6 +29,12 @@ export default class AnxParagraph extends Vue {
 @import "@/assets/scss/_variables.scss";
 
 .anx-paragraph {
+  line-height: 24px;
+
+  p {
+    margin: 0;
+  }
+
   &.anx-paragraph-h1 {
     margin-bottom: 40px;
   }
