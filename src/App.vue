@@ -4,7 +4,6 @@
     <anx-header :img="require('@/assets/anexia.svg')" />
     <div class="space"></div>
     <anx-header :menus="items" />
-    {{ $t("uiplugin.header") }}
 
     <anx-container>
       <anx-content title="test title">
@@ -48,7 +47,7 @@ export default class App extends Vue {
 </script>
 <style lang="scss">
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/bootstrap-grid.scss";
+
 .space {
   height: 20px;
 }

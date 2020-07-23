@@ -13,4 +13,8 @@ export default class AnxContainer extends Vue {}
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+
+.anx-container {
+  max-width: 500px;
+}
 </style>
