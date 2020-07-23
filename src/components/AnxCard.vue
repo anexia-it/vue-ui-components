@@ -31,7 +31,7 @@ export default class Card extends Vue {
   @Prop({ default: null }) linkText!: string;
 
   /** This is the link for the card */
-  @Prop({ default: null }) link!: string;
+  @Prop({ default: "#" }) link!: string;
 
   /** The image of the card */
   @Prop({ default: null }) img!: string;

@@ -8,7 +8,17 @@
     <anx-container>
       <anx-content title="test title">
         <anx-paragraph size="h1">
-          This is a paragraph without a header
+          This is a simple paragraph. Paragraphs are made for text. A paragraph
+          can additionally have a title. This paragraph for example, does not
+          have a title.<br /><br />
+          You can simply use <strong>inline HTML</strong> and line breaks.<br />
+          In general, there are three different sizes for AnxContent,
+          AnxParagraph and AnxTitle:<br />
+          <ul>
+            <li>h1</li>
+            <li>h2</li>
+            <li>h3</li>
+          </ul>
         </anx-paragraph>
 
         <anx-paragraph title="Size h2" size="h2">
@@ -44,7 +54,7 @@
         <anx-card
           :img="require('@/assets/anexia.svg')"
           title="One card"
-          link="/rbl-quick-check-api"
+          link="#"
           link-text="more >"
         >
           This is the text of the card
@@ -53,7 +63,7 @@
         <anx-card
           :img="require('@/assets/anexia.svg')"
           title="And another card"
-          link="/rbl-quick-check-api"
+          link="#"
           link-text="more >"
         >
           And this ...<br />
