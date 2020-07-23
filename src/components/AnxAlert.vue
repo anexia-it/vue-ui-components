@@ -32,8 +32,8 @@ export default class AnxAlert extends Vue {
   /** Define if animations like fade-in and fade-out should be used */
   @Prop({ default: true }) animations!: boolean;
 
-  /** This is the type of the error. Possible is error, success, danger */
-  @Prop({ default: "error" }) type!: string; // TODO: implement other type like success
+  /** This is the type of the error. Possible is error, success */
+  @Prop({ default: "error" }) type!: string;
 
   /** Watcher for show changes */
   @Watch("show")
@@ -63,7 +63,6 @@ export default class AnxAlert extends Vue {
 
   /** Show the alert */
   private showAction() {
-    console.log("show action");
     if (this.animations) {
       this.fadeIn = true;
       window.setTimeout(() => {
@@ -77,7 +76,6 @@ export default class AnxAlert extends Vue {
 
   /** Hide the alert */
   private hideAction() {
-    console.log("hide action");
     if (this.animations) {
       this.fadeOut = true;
       window.setTimeout(() => {
