@@ -26,7 +26,6 @@ export default class AnxCheckbox extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/fonts.scss";
 
 input[type="checkbox"] {
   height: 13px !important;

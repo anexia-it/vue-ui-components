@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
     <anx-header :img="require('@/assets/anexia.svg')" />
     <div class="space"></div>
@@ -9,11 +9,14 @@
     <anx-container>
       <anx-content title="test title">
         This is the content
+        <anx-alert>
+          This is a success message
+        </anx-alert>
       </anx-content>
     </anx-container>
 
     <anx-footer />
-  </div>
+  </anx-global>
 </template>
 
 <script lang="ts">
@@ -21,15 +24,19 @@ import { Component, Vue } from "vue-property-decorator";
 
 import AnxHeader from "@/components/AnxHeader.vue";
 import AnxFooter from "@/components/AnxFooter.vue";
+import AnxGlobal from "@/components/AnxGlobal.vue";
 import AnxContainer from "@/components/AnxContainer.vue";
 import AnxContent from "@/components/AnxContent.vue";
+import AnxAlert from "@/components/AnxAlert.vue";
 
 @Component({
   components: {
     AnxHeader,
     AnxFooter,
     AnxContainer,
-    AnxContent
+    AnxContent,
+    AnxAlert,
+    AnxGlobal
   }
 })
 export default class App extends Vue {

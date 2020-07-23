@@ -53,19 +53,10 @@ export default class AnxHeader extends Vue {
   }
 }
 </script>
-<style lang="scss">
-@import "@/assets/scss/fonts.scss";
-@import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/bootstrap-grid.scss";
 
-body {
-  margin: 0px !important;
-  background-color: $anx-dark-blue;
-}
-</style>
 <style scoped lang="scss">
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/bootstrap-grid.scss";
+
 hr {
   background-color: $anx-primary-blue;
   height: 1px;

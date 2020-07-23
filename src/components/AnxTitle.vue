@@ -18,7 +18,6 @@ export default class AnxContent extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/fonts.scss";
 
 .anx-title {
   text-transform: uppercase;

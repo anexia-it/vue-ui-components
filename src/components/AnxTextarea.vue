@@ -34,7 +34,6 @@ export default class AnxTextarea extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/fonts.scss";
 
 .anx-textarea {
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;

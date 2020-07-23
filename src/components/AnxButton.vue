@@ -29,7 +29,6 @@ export default class AnxButton extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/fonts.scss";
 
 button {
   cursor: pointer;

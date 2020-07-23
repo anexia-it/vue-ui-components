@@ -96,7 +96,6 @@ export default class AnxInputField extends Vue {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/fonts.scss";
 
 .anx-input {
   color: $anx-lightest-grey-dark;
