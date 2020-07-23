@@ -52,10 +52,10 @@ export default class AnxAlert extends Vue {
     line-height: 16px;
     padding: 16px;
     color: $anx-lightest-grey-dark;
-  }
 
-  .bold {
-    font-family: "MetaCompPro-Bold";
+    &.bold {
+      font-family: "MetaCompPro-Bold";
+    }
   }
 }
 </style>
