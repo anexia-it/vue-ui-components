@@ -7,7 +7,10 @@
 
     <anx-container>
       <anx-content title="test title">
-        This is the content
+        <anx-paragraph size="s">
+          This is some content
+        </anx-paragraph>
+
         <anx-alert
           :show="showSuccessAlert"
           @dismiss="showSuccessAlert = !showSuccessAlert"
@@ -39,6 +42,7 @@ import AnxGlobal from "@/components/AnxGlobal.vue";
 import AnxContainer from "@/components/AnxContainer.vue";
 import AnxContent from "@/components/AnxContent.vue";
 import AnxAlert from "@/components/AnxAlert.vue";
+import AnxParagraph from "@/components/AnxParagraph.vue";
 
 @Component({
   components: {
@@ -47,7 +51,8 @@ import AnxAlert from "@/components/AnxAlert.vue";
     AnxContainer,
     AnxContent,
     AnxAlert,
-    AnxGlobal
+    AnxGlobal,
+    AnxParagraph
   }
 })
 export default class App extends Vue {
