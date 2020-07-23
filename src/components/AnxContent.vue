@@ -1,5 +1,5 @@
 <template>
-  <div :class="'anx-content ' + (inverseColors ? 'inversed-colors ' : '')">
+  <div :class="'anx-content ' + (inverse !== null ? 'inversed-colors ' : '')">
     <anx-title v-if="title !== null" :size="size">
       {{ title }}
     </anx-title>
@@ -24,7 +24,7 @@ export default class AnxContent extends Vue {
   @Prop({ default: "h1" }) size!: string;
 
   /** If this property is set to true, the colors will be inversed (blue background and white font) */
-  @Prop({ default: false }) inverseColors!: boolean;
+  @Prop({ default: null }) inverse!: boolean;
 }
 </script>
 

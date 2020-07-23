@@ -75,6 +75,13 @@
           Is a <strong>multiline</strong> card with inline HTML
         </anx-card>
       </anx-content>
+
+      <anx-content title="Some additional info" inverse>
+        <anx-paragraph>
+          If you don't want the white background, you can set the
+          <strong>inverse</strong> property on the AnxContent component
+        </anx-paragraph>
+      </anx-content>
     </anx-container>
 
     <anx-footer />
