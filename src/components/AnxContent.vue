@@ -24,7 +24,7 @@ export default class AnxContent extends Vue {
   @Prop({ default: "xl" }) size!: string;
 
   /** If this property is set to true, the colors will be inversed (blue background and white font) */
-  @Prop({ default: true }) inverseColors!: boolean;
+  @Prop({ default: false }) inverseColors!: boolean;
 }
 </script>
 
@@ -49,6 +49,10 @@ export default class AnxContent extends Vue {
     .anx-title {
       color: $anx-primary-white;
     }
+  }
+
+  :last-child {
+    margin-bottom: 0;
   }
 }
 </style>

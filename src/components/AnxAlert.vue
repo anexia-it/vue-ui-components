@@ -95,6 +95,7 @@ export default class AnxAlert extends Vue {
 @import "@/assets/scss/_variables.scss";
 
 .anx-alert {
+  margin-bottom: $form-components-spacing;
   display: flex;
   opacity: 1;
 

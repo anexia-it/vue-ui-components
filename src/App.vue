@@ -8,8 +8,20 @@
     <anx-container>
       <anx-content title="test title">
         This is the content
-        <anx-alert>
+        <anx-alert
+          :show="showSuccessAlert"
+          @dismiss="showSuccessAlert = !showSuccessAlert"
+          type="success"
+        >
           This is a success message
+        </anx-alert>
+
+        <anx-alert
+          :show="showErrorAlert"
+          @dismiss="showErrorAlert = !showErrorAlert"
+          type="error"
+        >
+          This is an error message
         </anx-alert>
       </anx-content>
     </anx-container>
@@ -43,6 +55,9 @@ export default class App extends Vue {
     { menu: "Software", link: "/x" },
     { menu: "Hosting", link: "/y" }
   ];
+
+  showSuccessAlert = true;
+  showErrorAlert = true;
 }
 </script>
 <style lang="scss">
