@@ -1,5 +1,20 @@
 {
     "uiplugin": {
-      "header": "DEUTSCH !!"
-    }
+      "header": "DEUTSCH !!",
+      "footer":
+      {
+        "text": {
+          "one": "Impressum",
+          "two": "Kontakt",
+          "three": "AGB",
+          "four": "Datenschutz"
+        },
+      "link": {
+        "one": "https://anexia.com/de/unternehmen/ueber-anexia/impressum",
+        "two": "https://anexia.com/de/unternehmen/kontakt",
+        "three": "https://anexia.com/de/unternehmen/ueber-anexia/agb",
+        "four": "https://anexia.com/de/unternehmen/ueber-anexia/datenschutz"
+      }
+    } 
+  }
 }

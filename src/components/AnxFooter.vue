@@ -10,7 +10,7 @@
               alt="anx-footer-logo"
               v-bind:src="img"
             />
-            <div class="anx-footer-left"></div>
+
             <div class="anx-footer-right">
               <div class="anx-footer-text">
                 <div class="anx-footer-text copyright">
@@ -23,10 +23,11 @@
                   :key="link.id"
                   :href="`${link.link}`"
                 >
-                  {{ link.text }}
+                  {{ $t(link.text) }}
                 </a>
               </div>
             </div>
+            <img id="footer-img-mobile" v-bind:src="img">
           </div>
         </div>
       </div>
@@ -39,14 +40,20 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
 export default class AnxFooter extends Vue {
-  private test = "";
   @Prop({ default: require("../assets/anexia.svg") }) img!: string;
-  private footerLinks: Array<object> = [
-    { text: "test", link: "/" },
-    { text: "Kontak", link: "/" },
-    { text: "AGB", link: "/" },
-    { text: "Datenschutz", link: "/" }
-  ];
+
+  private footerLinks: Array<object> = [];
+  mounted() {
+    this.createFooterLinks();
+  }
+  private createFooterLinks() {
+    Object.keys(this.$i18n.t("uiplugin.footer.text")).forEach(element => {
+      this.footerLinks.push({
+        text: "uiplugin.footer.text." + element,
+        link: "uiplugin.footer.link." + element
+      });
+    });
+  }
 }
 </script>
 
@@ -54,6 +61,16 @@ export default class AnxFooter extends Vue {
 @import "../assets/scss/_variables.scss";
 .anx-footer-logo {
   width: 64px;
+
+@media screen and (max-width: 500px){
+  display: none;
+  }
+}
+#footer-img-mobile {
+    display: none;
+  @media screen and (max-width: 500px){
+    display: inline-block;
+  }
 }
 .anx-footer {
   display: flex;
@@ -67,6 +84,11 @@ export default class AnxFooter extends Vue {
   width: 100%;
 }
 .anx-footer-text {
+  @media screen and (max-width: 500px){
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+  }
   color: $anx-primary-white;
   &.copyright::before {
     content: "\00A9";

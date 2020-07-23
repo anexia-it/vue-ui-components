@@ -1,5 +1,20 @@
 {
   "uiplugin": {
-    "header": "Englisch !!"
+    "header": "Englisch !!",
+    "footer":
+    {
+      "text": {
+        "one": "Imprint",
+        "two": "Contact",
+        "three": "Terms of Use",
+        "four": "Privacy Policy"
+      },
+      "link": {
+        "one": "https://anexia.com/en/company/about-anexia/imprint",
+        "two": "https://anexia.com/en/company/contact",
+        "three": "https://anexia.com/en/company/about-anexia/terms-of-use",
+        "four": "https://anexia.com/en/company/about-anexia/privacy-policy"
+      }
+    } 
   }
 }
