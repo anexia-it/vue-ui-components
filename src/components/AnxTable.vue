@@ -25,7 +25,13 @@
         </tr>
       </thead>
       <tbody>
-        <anx-table-row v-for="(item, i) in items" :key="i" :item="item" />
+        <anx-table-row v-for="(item, i) in items" :key="i" :item="item">
+          <anx-table-col v-for="(content, name) in item" :key="name">
+            <slot :name="`${name}${i}`" v-bind:content="content">
+              {{ content }}
+            </slot>
+          </anx-table-col>
+        </anx-table-row>
       </tbody>
     </table>
   </anx-table-container>
@@ -37,11 +43,13 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxTableContainer from "@/components/AnxTableContainer.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
+import AnxTableCol from "@/components/AnxTableCol.vue";
 
 @Component({
   components: {
     AnxTableContainer,
-    AnxTableRow
+    AnxTableRow,
+    AnxTableCol
   }
 })
 export default class AnxTable extends Vue {
@@ -67,12 +75,7 @@ export default class AnxTable extends Vue {
   @Prop({ default: [] }) items!: Array<object>;
 
   /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the age colum 100px */
-  @Prop({ default: {} }) widths!: Record<string, string>;
-
-  private mounted() {
-    console.log("mounted table");
-    console.log(this.items);
-  }
+  @Prop() widths!: Record<string, string>;
 
   private getWidthForColumn(index: string): string {
     if (this.widths && index in this.widths) {

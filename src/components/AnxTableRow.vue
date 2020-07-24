@@ -1,8 +1,10 @@
 <template>
   <tr class="anx-table-row">
-    <td v-for="(content, name) in item" :key="name">
-      {{ content }}
-    </td>
+    <slot>
+      <td v-for="(content, name) in item" :key="name">
+        {{ content }}
+      </td>
+    </slot>
   </tr>
 </template>
 <script lang="ts">
@@ -18,14 +20,7 @@ export default class AnxTableRow extends Vue {
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
 
-tr {
+.anx-table-row {
   height: 40px;
-
-  td {
-    padding: 0.438rem 0.5rem 0.438rem 0.5rem;
-    padding-left: 8px;
-    font-size: 16px;
-    vertical-align: middle;
-  }
 }
 </style>

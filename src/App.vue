@@ -27,24 +27,7 @@
 
         <anx-paragraph title="Size h3" size="h3">
           And this is the smallest paragraph<br /><br />
-          The table below this paragraph has the properties
-          <strong>stripped</strong>, <strong>bordered</strong>,
-          <strong>hover</strong>, <strong>uppercase-title</strong> and
-          <strong>scrollable</strong>. In this case, the table is limited to a
-          size of 200 px
         </anx-paragraph>
-
-        <anx-table
-          stripped
-          hover
-          bordered
-          scrollable
-          uppercase-title
-          height="200px"
-          :items="tableItems"
-          :widths="{ age: '50px' }"
-        >
-        </anx-table>
 
         <anx-alert
           :show="showSuccessAlert"
@@ -66,6 +49,53 @@
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
         </anx-paragraph>
+      </anx-content>
+
+      <anx-content title="Tables" size="h2">
+        <anx-paragraph title="Simple table" size="h3">
+          The table below is a very simple table to demonstrate, how less code
+          you need to implement such a table.
+        </anx-paragraph>
+
+        <anx-table :items="tableItems" hover />
+
+        <anx-paragraph title="Complex table" size="h3">
+          The following table is a little bit more complex.<br /><br />
+          This table has <strong>stripped</strong>, <strong>bordered</strong>,
+          <strong>hover</strong>, <strong>uppercase-title</strong> and
+          <strong>scrollable</strong> properties. This properties change the
+          design of the table. In this case, the table is also limited to a size
+          of 200 px. The first column is limited to a width of 50px.<br /><br />It
+          is also possible, to render inline html in the different cells.
+          Therefore, named slots are used. The name of the slot is as follows:
+          <strong>$columnname$rowIndex</strong>. E.g. age0 for first row and the
+          column with the ages. Inside this slot you can add whatever you want
+          (images, inline html, ...)
+        </anx-paragraph>
+
+        <anx-table
+          stripped
+          hover
+          bordered
+          scrollable
+          uppercase-title
+          height="200px"
+          :items="secondTableItems"
+          :widths="{ age: '50px' }"
+        >
+          <!-- This is an example for replacing content. In this case we change the styling for a specific cell -->
+          <template v-slot:firstName2="{ content }">
+            <span style="color: red">{{ content }}</span>
+          </template>
+
+          <!-- Replace all cells with images with an image -->
+          <template
+            v-for="(item, i) in secondTableItems"
+            v-slot:[getImgCellName(i)]
+          >
+            <img :src="require('@/assets/anexia.svg')" :key="i" />
+          </template>
+        </anx-table>
       </anx-content>
 
       <anx-content title="Form components" size="h2">
@@ -184,14 +214,21 @@ export default class App extends Vue {
     { age: 89, firstName: "Geneva", lastName: "Wilson" },
     { age: 38, firstName: "Jami", lastName: "Carney" },
     { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw" },
-    { age: 89, firstName: "Geneva", lastName: "Wilson" },
-    { age: 38, firstName: "Jami", lastName: "Carney" },
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw" },
-    { age: 89, firstName: "Geneva", lastName: "Wilson" },
-    { age: 38, firstName: "Jami", lastName: "Carney" }
+    { age: 21, firstName: "Larsen", lastName: "Shaw" }
   ];
+
+  secondTableItems = [
+    { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "" },
+    { age: 21, firstName: "Larsen", lastName: "Shaw", image: "" },
+    { age: 89, firstName: "Geneva", lastName: "Wilson", image: "" },
+    { age: 38, firstName: "Jami", lastName: "Carney", image: "" },
+    { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "" },
+    { age: 21, firstName: "Larsen", lastName: "Shaw", image: "" }
+  ];
+
+  private getImgCellName(index: string) {
+    return "image" + index;
+  }
 }
 </script>
 <style lang="scss">
