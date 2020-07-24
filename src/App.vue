@@ -85,7 +85,11 @@
         >
           <!-- This is an example for replacing content. In this case we change the styling for a specific cell -->
           <template v-slot:firstName2="{ content }">
-            <span style="color: red">{{ content }}</span>
+            <span style="color: #003CA6">
+              <strong>
+                {{ content }}
+              </strong>
+            </span>
           </template>
 
           <!-- Replace all cells with images with an image -->

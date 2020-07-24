@@ -20,7 +20,7 @@
             scope="col"
             :width="getWidthForColumn(index)"
           >
-            {{ index }}
+            {{ camelCaseToText(index) }}
           </th>
         </tr>
       </thead>
@@ -36,8 +36,6 @@
     </table>
   </anx-table-container>
 </template>
-
-<!-- //TODO: add named slots like in bootstrap-vue see: https://vuejs.org/v2/guide/components-slots.html#Named-Slots-Shorthand -->
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
@@ -77,11 +75,19 @@ export default class AnxTable extends Vue {
   /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the age colum 100px */
   @Prop() widths!: Record<string, string>;
 
+  /** Searches if the width for a specific column is set and returns it */
   private getWidthForColumn(index: string): string {
     if (this.widths && index in this.widths) {
       return this.widths[index];
     }
     return "auto";
+  }
+
+  /** Converts camelCase to Text */
+  private camelCaseToText(camelCase: string) {
+    return camelCase.replace(/([A-Z])/g, " $1").replace(/^./, function(str) {
+      return str.toUpperCase();
+    });
   }
 }
 </script>
