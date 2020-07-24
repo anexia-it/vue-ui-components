@@ -1,9 +1,8 @@
 <template>
   <tr class="anx-table-row">
-    <td>test</td>
-    <td>test</td>
-    <td>test</td>
-    <td>test</td>
+    <td v-for="(content, name) in item" :key="name">
+      {{ content }}
+    </td>
   </tr>
 </template>
 <script lang="ts">
@@ -12,7 +11,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({})
 export default class AnxTableRow extends Vue {
   /** The columns for the row */
-  @Prop({ default: [] }) columns!: Array<object>;
+  @Prop({ default: {} }) item!: Record<string, string>;
 }
 </script>
 

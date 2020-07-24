@@ -15,29 +15,33 @@
       <thead :class="uppercaseTitle !== null ? 'text-uppercase' : ''">
         <tr>
           <th
-            v-for="column in columns"
-            :key="column.name"
+            v-for="(item, index) in items[0]"
+            :key="index"
             scope="col"
-            :width="column.width"
+            :width="getWidthForColumn(index)"
           >
-            {{ column.name }}
+            {{ index }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <slot />
+        <anx-table-row v-for="(item, i) in items" :key="i" :item="item" />
       </tbody>
     </table>
   </anx-table-container>
 </template>
 
+<!-- //TODO: add named slots like in bootstrap-vue see: https://vuejs.org/v2/guide/components-slots.html#Named-Slots-Shorthand -->
+
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxTableContainer from "@/components/AnxTableContainer.vue";
+import AnxTableRow from "@/components/AnxTableRow.vue";
 
 @Component({
   components: {
-    AnxTableContainer
+    AnxTableContainer,
+    AnxTableRow
   }
 })
 export default class AnxTable extends Vue {
@@ -59,8 +63,23 @@ export default class AnxTable extends Vue {
   /** Whether to display the header columns in uppercase or not */
   @Prop({ default: null }) uppercaseTitle!: boolean;
 
-  /** The columns for the header of the table */
-  @Prop({ default: [] }) columns!: Array<object>;
+  /** The items for the table */
+  @Prop({ default: [] }) items!: Array<object>;
+
+  /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the age colum 100px */
+  @Prop({ default: {} }) widths!: Record<string, string>;
+
+  private mounted() {
+    console.log("mounted table");
+    console.log(this.items);
+  }
+
+  private getWidthForColumn(index: string): string {
+    if (this.widths && index in this.widths) {
+      return this.widths[index];
+    }
+    return "auto";
+  }
 }
 </script>
 

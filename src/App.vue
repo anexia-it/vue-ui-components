@@ -41,22 +41,9 @@
           scrollable
           uppercase-title
           height="200px"
-          :columns="[
-            { name: 'First', width: '30%' },
-            { name: 'Second' },
-            { name: 'Third' },
-            { name: 'Last' }
-          ]"
+          :items="tableItems"
+          :widths="{ age: '50px' }"
         >
-          <!-- TODO: this should be rendered with an list of items alone. See bootstrap-vue table documentation -->
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
-          <anx-table-row></anx-table-row>
         </anx-table>
 
         <anx-alert
@@ -190,6 +177,21 @@ export default class App extends Vue {
 
   showSuccessAlert = true;
   showErrorAlert = true;
+
+  tableItems = [
+    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
+    { age: 21, firstName: "Larsen", lastName: "Shaw" },
+    { age: 89, firstName: "Geneva", lastName: "Wilson" },
+    { age: 38, firstName: "Jami", lastName: "Carney" },
+    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
+    { age: 21, firstName: "Larsen", lastName: "Shaw" },
+    { age: 89, firstName: "Geneva", lastName: "Wilson" },
+    { age: 38, firstName: "Jami", lastName: "Carney" },
+    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
+    { age: 21, firstName: "Larsen", lastName: "Shaw" },
+    { age: 89, firstName: "Geneva", lastName: "Wilson" },
+    { age: 38, firstName: "Jami", lastName: "Carney" }
+  ];
 }
 </script>
 <style lang="scss">
