@@ -26,8 +26,36 @@
         </anx-paragraph>
 
         <anx-paragraph title="Size h3" size="h3">
-          And this is the smallest paragraph
+          And this is the smallest paragraph<br /><br />
+          The table below this paragraph has the properties
+          <strong>stripped</strong>, <strong>bordered</strong>,
+          <strong>uppercase-title</strong> and <strong>scrollable</strong>. In
+          this case, the table is limited to a size of 200 px
         </anx-paragraph>
+
+        <anx-table
+          stripped
+          bordered
+          scrollable
+          uppercase-title
+          height="200px"
+          :columns="[
+            { name: 'First', width: '30%' },
+            { name: 'Second' },
+            { name: 'Third' },
+            { name: 'Last' }
+          ]"
+        >
+          <!-- TODO: this should be rendered with an list of items alone. See bootstrap-vue table documentation -->
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+          <anx-table-row></anx-table-row>
+        </anx-table>
 
         <anx-alert
           :show="showSuccessAlert"
@@ -53,7 +81,7 @@
 
       <anx-content title="Form components" size="h2">
         <anx-input
-          :name="false"
+          name="name"
           translate="Name"
           assistive-text="Here you can display some help for the user"
         >
@@ -132,6 +160,8 @@ import AnxCard from "@/components/AnxCard.vue";
 import AnxInput from "@/components/AnxInputField.vue";
 import AnxButton from "@/components/AnxButton.vue";
 import AnxReadOnly from "@/components/AnxReadOnly.vue";
+import AnxTable from "@/components/AnxTable.vue";
+import AnxTableRow from "@/components/AnxTableRow.vue";
 
 @Component({
   components: {
@@ -145,7 +175,9 @@ import AnxReadOnly from "@/components/AnxReadOnly.vue";
     AnxCard,
     AnxInput,
     AnxReadOnly,
-    AnxButton
+    AnxButton,
+    AnxTable,
+    AnxTableRow
   }
 })
 export default class App extends Vue {

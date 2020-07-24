@@ -26,6 +26,10 @@ html {
     background-color: $anx-dark-blue;
     color: $anx-lightest-grey-dark;
     font-size: 16px;
+
+    .text-uppercase {
+      text-transform: uppercase;
+    }
   }
 }
 </style>
