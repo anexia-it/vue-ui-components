@@ -29,12 +29,14 @@
           And this is the smallest paragraph<br /><br />
           The table below this paragraph has the properties
           <strong>stripped</strong>, <strong>bordered</strong>,
-          <strong>uppercase-title</strong> and <strong>scrollable</strong>. In
-          this case, the table is limited to a size of 200 px
+          <strong>hover</strong>, <strong>uppercase-title</strong> and
+          <strong>scrollable</strong>. In this case, the table is limited to a
+          size of 200 px
         </anx-paragraph>
 
         <anx-table
           stripped
+          hover
           bordered
           scrollable
           uppercase-title

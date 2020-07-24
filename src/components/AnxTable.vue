@@ -8,7 +8,8 @@
         'anx-table ' +
           (stripped !== null ? 'anx-table-striped ' : '') +
           (bordered !== null ? 'anx-table-bordered ' : '') +
-          (scrollable !== null ? 'anx-table-scrollable ' : '')
+          (scrollable !== null ? 'anx-table-scrollable ' : '') +
+          (hover !== null ? 'anx-table-hover ' : '')
       "
     >
       <thead :class="uppercaseTitle !== null ? 'text-uppercase' : ''">
@@ -48,6 +49,9 @@ export default class AnxTable extends Vue {
 
   /** Wheter the table is bordered or not */
   @Prop({ default: null }) bordered!: boolean;
+
+  /** Wheter the table is bordered or not */
+  @Prop({ default: null }) hover!: boolean;
 
   /** Wheter the table is bordered or not */
   @Prop({ default: null }) height!: string;
@@ -130,6 +134,14 @@ export default class AnxTable extends Vue {
     tbody {
       tr:nth-of-type(odd) {
         background-color: $anx-table-row-background !important;
+      }
+    }
+  }
+
+  &.anx-table-hover {
+    tbody {
+      tr:hover {
+        background-color: $anx-table-row-hover !important;
       }
     }
   }
