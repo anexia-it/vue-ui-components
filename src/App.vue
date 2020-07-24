@@ -58,6 +58,27 @@
           assistive-text="Here you can display some help for the user"
         >
         </anx-input>
+
+        <anx-read-only bold>
+          This is a simple AnxReadOnly component with bold text. Click me to
+          copy the text!
+        </anx-read-only>
+
+        <anx-read-only :copy-on-click="false">
+          The following AnxReadOnly component is not bold and the text cannot be
+          copied.<br /><br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+          convallis turpis a elit imperdiet pellentesque in ac tortor.
+          Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
+          Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
+          semper mi. Integer dignissim diam dictum dui ultricies, vitae
+          facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
+          Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
+          interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
+          porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus at
+          odio venenatis, eu malesuada lorem convallis. In quis massa eros.
+          Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
+        </anx-read-only>
       </anx-content>
 
       <anx-content title="H2 Content" size="h2">
@@ -110,6 +131,7 @@ import AnxParagraph from "@/components/AnxParagraph.vue";
 import AnxCard from "@/components/AnxCard.vue";
 import AnxInput from "@/components/AnxInputField.vue";
 import AnxButton from "@/components/AnxButton.vue";
+import AnxReadOnly from "@/components/AnxReadOnly.vue";
 
 @Component({
   components: {
@@ -122,6 +144,7 @@ import AnxButton from "@/components/AnxButton.vue";
     AnxParagraph,
     AnxCard,
     AnxInput,
+    AnxReadOnly,
     AnxButton
   }
 })

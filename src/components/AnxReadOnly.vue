@@ -1,6 +1,6 @@
 <template>
   <div id="testanx" class="anx-read-only" @click="copy($event)">
-    <div :class="'inner-text ' + (bold ? 'bold ' : '')">
+    <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
       <slot />
     </div>
   </div>
@@ -18,7 +18,7 @@ export default class AnxAlert extends Vue {
   @Prop({ default: true }) copyOnClick!: boolean;
 
   /** Should the text be bold? */
-  @Prop({ default: true }) bold!: boolean;
+  @Prop({ default: null }) bold!: boolean;
 
   /** Select and copy the text of the area */
   private copy(event: Event) {
