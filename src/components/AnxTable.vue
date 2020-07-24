@@ -72,7 +72,7 @@ export default class AnxTable extends Vue {
   /** The items for the table */
   @Prop({ default: [] }) items!: Array<object>;
 
-  /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the age colum 100px */
+  /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the column named age 100 px */
   @Prop() widths!: Record<string, string>;
 
   /** Searches if the width for a specific column is set and returns it */

@@ -70,7 +70,8 @@
           Therefore, named slots are used. The name of the slot is as follows:
           <strong>$columnname$rowIndex</strong>. E.g. age0 for first row and the
           column with the ages. Inside this slot you can add whatever you want
-          (images, inline html, ...)
+          (images, inline html, ...).<br /><br />The images can be changed
+          dynamically. This is demonstrated with an intervall of four seocnds.
         </anx-paragraph>
 
         <anx-table
@@ -95,9 +96,9 @@
           <!-- Replace all cells with images with an image -->
           <template
             v-for="(item, i) in secondTableItems"
-            v-slot:[getImgCellName(i)]
+            v-slot:[getImgCellName(i)]="{ content }"
           >
-            <img :src="require('@/assets/anexia.svg')" :key="i" />
+            <img :src="content" :key="i" />
           </template>
         </anx-table>
       </anx-content>
@@ -222,14 +223,64 @@ export default class App extends Vue {
   ];
 
   secondTableItems = [
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw", image: "" },
-    { age: 89, firstName: "Geneva", lastName: "Wilson", image: "" },
-    { age: 38, firstName: "Jami", lastName: "Carney", image: "" },
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw", image: "" }
+    {
+      age: 40,
+      firstName: "Dickerson",
+      lastName: "Macdonald",
+      image: require("@/assets/anexia.svg")
+    },
+    {
+      age: 21,
+      firstName: "Larsen",
+      lastName: "Shaw",
+      image: require("@/assets/anexia.svg")
+    },
+    {
+      age: 89,
+      firstName: "Geneva",
+      lastName: "Wilson",
+      image: require("@/assets/anexia.svg")
+    },
+    {
+      age: 38,
+      firstName: "Jami",
+      lastName: "Carney",
+      image: require("@/assets/anexia.svg")
+    },
+    {
+      age: 40,
+      firstName: "Dickerson",
+      lastName: "Macdonald",
+      image: require("@/assets/anexia.svg")
+    },
+    {
+      age: 21,
+      firstName: "Larsen",
+      lastName: "Shaw",
+      image: require("@/assets/anexia.svg")
+    }
   ];
 
+  private mounted() {
+    /** This code demonstrates, that the images can be changed dynamically */
+    this.seedTableImages();
+    window.setInterval(() => {
+      this.seedTableImages();
+    }, 4000);
+  }
+
+  /** Change the images for the second table randomly */
+  private seedTableImages() {
+    this.secondTableItems.forEach(object => {
+      if (Math.random() <= 0.5) {
+        object.image = require("@/assets/anexia.svg");
+      } else {
+        object.image = require("@/assets/check-green.svg");
+      }
+    });
+  }
+
+  /** Return the name of the cell for image with an specific index */
   private getImgCellName(index: string) {
     return "image" + index;
   }
