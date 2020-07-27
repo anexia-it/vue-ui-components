@@ -31,7 +31,6 @@ export default class AnxButton extends Vue {
 @import "@/assets/scss/_variables.scss";
 
 button {
-  cursor: pointer;
   width: var(--button-width);
   height: 2.5em; //40px
   padding-top: 2px;
@@ -102,20 +101,24 @@ button {
     text-decoration: none;
   }
 
-  &:hover {
-    color: $anx-primary-green;
-    text-decoration: none;
+  &:not(:disabled) {
+    cursor: pointer;
 
-    &:before {
-      opacity: 1;
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
+    &:hover {
+      color: $anx-primary-green;
+      text-decoration: none;
 
-    &:after {
-      opacity: 0;
-      -webkit-transform: scale3d(0.8, 0.8, 1);
-      transform: scale3d(0.8, 0.8, 1);
+      &:before {
+        opacity: 1;
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+
+      &:after {
+        opacity: 0;
+        -webkit-transform: scale3d(0.8, 0.8, 1);
+        transform: scale3d(0.8, 0.8, 1);
+      }
     }
   }
 }

@@ -110,17 +110,20 @@
       </anx-content>
 
       <anx-content title="Form components" size="h2">
-        <anx-form @submit="submitForm" :submit-button="{ text: 'Send >' }">
+        <anx-form
+          @submit="submitForm"
+          name="ip-form"
+          :submit-button="{ text: 'Send >' }"
+        >
           <anx-input
-            name="name"
-            translate="Name"
-            assistive-text="Here you can display some help for the user"
-            v-model="name"
+            name="ip"
+            translate="IP address"
+            assistive-text="Enter your local ip address"
+            v-model="ip"
+            rules="required|ip"
           />
-          
-          <anx-checkbox name="Checkbox">
 
-          </anx-checkbox>
+          <anx-checkbox name="Checkbox" />
 
           <anx-read-only bold>
             This is a simple AnxReadOnly component with bold text. Click me to
@@ -228,7 +231,7 @@ export default class App extends Vue {
     { menu: "Hosting", link: "/y/" }
   ];
 
-  name = "";
+  ip = "";
   showSuccessAlert = true;
   showErrorAlert = true;
 
@@ -313,7 +316,7 @@ export default class App extends Vue {
 
   /** Show an alert when the form has been submitted */
   private submitForm() {
-    alert(`Form has been submitted and the entered name is: ${this.name}`);
+    alert(`Form has been submitted and the entered ip is: ${this.ip}`);
   }
 }
 </script>
