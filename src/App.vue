@@ -35,19 +35,11 @@
           And this is the smallest paragraph<br /><br />
         </anx-paragraph>
 
-        <anx-alert
-          :show="showSuccessAlert"
-          @dismiss="showSuccessAlert = !showSuccessAlert"
-          type="success"
-        >
+        <anx-alert v-model="showSuccessAlert" type="success">
           This is a success message
         </anx-alert>
 
-        <anx-alert
-          :show="showErrorAlert"
-          @dismiss="showErrorAlert = !showErrorAlert"
-          type="error"
-        >
+        <anx-alert v-model="showErrorAlert" type="error">
           This is an error message
         </anx-alert>
 
@@ -135,10 +127,6 @@
           />
 
           <anx-checkbox name="Checkbox" />
-
-          <anx-select
-            :items="['please select', 'Choice 1', 'Choice 2', 'Choice 3']"
-          />
 
           <anx-read-only bold>
             This is a simple AnxReadOnly component with bold text. Click me to

@@ -14,7 +14,7 @@
         <slot />
       </span>
     </div>
-    <div class="dismiss" @click="dismiss">&times;</div>
+    <div class="dismiss" @click="input(!visibility)">&times;</div>
   </div>
 </template>
 
@@ -26,8 +26,8 @@ export default class AnxAlert extends Vue {
   /** This is the id of the alert */
   @Prop({ default: "anx-alert" }) name!: string;
 
-  /** Set this to false to show the alert by default */
-  @Prop({ default: true }) show!: boolean;
+  /** The state of the alert (equals to show) */
+  @Prop({ default: null }) value!: boolean;
 
   /** Define if animations like fade-in and fade-out should be used */
   @Prop({ default: true }) animations!: boolean;
@@ -36,7 +36,7 @@ export default class AnxAlert extends Vue {
   @Prop({ default: "error" }) type!: string;
 
   /** Watcher for show changes */
-  @Watch("show")
+  @Watch("value")
   onShowChanged(val: boolean) {
     if (val) {
       this.showAction();
@@ -46,9 +46,9 @@ export default class AnxAlert extends Vue {
   }
 
   /** Emit the dismiss event */
-  @Emit("dismiss")
-  dismiss() {
-    return true;
+  @Emit("input")
+  input(val: boolean) {
+    return val;
   }
 
   /** Variables for anx-alert */
@@ -58,7 +58,9 @@ export default class AnxAlert extends Vue {
 
   /** Set visibility when mounting */
   private mounted() {
-    this.visibility = this.show;
+    this.visibility = this.value;
+    console.log("mounted");
+    console.log(this.value);
   }
 
   /** Show the alert */
