@@ -108,7 +108,7 @@ export default class AnxInputField extends Vue {
   padding-top: 20px;
   position: relative;
   width: var(--input-width);
-  margin-bottom: 25px;
+  margin-bottom: $form-components-spacing;
 
   input {
     outline: none;

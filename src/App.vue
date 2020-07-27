@@ -136,6 +136,10 @@
 
           <anx-checkbox name="Checkbox" />
 
+          <anx-select
+            :items="['please select', 'Choice 1', 'Choice 2', 'Choice 3']"
+          />
+
           <anx-read-only bold>
             This is a simple AnxReadOnly component with bold text. Click me to
             copy the text!
@@ -215,6 +219,7 @@ import AnxTableRow from "@/components/AnxTableRow.vue";
 import AnxModal from "@/components/AnxModal.vue";
 import AnxForm from "@/components/AnxForm.vue";
 import AnxCheckbox from "@/components/AnxCheckbox.vue";
+import AnxSelect from "@/components/AnxSelect.vue";
 
 @Component({
   components: {
@@ -233,7 +238,8 @@ import AnxCheckbox from "@/components/AnxCheckbox.vue";
     AnxTableRow,
     AnxModal,
     AnxForm,
-    AnxCheckbox
+    AnxCheckbox,
+    AnxSelect
   }
 })
 export default class App extends Vue {

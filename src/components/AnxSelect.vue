@@ -36,14 +36,14 @@ export default class AnxSelect extends Vue {
     }
   })
   items!: string[];
-  @Prop({ default: "420px" }) width!: string;
+  @Prop({ default: "100%" }) width!: string;
 
   private selected = "";
   private show = false;
 
   get cssProps() {
     return {
-      "--select-width": this.width
+      width: this.width
     };
   }
 
@@ -74,13 +74,8 @@ export default class AnxSelect extends Vue {
   width: var(----select-width);
   color: $anx-lightest-grey-dark;
   height: 25px;
-  margin: 20px 0 30px 0;
+  margin-bottom: $form-components-spacing;
   font-size: 16px;
-}
-@media (max-width: 767px), (max-width: 1124px) {
-  .anx-select {
-    margin-top: 40px;
-  }
 }
 
 .anx-select .select-original {

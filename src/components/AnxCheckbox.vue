@@ -29,7 +29,7 @@ export default class AnxCheckbox extends Vue {
 
 .anx-checkbox {
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
-  margin-bottom: 25px;
+  margin-bottom: $form-components-spacing;
 
   label {
     display: ruby-base;
