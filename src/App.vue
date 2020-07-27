@@ -110,6 +110,17 @@
       </anx-content>
 
       <anx-content title="Form components" size="h2">
+        <anx-paragraph size="h3">
+          Every input has to be inside an <i>&lt;anx-form&gt;</i> tag. The
+          <i>&lt;anx-form&gt;</i> handles additional validation on submit. If
+          all input fields are valid. The <strong>submit</strong> event is being
+          emitted.<br /><br /><i>&lt;anx-form&gt;</i> also offers to render a
+          submit button. The submit button has to be provided as object. The
+          button dynamically changes from disabled to not disabled, whether the
+          input is valid or not.<br /><br />The validation rules itself have to
+          be set at the input fields. See <i>&lt;anx-input&gt;</i> for an
+          example.
+        </anx-paragraph>
         <anx-form
           @submit="submitForm"
           name="ip-form"
