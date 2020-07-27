@@ -116,8 +116,11 @@
             translate="Name"
             assistive-text="Here you can display some help for the user"
             v-model="name"
-          >
-          </anx-input>
+          />
+          
+          <anx-checkbox name="Checkbox">
+
+          </anx-checkbox>
 
           <anx-read-only bold>
             This is a simple AnxReadOnly component with bold text. Click me to
@@ -197,6 +200,7 @@ import AnxTable from "@/components/AnxTable.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
 import AnxModal from "@/components/AnxModal.vue";
 import AnxForm from "@/components/AnxForm.vue";
+import AnxCheckbox from "@/components/AnxCheckbox.vue";
 
 @Component({
   components: {
@@ -214,7 +218,8 @@ import AnxForm from "@/components/AnxForm.vue";
     AnxTable,
     AnxTableRow,
     AnxModal,
-    AnxForm
+    AnxForm,
+    AnxCheckbox
   }
 })
 export default class App extends Vue {

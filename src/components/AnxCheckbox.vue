@@ -8,7 +8,7 @@
         v-model="checked"
         @change="$emit('change', [checked, name])"
       />
-      <div>{{ name }}</div>
+      <div class="text">{{ name }}</div>
     </label>
   </div>
 </template>
@@ -27,46 +27,52 @@ export default class AnxCheckbox extends Vue {
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
 
-input[type="checkbox"] {
-  height: 13px !important;
-  width: 13px !important;
-  padding: 2px !important;
-  border-color: $anx-primary-green !important;
-  border: 1px solid;
-  margin: 0px 10px 0px 0px !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  content: " ";
-
-  &[type="checkbox"]::-ms-check {
-    display: none;
-    border-color: $anx-primary-green !important;
-    background: transparent;
-  }
-
-  &:checked {
-    color: #fff;
-    border-color: $anx-primary-green !important;
-    background: $anx-primary-green url(../assets/check-white.svg) no-repeat
-      center;
-    border: 1px solid;
-  }
-
-  &:disabled {
-    border-color: $anx-second-grey-light !important;
-  }
-}
-
 .anx-checkbox {
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: 25px;
+
   label {
     display: ruby-base;
     margin: 0;
     color: $anx-lightest-grey-dark !important;
     font-size: 16px;
+  }
+
+  input {
+    height: 13px !important;
+    width: 13px !important;
+    padding: 2px !important;
+    border-color: $anx-primary-green !important;
+    border: 1px solid;
+    margin: 0px 10px 0px 0px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    content: " ";
+    outline: none;
+
+    &[type="checkbox"]::-ms-check {
+      display: none;
+      border-color: $anx-primary-green !important;
+      background: transparent;
+    }
+
+    &:checked {
+      color: #fff;
+      border-color: $anx-primary-green !important;
+      background: $anx-primary-green url(../assets/check-white.svg) no-repeat
+        center;
+      border: 1px solid;
+    }
+
+    &:disabled {
+      border-color: $anx-second-grey-light !important;
+    }
+  }
+
+  .text {
+    display: inline-block;
   }
 }
 </style>
