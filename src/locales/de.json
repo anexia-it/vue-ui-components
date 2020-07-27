@@ -1,6 +1,9 @@
 {
     "uiplugin": {
       "header": "DEUTSCH !!",
+      "modal": {
+        "closeButton": "Schließen"
+      },
       "footer":
       {
         "text": {
@@ -15,6 +18,6 @@
         "three": "https://anexia.com/de/unternehmen/ueber-anexia/agb",
         "four": "https://anexia.com/de/unternehmen/ueber-anexia/datenschutz"
       }
-    } 
+    }
   }
 }

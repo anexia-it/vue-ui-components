@@ -1,6 +1,9 @@
 {
   "uiplugin": {
     "header": "Englisch !!",
+    "modal": {
+      "closeButton": "close"
+    },
     "footer":
     {
       "text": {
@@ -15,6 +18,6 @@
         "three": "https://anexia.com/en/company/about-anexia/terms-of-use",
         "four": "https://anexia.com/en/company/about-anexia/privacy-policy"
       }
-    } 
+    }
   }
 }

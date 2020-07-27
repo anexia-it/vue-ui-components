@@ -5,7 +5,15 @@
     <div class="space"></div>
     <anx-header :menus="items" />
 
+       
+    
     <anx-container>
+      <anx-modal v-if="exampleModal" title="test" @close="exampleModal=false" >
+        DAS ist ein TEst 
+      </anx-modal>
+      <anx-button text="Modal" @submit="showModal"/>
+      <div class="spacing" style="margin-top:20px; margin-bottom: 20px"></div>
+
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
           This is a simple paragraph. Paragraphs are made for text. A paragraph
@@ -186,7 +194,7 @@ import AnxButton from "@/components/AnxButton.vue";
 import AnxReadOnly from "@/components/AnxReadOnly.vue";
 import AnxTable from "@/components/AnxTable.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
-
+import AnxModal from "@/components/AnxModal.vue";
 @Component({
   components: {
     AnxHeader,
@@ -201,7 +209,8 @@ import AnxTableRow from "@/components/AnxTableRow.vue";
     AnxReadOnly,
     AnxButton,
     AnxTable,
-    AnxTableRow
+    AnxTableRow,
+    AnxModal
   }
 })
 export default class App extends Vue {
@@ -284,6 +293,14 @@ export default class App extends Vue {
   private getImgCellName(index: string) {
     return "image" + index;
   }
+
+  /*example Modal */
+  private exampleModal = false;
+
+  private showModal() {
+    this.exampleModal = true
+  }
+
 }
 </script>
 <style lang="scss">
