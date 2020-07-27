@@ -160,6 +160,18 @@
             at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
             Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
           </anx-read-only>
+
+          <anx-paragraph size="h3">
+            <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
+            and hava a prop for the item-list (array).
+          </anx-paragraph>
+          <anx-select width="100%" />
+
+          <anx-paragraph size="h3">
+            <i>&lt;anx-textarea&gt;</i> can have a specific width (default
+            100%), rows (default 4) and a lable. It can only be resize.
+          </anx-paragraph>
+          <anx-textarea width="100%" />
         </anx-form>
       </anx-content>
 
@@ -220,6 +232,7 @@ import AnxModal from "@/components/AnxModal.vue";
 import AnxForm from "@/components/AnxForm.vue";
 import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
+import AnxTextarea from "@/components/AnxTextarea.vue";
 
 @Component({
   components: {
@@ -239,7 +252,8 @@ import AnxSelect from "@/components/AnxSelect.vue";
     AnxModal,
     AnxForm,
     AnxCheckbox,
-    AnxSelect
+    AnxSelect,
+    AnxTextarea
   }
 })
 export default class App extends Vue {
@@ -338,8 +352,6 @@ export default class App extends Vue {
 }
 </script>
 <style lang="scss">
-@import "@/assets/scss/_variables.scss";
-
 .space {
   height: 20px;
 }

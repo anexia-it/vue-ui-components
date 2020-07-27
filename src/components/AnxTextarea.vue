@@ -20,7 +20,7 @@ export default class AnxTextarea extends Vue {
   @Prop({ default: "Additional Text" }) labelText!: string;
   @Prop({ default: "4" }) rows!: string;
   @Prop({ default: false }) disabled!: boolean;
-  @Prop({ default: "420px" }) width!: string;
+  @Prop({ default: "100%" }) width!: string;
 
   private message = "";
 
@@ -54,6 +54,7 @@ export default class AnxTextarea extends Vue {
   color: $anx-lightest-grey-dark !important;
   font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
+  resize: vertical;
 
   &:focus,
   &.filled {

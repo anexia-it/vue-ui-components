@@ -49,24 +49,25 @@ export default class AnxHeader extends Vue {
   @Prop({ default: null }) menus!: Array<object>;
 
   private mounted() {
-    const hmenu = document.querySelectorAll('.header-nav-menu > .menu-text.left > a') 
+    const hmenu = document.querySelectorAll(
+      ".header-nav-menu > .menu-text.left > a"
+    );
     // console.log(menu)
-    let path = window.location.pathname
-    hmenu.forEach((el) => {
-
-      console.log((el as HTMLElement).getAttribute('href'));
-      if (path[path.length - 1] !== '/') { path += '/' }
-      // console.log(path)
-      if ((el as HTMLElement).getAttribute('href') === path) {
-        console.log("yes")
-        el.classList.add('active')
+    let path = window.location.pathname;
+    hmenu.forEach(el => {
+      console.log((el as HTMLElement).getAttribute("href"));
+      if (path[path.length - 1] !== "/") {
+        path += "/";
       }
-    })
+      // console.log(path)
+      if ((el as HTMLElement).getAttribute("href") === path) {
+        console.log("yes");
+        el.classList.add("active");
+      }
+    });
 
     return;
   }
-
-  
 }
 </script>
 

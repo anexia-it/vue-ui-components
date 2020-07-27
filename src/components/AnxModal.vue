@@ -1,16 +1,16 @@
 <template>
-    <div id="modal" class="modal anx-modal">
-     <div :class="'modal-dialog modal-dialog-scrollable'">
+  <div id="modal" class="modal anx-modal">
+    <div :class="'modal-dialog modal-dialog-scrollable'">
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
-        <button
+          <button
             type="button"
             class="close"
             data-dismiss="modal"
             aria-label="Close"
             @click="$emit('close')"
           >
-          <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
           </button>
           <div class="h2 modal-title heading">
             {{ title }}
@@ -23,54 +23,55 @@
           <slot />
         </div>
         <div class="modal-footer  anx-modal-footer">
-          <anx-button 
+          <anx-button
             :text="this.$i18n.t('uiplugin.modal.closeButton')"
-            v-if="hasCloseButton" @submit="$emit('close')"/>
+            v-if="hasCloseButton"
+            @submit="$emit('close')"
+          />
         </div>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxButton from "@/components/AnxButton.vue";
 @Component({
-    components: {
-        AnxButton
-    }
+  components: {
+    AnxButton
+  }
 })
 export default class AnxModal extends Vue {
-    @Prop({ default: "TITLE" }) title!: string
+  @Prop({ default: "TITLE" }) title!: string;
 
-    @Prop({ default: true }) hasCloseButton!: boolean
-   
+  @Prop({ default: true }) hasCloseButton!: boolean;
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
 
-.anx-button{
-    position: relative !important;
+.anx-button {
+  position: relative !important;
 }
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    outline: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
 }
 .anx-modal {
-  .modal-dialog{
-      background-color: $anx-primary-white;
-      width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 178px;
+  .modal-dialog {
+    background-color: $anx-primary-white;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 178px;
   }
   .anx-modal-content {
     position: relative;
@@ -89,17 +90,17 @@ export default class AnxModal extends Vue {
       .button {
         margin-right: 0px !important;
 
-        &.center{
+        &.center {
           margin: auto !important;
         }
       }
     }
-}
+  }
 }
 
 .modal {
   display: inline;
-  background: $anx-black-transparet;;
+  background: $anx-black-transparet;
 
   .modal-header {
     background-color: $anx-primary-blue;
@@ -168,7 +169,7 @@ export default class AnxModal extends Vue {
     @media screen and (max-width: 500px) {
       padding: 0 1.25rem 2.5rem 1.25rem; // 0px 20px 40px 20px
 
-      button  {
+      button {
         margin: auto;
       }
 
@@ -181,8 +182,6 @@ export default class AnxModal extends Vue {
     button {
       position: inherit;
     }
-
-   
   }
 }
 </style>
