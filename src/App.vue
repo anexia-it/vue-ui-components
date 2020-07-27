@@ -112,33 +112,36 @@
       </anx-content>
 
       <anx-content title="Form components" size="h2">
-        <anx-input
-          name="name"
-          translate="Name"
-          assistive-text="Here you can display some help for the user"
-        >
-        </anx-input>
+        <anx-form @submit="submitForm" :submit-button="{ text: 'Send >' }">
+          <anx-input
+            name="name"
+            translate="Name"
+            assistive-text="Here you can display some help for the user"
+            v-model="name"
+          >
+          </anx-input>
 
-        <anx-read-only bold>
-          This is a simple AnxReadOnly component with bold text. Click me to
-          copy the text!
-        </anx-read-only>
+          <anx-read-only bold>
+            This is a simple AnxReadOnly component with bold text. Click me to
+            copy the text!
+          </anx-read-only>
 
-        <anx-read-only :copy-on-click="false">
-          The following AnxReadOnly component is not bold and the text cannot be
-          copied.<br /><br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          convallis turpis a elit imperdiet pellentesque in ac tortor.
-          Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
-          Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
-          semper mi. Integer dignissim diam dictum dui ultricies, vitae
-          facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
-          Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
-          interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
-          porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus at
-          odio venenatis, eu malesuada lorem convallis. In quis massa eros.
-          Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
-        </anx-read-only>
+          <anx-read-only :copy-on-click="false">
+            The following AnxReadOnly component is not bold and the text cannot be
+            copied.<br /><br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            convallis turpis a elit imperdiet pellentesque in ac tortor.
+            Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
+            Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
+            semper mi. Integer dignissim diam dictum dui ultricies, vitae
+            facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
+            Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
+            interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
+            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus at
+            odio venenatis, eu malesuada lorem convallis. In quis massa eros.
+            Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
+          </anx-read-only>
+        </anx-form>
       </anx-content>
 
       <anx-content title="H2 Content" size="h2">
@@ -195,6 +198,8 @@ import AnxReadOnly from "@/components/AnxReadOnly.vue";
 import AnxTable from "@/components/AnxTable.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
 import AnxModal from "@/components/AnxModal.vue";
+import AnxForm from "@/components/AnxForm.vue";
+
 @Component({
   components: {
     AnxHeader,
@@ -210,7 +215,8 @@ import AnxModal from "@/components/AnxModal.vue";
     AnxButton,
     AnxTable,
     AnxTableRow,
-    AnxModal
+    AnxModal,
+    AnxForm
   }
 })
 export default class App extends Vue {
@@ -219,6 +225,7 @@ export default class App extends Vue {
     { menu: "Hosting", link: "/y/" }
   ];
 
+  name = "";
   showSuccessAlert = true;
   showErrorAlert = true;
 
@@ -298,9 +305,13 @@ export default class App extends Vue {
   private exampleModal = false;
 
   private showModal() {
-    this.exampleModal = true
+    this.exampleModal = true;
   }
 
+  /** Show an alert when the form has been submitted */
+  private submitForm() {
+    alert(`Form has been submitted and the entered name is: ${this.name}`);
+  }
 }
 </script>
 <style lang="scss">
