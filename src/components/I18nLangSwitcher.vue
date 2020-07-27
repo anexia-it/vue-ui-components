@@ -34,7 +34,7 @@ export default class I18nLangSwitcher extends Vue {
 @import "@/assets/scss/_variables.scss";
 
 .language-switcher {
-  color: $anx-primary-white;
+  color: $anx-primary-green;
   a,
   a:link,
   a:visited,
@@ -42,18 +42,19 @@ export default class I18nLangSwitcher extends Vue {
     cursor: pointer;
     margin: 0px;
     color: $anx-primary-white;
-    text-decoration: none;
+  }
+  .selected {
+    cursor: pointer;
+    color: $anx-primary-white;
+    border-bottom: 1px solid $anx-primary-green;
   }
   a:hover {
     color: $anx-primary-green;
   }
-  .selected {
-    color: $anx-primary-green !important;
-    cursor: pointer;
-  }
-
+  
   .not-selected {
-    // color: $anx-primary-green;
+    text-decoration: none;
+    color: $anx-primary-green;
     cursor: pointer;
   }
 }
