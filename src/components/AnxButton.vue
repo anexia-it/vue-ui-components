@@ -53,6 +53,7 @@ button {
 .anx-button {
   z-index: 100;
   position: relative;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
@@ -77,6 +78,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
+    backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     transition: opacity 0.3s, -webkit-transform 0.3s;
     transition: transform 0.3s, opacity 0.3s;

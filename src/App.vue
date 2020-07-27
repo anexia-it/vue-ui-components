@@ -5,13 +5,11 @@
     <div class="space"></div>
     <anx-header :menus="items" />
 
-       
-    
     <anx-container>
-      <anx-modal v-if="exampleModal" title="test" @close="exampleModal=false" >
-        DAS ist ein TEst 
+      <anx-modal v-if="exampleModal" title="test" @close="exampleModal = false">
+        DAS ist ein TEst
       </anx-modal>
-      <anx-button text="Modal" @submit="showModal"/>
+      <anx-button text="Modal" @submit="showModal" />
       <div class="spacing" style="margin-top:20px; margin-bottom: 20px"></div>
 
       <anx-content title="Simple styling">
@@ -127,8 +125,8 @@
           </anx-read-only>
 
           <anx-read-only :copy-on-click="false">
-            The following AnxReadOnly component is not bold and the text cannot be
-            copied.<br /><br />
+            The following AnxReadOnly component is not bold and the text cannot
+            be copied.<br /><br />
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             convallis turpis a elit imperdiet pellentesque in ac tortor.
             Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
@@ -137,8 +135,8 @@
             facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
             Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
             interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
-            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus at
-            odio venenatis, eu malesuada lorem convallis. In quis massa eros.
+            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus
+            at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
             Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
           </anx-read-only>
         </anx-form>
