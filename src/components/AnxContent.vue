@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import AnxTitle from "@/components/AnxTitle.vue";
+import AnxTitle from "./AnxTitle.vue";
 
 @Component({
   components: {
