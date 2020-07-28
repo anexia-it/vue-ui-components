@@ -127,6 +127,19 @@
           />
 
           <anx-paragraph size="h3">
+            <i>&lt;anx-input&gt;</i> can be a <strong>readonly</strong> field
+            with the prop read-only="true". The value of the field can be set
+            with the prop value="". In this example, the value is bind with the
+            ip field. The readonly input-field has no validation!
+          </anx-paragraph>
+          <anx-input
+            name="ip-readonly"
+            label="IP ReadOnly"
+            read-only="true"
+            :value="ip"
+          />
+
+          <anx-paragraph size="h3">
             <i>&lt;anx-checkbox&gt;</i> can have a validation-provider.<br />
             First example with validation (default rule: required true), and the
             second without validation.

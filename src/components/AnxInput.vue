@@ -1,5 +1,10 @@
 <template>
-  <ValidationProvider v-slot="{ errors }" :name="name" :rules="rules">
+  <ValidationProvider
+    v-if="!readOnly"
+    v-slot="{ errors }"
+    :name="name"
+    :rules="rules"
+  >
     <div
       v-if="className === 'anx-input'"
       class="anx-input"
@@ -32,6 +37,27 @@
       >
     </div>
   </ValidationProvider>
+  <div
+    v-else-if="readOnly"
+    class="anx-input"
+    :class="{ filled: filled }"
+    :style="cssProps"
+  >
+    <input
+      :id="id"
+      v-model="updateInputField"
+      :data-vv-as="name"
+      type="text"
+      :name="name"
+      hide-details="true"
+      @blur="inputBlur"
+      :class="errors && errors.length > 0 ? 'is-invalid' : ''"
+      :readonly="readOnly"
+    />
+    <label :for="id">
+      {{ label }}
+    </label>
+  </div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
@@ -48,6 +74,8 @@ export default class AnxInput extends Vue {
 
   @Prop() name!: boolean;
 
+  @Prop({ default: "" }) value!: string;
+
   @Prop({ default: "input-text-field" }) id!: string;
 
   @Prop() label!: string;
@@ -57,6 +85,8 @@ export default class AnxInput extends Vue {
   @Prop({ default: "100%" }) width!: string;
 
   @Prop() assistiveText!: string;
+
+  @Prop({ default: false }) readOnly!: string;
 
   private active = false;
   private filled = false;
@@ -69,7 +99,16 @@ export default class AnxInput extends Vue {
     }
   }
 
+  @Watch("value")
+  valueChanged() {
+    if (this.readOnly) {
+      this.updateInputField = this.value;
+      this.isFilled();
+    }
+  }
+
   private mounted() {
+    this.updateInputField = this.value;
     this.isFilled();
   }
 
@@ -179,6 +218,10 @@ export default class AnxInput extends Vue {
   writing-mode: horizontal-tb;
   -webkit-appearance: none;
   -webkit-rtl-ordering: logical;
+
+  &:read-only {
+    border: none !important;
+  }
 }
 
 .anx-input.active label,
@@ -207,6 +250,10 @@ export default class AnxInput extends Vue {
 
   & ~ label {
     color: $anx-error;
+  }
+
+  &:read-only {
+    border: none !important;
   }
 }
 
