@@ -16,7 +16,7 @@ export default class AnxTableCol extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .anx-table-col {
   padding: 0.438rem 0.5rem 0.438rem 0.5rem;

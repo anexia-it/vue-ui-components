@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import AnxButton from "@/components/AnxButton.vue";
+import AnxButton from "./AnxButton.vue";
 @Component({
   components: {
     AnxButton

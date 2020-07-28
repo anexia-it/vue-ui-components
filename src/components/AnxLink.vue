@@ -12,7 +12,7 @@ export default class AnxLink extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .anx-link {
   color: $anx-primary-green;
