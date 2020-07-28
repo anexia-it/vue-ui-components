@@ -133,7 +133,7 @@ export default class AnxSelect extends Vue {
   position: absolute;
   top: 0;
   right: 0;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   background-color: transparent;
   -moz-transition: all 0.2s ease-in;
@@ -161,7 +161,7 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 111%;
   right: 0;
   left: 0;
   z-index: 999;
