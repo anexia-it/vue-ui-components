@@ -72,7 +72,7 @@ export default class AnxHeader extends Vue {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 hr {
   background-color: $anx-primary-blue;
