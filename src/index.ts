@@ -74,6 +74,5 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   Vue.component("AnxCheckbox", AnxCheckbox);
   Vue.component("AnxSelect", AnxSelect);
   Vue.component("AnxTextarea", AnxTextarea);
-  Vue.component("AnxLink", AnxLink);
-  
+  Vue.component("AnxLink", AnxLink); 
 }
