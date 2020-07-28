@@ -1,12 +1,23 @@
 import _Vue from "vue";
 
-import AnxHeader from "./components/AnxHeader.vue";
-import AnxGlobal from "./components/AnxGlobal.vue";
-import AnxContainer from "./components/AnxContainer.vue";
-import AnxContent from "./components/AnxContent.vue";
-import AnxTitle from "./components/AnxTitle.vue";
-import AnxButton from "./components/AnxButton.vue";
-import AnxInput from "./components/AnxInput.vue";
+import AnxHeader from "@/components/AnxHeader.vue";
+import AnxFooter from "@/components/AnxFooter.vue";
+import AnxGlobal from "@/components/AnxGlobal.vue";
+import AnxContainer from "@/components/AnxContainer.vue";
+import AnxContent from "@/components/AnxContent.vue";
+import AnxAlert from "@/components/AnxAlert.vue";
+import AnxParagraph from "@/components/AnxParagraph.vue";
+import AnxCard from "@/components/AnxCard.vue";
+import AnxInput from "@/components/AnxInput.vue";
+import AnxButton from "@/components/AnxButton.vue";
+import AnxReadOnly from "@/components/AnxReadOnly.vue";
+import AnxTable from "@/components/AnxTable.vue";
+import AnxTableRow from "@/components/AnxTableRow.vue";
+import AnxModal from "@/components/AnxModal.vue";
+import AnxForm from "@/components/AnxForm.vue";
+import AnxCheckbox from "@/components/AnxCheckbox.vue";
+import AnxSelect from "@/components/AnxSelect.vue";
+import AnxTextarea from "@/components/AnxTextarea.vue";
 
 import VueI18n from "vue-i18n";
 
@@ -43,11 +54,24 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   } else {
     Vue.prototype.$i18n = false;
   }
+
   Vue.component("AnxHeader", AnxHeader);
-  Vue.component("AnxGlobal", AnxGlobal);
+  Vue.component("AnxFooter", AnxFooter);
   Vue.component("AnxContainer", AnxContainer);
   Vue.component("AnxContent", AnxContent);
-  Vue.component("AnxTitle", AnxTitle);
-  Vue.component("AnxButton", AnxButton);
+  Vue.component("AnxAlert", AnxAlert);
+  Vue.component("AnxGlobal", AnxGlobal);
+  Vue.component("AnxParagraph", AnxParagraph);
+  Vue.component("AnxCard", AnxCard);
   Vue.component("AnxInput", AnxInput);
+  Vue.component("AnxReadOnly", AnxReadOnly);
+  Vue.component("AnxButton", AnxButton);
+  Vue.component("AnxTable", AnxTable);
+  Vue.component("AnxTableRow", AnxTableRow);
+  Vue.component("AnxModal", AnxModal);
+  Vue.component("AnxForm", AnxForm);
+  Vue.component("AnxCheckbox", AnxCheckbox);
+  Vue.component("AnxSelect", AnxSelect);
+  Vue.component("AnxTextarea", AnxTextarea);
+  
 }
