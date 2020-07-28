@@ -5,7 +5,12 @@
     name="textarea"
     :rules="rules"
   >
-    <div class="anx-textarea" :style="cssProps">
+    <div
+      :class="
+        errors && errors.length > 0 ? 'anx-textarea is-invalid' : 'anx-textarea'
+      "
+      :style="cssProps"
+    >
       <textarea
         :id="id"
         :name="id"
@@ -76,6 +81,14 @@ export default class AnxTextarea extends Vue {
   @media only screen and (width: 1125px), only screen and (width: 1200px) {
     display: inline-block !important;
   }
+
+  &.is-invalid > textarea,
+  &.is-invalid > textarea:focus {
+    border: 1px solid $anx-error;
+    ~ label {
+      color: $anx-error !important;
+    }
+  }
 }
 .anx-textarea textarea {
   width: var(--textarea-width);
@@ -110,6 +123,7 @@ export default class AnxTextarea extends Vue {
     }
   }
 }
+
 .anx-textarea textarea + label {
   color: $anx-lightest-grey-dark !important;
   margin-left: 17px;

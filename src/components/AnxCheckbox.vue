@@ -14,6 +14,7 @@
           v-validate="'required:true'"
           :value="name"
           v-model="checked"
+          :class="errors && errors.length > 0 ? 'is-invalid' : ''"
           @change="$emit('change', [checked, name])"
         />
         <div class="text">{{ name }}</div>
@@ -97,6 +98,14 @@ export default class AnxCheckbox extends Vue {
 
     &:disabled {
       border-color: $anx-second-grey-light !important;
+    }
+
+    &.is-invalid {
+      border-color: $anx-error !important;
+
+      ~ .text {
+        color: $anx-error;
+      }
     }
   }
 

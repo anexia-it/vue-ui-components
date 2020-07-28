@@ -17,11 +17,7 @@
           <div class="header-nav-menu" v-if="menus">
             <div class="menu-text left">
               <!--add DTO -->
-              <a
-                v-for="menu in menus"
-                :key="menu.id"
-                :href="`${menu.link}`"
-              >
+              <a v-for="menu in menus" :key="menu.id" :href="`${menu.link}`">
                 {{ menu.menu }}
               </a>
             </div>
