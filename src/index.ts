@@ -1,9 +1,12 @@
 import _Vue from "vue";
+
 import AnxHeader from "./components/AnxHeader.vue";
 import AnxGlobal from "./components/AnxGlobal.vue";
 import AnxContainer from "./components/AnxContainer.vue";
 import AnxContent from "./components/AnxContent.vue";
 import AnxTitle from "./components/AnxTitle.vue";
+import AnxButton from "./components/AnxButton.vue";
+
 import VueI18n from "vue-i18n";
 
 import dePlugin from "./locales/de.json";
@@ -42,4 +45,5 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   Vue.component("AnxContainer", AnxContainer);
   Vue.component("AnxContent", AnxContent);
   Vue.component("AnxTitle", AnxTitle);
+  Vue.component("AnxButton", AnxButton);
 }
