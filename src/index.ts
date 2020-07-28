@@ -6,6 +6,7 @@ import AnxContainer from "./components/AnxContainer.vue";
 import AnxContent from "./components/AnxContent.vue";
 import AnxTitle from "./components/AnxTitle.vue";
 import AnxButton from "./components/AnxButton.vue";
+import AnxInput from "./components/AnxInput.vue";
 
 import VueI18n from "vue-i18n";
 
@@ -48,4 +49,5 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   Vue.component("AnxContent", AnxContent);
   Vue.component("AnxTitle", AnxTitle);
   Vue.component("AnxButton", AnxButton);
+  Vue.component("AnxInput", AnxInput);
 }
