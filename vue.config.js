@@ -10,11 +10,7 @@ module.exports = {
       enableInSFC: true
     }
   },
-  configureWebpack: config => {
-    resolve: {
-      alias: {
-        '@': path.resolve('src')
-      }
-    }
+  chainWebpack: config => {
+    config.resolve.alias.set('@', path.resolve('src'))
   }
 };
