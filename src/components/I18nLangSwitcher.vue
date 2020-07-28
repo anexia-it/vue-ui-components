@@ -31,7 +31,7 @@ export default class I18nLangSwitcher extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .language-switcher {
   color: $anx-primary-green;

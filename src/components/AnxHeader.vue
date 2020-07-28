@@ -45,7 +45,7 @@ import I18nLangSwitcher from "./I18nLangSwitcher.vue";
   components: { I18nLangSwitcher }
 })
 export default class AnxHeader extends Vue {
-  @Prop({ default: require("@/assets/anexia.svg") }) img!: string;
+  @Prop({ default: require("../assets/anexia.svg") }) img!: string;
   @Prop({ default: null }) menus!: Array<object>;
 
   private mounted() {

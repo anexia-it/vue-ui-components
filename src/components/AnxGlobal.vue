@@ -16,9 +16,9 @@ export default class AnxGlobal extends Vue {}
 </script>
 
 <style lang="scss">
-@import "@/assets/scss/fonts.scss";
-@import "@/assets/scss/_variables.scss";
-@import "@/assets/scss/bootstrap-grid.scss";
+@import "../assets/scss/fonts.scss";
+@import "../assets/scss/_variables.scss";
+@import "../assets/scss/bootstrap-grid.scss";
 
 html {
   body {

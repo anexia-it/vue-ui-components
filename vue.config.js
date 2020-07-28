@@ -9,8 +9,5 @@ module.exports = {
       localeDir: "locales",
       enableInSFC: true
     }
-  },
-  chainWebpack: config => {
-    config.resolve.alias.set('@', path.resolve('src'))
   }
 };
