@@ -12,7 +12,9 @@ module.exports = {
   },
   configureWebpack: config => {
     resolve: {
-      '@': path.resolve('src')
+      alias: {
+        '@': path.resolve('src')
+      }
     }
   }
 };
