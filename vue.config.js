@@ -1,3 +1,6 @@
+
+const path = require('path');
+
 module.exports = {
   pluginOptions: {
     i18n: {
@@ -5,6 +8,11 @@ module.exports = {
       fallbackLocale: "en",
       localeDir: "locales",
       enableInSFC: true
+    }
+  },
+  configureWebpack: config => {
+    resolve: {
+      '@': path.resolve('src')
     }
   }
 };
