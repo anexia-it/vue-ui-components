@@ -7,7 +7,7 @@
             <div class="header-image">
               <img alt="anx-header-logo" v-bind:src="img" />
             </div>
-            <div class="header-language-nav" v-if="this.$i18n">
+            <div class="header-language-nav" v-if="$i18n">
               <div v-if="!menus">
                 <I18nLangSwitcher />
               </div>
@@ -18,14 +18,14 @@
             <div class="menu-text left">
               <!--add DTO -->
               <a
-                v-for="menu in this.menus"
+                v-for="menu in menus"
                 :key="menu.id"
                 :href="`${menu.link}`"
               >
                 {{ menu.menu }}
               </a>
             </div>
-            <div class="menu-text right" v-if="this.$i18n">
+            <div class="menu-text right" v-if="$i18n">
               <div v-if="menus">
                 <I18nLangSwitcher />
               </div>
