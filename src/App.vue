@@ -126,6 +126,13 @@
             rules="required|ip"
           />
 
+          <anx-paragraph size="h3">
+            <i>&lt;anx-checkbox&gt;</i> can have a validation-provider.<br />
+            First example with validation (default rule: required true), and the
+            second without validation.
+          </anx-paragraph>
+
+          <anx-checkbox name="Checkbox" validation="true" />
           <anx-checkbox name="Checkbox" />
 
           <anx-read-only bold>
@@ -154,12 +161,19 @@
             and hava a prop for the item-list (array).
           </anx-paragraph>
           <anx-select width="100%" />
+          <anx-select width="100%" validation="true" />
 
           <anx-paragraph size="h3">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
             100%), rows (default 4) and a lable. It can only be resize.
           </anx-paragraph>
+
           <anx-textarea width="100%" />
+          <anx-paragraph size="h3">
+            This anx-textarea have a validation with the default rule required.
+            The rule can be changed.
+          </anx-paragraph>
+          <anx-textarea width="100%" validation="true" />
         </anx-form>
       </anx-content>
 

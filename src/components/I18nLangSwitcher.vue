@@ -51,7 +51,7 @@ export default class I18nLangSwitcher extends Vue {
   a:hover {
     color: $anx-primary-green;
   }
-  
+
   .not-selected {
     text-decoration: none;
     color: $anx-primary-green;

@@ -1,8 +1,31 @@
 <template>
-  <div class="anx-checkbox">
+  <ValidationProvider
+    v-if="validation"
+    v-slot="{ errors }"
+    :name="name"
+    rules="required:true"
+  >
+    <div class="anx-checkbox">
+      <label :for="name">
+        <input
+          :id="name"
+          :name="name"
+          type="checkbox"
+          v-validate="'required:true'"
+          :value="name"
+          v-model="checked"
+          @change="$emit('change', [checked, name])"
+        />
+        <div class="text">{{ name }}</div>
+      </label>
+      <span class="error">{{ errors[0] }}</span>
+    </div>
+  </ValidationProvider>
+  <div v-else class="anx-checkbox">
     <label :for="name">
       <input
         :id="name"
+        :name="name"
         type="checkbox"
         :value="name"
         v-model="checked"
@@ -15,10 +38,16 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { ValidationProvider } from "vee-validate";
 
-@Component({})
+@Component({
+  components: {
+    ValidationProvider
+  }
+})
 export default class AnxCheckbox extends Vue {
   @Prop() name!: string;
+  @Prop({ default: false }) validation!: boolean;
 
   private checked = false;
 }
@@ -73,6 +102,14 @@ export default class AnxCheckbox extends Vue {
 
   .text {
     display: inline-block;
+  }
+
+  span.error {
+    font-size: 12px;
+    color: $anx-error;
+    padding: 0;
+    white-space: nowrap;
+    display: block;
   }
 }
 </style>

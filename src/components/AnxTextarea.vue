@@ -1,9 +1,32 @@
 <template>
-  <div class="anx-textarea" :style="cssProps">
+  <ValidationProvider
+    v-if="validation"
+    v-slot="{ errors }"
+    name="textarea"
+    :rules="rules"
+  >
+    <div class="anx-textarea" :style="cssProps">
+      <textarea
+        :id="id"
+        :name="id"
+        :rows="rows"
+        :disabled="disabled"
+        v-validate="rules"
+        v-model="message"
+        :class="{ filled: message.length >= 1 }"
+        @input="$emit('input', message)"
+      />
+      <label id="textarea-label" :for="id">{{ labelText }}</label>
+      <span class="error">{{ errors[0] }}</span>
+    </div>
+  </ValidationProvider>
+  <div v-else class="anx-textarea" :style="cssProps">
     <textarea
       :id="id"
+      :name="id"
       :rows="rows"
       :disabled="disabled"
+      v-validate="'required'"
       v-model="message"
       :class="{ filled: message.length >= 1 }"
       @input="$emit('input', message)"
@@ -13,14 +36,21 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { ValidationProvider } from "vee-validate";
 
-@Component({})
+@Component({
+  components: {
+    ValidationProvider
+  }
+})
 export default class AnxTextarea extends Vue {
   @Prop({ default: "anx-textarea" }) id!: string;
   @Prop({ default: "Additional Text" }) labelText!: string;
   @Prop({ default: "4" }) rows!: string;
   @Prop({ default: false }) disabled!: boolean;
   @Prop({ default: "100%" }) width!: string;
+  @Prop({ default: false }) validation!: boolean;
+  @Prop({ default: "required" }) rules!: string;
 
   private message = "";
 
@@ -100,5 +130,13 @@ export default class AnxTextarea extends Vue {
 
 .anx-textarea textarea:not([disabled]) label {
   opacity: 1;
+}
+
+span.error {
+  font-size: 12px;
+  color: $anx-error;
+  padding: 0;
+  white-space: nowrap;
+  display: block;
 }
 </style>

@@ -1,5 +1,42 @@
 <template>
-  <div class="anx-select" :style="cssProps">
+  <ValidationProvider
+    v-if="validation"
+    v-slot="{ errors }"
+    :name="id"
+    rules="included:Auswahl 2"
+  >
+    <div class="anx-select" :style="cssProps">
+      <label :for="id + '1'"> {{ labelText }}</label>
+      <select
+        class="select-original"
+        :id="id + '1'"
+        :name="id"
+        v-validate="'included:Auswahl 2'"
+        data-vv-as="selected"
+        v-model="selected"
+      >
+        <option v-for="item in items" :key="item" :value="item">
+          {{ item }}</option
+        >
+      </select>
+      <div class="anx-select-div" @click="show = !show">
+        {{ selected }}
+      </div>
+      <ul class="anx-select-options" :class="{ show: show }">
+        <li
+          v-for="item in items"
+          :key="item"
+          :rel="item"
+          :class="{ active: selected === item }"
+          @click="select(item)"
+        >
+          {{ item }}
+        </li>
+      </ul>
+      <span class="error">{{ errors[0] }}</span>
+    </div>
+  </ValidationProvider>
+  <div v-else class="anx-select" :style="cssProps">
     <label :for="id + '1'"> {{ labelText }}</label>
     <select class="select-original" :id="id + '1'" :name="id">
       <option v-for="item in items" :key="item" :value="item">
@@ -24,8 +61,13 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { ValidationProvider } from "vee-validate";
 
-@Component({})
+@Component({
+  components: {
+    ValidationProvider
+  }
+})
 export default class AnxSelect extends Vue {
   @Prop({ default: "anx-select-choice" }) id!: string;
   @Prop({ default: "Auswahl treffen" }) labelText!: string;
@@ -37,6 +79,7 @@ export default class AnxSelect extends Vue {
   })
   items!: string[];
   @Prop({ default: "100%" }) width!: string;
+  @Prop({ default: false }) validation!: boolean;
 
   private selected = "";
   private show = false;
