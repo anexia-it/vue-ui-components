@@ -120,7 +120,7 @@
         >
           <anx-input
             name="ip"
-            translate="IP address"
+            label="IP address"
             assistive-text="Enter your local ip address"
             v-model="ip"
             rules="required|ip"

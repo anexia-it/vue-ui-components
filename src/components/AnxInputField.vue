@@ -20,7 +20,7 @@
         @input="$emit('input', updateInputField)"
       />
       <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
-        {{ translate }}
+        {{ label }}
       </label>
       <span v-if="errors.length > 0" class="error">{{ errors[0] }}</span>
       <span
@@ -50,7 +50,7 @@ export default class AnxInputField extends Vue {
 
   @Prop({ default: "input-text-field" }) id!: string;
 
-  @Prop() translate!: string;
+  @Prop() label!: string;
 
   @Prop({ default: "anx-input" }) className!: string;
 
