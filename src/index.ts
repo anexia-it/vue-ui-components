@@ -1,5 +1,6 @@
 import _Vue from "vue";
 import AnxHeader from "./components/AnxHeader.vue";
+import AnxGlobal from "./components/AnxGlobal.vue";
 import VueI18n from "vue-i18n";
 
 import dePlugin from "./locales/de.json";
@@ -34,4 +35,5 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
     seti18n(i18nConsumer);
   }
   Vue.component("AnxHeader", AnxHeader);
+  Vue.component("AnxGlobal", AnxGlobal);
 }
