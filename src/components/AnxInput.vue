@@ -43,7 +43,7 @@ import { ValidationProvider } from "vee-validate";
     ValidationProvider
   }
 })
-export default class AnxInputField extends Vue {
+export default class AnxInput extends Vue {
   @Prop() rules!: string;
 
   @Prop() name!: boolean;

@@ -225,7 +225,7 @@ import AnxContent from "@/components/AnxContent.vue";
 import AnxAlert from "@/components/AnxAlert.vue";
 import AnxParagraph from "@/components/AnxParagraph.vue";
 import AnxCard from "@/components/AnxCard.vue";
-import AnxInput from "@/components/AnxInputField.vue";
+import AnxInput from "@/components/AnxInput.vue";
 import AnxButton from "@/components/AnxButton.vue";
 import AnxReadOnly from "@/components/AnxReadOnly.vue";
 import AnxTable from "@/components/AnxTable.vue";
