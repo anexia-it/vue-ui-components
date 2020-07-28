@@ -26,6 +26,13 @@ body,  #app {
 }
 
 @font-face {
+  font-family: 'MetaCompPro-Bold';
+  src: url('../assets/fonts/MetaCompPro-Bold.ttf');
+  font-weight: 800;
+  font-style: bold;
+}
+
+@font-face {
   font-family: 'MetaWebPro';
   src: url('../assets/fonts/MetaWebPro-Normal.eot');
   src: local('?'), url('../assets/fonts/MetaWebPro-Normal.woff') format('woff');
