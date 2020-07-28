@@ -16,7 +16,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import { ValidationObserver, Validator } from "vee-validate";
-import AnxButton from "@/components/AnxButton.vue";
+import AnxButton from "./AnxButton.vue";
 
 @Component({
   components: {

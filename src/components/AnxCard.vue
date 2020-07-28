@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import AnxLink from "@/components/AnxLink.vue";
-import AnxParagraph from "@/components/AnxParagraph.vue";
+import AnxLink from "./AnxLink.vue";
+import AnxParagraph from "./AnxParagraph.vue";
 
 @Component({
   components: {
@@ -39,7 +39,7 @@ export default class Card extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .anx-card {
   margin-bottom: 20px;
