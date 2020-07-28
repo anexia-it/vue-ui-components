@@ -1,6 +1,7 @@
 import _Vue from "vue";
 import AnxHeader from "./components/AnxHeader.vue";
 import AnxGlobal from "./components/AnxGlobal.vue";
+import AnxContainer from "./components/AnxContainer.vue";
 import VueI18n from "vue-i18n";
 
 import dePlugin from "./locales/de.json";
@@ -36,4 +37,5 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   }
   Vue.component("AnxHeader", AnxHeader);
   Vue.component("AnxGlobal", AnxGlobal);
+  Vue.component("AnxContainer", AnxContainer);
 }
