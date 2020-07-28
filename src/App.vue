@@ -135,7 +135,7 @@
           <anx-input
             name="ip-readonly"
             label="IP ReadOnly"
-            read-only="true"
+            readonly
             :value="ip"
           />
 

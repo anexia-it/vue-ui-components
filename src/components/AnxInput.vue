@@ -1,10 +1,26 @@
 <template>
-  <ValidationProvider
-    v-if="!readOnly"
-    v-slot="{ errors }"
-    :name="name"
-    :rules="rules"
+  <div
+    v-if="readonly !== false"
+    class="anx-input"
+    :class="{ filled: filled }"
+    :style="cssProps"
   >
+    <input
+      :id="id"
+      v-model="updateInputField"
+      :data-vv-as="name"
+      type="text"
+      :name="name"
+      hide-details="true"
+      @blur="inputBlur"
+      :class="errors && errors.length > 0 ? 'is-invalid' : ''"
+      readonly="readonly !== false ? true"
+    />
+    <label :for="id">
+      {{ label }}
+    </label>
+  </div>
+  <ValidationProvider v-else v-slot="{ errors }" :name="name" :rules="rules">
     <div
       v-if="className === 'anx-input'"
       class="anx-input"
@@ -37,27 +53,6 @@
       >
     </div>
   </ValidationProvider>
-  <div
-    v-else-if="readOnly"
-    class="anx-input"
-    :class="{ filled: filled }"
-    :style="cssProps"
-  >
-    <input
-      :id="id"
-      v-model="updateInputField"
-      :data-vv-as="name"
-      type="text"
-      :name="name"
-      hide-details="true"
-      @blur="inputBlur"
-      :class="errors && errors.length > 0 ? 'is-invalid' : ''"
-      :readonly="readOnly"
-    />
-    <label :for="id">
-      {{ label }}
-    </label>
-  </div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
@@ -72,7 +67,7 @@ import { ValidationProvider } from "vee-validate";
 export default class AnxInput extends Vue {
   @Prop() rules!: string;
 
-  @Prop() name!: boolean;
+  @Prop() name!: string;
 
   @Prop({ default: "" }) value!: string;
 
@@ -86,7 +81,7 @@ export default class AnxInput extends Vue {
 
   @Prop() assistiveText!: string;
 
-  @Prop({ default: false }) readOnly!: string;
+  @Prop({ default: false }) readonly!: boolean;
 
   private active = false;
   private filled = false;
@@ -101,7 +96,7 @@ export default class AnxInput extends Vue {
 
   @Watch("value")
   valueChanged() {
-    if (this.readOnly) {
+    if (this.readonly !== false) {
       this.updateInputField = this.value;
       this.isFilled();
     }
