@@ -39,9 +39,9 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import AnxTableContainer from "@/components/AnxTableContainer.vue";
-import AnxTableRow from "@/components/AnxTableRow.vue";
-import AnxTableCol from "@/components/AnxTableCol.vue";
+import AnxTableContainer from "./AnxTableContainer.vue";
+import AnxTableRow from "./AnxTableRow.vue";
+import AnxTableCol from "./AnxTableCol.vue";
 
 @Component({
   components: {
