@@ -33,7 +33,7 @@ export default class AnxParagraph extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .anx-paragraph {
   line-height: 24px;

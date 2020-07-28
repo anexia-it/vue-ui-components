@@ -39,7 +39,7 @@ export default class AnxAlert extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .anx-read-only {
   background-color: $anx-table-row-background;
