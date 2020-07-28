@@ -39,6 +39,8 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
       return;
     }
     seti18n(i18nConsumer);
+  } else {
+    Vue.prototype.$i18n = false;
   }
   Vue.component("AnxHeader", AnxHeader);
   Vue.component("AnxGlobal", AnxGlobal);

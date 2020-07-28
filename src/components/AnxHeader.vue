@@ -53,10 +53,6 @@ export default class AnxHeader extends Vue {
       ".header-nav-menu > .menu-text.left > a"
     );
 
-  if (!this.$i18n) {
-    this.$i18n = false;
-  }
-
     // console.log(menu)
     let path = window.location.pathname;
     hmenu.forEach(el => {
