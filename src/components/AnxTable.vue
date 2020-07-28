@@ -144,7 +144,7 @@ export default class AnxTable extends Vue {
 
 <!-- This style is for the table rows (in the child). This is why the style is not scoped -->
 <style lang="scss">
-@import "@/assets/scss/_variables.scss";
+@import "../assets/scss/_variables.scss";
 
 .anx-table {
   &.anx-table-bordered {
