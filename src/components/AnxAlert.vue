@@ -59,8 +59,6 @@ export default class AnxAlert extends Vue {
   /** Set visibility when mounting */
   private mounted() {
     this.visibility = this.value;
-    console.log("mounted");
-    console.log(this.value);
   }
 
   /** Show the alert */

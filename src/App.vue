@@ -6,12 +6,6 @@
     <anx-header :menus="items" />
 
     <anx-container>
-      <anx-modal v-if="exampleModal" title="test" @close="exampleModal = false">
-        DAS ist ein TEst
-      </anx-modal>
-      <anx-button text="Modal" @submit="showModal" />
-      <div class="spacing" style="margin-top:20px; margin-bottom: 20px"></div>
-
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
           This is a simple paragraph. Paragraphs are made for text. A paragraph
@@ -102,7 +96,26 @@
       </anx-content>
 
       <anx-content title="Form components" size="h2">
-        <anx-paragraph size="h3">
+        <anx-paragraph size="h3" title="AnxModal">
+          This is an example for a <i>&lt;anx-modal&gt;</i>. Just click the
+          button and the modal will appear.<br /><br />
+
+          <anx-modal
+            v-if="exampleModal"
+            title="AnxModal"
+            @close="exampleModal = false"
+          >
+            This is an example <i>&lt;anx-modal&gt;</i>.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModal = true"
+            width="100%"
+            btnType="click"
+          />
+        </anx-paragraph>
+
+        <anx-paragraph size="h3" title="Input components">
           Every input has to be inside an <i>&lt;anx-form&gt;</i> tag. The
           <i>&lt;anx-form&gt;</i> handles additional validation on submit. If
           all input fields are valid. The <strong>submit</strong> event is being
@@ -113,6 +126,7 @@
           be set at the input fields. See <i>&lt;anx-input&gt;</i> for an
           example.
         </anx-paragraph>
+
         <anx-form
           @submit="submitForm"
           name="ip-form"
@@ -211,9 +225,12 @@
         </anx-form>
       </anx-content>
 
-      <anx-content title="H2 Content" size="h2">
+      <anx-content title="Cards" size="h2">
         <anx-paragraph>
-          This is another content with size H2
+          This <i>&lt;anx-content&gt;</i> is iszed <strong>H2</strong>. The
+          title is smaller than the title of the first
+          <i>&lt;anx-content&gt;</i>.<br /><br />
+          Below this paragraph are two examples for <i>&lt;anx-card&gt;</i>.
         </anx-paragraph>
 
         <anx-card
@@ -381,10 +398,6 @@ export default class App extends Vue {
 
   /*example Modal */
   private exampleModal = false;
-
-  private showModal() {
-    this.exampleModal = true;
-  }
 
   /** Display form Modal */
   private formModal = false;
