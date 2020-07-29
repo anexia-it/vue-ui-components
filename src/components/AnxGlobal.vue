@@ -30,6 +30,37 @@ html {
     .text-uppercase {
       text-transform: uppercase;
     }
+
+    span {
+      font-family: ff-meta-web-pro !important;
+      &.f-100 {
+        font-weight: 100;
+      }
+      &.f-200 {
+        font-weight: 200;
+      }
+      &.f-300 {
+        font-weight: 300;
+      }
+      &.f-400 {
+        font-weight: 400;
+      }
+      &.f-500 {
+        font-weight: 500;
+      }
+      &.f-600 {
+        font-weight: 600;
+      }
+      &.f-700 {
+        font-weight: 700;
+      }
+      &.f-800 {
+        font-weight: 800;
+      }
+      &.f-900 {
+        font-weight: 900;
+      }
+    }
   }
 }
 </style>

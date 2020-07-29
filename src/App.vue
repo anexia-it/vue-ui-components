@@ -19,6 +19,17 @@
             <li>h2</li>
             <li>h3</li>
           </ul>
+
+          <br />
+          <span class="f-100">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-200">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-300">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-400">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-500">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-600">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-700">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-800">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-900">Lorem Ipsum is simply dummy text</span><br />
         </anx-paragraph>
 
         <anx-paragraph title="Size h2" size="h2">
