@@ -118,22 +118,22 @@
         </anx-paragraph>
 
         <!-- Anx Read Only -->
-        <anx-paragraph size="h3" title="anx-read-only">
-          The <i>&lt;anx-read-only&gt;</i> differs from the
+        <anx-paragraph size="h3" title="anx-readonly">
+          The <i>&lt;anx-readonly&gt;</i> differs from the
           <i>&lt;anx-input-field&gt;</i> in its design. The purpose of a
-          <i>&lt;anx-read-only&gt;</i> is to display some text, that should not
+          <i>&lt;anx-readonly&gt;</i> is to display some text, that should not
           be modified and can easily be copied. You just have to add the
           <strong>copy-on-click</strong> property to the
-          <i>&lt;anx-read-only&gt;</i> element. The first element is copyable on
+          <i>&lt;anx-readonly&gt;</i> element. The first element is copyable on
           click.<br />
-          <anx-read-only bold copy-on-click>
-            This is a simple AnxReadOnly component with bold text. Click me to
-            copy the text!
-          </anx-read-only>
+          <anx-readonly bold copy-on-click>
+            This is a simple <i>&lt;anx-readonly&gt;</i> component with bold
+            text. Click me to copy the text!
+          </anx-readonly>
 
-          <anx-read-only>
-            The following AnxReadOnly component is not bold and the text cannot
-            be copied.<br /><br />
+          <anx-readonly>
+            The following <i>&lt;anx-readonly&gt;</i> component is not bold and
+            the text cannot be copied.<br /><br />
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             convallis turpis a elit imperdiet pellentesque in ac tortor.
             Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
@@ -145,7 +145,7 @@
             porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus
             at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
             Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
-          </anx-read-only>
+          </anx-readonly>
         </anx-paragraph>
 
         <anx-paragraph size="h2" title="Input components (Anx-Form)">
@@ -300,7 +300,7 @@ import AnxParagraph from "@/components/AnxParagraph.vue";
 import AnxCard from "@/components/AnxCard.vue";
 import AnxInput from "@/components/AnxInput.vue";
 import AnxButton from "@/components/AnxButton.vue";
-import AnxReadOnly from "@/components/AnxReadOnly.vue";
+import AnxReadonly from "@/components/AnxReadonly.vue";
 import AnxTable from "@/components/AnxTable.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
 import AnxModal from "@/components/AnxModal.vue";
@@ -320,7 +320,7 @@ import AnxTextarea from "@/components/AnxTextarea.vue";
     AnxParagraph,
     AnxCard,
     AnxInput,
-    AnxReadOnly,
+    AnxReadonly,
     AnxButton,
     AnxTable,
     AnxTableRow,
