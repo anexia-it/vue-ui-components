@@ -1,5 +1,5 @@
 <template>
-  <div id="testanx" class="anx-read-only" @click="copy($event)">
+  <div id="testanx" class="anx-readonly" @click="copy($event)">
     <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
       <slot />
     </div>
@@ -10,7 +10,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
-export default class AnxReadOnly extends Vue {
+export default class AnxReadonly extends Vue {
   /** This is the id of the alert */
   @Prop({ default: "anx-alert" }) name!: string;
 
@@ -41,7 +41,7 @@ export default class AnxReadOnly extends Vue {
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
-.anx-read-only {
+.anx-readonly {
   background-color: $anx-table-row-background;
   border: 1px solid $anx-primary-grey-light;
   margin: 30px 0;
