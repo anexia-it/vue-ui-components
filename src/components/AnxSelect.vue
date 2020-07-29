@@ -3,7 +3,7 @@
     v-if="validation"
     v-slot="{ errors }"
     :name="id"
-    rules="included:Auswahl 2"
+    :rules="'included:' + cleanOptions"
   >
     <div class="anx-select" :style="cssProps">
       <label :for="id + '1'"> {{ labelText }}</label>
@@ -11,26 +11,30 @@
         class="select-original"
         :id="id + '1'"
         :name="id"
-        v-validate="'included:Auswahl 2'"
+        v-validate="'included:' + cleanOptions"
         :data-vv-as="labelText"
         v-model="selected"
       >
-        <option v-for="item in items" :key="item" :value="item">
-          {{ item }}</option
+        <option
+          v-for="option in options"
+          :key="option.value"
+          :value="option.value"
+        >
+          {{ option.text }}</option
         >
       </select>
       <div class="anx-select-div" @click="show = !show">
-        {{ selected }}
+        {{ selectedText }}
       </div>
       <ul class="anx-select-options" :class="{ show: show }">
         <li
-          v-for="item in items"
-          :key="item"
-          :rel="item"
-          :class="{ active: selected === item }"
-          @click="select(item)"
+          v-for="option in options"
+          :key="option.value"
+          :rel="option.value"
+          :class="{ active: selected === option.value }"
+          @click="select(option)"
         >
-          {{ item }}
+          {{ option.text }}
         </li>
       </ul>
       <span class="error">{{ errors[0] }}</span>
@@ -39,22 +43,26 @@
   <div v-else class="anx-select" :style="cssProps">
     <label :for="id + '1'"> {{ labelText }}</label>
     <select class="select-original" :id="id + '1'" :name="id">
-      <option v-for="item in items" :key="item" :value="item">
-        {{ item }}</option
+      <option
+        v-for="option in options"
+        :key="option.value"
+        :value="option.value"
+      >
+        {{ option.text }}</option
       >
     </select>
     <div class="anx-select-div" @click="show = !show">
-      {{ selected }}
+      {{ selectedText }}
     </div>
     <ul class="anx-select-options" :class="{ show: show }">
       <li
-        v-for="item in items"
-        :key="item"
-        :rel="item"
-        :class="{ active: selected === item }"
-        @click="select(item)"
+        v-for="option in options"
+        :key="option.value"
+        :rel="option.value"
+        :class="{ active: selected === option.value }"
+        @click="select(option)"
       >
-        {{ item }}
+        {{ option.text }}
       </li>
     </ul>
   </div>
@@ -72,16 +80,23 @@ export default class AnxSelect extends Vue {
   @Prop({ default: "anx-select-choice" }) id!: string;
   @Prop({ default: "Auswahl treffen" }) labelText!: string;
   @Prop({
-    type: Array,
     default: function() {
-      return ["Auswahl 1", "Auswahl 2", "Auswahl 3", "Auswahl 4"];
+      return [
+        { value: "default", text: "Auswahl treffen" },
+        { value: "Auswahl 1", text: "Auswahl 1" },
+        { value: "Auswahl 2", text: "Auswahl 2" },
+        { value: "Auswahl 3", text: "Auswahl 3" },
+        { value: "Auswahl 4", text: "Auswahl 4" }
+      ];
     }
   })
-  items!: string[];
+  options!: Array<{ value: string; text: string }>;
   @Prop({ default: "100%" }) width!: string;
   @Prop({ default: false }) validation!: boolean;
 
+  public cleanOptions: Array<string> = [];
   private selected = "";
+  private selectedText = "";
   private show = false;
 
   get cssProps() {
@@ -91,11 +106,15 @@ export default class AnxSelect extends Vue {
   }
 
   public mounted() {
-    this.select(this.items[0]);
+    this.options.forEach(option => {
+      if (option.value != "default") this.cleanOptions.push(option.value);
+    });
+    this.select(this.options[0]);
   }
 
-  public select(item: string) {
-    this.selected = item;
+  public select(option: { value: string; text: string }) {
+    this.selected = option.value;
+    this.selectedText = option.text;
     this.show = false;
     this.$emit("input", this.selected);
   }
@@ -119,6 +138,15 @@ export default class AnxSelect extends Vue {
   height: 25px;
   margin-bottom: $form-components-spacing;
   font-size: 16px;
+
+  span.error {
+    display: block !important;
+    opacity: 1;
+    font-size: 12px;
+    color: $anx-error;
+    padding: 0;
+    white-space: nowrap;
+  }
 }
 
 .anx-select .select-original {
