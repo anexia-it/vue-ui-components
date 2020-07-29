@@ -173,20 +173,25 @@
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
             and hava a prop for the item-list (array).
           </anx-paragraph>
-          <anx-select width="100%" />
-          <anx-select width="100%" validation="true" />
+          <anx-select width="100%" v-model="selected1" />
+          <anx-select
+            width="100%"
+            id="anx-select"
+            validation="true"
+            v-model="selected2"
+          />
 
           <anx-paragraph size="h3">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
             100%), rows (default 4) and a lable. It can only be resize.
           </anx-paragraph>
 
-          <anx-textarea width="100%" />
+          <anx-textarea width="100%" v-model="text1" />
           <anx-paragraph size="h3">
             This anx-textarea have a validation with the default rule required.
             The rule can be changed.
           </anx-paragraph>
-          <anx-textarea width="100%" validation="true" />
+          <anx-textarea width="100%" validation="true" v-model="text2" />
         </anx-form>
       </anx-content>
 
@@ -280,6 +285,10 @@ export default class App extends Vue {
   ip = "";
   showSuccessAlert = true;
   showErrorAlert = true;
+  selected1 = "";
+  selected2 = "";
+  text1 = "";
+  text2 = "";
 
   tableItems = [
     { age: 40, firstName: "Dickerson", lastName: "Macdonald" },

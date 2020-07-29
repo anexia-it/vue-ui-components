@@ -12,7 +12,7 @@
         :id="id + '1'"
         :name="id"
         v-validate="'included:Auswahl 2'"
-        data-vv-as="selected"
+        :data-vv-as="labelText"
         v-model="selected"
       >
         <option v-for="item in items" :key="item" :value="item">
@@ -97,7 +97,7 @@ export default class AnxSelect extends Vue {
   public select(item: string) {
     this.selected = item;
     this.show = false;
-    this.$emit("change", this.selected);
+    this.$emit("input", this.selected);
   }
 }
 </script>
