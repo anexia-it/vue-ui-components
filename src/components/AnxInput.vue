@@ -134,7 +134,7 @@ export default class AnxInput extends Vue {
 .anx-input {
   color: $anx-lightest-grey-dark;
   display: block;
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
   font-size: 16px;
   font-weight: 400;
   line-height: 25.6px;
@@ -154,7 +154,7 @@ export default class AnxInput extends Vue {
   color: $anx-lightest-grey-dark;
   cursor: default;
   display: block;
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
   font-size: 16px;
   font-weight: 400;
   height: 45px;
@@ -193,7 +193,7 @@ export default class AnxInput extends Vue {
   cursor: text;
   display: block;
   box-sizing: border-box;
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
   font-size: 16px;
   font-stretch: 100%;
   font-style: normal;

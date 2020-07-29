@@ -44,7 +44,7 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
 }
 
 /* anx-button - super cool animation button */

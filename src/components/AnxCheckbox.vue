@@ -58,7 +58,6 @@ export default class AnxCheckbox extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-checkbox {
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-bottom: $form-components-spacing;
 
   label {

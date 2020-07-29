@@ -53,7 +53,7 @@ export default class AnxReadOnly extends Vue {
     color: $anx-lightest-grey-dark;
 
     &.bold {
-      font-family: "MetaCompPro-Bold";
+      font-weight: 800;
     }
   }
 }

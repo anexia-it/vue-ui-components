@@ -71,7 +71,7 @@ export default class AnxTextarea extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-textarea {
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
   width: var(--textarea-width);
   display: block;
   position: relative;
@@ -95,7 +95,7 @@ export default class AnxTextarea extends Vue {
   padding: 20px 17px 20px 17px;
   border: 1px solid $anx-second-grey-light;
   color: $anx-lightest-grey-dark !important;
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
   font-size: 16px;
   resize: vertical;
 

@@ -1,5 +1,7 @@
+@import './variables.scss';
+
 body,  #app {
-  font-family: 'Meta', Arial, Helvetica, sans-serif;
+  font-family: $anx-font-family;
   font-weight: normal;
 }
 

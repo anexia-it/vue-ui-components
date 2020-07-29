@@ -106,7 +106,6 @@ export default class AnxTable extends Vue {
     background-color: $anx-table-header-background;
     tr {
       th {
-        font-family: MetaWebPro;
         padding: 0.5rem 0.5rem 0.438rem 0.5rem;
       }
     }

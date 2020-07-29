@@ -110,7 +110,7 @@ export default class AnxSelect extends Vue {
 }
 
 .anx-select {
-  font-family: MetaWebPro, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: $anx-font-family;
   cursor: pointer;
   display: inline-block;
   position: relative;
