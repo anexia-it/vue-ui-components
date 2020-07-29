@@ -145,8 +145,8 @@
             second without validation.
           </anx-paragraph>
 
-          <anx-checkbox name="Checkbox" validation="true" />
-          <anx-checkbox name="Checkbox" />
+          <anx-checkbox name="Checkbox" validation="true" v-model="checkbox[0]" />
+          <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
 
           <anx-read-only bold>
             This is a simple AnxReadOnly component with bold text. Click me to
@@ -289,6 +289,7 @@ export default class App extends Vue {
   selected2 = "";
   text1 = "";
   text2 = "";
+  checkbox = [];
 
   tableItems = [
     { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
