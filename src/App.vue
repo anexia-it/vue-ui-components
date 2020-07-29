@@ -98,7 +98,7 @@
 
       <anx-content title="Form components" size="h2">
         <!-- Anx Modal -->
-        <anx-paragraph size="h3" title="AnxModal">
+        <anx-paragraph size="h3" title="anx-modal">
           This is an example for a <i>&lt;anx-modal&gt;</i>. Just click the
           button and the modal will appear.<br /><br />
 
@@ -118,7 +118,7 @@
         </anx-paragraph>
 
         <!-- Anx Read Only -->
-        <anx-paragraph size="h3" title="AnxReadOnly">
+        <anx-paragraph size="h3" title="anx-read-only">
           The <i>&lt;anx-read-only&gt;</i> differs from the
           <i>&lt;anx-input-field&gt;</i> in its design. The purpose of a
           <i>&lt;anx-read-only&gt;</i> is to display some text, that should not
@@ -148,16 +148,14 @@
           </anx-read-only>
         </anx-paragraph>
 
-        <anx-paragraph size="h3" title="Input components">
+        <anx-paragraph size="h2" title="Input components (Anx-Form)">
           Every input has to be inside an <i>&lt;anx-form&gt;</i> tag. The
           <i>&lt;anx-form&gt;</i> handles additional validation on submit. If
           all input fields are valid. The <strong>submit</strong> event is being
           emitted.<br /><br /><i>&lt;anx-form&gt;</i> also offers to render a
           submit button. The submit button has to be provided as object. The
-          button dynamically changes from disabled to not disabled, whether the
-          input is valid or not.<br /><br />The validation rules itself have to
-          be set at the input fields. See <i>&lt;anx-input&gt;</i> for an
-          example.
+          button can dynamically change from disabled to not disabled, whether
+          the input is valid or not.<br /><br />
         </anx-paragraph>
 
         <anx-form
@@ -165,6 +163,18 @@
           name="ip-form"
           :submit-button="{ text: 'Send >', disabled: false }"
         >
+          <anx-paragraph size="h3" title="anx-input">
+            The validation rules itself have to be set at the input fields. This
+            <i>&lt;anx-input&gt;</i> is an example for how to use rules to
+            validate an user input.<br /><br /><i>&lt;anx-input&gt;</i> has
+            severl properties to change the label text, the assistive text, ...
+            (see AnxInput.vue Props). The value of the
+            <i>&lt;anx-input&gt;</i> can easily be fetched using
+            <strong>v-model</strong>. The variable in v-model will automatically
+            be updated on an input event. You don't have to care about updating
+            anything.<br /><br />In this case you have to enter a
+            <strong>valid</strong> IP address.
+          </anx-paragraph>
           <anx-input
             name="ip"
             label="IP address"
@@ -174,10 +184,10 @@
           />
 
           <anx-paragraph size="h3">
-            <i>&lt;anx-input&gt;</i> can be a <strong>readonly</strong> field
-            with the prop read-only="true". The value of the field can be set
-            with the prop value="". In this example, the value is bind with the
-            ip field. The readonly input-field has no validation!
+            <i>&lt;anx-input&gt;</i> can also be set to
+            <strong>readonly</strong> by providing the <i>readonly</i> property.
+            In this example, the value is binded to the ip field. The readonly
+            input-field has no validation!
           </anx-paragraph>
           <anx-input
             name="ip-readonly"
@@ -186,7 +196,7 @@
             :value="ip"
           />
 
-          <anx-paragraph size="h3">
+          <anx-paragraph size="h3" title="anx-checkbox">
             <i>&lt;anx-checkbox&gt;</i> can have a validation-provider.<br />
             First example with validation (default rule: required true), and the
             second without validation.
@@ -199,7 +209,7 @@
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
 
-          <anx-paragraph size="h3">
+          <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
             and hava a prop for the item-list (array).
           </anx-paragraph>
@@ -211,7 +221,7 @@
             v-model="selected2"
           />
 
-          <anx-paragraph size="h3">
+          <anx-paragraph size="h3" title="anx-textarea">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
             100%), rows (default 4) and a label. It can also be resized.
           </anx-paragraph>
