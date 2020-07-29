@@ -3,6 +3,7 @@
 body,  #app {
   font-family: $anx-font-family;
   font-weight: normal;
+  -webkit-font-smoothing: antialiased;
 }
 
 @font-face {
