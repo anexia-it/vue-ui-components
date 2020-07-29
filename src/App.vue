@@ -21,15 +21,15 @@
           </ul>
 
           <br />
-          <span class="f-100">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-200">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-300">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-400">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-500">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-600">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-700">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-800">Lorem Ipsum is simply dummy text</span><br />
-          <span class="f-900">Lorem Ipsum is simply dummy text</span><br />
+          <span class="f-100">Lorem ipsum dolor sit (weight 100)</span><br />
+          <span class="f-200">Lorem ipsum dolor sit (weight 200)</span><br />
+          <span class="f-300">Lorem ipsum dolor sit (weight 300)</span><br />
+          <span class="f-400">Lorem ipsum dolor sit (weight 400)</span><br />
+          <span class="f-500">Lorem ipsum dolor sit (weight 500)</span><br />
+          <span class="f-600">Lorem ipsum dolor sit (weight 600)</span><br />
+          <span class="f-700">Lorem ipsum dolor sit (weight 700)</span><br />
+          <span class="f-800">Lorem ipsum dolor sit (weight 800)</span><br />
+          <span class="f-900">Lorem ipsum dolor sit (weight 900)</span><br />
         </anx-paragraph>
 
         <anx-paragraph title="Size h2" size="h2">

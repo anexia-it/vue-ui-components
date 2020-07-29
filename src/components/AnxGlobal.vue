@@ -32,7 +32,6 @@ html {
     }
 
     span {
-      font-family: ff-meta-web-pro !important;
       &.f-100 {
         font-weight: 100;
       }
