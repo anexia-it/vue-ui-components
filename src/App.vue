@@ -116,7 +116,7 @@
         <anx-form
           @submit="submitForm"
           name="ip-form"
-          :submit-button="{ text: 'Send >' }"
+          :submit-button="{ text: 'Send >', disabled: false }"
         >
           <anx-input
             name="ip"
@@ -145,7 +145,11 @@
             second without validation.
           </anx-paragraph>
 
-          <anx-checkbox name="Checkbox" validation="true" v-model="checkbox[0]" />
+          <anx-checkbox
+            name="Required Checkbox"
+            validation="true"
+            v-model="checkbox[0]"
+          />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
 
           <anx-read-only bold>
@@ -183,15 +187,27 @@
 
           <anx-paragraph size="h3">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
-            100%), rows (default 4) and a lable. It can only be resize.
+            100%), rows (default 4) and a label. It can also be resized.
           </anx-paragraph>
 
           <anx-textarea width="100%" v-model="text1" />
           <anx-paragraph size="h3">
-            This anx-textarea have a validation with the default rule required.
-            The rule can be changed.
+            This <i>&lt;anx-textarea&gt;</i> has a validation with the default
+            rule required. The rule can be changed.
           </anx-paragraph>
           <anx-textarea width="100%" validation="true" v-model="text2" />
+
+          <anx-modal
+            v-if="formModal"
+            title="Form submit"
+            @close="formModal = false"
+          >
+            <strong>IP: </strong> {{ this.ip }}<br />
+            <strong>Select 1: </strong> {{ this.selected1 }}<br />
+            <strong>Select 2: </strong> {{ this.selected2 }}<br />
+            <strong>Addtiional Text 1: </strong> {{ this.text1 }}<br />
+            <strong>Addtiional Text 2: </strong> {{ this.text2 }}<br />
+          </anx-modal>
         </anx-form>
       </anx-content>
 
@@ -370,9 +386,12 @@ export default class App extends Vue {
     this.exampleModal = true;
   }
 
+  /** Display form Modal */
+  private formModal = false;
+
   /** Show an alert when the form has been submitted */
   private submitForm() {
-    alert(`Form has been submitted and the entered ip is: ${this.ip}`);
+    this.formModal = true;
   }
 }
 </script>
