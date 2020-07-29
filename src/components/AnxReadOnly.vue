@@ -10,7 +10,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
-export default class AnxAlert extends Vue {
+export default class AnxReadOnly extends Vue {
   /** This is the id of the alert */
   @Prop({ default: "anx-alert" }) name!: string;
 
