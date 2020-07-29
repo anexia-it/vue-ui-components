@@ -6,12 +6,6 @@
     <anx-header :menus="items" />
 
     <anx-container>
-      <anx-modal v-if="exampleModal" title="test" @close="exampleModal = false">
-        DAS ist ein TEst
-      </anx-modal>
-      <anx-button text="Modal" @submit="showModal" />
-      <div class="spacing" style="margin-top:20px; margin-bottom: 20px"></div>
-
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
           <div class="icon-cloud"></div>
@@ -103,7 +97,58 @@
       </anx-content>
 
       <anx-content title="Form components" size="h2">
-        <anx-paragraph size="h3">
+        <!-- Anx Modal -->
+        <anx-paragraph size="h3" title="AnxModal">
+          This is an example for a <i>&lt;anx-modal&gt;</i>. Just click the
+          button and the modal will appear.<br /><br />
+
+          <anx-modal
+            v-if="exampleModal"
+            title="AnxModal"
+            @close="exampleModal = false"
+          >
+            This is an example <i>&lt;anx-modal&gt;</i>.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModal = true"
+            width="100%"
+            btnType="click"
+          />
+        </anx-paragraph>
+
+        <!-- Anx Read Only -->
+        <anx-paragraph size="h3" title="AnxReadOnly">
+          The <i>&lt;anx-read-only&gt;</i> differs from the
+          <i>&lt;anx-input-field&gt;</i> in its design. The purpose of a
+          <i>&lt;anx-read-only&gt;</i> is to display some text, that should not
+          be modified and can easily be copied. You just have to add the
+          <strong>copy-on-click</strong> property to the
+          <i>&lt;anx-read-only&gt;</i> element. The first element is copyable on
+          click.<br />
+          <anx-read-only bold copy-on-click>
+            This is a simple AnxReadOnly component with bold text. Click me to
+            copy the text!
+          </anx-read-only>
+
+          <anx-read-only>
+            The following AnxReadOnly component is not bold and the text cannot
+            be copied.<br /><br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            convallis turpis a elit imperdiet pellentesque in ac tortor.
+            Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
+            Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
+            semper mi. Integer dignissim diam dictum dui ultricies, vitae
+            facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
+            Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
+            interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
+            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus
+            at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
+            Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
+          </anx-read-only>
+        </anx-paragraph>
+
+        <anx-paragraph size="h3" title="Input components">
           Every input has to be inside an <i>&lt;anx-form&gt;</i> tag. The
           <i>&lt;anx-form&gt;</i> handles additional validation on submit. If
           all input fields are valid. The <strong>submit</strong> event is being
@@ -114,10 +159,11 @@
           be set at the input fields. See <i>&lt;anx-input&gt;</i> for an
           example.
         </anx-paragraph>
+
         <anx-form
           @submit="submitForm"
           name="ip-form"
-          :submit-button="{ text: 'Send >' }"
+          :submit-button="{ text: 'Send >', disabled: false }"
         >
           <anx-input
             name="ip"
@@ -147,32 +193,11 @@
           </anx-paragraph>
 
           <anx-checkbox
-            name="Checkbox"
+            name="Required Checkbox"
             validation="true"
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-
-          <anx-read-only bold>
-            This is a simple AnxReadOnly component with bold text. Click me to
-            copy the text!
-          </anx-read-only>
-
-          <anx-read-only :copy-on-click="false">
-            The following AnxReadOnly component is not bold and the text cannot
-            be copied.<br /><br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            convallis turpis a elit imperdiet pellentesque in ac tortor.
-            Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
-            Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
-            semper mi. Integer dignissim diam dictum dui ultricies, vitae
-            facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
-            Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
-            interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
-            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus
-            at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
-            Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
-          </anx-read-only>
 
           <anx-paragraph size="h3">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
@@ -188,21 +213,36 @@
 
           <anx-paragraph size="h3">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
-            100%), rows (default 4) and a lable. It can only be resize.
+            100%), rows (default 4) and a label. It can also be resized.
           </anx-paragraph>
 
           <anx-textarea width="100%" v-model="text1" />
           <anx-paragraph size="h3">
-            This anx-textarea have a validation with the default rule required.
-            The rule can be changed.
+            This <i>&lt;anx-textarea&gt;</i> has a validation with the default
+            rule required. The rule can be changed.
           </anx-paragraph>
           <anx-textarea width="100%" validation="true" v-model="text2" />
+
+          <anx-modal
+            v-if="formModal"
+            title="Form submit"
+            @close="formModal = false"
+          >
+            <strong>IP: </strong> {{ this.ip }}<br />
+            <strong>Select 1: </strong> {{ this.selected1 }}<br />
+            <strong>Select 2: </strong> {{ this.selected2 }}<br />
+            <strong>Addtiional Text 1: </strong> {{ this.text1 }}<br />
+            <strong>Addtiional Text 2: </strong> {{ this.text2 }}<br />
+          </anx-modal>
         </anx-form>
       </anx-content>
 
-      <anx-content title="H2 Content" size="h2">
+      <anx-content title="Cards" size="h2">
         <anx-paragraph>
-          This is another content with size H2
+          This <i>&lt;anx-content&gt;</i> is iszed <strong>H2</strong>. The
+          title is smaller than the title of the first
+          <i>&lt;anx-content&gt;</i>.<br /><br />
+          Below this paragraph are two examples for <i>&lt;anx-card&gt;</i>.
         </anx-paragraph>
 
         <anx-card
@@ -371,13 +411,12 @@ export default class App extends Vue {
   /*example Modal */
   private exampleModal = false;
 
-  private showModal() {
-    this.exampleModal = true;
-  }
+  /** Display form Modal */
+  private formModal = false;
 
   /** Show an alert when the form has been submitted */
   private submitForm() {
-    alert(`Form has been submitted and the entered ip is: ${this.ip}`);
+    this.formModal = true;
   }
 }
 </script>

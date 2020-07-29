@@ -15,14 +15,14 @@ export default class AnxReadOnly extends Vue {
   @Prop({ default: "anx-alert" }) name!: string;
 
   /** Should the text be selcted and copied to the clipboard on click? */
-  @Prop({ default: true }) copyOnClick!: boolean;
+  @Prop({ default: null }) copyOnClick!: boolean;
 
   /** Should the text be bold? */
   @Prop({ default: null }) bold!: boolean;
 
   /** Select and copy the text of the area */
   private copy(event: Event) {
-    if (this.copyOnClick) {
+    if (this.copyOnClick !== null) {
       const range = document.createRange();
       range.selectNode(event.target as HTMLElement);
 
