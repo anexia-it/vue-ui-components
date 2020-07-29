@@ -49,16 +49,12 @@ export default class AnxHeader extends Vue {
       ".header-nav-menu > .menu-text.left > a"
     );
 
-    // console.log(menu)
     let path = window.location.pathname;
     hmenu.forEach(el => {
-      console.log((el as HTMLElement).getAttribute("href"));
       if (path[path.length - 1] !== "/") {
         path += "/";
       }
-      // console.log(path)
       if ((el as HTMLElement).getAttribute("href") === path) {
-        console.log("yes");
         el.classList.add("active");
       }
     });
@@ -101,9 +97,7 @@ hr {
   }
 }
 img {
-  // margin-top: 60px;
   height: 45px;
-  // margin-bottom: 30px;
 }
 a {
   color: $anx-primary-green;

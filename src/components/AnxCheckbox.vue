@@ -15,7 +15,7 @@
           :value="name"
           v-model="checked"
           :class="errors && errors.length > 0 ? 'is-invalid' : ''"
-          @change="$emit('input', {checked, name})"
+          @change="$emit('input', { checked, name })"
         />
         <div class="text">{{ name }}</div>
       </label>
@@ -30,7 +30,7 @@
         type="checkbox"
         :value="name"
         v-model="checked"
-        @change="$emit('input', {checked, name})"
+        @change="$emit('input', { checked, name })"
       />
       <div class="text">{{ name }}</div>
     </label>

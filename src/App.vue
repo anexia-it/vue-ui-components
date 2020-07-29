@@ -14,6 +14,7 @@
 
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
+          <div class="icon-cloud"></div>
           This is a simple paragraph. Paragraphs are made for text. A paragraph
           can additionally have a title. This paragraph for example, does not
           have a title.<br /><br />
@@ -145,7 +146,11 @@
             second without validation.
           </anx-paragraph>
 
-          <anx-checkbox name="Checkbox" validation="true" v-model="checkbox[0]" />
+          <anx-checkbox
+            name="Checkbox"
+            validation="true"
+            v-model="checkbox[0]"
+          />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
 
           <anx-read-only bold>
