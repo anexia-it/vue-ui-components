@@ -211,7 +211,8 @@
 
           <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
-            and hava a prop for the item-list (array).
+            and hava a prop for the options (array&lt;{value: string, text:
+            string}&gt;). Also the anx-select can be validated!
           </anx-paragraph>
           <anx-select width="100%" v-model="selected1" />
           <anx-select
@@ -219,6 +220,7 @@
             id="anx-select"
             validation="true"
             v-model="selected2"
+            label-text="Auswahl treffen required"
           />
 
           <anx-paragraph size="h3" title="anx-textarea">

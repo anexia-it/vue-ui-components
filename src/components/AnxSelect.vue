@@ -1,18 +1,20 @@
 <template>
   <ValidationProvider
     v-if="validation"
-    v-slot="{ errors }"
-    :name="id"
+    :name="labelText"
     :rules="'included:' + cleanOptions"
+    v-slot="{ errors }"
   >
-    <div class="anx-select" :style="cssProps">
+    <div
+      class="anx-select"
+      :class="{ is_invalid: error.length > 0 || errors.length > 0 }"
+      :style="cssProps"
+    >
       <label :for="id + '1'"> {{ labelText }}</label>
       <select
         class="select-original"
         :id="id + '1'"
         :name="id"
-        v-validate="'included:' + cleanOptions"
-        :data-vv-as="labelText"
         v-model="selected"
       >
         <option
@@ -37,12 +39,18 @@
           {{ option.text }}
         </li>
       </ul>
-      <span class="error">{{ errors[0] }}</span>
+      <span v-if="error.length > 0" class="error">{{ error[0] }}</span>
+      <span v-else class="error">{{ errors[0] }}</span>
     </div>
   </ValidationProvider>
   <div v-else class="anx-select" :style="cssProps">
     <label :for="id + '1'"> {{ labelText }}</label>
-    <select class="select-original" :id="id + '1'" :name="id">
+    <select
+      class="select-original"
+      :id="id + '1'"
+      :name="id"
+      v-model="selected"
+    >
       <option
         v-for="option in options"
         :key="option.value"
@@ -68,7 +76,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationProvider } from "vee-validate";
 
 @Component({
@@ -95,21 +103,39 @@ export default class AnxSelect extends Vue {
   @Prop({ default: false }) validation!: boolean;
 
   public cleanOptions: Array<string> = [];
-  private selected = "";
-  private selectedText = "";
+  private selected = this.options[0].value;
+  private selectedText = this.options[0].text;
   private show = false;
+  private error: string[] = [];
 
   get cssProps() {
     return {
       width: this.width
     };
   }
+  @Watch("selected", { immediate: false })
+  async onSelectedChanged(val: string) {
+    if (val && this.validation) {
+      await this.verify(val);
+    }
+  }
+
+  private async verify(value: string) {
+    const { errors } = await this.$validator.verify(
+      value,
+      "included:" + this.cleanOptions,
+      {
+        name: this.labelText
+      }
+    );
+    this.error = errors;
+  }
 
   public mounted() {
     this.options.forEach(option => {
       if (option.value != "default") this.cleanOptions.push(option.value);
     });
-    this.select(this.options[0]);
+    this.error = [];
   }
 
   public select(option: { value: string; text: string }) {
@@ -139,6 +165,18 @@ export default class AnxSelect extends Vue {
   margin-bottom: $form-components-spacing;
   font-size: 16px;
 
+  &.is_invalid {
+    label {
+      color: $anx-error;
+    }
+    .anx-select-div {
+      color: $anx-error;
+      &:after {
+        background-image: url(../assets/arrow-red-bottom.svg);
+      }
+    }
+  }
+
   span.error {
     display: block !important;
     opacity: 1;
@@ -146,6 +184,8 @@ export default class AnxSelect extends Vue {
     color: $anx-error;
     padding: 0;
     white-space: nowrap;
+    top: 12px;
+    position: relative;
   }
 }
 
@@ -189,7 +229,7 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options {
   display: none;
   position: absolute;
-  top: 111%;
+  top: 108%;
   right: 0;
   left: 0;
   z-index: 999;
