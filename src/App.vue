@@ -96,6 +96,7 @@
       </anx-content>
 
       <anx-content title="Form components" size="h2">
+        <!-- Anx Modal -->
         <anx-paragraph size="h3" title="AnxModal">
           This is an example for a <i>&lt;anx-modal&gt;</i>. Just click the
           button and the modal will appear.<br /><br />
@@ -113,6 +114,37 @@
             width="100%"
             btnType="click"
           />
+        </anx-paragraph>
+
+        <!-- Anx Read Only -->
+        <anx-paragraph size="h3" title="AnxReadOnly">
+          The <i>&lt;anx-read-only&gt;</i> differs from the
+          <i>&lt;anx-input-field&gt;</i> in its design. The purpose of a
+          <i>&lt;anx-read-only&gt;</i> is to display some text, that should not
+          be modified and can easily be copied. You just have to add the
+          <strong>copy-on-click</strong> property to the
+          <i>&lt;anx-read-only&gt;</i> element. The first element is copyable on
+          click.<br />
+          <anx-read-only bold copy-on-click>
+            This is a simple AnxReadOnly component with bold text. Click me to
+            copy the text!
+          </anx-read-only>
+
+          <anx-read-only>
+            The following AnxReadOnly component is not bold and the text cannot
+            be copied.<br /><br />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            convallis turpis a elit imperdiet pellentesque in ac tortor.
+            Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
+            Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
+            semper mi. Integer dignissim diam dictum dui ultricies, vitae
+            facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
+            Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
+            interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
+            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus
+            at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
+            Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
+          </anx-read-only>
         </anx-paragraph>
 
         <anx-paragraph size="h3" title="Input components">
@@ -165,27 +197,6 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-
-          <anx-read-only bold>
-            This is a simple AnxReadOnly component with bold text. Click me to
-            copy the text!
-          </anx-read-only>
-
-          <anx-read-only :copy-on-click="false">
-            The following AnxReadOnly component is not bold and the text cannot
-            be copied.<br /><br />
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            convallis turpis a elit imperdiet pellentesque in ac tortor.
-            Pellentesque non massa eget diam porta scelerisque quis vitae lacus.
-            Nam id orci ut enim tempus porta. Nunc nec mi nulla. Praesent et
-            semper mi. Integer dignissim diam dictum dui ultricies, vitae
-            facilisis ante rhoncus. Sed euismod sapien at cursus tristique.<br /><br />
-            Fusce ut tristique augue, vitae blandit sapien. Donec turpis leo,
-            interdum at blandit sit amet, vehicula eget turpis. Donec rhoncus
-            porta hendrerit. Etiam at ultrices eros. Pellentesque dictum purus
-            at odio venenatis, eu malesuada lorem convallis. In quis massa eros.
-            Praesent vitae velit vitae lectus dapibus vestibulum a quis leo.
-          </anx-read-only>
 
           <anx-paragraph size="h3">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
