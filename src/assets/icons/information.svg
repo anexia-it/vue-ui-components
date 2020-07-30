@@ -1,0 +1,20 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>137-Information</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <circle class="cls-1" cx="130.66" cy="68.34" r="17.74" transform="translate(-10.7 26.38) rotate(-11.08)"/>
+      <polygon class="cls-1" points="145.06 183.53 145.06 102.92 100.69 102.92 100.69 122.42 121.62 122.42 121.62 183.53 100.69 183.53 100.69 203.04 160.63 203.04 160.63 183.53 145.06 183.53"/>
+    </g>
+  </g>
+</svg>

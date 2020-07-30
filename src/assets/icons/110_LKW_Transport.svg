@@ -1,0 +1,32 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>110_LKW_Transport</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <rect class="cls-2" x="49.74" y="71.2" width="111.58" height="82.38"/>
+      <path class="cls-2" d="M59.68,153.58v23.57H81.85c0-.35,0-.7,0-1.05a13,13,0,1,1,26,0c0,.35,0,.7,0,1.05h58c0-.35-.06-.7-.06-1.05a13,13,0,1,1,26,0c0,.35,0,.7-.06,1.05H211.4V153.58Z"/>
+      <polygon class="cls-2" points="211.4 153.58 161.45 153.58 161.45 88.84 200.98 88.84 211.4 153.58"/>
+      <circle class="cls-2" cx="94.79" cy="176.1" r="12.99"/>
+      <circle class="cls-2" cx="178.64" cy="176.1" r="12.99"/>
+      <polyline class="cls-2" points="202.73 105 186.42 105 186.42 129.33 207.49 129.33"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>090-windows</title>
+  <g>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <path class="cls-1" d="M120.68,184.48V136.26h67.64v57.8Zm-63.09-8.77V135.54h49.34v47.08Zm0-52.9V82.65l49.34-6.78v46.94Zm63.09-.46V73.82l67.64-9.88v58.41Z"/>
+  </g>
+</svg>

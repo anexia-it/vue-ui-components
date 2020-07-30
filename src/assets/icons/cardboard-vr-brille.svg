@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>097-Cardboard-VR-Brille</title>
+  <g>
+    <polygon class="cls-1" points="149.44 170.18 195.67 170.18 195.67 87.82 62.33 87.82 62.33 170.18 108.56 170.18 123.3 149.47 134.7 149.47 149.44 170.18"/>
+    <circle class="cls-1" cx="94.98" cy="125.06" r="14.74"/>
+    <circle class="cls-1" cx="163.02" cy="125.06" r="14.74"/>
+  </g>
+  <circle class="cls-2" cx="129" cy="129" r="125"/>
+</svg>

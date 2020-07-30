@@ -1,0 +1,41 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>119-Blockchain</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <g>
+      <polygon class="cls-2" points="133.17 61.59 102.21 79.47 71.25 61.59 102.21 43.72 133.17 61.59"/>
+      <polygon class="cls-2" points="102.21 115.22 71.25 97.34 71.25 61.59 102.21 79.47 102.21 115.22"/>
+      <polygon class="cls-2" points="133.17 97.34 102.21 115.22 102.21 79.47 133.17 61.59 133.17 97.34"/>
+    </g>
+    <g>
+      <polygon class="cls-2" points="200.92 111.13 169.96 129 139 111.13 169.96 93.25 200.92 111.13"/>
+      <polygon class="cls-2" points="169.96 164.75 139 146.87 139 111.13 169.96 129 169.96 164.75"/>
+      <polygon class="cls-2" points="200.92 146.87 169.96 164.75 169.96 129 200.92 111.13 200.92 146.87"/>
+    </g>
+    <g>
+      <polygon class="cls-2" points="133.17 160.66 102.21 178.53 71.25 160.66 102.21 142.78 133.17 160.66"/>
+      <polygon class="cls-2" points="102.21 214.28 71.25 196.41 71.25 160.66 102.21 178.53 102.21 214.28"/>
+      <polygon class="cls-2" points="133.17 196.41 102.21 214.28 102.21 178.53 133.17 160.66 133.17 196.41"/>
+    </g>
+    <line class="cls-2" x1="117.69" y1="88.4" x2="148.02" y2="105.92"/>
+    <line class="cls-2" x1="154.48" y1="137.94" x2="124.15" y2="155.45"/>
+  </g>
+</svg>

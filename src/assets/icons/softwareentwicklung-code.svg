@@ -1,0 +1,19 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>020-Softwareentwicklung-Code</title>
+  <g>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <polyline class="cls-1" points="96.97 167.15 70.54 129 96.97 90.85"/>
+    <line class="cls-1" x1="112.44" y1="189.33" x2="145.31" y2="68.67"/>
+    <polyline class="cls-1" points="161.03 167.15 187.46 129 161.03 90.85"/>
+  </g>
+</svg>

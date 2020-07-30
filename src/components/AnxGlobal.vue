@@ -19,7 +19,6 @@ export default class AnxGlobal extends Vue {}
 @import "../assets/scss/fonts.scss";
 @import "../assets/scss/_variables.scss";
 @import "../assets/scss/bootstrap-grid.scss";
-@import "../assets/scss/anexia-icons.scss";
 html {
   body {
     margin: 0px !important;

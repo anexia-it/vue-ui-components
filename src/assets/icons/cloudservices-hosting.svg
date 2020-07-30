@@ -1,0 +1,23 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>036-CloudServices-Hosting</title>
+  <g>
+    <g>
+      <path class="cls-1" d="M174,154.38a28.52,28.52,0,0,0,8-55.88,37,37,0,0,0-67.88-16.59,27,27,0,0,0-34.94,18.56,27.06,27.06,0,0,0,3.4,53.91Z"/>
+      <line class="cls-1" x1="67.6" y1="193.06" x2="98.38" y2="193.06"/>
+      <line class="cls-1" x1="160.42" y1="193.06" x2="191.2" y2="193.06"/>
+      <line class="cls-1" x1="110.15" y1="193.06" x2="148.66" y2="193.06"/>
+      <line class="cls-1" x1="129.32" y1="170.01" x2="129.32" y2="193.06"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

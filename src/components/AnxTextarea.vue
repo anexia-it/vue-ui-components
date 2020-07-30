@@ -1,4 +1,5 @@
 <template>
+  <!-- textarea with validationn-provider -->
   <ValidationProvider
     v-if="validation"
     v-slot="{ errors }"
@@ -21,10 +22,11 @@
         :class="{ filled: message.length >= 1 }"
         @input="$emit('input', message)"
       />
-      <label id="textarea-label" :for="id">{{ labelText }}</label>
+      <label id="textarea-label" :for="id">{{ label }}</label>
       <span class="error">{{ errors[0] }}</span>
     </div>
   </ValidationProvider>
+  <!-- standard textarea without validation-provider -->
   <div v-else class="anx-textarea" :style="cssProps">
     <textarea
       :id="id"
@@ -36,7 +38,7 @@
       :class="{ filled: message.length >= 1 }"
       @input="$emit('input', message)"
     />
-    <label id="textarea-label" :for="id">{{ labelText }}</label>
+    <label id="textarea-label" :for="id">{{ label }}</label>
   </div>
 </template>
 <script lang="ts">
@@ -49,12 +51,24 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxTextarea extends Vue {
+  /** With this property, a textarea can be set */
+  /**Props
+   * id: the id and the name of the textarea
+   */
   @Prop({ default: "anx-textarea" }) id!: string;
-  @Prop({ default: "Additional Text" }) labelText!: string;
+  /**label: the label text for the textarea */
+  @Prop({ default: "Additional Text" }) label!: string;
+  /**rows: the number of rows for the textarea */
   @Prop({ default: "4" }) rows!: string;
+  /**disabled: set the diasbled attribute of the textarea.
+   * When the textarea should be diabled you must set it in most cases with this prop
+   */
   @Prop({ default: false }) disabled!: boolean;
+  /**width: the width of the textarea */
   @Prop({ default: "100%" }) width!: string;
+  /**validation: is it set (true) then there will be validation-provider */
   @Prop({ default: false }) validation!: boolean;
+  /**rules: the rules for the validation. default is required */
   @Prop({ default: "required" }) rules!: string;
 
   private message = "";
@@ -136,6 +150,7 @@ export default class AnxTextarea extends Vue {
   left: 0;
   top: 24px;
   position: absolute;
+  pointer-events: none;
 }
 
 .anx-textarea textarea[disabled] label {

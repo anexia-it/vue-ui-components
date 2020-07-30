@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-3 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path class="cls-1" d="M46.86,42.15V217H211.14V42.17ZM85.71,191.62,72.34,180.5,176.87,52.23l13.55,11.19Z"/>
+    </clipPath>
+  </defs>
+  <title>146-Offline</title>
+  <circle class="cls-2" cx="129" cy="129" r="125"/>
+  <g>
+    <line class="cls-2" x1="179.34" y1="54.58" x2="74.84" y2="182.52"/>
+    <g class="cls-3">
+      <g>
+        <path class="cls-2" d="M52.61,110.51c.88-.7,2-1.51,3-2.45a109.94,109.94,0,0,1,149.73.57"/>
+        <path class="cls-2" d="M76.66,131.16c29.52-30.19,79.68-28.68,107.27.24"/>
+        <path class="cls-2" d="M100.74,152.26c13.6-15.85,43.82-16.95,59.21.18"/>
+        <path class="cls-2" d="M142,174.93a11.75,11.75,0,1,1-11.76-11.73A11.68,11.68,0,0,1,142,174.93Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

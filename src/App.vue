@@ -8,7 +8,9 @@
     <anx-container>
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
-          <div class="icon-cloud"></div>
+          <anx-icon />
+          <anx-icon img="alexa" />
+          <anx-icon img="3d.svg" />
           This is a simple paragraph. Paragraphs are made for text. A paragraph
           can additionally have a title. This paragraph for example, does not
           have a title.<br /><br />
@@ -222,7 +224,8 @@
 
           <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
-            and hava a prop for the item-list (array).
+            and hava a prop for the options (array&lt;{value: string, text:
+            string}&gt;). Also the anx-select can be validated!
           </anx-paragraph>
           <anx-select width="100%" v-model="selected1" />
           <anx-select
@@ -230,6 +233,7 @@
             id="anx-select"
             validation="true"
             v-model="selected2"
+            label="Auswahl treffen required"
           />
 
           <anx-paragraph size="h3" title="anx-textarea">
@@ -319,7 +323,7 @@ import AnxForm from "@/components/AnxForm.vue";
 import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
-
+import AnxIcon from "@/components/AnxIcon.vue";
 @Component({
   components: {
     AnxHeader,
@@ -339,7 +343,8 @@ import AnxTextarea from "@/components/AnxTextarea.vue";
     AnxForm,
     AnxCheckbox,
     AnxSelect,
-    AnxTextarea
+    AnxTextarea,
+    AnxIcon
   }
 })
 export default class App extends Vue {

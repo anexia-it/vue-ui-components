@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>068-Mitarbeiterevents</title>
+  <g>
+    <path class="cls-1" d="M188.46,112.15a76.55,76.55,0,0,1-12.6-3.06l-55.35,55.35L94.24,138.17l54.32-54.32a34.73,34.73,0,0,1-1.82-13.42l45.62-4.83Z"/>
+    <path class="cls-1" d="M97.44,134.18h51.48"/>
+    <path class="cls-1" d="M121.81,111h51.45"/>
+    <path class="cls-1" d="M190.2,91.4c-24.32-2.48-25-22.92-25-22.92"/>
+    <path class="cls-1" d="M101.54,145.48,57.91,189.11"/>
+    <path class="cls-1" d="M104.82,194.38l-8.48-9.83s-12.4-10.7,1.57-20.54,2.45-18.54,2.45-18.54"/>
+    <path class="cls-2" d="M123.18,189.87,117.46,199l4.27,9.88-10.44-2.62-8.08,7.11-.73-10.74-9.26-5.48,10-4,2.36-10.5,6.9,8.26Z"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

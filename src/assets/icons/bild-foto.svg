@@ -1,0 +1,30 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>100-Bild-Foto</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <rect class="cls-2" x="52.17" y="76.18" width="153.67" height="105.65" rx="7.84" ry="7.84"/>
+    <polyline class="cls-2" points="205.83 135.17 205.83 100.8 145.51 153.37 106.12 122.36 52.17 167.61"/>
+    <circle class="cls-3" cx="75.47" cy="100.8" r="10.71"/>
+  </g>
+</svg>

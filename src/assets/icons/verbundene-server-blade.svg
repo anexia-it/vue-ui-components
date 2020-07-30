@@ -1,0 +1,44 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+
+      .cls-4 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <title>051-Verbundene-Server-Blade</title>
+  <g>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <g>
+      <path class="cls-2" d="M206.78,118.55H51.22L83.76,68.84h91Z"/>
+      <path class="cls-2" d="M206.78,155.51H51.22v-37H206.78Z"/>
+      <path class="cls-1" d="M76.11,189.16h26.34"/>
+      <path class="cls-1" d="M155.55,189.16h26.34"/>
+      <path class="cls-1" d="M112.52,189.16h33"/>
+      <path class="cls-1" d="M128.93,169.44v19.72"/>
+      <path class="cls-3" d="M188.51,130.41a6.62,6.62,0,1,1-6.62,6.62A6.62,6.62,0,0,1,188.51,130.41Z"/>
+      <path class="cls-4" d="M62.94,144.34l14.62-14.62"/>
+      <path class="cls-4" d="M80.73,144.34l14.62-14.62"/>
+      <path class="cls-4" d="M98.73,144.34l14.62-14.62"/>
+      <path class="cls-4" d="M116.53,144.34l14.61-14.62"/>
+    </g>
+  </g>
+</svg>

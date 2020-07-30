@@ -1,0 +1,28 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>060-Weiterbildung</title>
+  <g>
+    <g>
+      <path class="cls-1" d="M49.11,98.65l68-25.31a36.32,36.32,0,0,1,25.63.09l66.22,25.2a2.94,2.94,0,0,1,0,5.49L142,129.84a36.33,36.33,0,0,1-26.09,0L49.08,104.15A2.94,2.94,0,0,1,49.11,98.65Z"/>
+      <polyline class="cls-1" points="62.95 109.48 62.95 152.6 54.35 174.44 73.65 182.74 70.64 170.29"/>
+    </g>
+    <path class="cls-1" d="M84.73,135.77s-7.18,73.76,43.2,73.76,45.12-73.76,45.12-73.76l-37.63,12A24.68,24.68,0,0,1,120,147.7Z"/>
+    <circle class="cls-2" cx="143.2" cy="163.32" r="7.47"/>
+    <path class="cls-1" d="M144.23,182.74c0,5.67-7.25,10.27-16.18,10.27s-16.18-4.6-16.18-10.27"/>
+    <circle class="cls-2" cx="112.94" cy="163.32" r="7.47"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

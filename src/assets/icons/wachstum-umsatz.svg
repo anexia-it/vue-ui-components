@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>076-Wachstum-Umsatz</title>
+  <g>
+    <path class="cls-1" d="M96.43,194.19h-32V162.75h32Z"/>
+    <path class="cls-1" d="M145,194.19H113V147h32Z"/>
+    <path class="cls-1" d="M193.55,194.19h-32V129.07h32Z"/>
+    <g>
+      <polyline class="cls-1" points="168.46 82.83 126.43 124.86 111.83 110.26 75.14 146.96"/>
+      <polygon class="cls-2" points="151.37 73.48 187.49 63.81 177.81 99.92 151.37 73.48"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

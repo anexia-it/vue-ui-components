@@ -1,0 +1,21 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>009-Massgeschneiderte-individuelle-Loesungen</title>
+  <g>
+    <path class="cls-1" d="M83.61,59.8l64.81,93.67"/>
+    <path class="cls-1" d="M140.51,154.28c9.49-6.12,23.12-1.88,30.44,9.48s5.56,25.52-3.92,31.64-23.12,1.87-30.44-9.48S131,160.4,140.51,154.28Z"/>
+    <path class="cls-1" d="M143.2,128.12l16.57.93"/>
+    <path class="cls-1" d="M159.8,120.74c.58-11.28,12-19.86,25.48-19.16s24,10.39,23.38,21.67-12,19.85-25.48,19.16S159.22,132,159.8,120.74Z"/>
+    <path class="cls-1" d="M130.18,127.11,49.32,122"/>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+  </g>
+</svg>

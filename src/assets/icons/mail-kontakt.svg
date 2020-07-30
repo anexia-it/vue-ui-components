@@ -1,0 +1,22 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>013-Mail-Kontakt</title>
+  <g>
+    <g>
+      <rect class="cls-1" x="60.75" y="87.8" width="136.51" height="82.41"/>
+      <polyline class="cls-1" points="197.25 87.8 129 147.54 60.75 87.8"/>
+      <line class="cls-1" x1="102.27" y1="124.14" x2="60.75" y2="170.2"/>
+      <line class="cls-1" x1="155.73" y1="124.14" x2="197.25" y2="170.2"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

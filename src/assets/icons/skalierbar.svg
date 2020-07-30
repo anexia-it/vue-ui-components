@@ -1,0 +1,28 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 33.72 17.49;
+      }
+    </style>
+  </defs>
+  <title>133-Skalierbar</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <g>
+      <polyline class="cls-1" points="67.65 96 67.65 67.65 94.65 67.65"/>
+      <line class="cls-2" x1="112.14" y1="67.65" x2="154.61" y2="67.65"/>
+      <polyline class="cls-1" points="163.35 67.65 190.35 67.65 190.35 94.65"/>
+      <line class="cls-2" x1="190.35" y1="112.14" x2="190.35" y2="154.61"/>
+      <polyline class="cls-1" points="190.35 163.35 190.35 190.35 162 190.35"/>
+    </g>
+    <rect class="cls-1" x="67.65" y="116.3" width="74.05" height="74.05"/>
+  </g>
+</svg>

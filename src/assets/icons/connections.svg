@@ -1,0 +1,32 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>124-Connections</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <circle class="cls-1" cx="95.49" cy="192.33" r="11.6" transform="translate(-35.18 21.93) rotate(-11.08)"/>
+    <circle class="cls-1" cx="117.96" cy="139.04" r="11.6" transform="translate(-24.52 25.26) rotate(-11.08)"/>
+    <circle class="cls-1" cx="201.29" cy="121.13" r="11.6" transform="translate(-19.52 40.94) rotate(-11.08)"/>
+    <circle class="cls-1" cx="177.62" cy="179.8" r="11.6" transform="translate(-31.24 37.48) rotate(-11.08)"/>
+    <circle class="cls-1" cx="58.63" cy="104.84" r="11.6" transform="translate(-19.05 13.22) rotate(-11.08)"/>
+    <circle class="cls-1" cx="150.9" cy="61.17" r="11.6" transform="translate(-8.94 30.14) rotate(-11.08)"/>
+    <line class="cls-1" x1="69.13" y1="99.93" x2="140.59" y2="66.47"/>
+    <line class="cls-1" x1="189.91" y1="123.36" x2="129.34" y2="136.81"/>
+    <line class="cls-1" x1="63.11" y1="115.54" x2="90.86" y2="181.7"/>
+    <line class="cls-1" x1="154.25" y1="72.27" x2="193.25" y2="112.77"/>
+    <line class="cls-1" x1="113.25" y1="149.63" x2="99.13" y2="181.32"/>
+    <line class="cls-1" x1="107.92" y1="133.25" x2="68.67" y2="110.63"/>
+    <line class="cls-1" x1="122.48" y1="128.36" x2="146.38" y2="71.85"/>
+    <line class="cls-1" x1="195.83" y1="131.36" x2="176.13" y2="168.3"/>
+    <line class="cls-1" x1="166.24" y1="182.03" x2="106.87" y2="190.1"/>
+    <line class="cls-1" x1="127.54" y1="145.58" x2="168.04" y2="173.26"/>
+  </g>
+</svg>

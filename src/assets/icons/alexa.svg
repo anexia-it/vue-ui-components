@@ -1,0 +1,43 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>096-Alexa</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <path class="cls-2" d="M158.4,81c0,6.59-13.17,11.94-29.4,11.94S99.6,87.56,99.6,81"/>
+      <ellipse class="cls-2" cx="129" cy="63.07" rx="29.4" ry="11.94"/>
+      <ellipse class="cls-3" cx="118.96" cy="62.49" rx="6.61" ry="3.39"/>
+      <ellipse class="cls-3" cx="139.04" cy="62.49" rx="6.61" ry="3.39"/>
+      <path class="cls-2" d="M99.6,63.87V192.1c0,6.59,13.17,11.94,29.4,11.94s29.4-5.35,29.4-11.94V63.87"/>
+      <g>
+        <path class="cls-1" d="M169.93,137.41a14.33,14.33,0,0,1,1.45,25.05"/>
+        <path class="cls-1" d="M176.08,176.06a28.55,28.55,0,0,0,0-51.44"/>
+      </g>
+      <g>
+        <path class="cls-1" d="M88.07,163.27a14.34,14.34,0,0,1-1.45-25.06"/>
+        <path class="cls-1" d="M81.92,124.62a28.55,28.55,0,0,0,0,51.44"/>
+      </g>
+    </g>
+  </g>
+</svg>

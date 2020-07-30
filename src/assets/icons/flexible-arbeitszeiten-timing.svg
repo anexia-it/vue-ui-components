@@ -1,0 +1,30 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>063-Flexible-Arbeitszeiten-timing</title>
+  <g>
+    <g>
+      <g>
+        <path class="cls-1" d="M155.37,189.68A66.72,66.72,0,1,1,174.78,81.82c.33.34.66.67,1,1"/>
+        <polygon class="cls-2" points="156.46 89.28 190.1 105.61 187.42 68.31 156.46 89.28"/>
+      </g>
+      <path class="cls-1" d="M177.64,173.13a67,67,0,0,1-11.85,10.58"/>
+      <path class="cls-1" d="M190.38,151.63a66.78,66.78,0,0,1-5.56,11.7"/>
+      <path class="cls-1" d="M194.32,129a66.86,66.86,0,0,1-.94,11.21"/>
+      <polyline class="cls-1" points="98.93 145.42 136.12 145.42 136.12 102.91"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

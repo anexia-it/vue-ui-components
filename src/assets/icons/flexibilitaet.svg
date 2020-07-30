@@ -1,0 +1,33 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-3 {
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>130-Flexibilitaet</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <path class="cls-2" d="M129,201.05v-26.2c0-27.88,25-48.68,49.62-51.37a202.35,202.35,0,0,1,25-1.17"/>
+    <polyline class="cls-3" points="187.55 106.2 203.62 122.27 187.55 138.34"/>
+    <polyline class="cls-3" points="111.27 67.23 127.33 51.16 143.4 67.23"/>
+    <path class="cls-2" d="M117.12,148A59,59,0,0,0,76,123.48a202.16,202.16,0,0,0-25-1.17"/>
+    <polyline class="cls-3" points="67.12 106.2 51.05 122.27 67.12 138.34"/>
+    <line class="cls-2" x1="127.33" y1="136.92" x2="127.33" y2="51.16"/>
+  </g>
+</svg>

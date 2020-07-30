@@ -1,0 +1,33 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>069-Forschung-Entwicklung</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <g>
+        <path class="cls-2" d="M111.9,77.59V114.5a45.63,45.63,0,0,1-1.61,12l-31.22,52A9.3,9.3,0,0,0,87,192.9h84.13a9.26,9.26,0,0,0,7.72-14.54l-33-51.84a45.63,45.63,0,0,1-1.61-12V77.59"/>
+        <line class="cls-2" x1="102.65" y1="61.24" x2="155.35" y2="61.24"/>
+      </g>
+      <path class="cls-1" d="M91.4,158s20.06-17.54,37.6,0,34-4.47,34-4.47"/>
+      <line class="cls-2" x1="113.34" y1="92.39" x2="125.03" y2="92.39"/>
+      <line class="cls-2" x1="111.9" y1="108.5" x2="125.03" y2="108.5"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>032-WLAN</title>
+  <g>
+    <g>
+      <path class="cls-1" d="M52.61,110.51c.88-.7,2-1.5,3-2.44a109.93,109.93,0,0,1,149.73.55"/>
+      <path class="cls-1" d="M76.66,131.16c29.51-30.19,79.68-28.68,107.27.23"/>
+      <path class="cls-1" d="M100.74,152.26c13.6-15.84,43.82-16.95,59.21.17"/>
+      <path class="cls-1" d="M142,174.93a11.75,11.75,0,1,1-11.77-11.73A11.69,11.69,0,0,1,142,174.93Z"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

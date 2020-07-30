@@ -1,0 +1,39 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+
+      .cls-4 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <title>029-Eingabe</title>
+  <g>
+    <path class="cls-1" d="M192.18,149.08H65.82V68.5H192.18Z"/>
+    <path class="cls-1" d="M103.09,94.7l19.66,16-19.66,16"/>
+    <path class="cls-1" d="M128,125.6h27"/>
+    <path class="cls-2" d="M192.18,193.87H65.82v-30H192.18Z"/>
+    <path class="cls-3" d="M177.33,173.49a5.38,5.38,0,1,1-5.37,5.38A5.38,5.38,0,0,1,177.33,173.49Z"/>
+    <path class="cls-4" d="M81.66,184.8l10.13-10.13"/>
+    <path class="cls-4" d="M102.75,184.8l10.13-10.13"/>
+    <path class="cls-4" d="M124,184.8l10.14-10.13"/>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+  </g>
+</svg>
