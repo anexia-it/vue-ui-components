@@ -1,4 +1,5 @@
 <template>
+  <!-- Checkbox with validation provider -->
   <ValidationProvider
     v-if="validation"
     v-slot="{ errors }"
@@ -22,6 +23,7 @@
       <span class="error">{{ errors[0] }}</span>
     </div>
   </ValidationProvider>
+  <!-- standard Checkbox-->
   <div v-else class="anx-checkbox">
     <label :for="name">
       <input
@@ -47,7 +49,12 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxCheckbox extends Vue {
+  /**with this property, a checkbox can be set */
+  /**Props
+   * name: the name of the input with type checkbox and the label text
+   */
   @Prop() name!: string;
+  /**validation: is it set (true) then there are a default validation provider (check is_set/required) */
   @Prop({ default: false }) validation!: boolean;
 
   private checked = false;

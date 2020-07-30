@@ -220,7 +220,7 @@
             id="anx-select"
             validation="true"
             v-model="selected2"
-            label-text="Auswahl treffen required"
+            label="Auswahl treffen required"
           />
 
           <anx-paragraph size="h3" title="anx-textarea">

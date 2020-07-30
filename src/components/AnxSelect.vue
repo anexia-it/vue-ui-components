@@ -1,8 +1,9 @@
 <template>
+  <!-- if validation=true then this will be rendered, anx-select + validation-provider -->
   <ValidationProvider
     v-if="validation"
-    :name="labelText"
-    :rules="'included:' + cleanOptions"
+    :name="label"
+    rules="excluded:null"
     v-slot="{ errors }"
   >
     <div
@@ -10,7 +11,7 @@
       :class="{ is_invalid: error.length > 0 || errors.length > 0 }"
       :style="cssProps"
     >
-      <label :for="id + '1'"> {{ labelText }}</label>
+      <label :for="id + '1'"> {{ label }}</label>
       <select
         class="select-original"
         :id="id + '1'"
@@ -43,8 +44,9 @@
       <span v-else class="error">{{ errors[0] }}</span>
     </div>
   </ValidationProvider>
+  <!-- if validation=false then this will be rendered,s simple anx-select -->
   <div v-else class="anx-select" :style="cssProps">
-    <label :for="id + '1'"> {{ labelText }}</label>
+    <label :for="id + '1'"> {{ label }}</label>
     <select
       class="select-original"
       :id="id + '1'"
@@ -85,12 +87,24 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxSelect extends Vue {
+  /** With this property, a anx-select can be set */
+  /**Props:
+   * id: the id and name of the anx-select, important when there are more then one*/
   @Prop({ default: "anx-select-choice" }) id!: string;
-  @Prop({ default: "Auswahl treffen" }) labelText!: string;
+  /**label: the text for the label, is also the name for the field in the error-message
+   */
+  @Prop({ default: "Auswahl treffen" }) label!: string;
+  /**options: this are the options for the select.
+   * This is a Array<{ value: string; text: string }>
+   * value: the value of the options and the value who will be passed to the parent
+   * text: the text who will be show in the application as label/text
+   * You can add a default/optional placeholder like "please choose one option" via {value: "null", text: "please choose one option"}
+   * The value for a placeholder must be "null" (important for the validation)
+   */
   @Prop({
     default: function() {
       return [
-        { value: "default", text: "Auswahl treffen" },
+        { value: "null", text: "Auswahl treffen" },
         { value: "Auswahl 1", text: "Auswahl 1" },
         { value: "Auswahl 2", text: "Auswahl 2" },
         { value: "Auswahl 3", text: "Auswahl 3" },
@@ -99,10 +113,11 @@ export default class AnxSelect extends Vue {
     }
   })
   options!: Array<{ value: string; text: string }>;
+  /**width: the width for the eternaly anx-select */
   @Prop({ default: "100%" }) width!: string;
+  /**validation: When this is set to true, there will be a validation-provider */
   @Prop({ default: false }) validation!: boolean;
 
-  public cleanOptions: Array<string> = [];
   private selected = this.options[0].value;
   private selectedText = this.options[0].text;
   private show = false;
@@ -113,6 +128,12 @@ export default class AnxSelect extends Vue {
       width: this.width
     };
   }
+
+  /**
+   * Watch the selected variable. When selected is changed, the new value will be verify.
+   * option "immediate:true" means, it will be execute before mounted
+   * (this is important, for the validation observer)
+   */
   @Watch("selected", { immediate: false })
   async onSelectedChanged(val: string) {
     if (val && this.validation) {
@@ -120,24 +141,26 @@ export default class AnxSelect extends Vue {
     }
   }
 
+  /**
+   * Verfiy the selected value and generate the error-message for the custom select.
+   */
   private async verify(value: string) {
-    const { errors } = await this.$validator.verify(
-      value,
-      "included:" + this.cleanOptions,
-      {
-        name: this.labelText
-      }
-    );
+    const { errors } = await this.$validator.verify(value, "excluded:null", {
+      name: this.label
+    });
     this.error = errors;
   }
 
+  /**
+   * Reset the error, because after mount it shouldn't show the error message
+   */
   public mounted() {
-    this.options.forEach(option => {
-      if (option.value != "default") this.cleanOptions.push(option.value);
-    });
     this.error = [];
   }
 
+  /**
+   * Set the variable with the selcted option and emit the input-event
+   */
   public select(option: { value: string; text: string }) {
     this.selected = option.value;
     this.selectedText = option.text;
