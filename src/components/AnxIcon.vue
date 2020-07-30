@@ -21,7 +21,7 @@ export default class AnxIcon extends Vue {
         icon = this.img + ".svg";
       }
     }
-    return require("@/assets/icons/" + icon);
+    return require("../assets/icons/" + icon);
   }
 
   get cssProps() {
