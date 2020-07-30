@@ -1,0 +1,21 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>021-Webdesign</title>
+  <g>
+    <path class="cls-1" d="M192.4,197.16H65.6A11.66,11.66,0,0,1,53.94,185.5v-6.67h54.55l5.53,3.49h29.67l5.82-3.49h54.55v6.67A11.66,11.66,0,0,1,192.4,197.16Z"/>
+    <path class="cls-1" d="M150.05,59.92l12.57-12.57,18.79,18.79L168.84,78.72Z"/>
+    <path class="cls-1" d="M160.8,86.76l-39.48,39.48-24.23,5.44,5.44-24.23L142,68Z"/>
+    <path class="cls-1" d="M144.15,84.06l-30.42,30.43"/>
+    <path class="cls-1" d="M170.9,89.52h17.31a6.53,6.53,0,0,1,6.54,6.53v62a6.54,6.54,0,0,1-6.54,6.54H68.62A6.53,6.53,0,0,1,62.09,158v-62a6.53,6.53,0,0,1,6.53-6.53H100.5"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

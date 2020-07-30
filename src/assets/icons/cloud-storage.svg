@@ -1,0 +1,37 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+
+      .cls-4 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <title>037-Cloud-Storage</title>
+  <g>
+    <path class="cls-1" d="M177.22,133.72a24.29,24.29,0,0,0-17.44-23.3A31.48,31.48,0,0,0,102,96.28a23,23,0,0,0-29.76,15.81A23.06,23.06,0,0,0,75.09,158h8.24"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <rect class="cls-2" x="94.47" y="144.11" width="107.64" height="29.44"/>
+    <circle class="cls-3" cx="189.46" cy="158.83" r="4.58"/>
+    <line class="cls-4" x1="108.53" y1="163.15" x2="117.16" y2="154.52"/>
+    <line class="cls-4" x1="127.07" y1="163.15" x2="135.7" y2="154.52"/>
+    <line class="cls-4" x1="145.73" y1="163.15" x2="154.37" y2="154.52"/>
+  </g>
+</svg>

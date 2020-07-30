@@ -1,0 +1,24 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>115-Tasse</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <path class="cls-1" d="M73,74.33s9.92,101,12,109c1.25,4.81,17.08,8.79,37.79,8.79s36.54-4,37.8-8.79c2.09-8,12-109,12-109"/>
+      <ellipse class="cls-1" cx="122.84" cy="74.33" rx="49.81" ry="8.44"/>
+      <g>
+        <path class="cls-1" d="M171.83,82.62a20.69,20.69,0,0,1,21,2.73c7.4,5.73,9.77,15.85,7.05,30.08-6.79,35.42-35.38,47.53-36.53,48"/>
+        <path class="cls-1" d="M165.15,146.59c.77-.3,15.65-6.08,20.41-32.29,1.14-6.27,1.4-13.76-3.06-17.43-3.94-3.24-10.89-1-12.35.83"/>
+      </g>
+    </g>
+  </g>
+</svg>

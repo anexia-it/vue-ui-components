@@ -1,0 +1,41 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>116-Loeschen</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <polygon class="cls-2" points="77.74 73.57 180.26 73.57 168.1 204.93 89.89 204.93 77.74 73.57"/>
+      <rect class="cls-2" x="103.91" y="53.07" width="50.18" height="20.5"/>
+      <g>
+        <line class="cls-2" x1="129" y1="90.24" x2="129" y2="185.38"/>
+        <line class="cls-2" x1="153.3" y1="90.24" x2="147.23" y2="185.38"/>
+        <line class="cls-2" x1="104.7" y1="90.24" x2="110.77" y2="185.38"/>
+      </g>
+      <line class="cls-3" x1="64.67" y1="73.57" x2="193.33" y2="73.57"/>
+    </g>
+  </g>
+</svg>

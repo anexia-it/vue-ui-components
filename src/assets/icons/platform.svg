@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 7px;
+      }
+    </style>
+  </defs>
+  <title>140-Platform</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <line class="cls-1" x1="78.14" y1="197.25" x2="179.86" y2="197.25"/>
+    <rect class="cls-1" x="50.42" y="60.75" width="157.16" height="114.75"/>
+    <rect class="cls-1" x="107.48" y="175.5" width="43.04" height="21.74"/>
+    <rect class="cls-2" x="97.3" y="80.28" width="38.8" height="30.43"/>
+    <rect class="cls-2" x="150.52" y="80.28" width="38.8" height="30.43"/>
+    <line class="cls-2" x1="64.3" y1="80.28" x2="83.37" y2="80.28"/>
+    <line class="cls-2" x1="64.3" y1="99.16" x2="83.37" y2="99.16"/>
+    <line class="cls-2" x1="64.3" y1="118.05" x2="83.37" y2="118.05"/>
+    <line class="cls-2" x1="64.3" y1="136.94" x2="83.37" y2="136.94"/>
+    <line class="cls-2" x1="64.3" y1="155.83" x2="83.37" y2="155.83"/>
+    <rect class="cls-2" x="97.3" y="125.4" width="38.8" height="30.43"/>
+    <rect class="cls-2" x="150.52" y="125.4" width="38.8" height="30.43"/>
+  </g>
+</svg>

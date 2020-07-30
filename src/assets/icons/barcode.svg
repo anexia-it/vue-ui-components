@@ -1,0 +1,49 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>108-Barcode</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <g>
+      <line class="cls-2" x1="60.67" y1="89.43" x2="60.67" y2="146.23"/>
+      <line class="cls-2" x1="75.85" y1="146.06" x2="75.85" y2="148.79"/>
+      <line class="cls-2" x1="91.04" y1="146.06" x2="91.04" y2="148.79"/>
+      <line class="cls-2" x1="106.22" y1="146.06" x2="106.22" y2="148.79"/>
+      <line class="cls-2" x1="121.41" y1="146.06" x2="121.41" y2="148.79"/>
+      <line class="cls-2" x1="136.59" y1="146.06" x2="136.59" y2="148.79"/>
+      <line class="cls-2" x1="151.78" y1="146.06" x2="151.78" y2="148.79"/>
+      <line class="cls-2" x1="166.96" y1="146.06" x2="166.96" y2="148.79"/>
+      <line class="cls-2" x1="182.15" y1="146.06" x2="182.15" y2="148.79"/>
+      <line class="cls-2" x1="75.85" y1="89.43" x2="75.85" y2="133.97"/>
+      <line class="cls-2" x1="91.04" y1="89.43" x2="91.04" y2="133.97"/>
+      <line class="cls-2" x1="106.22" y1="89.43" x2="106.22" y2="133.97"/>
+      <line class="cls-2" x1="121.41" y1="89.43" x2="121.41" y2="133.97"/>
+      <line class="cls-2" x1="136.59" y1="89.43" x2="136.59" y2="133.97"/>
+      <line class="cls-2" x1="151.78" y1="89.43" x2="151.78" y2="133.97"/>
+      <line class="cls-2" x1="166.96" y1="89.43" x2="166.96" y2="133.97"/>
+      <line class="cls-2" x1="182.15" y1="89.43" x2="182.15" y2="133.97"/>
+      <line class="cls-2" x1="197.33" y1="89.43" x2="197.33" y2="146.23"/>
+    </g>
+    <polyline class="cls-2" points="137.93 174.13 45.59 174.13 45.59 74.07 212.41 74.07 212.41 174.13 182.99 174.13"/>
+    <g>
+      <circle class="cls-2" cx="160.44" cy="173.05" r="22.54"/>
+      <line class="cls-2" x1="177.9" y1="187.31" x2="196.02" y2="205.44"/>
+    </g>
+  </g>
+</svg>

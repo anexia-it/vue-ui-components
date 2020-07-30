@@ -1,0 +1,23 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>016-Party-Projektabschluss</title>
+  <g>
+    <g>
+      <polygon class="cls-1" points="189.78 89.37 129 161 68.22 89.37 189.78 89.37"/>
+      <line class="cls-1" x1="129" y1="161" x2="129" y2="204.52"/>
+      <line class="cls-1" x1="104" y1="204.52" x2="154" y2="204.52"/>
+      <line class="cls-1" x1="178.71" y1="64.09" x2="153.44" y2="89.37"/>
+      <path class="cls-1" d="M94.2,119.73s17.67-8.15,34.91,0,34.9,0,34.9,0"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

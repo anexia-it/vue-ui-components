@@ -1,0 +1,36 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>136-Warning</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <polygon class="cls-2" points="129 49.4 51.89 180.32 206.11 180.32 129 49.4"/>
+    <g>
+      <line class="cls-3" x1="129" y1="95.84" x2="129" y2="140.33"/>
+      <circle class="cls-4" cx="129" cy="157.48" r="6.24"/>
+    </g>
+  </g>
+</svg>

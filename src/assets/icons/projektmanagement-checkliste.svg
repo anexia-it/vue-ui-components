@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-4 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linejoin: bevel;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+
+      .cls-4 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <title>011-Projektmanagement-checkliste</title>
+  <g>
+    <path class="cls-1" d="M121.71,59.28,105.85,77.14a9.64,9.64,0,0,0,7.2,16h32.14a9.64,9.64,0,0,0,7.12-16.13L136,59.19A9.64,9.64,0,0,0,121.71,59.28Z"/>
+    <polyline class="cls-2" points="92.52 80.93 71.71 80.93 71.71 193.73 186.29 193.73 186.29 80.93 165.47 80.93"/>
+    <circle class="cls-3" cx="129.04" cy="75.21" r="6.93"/>
+    <path class="cls-4" d="M100.6,143.39l19.58,15.47s26.59-29.49,39.64-37.47"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

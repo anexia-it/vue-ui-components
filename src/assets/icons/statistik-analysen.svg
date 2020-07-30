@@ -1,0 +1,31 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>072-Statistik-Analysen</title>
+  <g>
+    <g>
+      <g>
+        <polyline class="cls-1" points="96.25 161.48 129.95 127.78 156.99 127.78 178.25 97.74"/>
+        <polygon class="cls-2" points="190.35 113 193.79 75.77 159.82 91.4 190.35 113"/>
+      </g>
+      <polyline class="cls-1" points="193.79 182.23 64.31 182.23 64.31 75.77 79.3 75.77"/>
+      <line class="cls-1" x1="64.31" y1="99" x2="79.3" y2="99"/>
+      <line class="cls-1" x1="64.31" y1="119.75" x2="79.3" y2="119.75"/>
+      <line class="cls-1" x1="64.31" y1="161.48" x2="79.3" y2="161.48"/>
+      <line class="cls-1" x1="64.21" y1="141.07" x2="79.2" y2="141.07"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

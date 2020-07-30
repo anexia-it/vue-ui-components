@@ -1,0 +1,32 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linejoin: bevel;
+      }
+    </style>
+  </defs>
+  <title>061-Firmenauto-Auto</title>
+  <g>
+    <path class="cls-1" d="M203.5,118.33v44.92H53.26V118.33l1-3.48L84.55,65.34h87.66l30.34,49.51Z"/>
+    <path class="cls-2" d="M62.14,104.94H194.62"/>
+    <path class="cls-1" d="M56.73,163.25h30.1a0,0,0,0,1,0,0V176a5.09,5.09,0,0,1-5.09,5.09h-25A5.09,5.09,0,0,1,51.64,176v-7.63a5.09,5.09,0,0,1,5.09-5.09Z"/>
+    <path class="cls-1" d="M175,163.25h25a5.09,5.09,0,0,1,5.09,5.09v12.72a0,0,0,0,1,0,0H175a5.09,5.09,0,0,1-5.09-5.09v-7.63A5.09,5.09,0,0,1,175,163.25Z" transform="translate(375.05 344.3) rotate(-180)"/>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <circle class="cls-2" cx="85.21" cy="133.63" r="13.54"/>
+    <circle class="cls-2" cx="171.55" cy="133.63" r="13.54"/>
+    <path class="cls-1" d="M109.28,126.86h38.2"/>
+    <path class="cls-1" d="M109.28,140.4h38.2"/>
+    <path class="cls-1" d="M136.25,102a16.84,16.84,0,1,1,33.68,0"/>
+  </g>
+</svg>

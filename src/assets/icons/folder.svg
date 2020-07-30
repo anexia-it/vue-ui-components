@@ -1,0 +1,20 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>138-Folder</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <path class="cls-1" d="M192.52,103.39v-7.1a9.11,9.11,0,0,0-9.11-9.12H94.47V83.38a9.12,9.12,0,0,0-9.07-9.07H66.09A9.11,9.11,0,0,0,57,83.42h0v91.16a9.11,9.11,0,0,0,9.12,9.11H183.46"/>
+      <path class="cls-1" d="M185.4,183.69H70.12c-5.88,0-11.77,0-10.39-5.51l15-67.58a9.13,9.13,0,0,1,8.83-7H200.45a9.11,9.11,0,0,1,9.08,9.15,9.28,9.28,0,0,1-.25,2.1l-15.05,61.7A9.12,9.12,0,0,1,185.4,183.69Z"/>
+    </g>
+  </g>
+</svg>

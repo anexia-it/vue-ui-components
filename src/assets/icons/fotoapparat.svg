@@ -1,0 +1,40 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>118-Fotoapparat</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <g>
+      <line class="cls-2" x1="205.4" y1="86.67" x2="218.1" y2="75.36"/>
+      <line class="cls-2" x1="210.75" y1="99.29" x2="220.91" y2="99.29"/>
+      <line class="cls-2" x1="194.66" y1="79.98" x2="194.66" y2="69.99"/>
+    </g>
+    <g>
+      <g>
+        <path class="cls-1" d="M151.79,138.41a27,27,0,1,1-27-27A27,27,0,0,1,151.79,138.41Z"/>
+        <line class="cls-3" x1="105.91" y1="87.9" x2="144.4" y2="87.9"/>
+        <path class="cls-2" d="M185.65,93.77H167.78c-10.42,0-6.17-22.7-19.79-22.7H100.71c-12.83,0-8.57,22.7-19,22.7H63.84c-7.21,0-13.62,6.19-13.62,13.16v64.78c0,7,6.41,12.38,13.62,12.38H185.65c7.22,0,13.63-5.41,13.63-12.38V106.93C199.28,100,192.87,93.77,185.65,93.77Z"/>
+      </g>
+      <path class="cls-1" d="M184,115.61a9.21,9.21,0,1,1-9.21-9.21A9.21,9.21,0,0,1,184,115.61Z"/>
+    </g>
+  </g>
+</svg>

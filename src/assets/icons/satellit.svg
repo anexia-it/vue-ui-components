@@ -1,0 +1,39 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-5 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-2, .cls-5 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-4 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>117-Satellit</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <path class="cls-2" d="M123.68,173.31c-10.67-10.67-8.21-30.43,5.49-44.14s33.47-16.16,44.14-5.49Z"/>
+    <rect class="cls-3" x="113.88" y="63.66" width="58.17" height="31.24" transform="translate(-14.19 124.31) rotate(-45)"/>
+    <rect class="cls-3" x="50.2" y="127.34" width="58.17" height="31.24" transform="translate(-77.87 97.93) rotate(-45)"/>
+    <polygon class="cls-3" points="77.35 88.76 88.76 77.35 98.76 84.72 84.72 98.76 77.35 88.76"/>
+    <path class="cls-4" d="M140.19,156.8c3.94,3.93,11.55,4.11,16.13-.48s4.41-12.19.48-16.13Z"/>
+    <path class="cls-5" d="M195.74,129c4.58,19-.89,39.06-14.29,52.45S148,200.32,129,195.74"/>
+    <path class="cls-5" d="M175.07,141.7a27.2,27.2,0,0,1-33.37,33.37"/>
+    <rect class="cls-3" x="83.99" y="94.52" width="52.94" height="31.88" transform="translate(110.46 -45.75) rotate(45)"/>
+  </g>
+</svg>

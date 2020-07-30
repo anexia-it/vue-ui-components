@@ -1,0 +1,17 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>087-Eins</title>
+  <g>
+    <path class="cls-1" d="M100.4,189.63v-19.5h20.93V97.84q-5,3-11.45,6.17a101.31,101.31,0,0,1-12.35,5.1L91.45,96.23l37-25.94h16.28v99.84h15.57v19.5Z"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

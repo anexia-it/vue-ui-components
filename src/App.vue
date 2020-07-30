@@ -8,7 +8,9 @@
     <anx-container>
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
-          <div class="icon-cloud"></div>
+          <anx-icon />
+          <anx-icon img="alexa" />
+          <anx-icon img="tasse.svg" />
           This is a simple paragraph. Paragraphs are made for text. A paragraph
           can additionally have a title. This paragraph for example, does not
           have a title.<br /><br />
@@ -298,7 +300,7 @@ import AnxForm from "@/components/AnxForm.vue";
 import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
-
+import AnxIcon from "@/components/AnxIcon.vue";
 @Component({
   components: {
     AnxHeader,
@@ -318,7 +320,8 @@ import AnxTextarea from "@/components/AnxTextarea.vue";
     AnxForm,
     AnxCheckbox,
     AnxSelect,
-    AnxTextarea
+    AnxTextarea,
+    AnxIcon
   }
 })
 export default class App extends Vue {

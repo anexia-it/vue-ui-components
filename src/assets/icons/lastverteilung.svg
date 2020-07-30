@@ -1,0 +1,39 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>145-Lastverteilung</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <polyline class="cls-2" points="111.27 67.23 127.33 51.16 143.4 67.23"/>
+      <line class="cls-3" x1="127.33" y1="201.05" x2="127.33" y2="51.16"/>
+    </g>
+    <g>
+      <polyline class="cls-2" points="160.59 110.07 182.59 104.37 188.29 126.37"/>
+      <line class="cls-3" x1="127.33" y1="201" x2="182.59" y2="104.37"/>
+    </g>
+    <g>
+      <polyline class="cls-2" points="94.08 110.07 72.08 104.37 66.38 126.37"/>
+      <line class="cls-3" x1="127.33" y1="201" x2="72.08" y2="104.37"/>
+    </g>
+  </g>
+</svg>

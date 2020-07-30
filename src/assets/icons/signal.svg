@@ -1,0 +1,21 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>028-Signal</title>
+  <g>
+    <path class="cls-1" d="M173.58,75.4c30.19,29.51,28.69,79.68-.23,107.27"/>
+    <path class="cls-1" d="M152.31,158.69c17.12-15.39,16-45.61.17-59.21"/>
+    <path class="cls-1" d="M141.54,129a11.81,11.81,0,1,0-11.73,11.77A11.75,11.75,0,0,0,141.54,129Z"/>
+    <path class="cls-1" d="M84.65,75.33c-28.92,27.59-30.42,77.76-.23,107.27"/>
+    <path class="cls-1" d="M105.69,99.31c-17.12,15.39-16,45.61-.17,59.21"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

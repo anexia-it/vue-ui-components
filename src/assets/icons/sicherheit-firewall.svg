@@ -1,0 +1,26 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <title>048-Sicherheit-Firewall</title>
+  <g>
+    <path class="cls-1" d="M129,207.15c74.49-22.79,66-124.84,66-124.84-44.9,0-66-18.36-66-18.36S107.91,82.31,63,82.31C63,82.31,54.51,184.36,129,207.15Z"/>
+    <line class="cls-1" x1="129" y1="63.95" x2="129" y2="207.15"/>
+    <line class="cls-2" x1="153.21" y1="90.86" x2="142" y2="102.08"/>
+    <line class="cls-2" x1="171.58" y1="98.32" x2="142" y2="127.9"/>
+    <line class="cls-2" x1="176.76" y1="120.43" x2="143.65" y2="153.53"/>
+    <line class="cls-2" x1="164.98" y1="159.04" x2="143.65" y2="180.37"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>144-Sharing</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <g>
+        <circle class="cls-1" cx="82.13" cy="134.26" r="15.01" transform="translate(-24.27 18.28) rotate(-11.08)"/>
+        <circle class="cls-1" cx="160.88" cy="88.94" r="15.01" transform="translate(-14.09 32.57) rotate(-11.08)"/>
+        <line class="cls-1" x1="95.12" y1="126.76" x2="147.9" y2="96.44"/>
+      </g>
+      <g>
+        <circle class="cls-1" cx="160.88" cy="179.59" r="15.01" transform="translate(-46.28 302.97) rotate(-78.92)"/>
+        <line class="cls-1" x1="147.89" y1="172.09" x2="95.11" y2="141.76"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>049-Vieren-Bugs</title>
+  <g>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <path class="cls-1" d="M149.1,82.65v4H108.61v-4A20.25,20.25,0,0,1,128.85,62.4h0A20.25,20.25,0,0,1,149.1,82.65Z"/>
+    <path class="cls-1" d="M168.3,102.66l23.79-23.79"/>
+    <path class="cls-1" d="M191.55,198.46l-27.93-27.94"/>
+    <path class="cls-1" d="M168.3,136.79h23.79"/>
+    <path class="cls-1" d="M128.85,191.32V125.58"/>
+    <path class="cls-1" d="M89.41,102.66l-23.5-23.5"/>
+    <path class="cls-1" d="M94.09,170.52l-27.4,27.4"/>
+    <path class="cls-1" d="M128.85,191.32h0a39.44,39.44,0,0,1-39.44-39.44V102.66H168.3v49.22A39.44,39.44,0,0,1,128.85,191.32Z"/>
+    <line class="cls-1" x1="89.41" y1="136.79" x2="65.91" y2="136.79"/>
+    <path class="cls-1" d="M143.18,68.35l10.3-10.3"/>
+    <path class="cls-1" d="M114.52,68.35,104,57.8"/>
+  </g>
+</svg>

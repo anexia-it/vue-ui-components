@@ -1,0 +1,21 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>030-Onlineshop-Warenkorb</title>
+  <g>
+    <g>
+      <polyline class="cls-1" points="219.66 89.57 189.98 89.57 161.74 154.67 76.79 154.67 53.81 103.45 151.21 103.45"/>
+      <circle class="cls-1" cx="91.86" cy="183.53" r="11.97"/>
+      <circle class="cls-1" cx="147.38" cy="183.53" r="11.97"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>
