@@ -14,7 +14,16 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
 export default class AnxButton extends Vue {
+  /**With this property, a button can be set */
+  /**Props
+   * btnType: the Type of a button
+   */
   @Prop({ default: "submit" }) btnType!: string;
+  /**className: the class of the button 
+   * options:
+   * "anx-button": the default class (green-animated-button to white outlined)
+   * "anx-button btn-outline": outlined-button (white-animated to green)
+  */
   @Prop({ default: "anx-button" }) className!: string;
   @Prop({ default: "button" }) text!: string;
   @Prop({ default: "136px" }) width!: string;
@@ -123,7 +132,7 @@ button {
   }
 }
 
-/*btn-outline*/
+/*btn-outline animated button*/
 .btn-outline {
   color: $anx-primary-green !important;
   border: 1px solid $anx-primary-green !important;

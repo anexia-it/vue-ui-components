@@ -1,4 +1,5 @@
 <template>
+  <!--The readonly Input field -->
   <div
     v-if="readonly !== false"
     class="anx-input"
@@ -20,9 +21,9 @@
       {{ label }}
     </label>
   </div>
+  <!-- the normal input field with validation provider -->
   <ValidationProvider v-else v-slot="{ errors }" :name="name" :rules="rules">
     <div
-      v-if="className === 'anx-input'"
       class="anx-input"
       :class="{ active: active, filled: filled }"
       @click="active = true"
@@ -65,35 +66,53 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxInput extends Vue {
-  @Prop() rules!: string;
-
+  /**With this property, a anx-input can be set and designed */
+  /**Props
+   * name: is the name of the input-field
+   */
   @Prop() name!: string;
-
-  @Prop({ default: "" }) value!: string;
-
+  /**id: the id of the input field */
   @Prop({ default: "input-text-field" }) id!: string;
-
+  /**label: the label-text of the input field */
   @Prop() label!: string;
-
-  @Prop({ default: "anx-input" }) className!: string;
-
+  /** rules: needed for validation
+   * this are the rules, which will be used for teh input validation
+   */
+  @Prop() rules!: string;
+  /**width: the width of the input-field */
   @Prop({ default: "100%" }) width!: string;
-
+  /**assistiveText: the hint-text under the input-field
+   * it will only be showed, when there are no errors (validation)
+   */
   @Prop() assistiveText!: string;
-
+  /**readonly: the readonly attribute for the input-field.
+   * Is this prop is set (true) there will be now validation and you
+   * can't change the value. But the animation will be execute, when the
+   * value is set.
+   */
   @Prop({ default: false }) readonly!: boolean;
+  /**vallue: only needed if readonly
+   * is the value who will be show as input
+   */
+  @Prop({ default: "" }) value!: string;
 
   private active = false;
   private filled = false;
   public updateInputField = "";
 
+  /**Watch the updateInputField variable. When it changed, then it check if
+   * the input field should be active or not (User is typing)
+   */
   @Watch("updateInputField")
   nameChanged(newVal: string) {
     if (newVal.length) {
       this.active = true;
     }
   }
-
+  /**FOR READONLY!
+   * Watch the attribute/prop value. When the value change, then it set the updateInputField
+   * variabel with the new value (need to be pass to the parent) and set the input-field to filled.
+   */
   @Watch("value")
   valueChanged() {
     if (this.readonly !== false) {
@@ -102,6 +121,9 @@ export default class AnxInput extends Vue {
     }
   }
 
+  /**After creation the value will be save in the updateInputField and check if it has the
+   * state filled.
+   */
   private mounted() {
     this.updateInputField = this.value;
     this.isFilled();
@@ -113,6 +135,7 @@ export default class AnxInput extends Vue {
     };
   }
 
+  /** Check if the input-field is filled, Set class filled. */
   protected isFilled() {
     if (!this.updateInputField.length) {
       this.filled = false;
@@ -121,6 +144,9 @@ export default class AnxInput extends Vue {
     }
   }
 
+  /**When the User click in and out of the field, the state active will be set and
+   * the state filled will be checked.
+   */
   protected inputBlur() {
     this.active = !this.active;
     this.isFilled();
