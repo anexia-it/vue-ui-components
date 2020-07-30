@@ -150,6 +150,7 @@ export default class AnxTextarea extends Vue {
   left: 0;
   top: 24px;
   position: absolute;
+  pointer-events: none;
 }
 
 .anx-textarea textarea[disabled] label {
