@@ -5,35 +5,95 @@ body,  #app {
   font-weight: normal;
 }
 
+/** Normal font settings */
 @font-face {
   font-family: 'Meta';
-  src: url('../assets/fonts/MetaWebPro-Bold.eot');
-  src: url('../assets/fonts/MetaWebPro-Bold.woff') format('woff');
+  src: url('../assets/fonts/meta/FFMetaProBlk.woff') format('woff');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProBold.woff') format('woff');
   font-weight: 800;
 }
 
 @font-face {
   font-family: 'Meta';
-  src: url('../assets/fonts/MetaWebPro-Normal.eot');
-  src: url('../assets/fonts/MetaWebPro-Normal.woff') format('woff');
+  src: url('../assets/fonts/meta/FFMetaProMedium.woff') format('woff');
   font-weight: 600;
-  font-style: bold;
 }
 
 @font-face {
   font-family: 'Meta';
-  src: url('../assets/fonts/MetaWebPro-Light.eot');
-  src: url('../assets/fonts/MetaWebPro-Light.woff') format('woff');
+  src: url('../assets/fonts/meta/FFMetaProBook.woff') format('woff');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProRegular.woff') format('woff');
   font-weight: 400;
-  font-style: normal;
 }
 
 @font-face {
   font-family: 'Meta';
-  src: url('../assets/fonts/MetaWeb-Thin.eot');
-  src: url('../assets/fonts/MetaWeb-Thin.woff') format('woff');
-  font-weight: 200;
-  font-style: lighter;
+  src: url('../assets/fonts/meta/FFMetaProLight.woff') format('woff');
+  font-weight: 300;
 }
 
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProThin.woff') format('woff');
+  font-weight: 200;
+}
 
+/** Italic font settings */
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProBlkIt.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProBoldIt.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProMedIt.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProBookIt.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProRegIt.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProLightIt.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Meta';
+  src: url('../assets/fonts/meta/FFMetaProThinIt.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+}
