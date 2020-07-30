@@ -1,7 +1,7 @@
 <template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
-    <anx-header :img="require('@/assets/anexia.svg')" />
+    <anx-header img="anexia-logo" />
     <div class="space"></div>
     <anx-header :menus="items" />
 
@@ -63,9 +63,9 @@
           <i>&lt;anx-icon&gt;</i> component. You can additionally set a
           different width for the icons.
         </anx-paragraph>
-        <anx-icon width="30px" /><br />
-        <anx-icon img="alexa" width="50px" /><br />
-        <anx-icon img="3d.svg" width="80px" /><br />
+        <anx-icon width="30px" style="margin: 20px" />
+        <anx-icon img="alexa" width="50px" style="margin: 20px" />
+        <anx-icon img="3d.svg" width="80px" style="margin: 20px" />
       </anx-content>
 
       <anx-content title="Tables" size="h2">
@@ -115,7 +115,7 @@
             v-for="(item, i) in secondTableItems"
             v-slot:[getImgCellName(i)]="{ content }"
           >
-            <img :src="content" :key="i" />
+            <anx-icon :img="content" :key="i" width="25px" />
           </template>
         </anx-table>
       </anx-content>
@@ -281,17 +281,12 @@
           Below this paragraph are two examples for <i>&lt;anx-card&gt;</i>.
         </anx-paragraph>
 
-        <anx-card
-          :img="require('@/assets/anexia.svg')"
-          title="One card"
-          link="#"
-          link-text="more >"
-        >
+        <anx-card img="anexia.svg" title="One card" link="#" link-text="more >">
           This is the text of the card
         </anx-card>
 
         <anx-card
-          :img="require('@/assets/anexia.svg')"
+          img="anexia.svg"
           title="And another card"
           link="#"
           link-text="more >"
@@ -387,37 +382,37 @@ export default class App extends Vue {
       age: 40,
       firstName: "Dickerson",
       lastName: "Macdonald",
-      image: require("@/assets/anexia.svg")
+      image: "anexia.svg"
     },
     {
       age: 21,
       firstName: "Larsen",
       lastName: "Shaw",
-      image: require("@/assets/anexia.svg")
+      image: "anexia.svg"
     },
     {
       age: 89,
       firstName: "Geneva",
       lastName: "Wilson",
-      image: require("@/assets/anexia.svg")
+      image: "anexia.svg"
     },
     {
       age: 38,
       firstName: "Jami",
       lastName: "Carney",
-      image: require("@/assets/anexia.svg")
+      image: "anexia.svg"
     },
     {
       age: 40,
       firstName: "Dickerson",
       lastName: "Macdonald",
-      image: require("@/assets/anexia.svg")
+      image: "anexia.svg"
     },
     {
       age: 21,
       firstName: "Larsen",
       lastName: "Shaw",
-      image: require("@/assets/anexia.svg")
+      image: "anexia.svg"
     }
   ];
 
@@ -431,12 +426,22 @@ export default class App extends Vue {
 
   /** Change the images for the second table randomly */
   private seedTableImages() {
+    const images = [
+      "like",
+      "stern",
+      "musik",
+      "ip",
+      "idee",
+      "homeoffice",
+      "folder",
+      "copy",
+      "dollar",
+      "dokument",
+      "controller"
+    ];
+
     this.secondTableItems.forEach(object => {
-      if (Math.random() <= 0.5) {
-        object.image = require("@/assets/anexia.svg");
-      } else {
-        object.image = require("@/assets/check-green.svg");
-      }
+      object.image = images[Math.floor(Math.random() * images.length)];
     });
   }
 

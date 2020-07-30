@@ -97,8 +97,8 @@ export default class AnxCheckbox extends Vue {
     &:checked {
       color: #fff;
       border-color: $anx-primary-green !important;
-      background: $anx-primary-green url(../assets/check-white.svg) no-repeat
-        center;
+      background: $anx-primary-green url(../assets/icons/check-white.svg)
+        no-repeat center;
       border: 1px solid;
     }
 

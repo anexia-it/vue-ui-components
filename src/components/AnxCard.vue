@@ -1,7 +1,7 @@
 <template>
   <div class="anx-card">
     <div class="anx-card-content d-flex">
-      <img :src="img" />
+      <anx-icon class="anx-card-icon" :img="img" />
       <anx-paragraph :title="title" size="h3">
         <p>
           <slot />
@@ -15,11 +15,13 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxLink from "./AnxLink.vue";
+import AnxIcon from "./AnxIcon.vue";
 import AnxParagraph from "./AnxParagraph.vue";
 
 @Component({
   components: {
     AnxLink,
+    AnxIcon,
     AnxParagraph
   }
 })
@@ -50,7 +52,8 @@ export default class Card extends Vue {
     padding: 0 20px 0 20px;
     margin-top: 24px;
     margin-bottom: 17px;
-    img {
+
+    .anx-card-icon {
       margin-top: auto;
       margin-bottom: auto;
       margin-right: 20px;
@@ -61,6 +64,7 @@ export default class Card extends Vue {
         margin-right: 0;
       }
     }
+
     .anx-paragraph {
       margin-bottom: 0;
 

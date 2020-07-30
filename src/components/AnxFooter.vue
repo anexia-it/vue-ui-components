@@ -5,10 +5,10 @@
         <div class="col-md-12">
           <hr />
           <div class="anx-footer-elements">
-            <img
+            <anx-icon
               class="anx-footer-logo"
               alt="anx-footer-logo"
-              v-bind:src="img"
+              :img="img"
             />
 
             <div class="anx-footer-right">
@@ -28,11 +28,7 @@
               </div>
             </div>
           </div>
-          <img
-            class="anx-footer-logo"
-            id="footer-img-mobile"
-            v-bind:src="img"
-          />
+          <anx-icon class="anx-footer-logo" id="footer-img-mobile" :img="img" />
         </div>
       </div>
     </div>
@@ -41,10 +37,11 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import AnxIcon from "./AnxIcon.vue";
 
-@Component({})
+@Component({ components: { AnxIcon } })
 export default class AnxFooter extends Vue {
-  @Prop({ default: require("../assets/anexia.svg") }) img!: string;
+  @Prop({ default: "anexia-logo" }) img!: string;
 
   private footerLinks: Array<object> = [];
   mounted() {

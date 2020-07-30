@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <img v-bind:src="getImage()" :style="cssProps" />
-  </div>
+  <img v-bind:src="getImage()" :style="cssProps" class="anx-icon" />
 </template>
 
 <script lang="ts">

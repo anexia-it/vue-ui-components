@@ -195,7 +195,7 @@ export default class AnxSelect extends Vue {
     .anx-select-div {
       color: $anx-error;
       &:after {
-        background-image: url(../assets/arrow-red-bottom.svg);
+        background-image: url(../assets/icons/arrow-red-bottom.svg);
       }
     }
   }
@@ -237,7 +237,7 @@ export default class AnxSelect extends Vue {
 }
 .anx-select .anx-select-div:after {
   background-position: 0 0;
-  background-image: url(../assets/arrow-green-bottom.svg);
+  background-image: url(../assets/icons/arrow-green-bottom.svg);
   width: 12px;
   height: 11px;
   content: "";
@@ -281,7 +281,7 @@ export default class AnxSelect extends Vue {
   width: 16px;
   height: 16px;
   min-width: 16px;
-  background-image: url(../assets/check-green.svg);
+  background-image: url(../assets/icons/check-green.svg);
   background-repeat: no-repeat;
   position: absolute;
   top: 5px;
