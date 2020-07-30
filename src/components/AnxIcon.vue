@@ -18,9 +18,9 @@ export default class AnxIcon extends Vue {
       icon = "anexia.svg";
     } else {
       if (this.img.includes(".svg")) {
-          icon = this.img
+        icon = this.img;
       } else {
-        icon = this.img + ".svg"
+        icon = this.img + ".svg";
       }
     }
     return require("@/assets/icons/" + icon);

@@ -10,7 +10,7 @@
         <anx-paragraph size="h1">
           <anx-icon />
           <anx-icon img="alexa" />
-          <anx-icon img="tasse.svg" />
+          <anx-icon img="3d.svg" />
           This is a simple paragraph. Paragraphs are made for text. A paragraph
           can additionally have a title. This paragraph for example, does not
           have a title.<br /><br />
