@@ -10,7 +10,7 @@ import { Vue, Prop, Component } from "vue-property-decorator";
 @Component({})
 export default class AnxIcon extends Vue {
   @Prop({ default: "" }) img!: string;
-  @Prop({ default: "90px" }) width!: string;
+  @Prop({ default: "" }) width!: string;
 
   private getImage() {
     let icon = "";
