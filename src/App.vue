@@ -8,9 +8,6 @@
     <anx-container>
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
-          <anx-icon />
-          <anx-icon img="alexa" />
-          <anx-icon img="3d.svg" />
           This is a simple paragraph. Paragraphs are made for text. A paragraph
           can additionally have a title. This paragraph for example, does not
           have a title.<br /><br />
@@ -55,6 +52,20 @@
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
         </anx-paragraph>
+      </anx-content>
+
+      <anx-content title="Icons" size="h2">
+        <anx-paragraph>
+          You can easily include anexia icons in your design using the
+          <i>&lt;anx-icon&gt;</i> component. All icons are located in
+          /src/assets/icons. You just have to pass the icon name as
+          <strong>img</strong> property to the
+          <i>&lt;anx-icon&gt;</i> component. You can additionally set a
+          different width for the icons.
+        </anx-paragraph>
+        <anx-icon width="30px" /><br />
+        <anx-icon img="alexa" width="50px" /><br />
+        <anx-icon img="3d.svg" width="80px" /><br />
       </anx-content>
 
       <anx-content title="Tables" size="h2">
