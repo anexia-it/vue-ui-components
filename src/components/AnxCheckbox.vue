@@ -78,8 +78,7 @@ export default class AnxCheckbox extends Vue {
     height: 13px !important;
     width: 13px !important;
     padding: 2px !important;
-    border-color: $anx-primary-green !important;
-    border: 1px solid;
+    border: 1px solid $anx-primary-green !important;
     margin: 0px 10px 0px 0px !important;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -88,10 +87,13 @@ export default class AnxCheckbox extends Vue {
     content: " ";
     outline: none;
 
+    /** IE9+ */
     &[type="checkbox"]::-ms-check {
-      display: none;
-      border-color: $anx-primary-green !important;
+      border: 1px solid $anx-primary-green !important;
       background: transparent;
+      content: " ";
+      outline: none;
+      color: #fff;
     }
 
     &:checked {
@@ -101,12 +103,28 @@ export default class AnxCheckbox extends Vue {
         no-repeat center;
       border: 1px solid;
     }
+    /**IE9+  */
+    &:checked::-ms-check {
+      color: #fff;
+      border-color: $anx-primary-green !important;
+      background: $anx-primary-green;
+      border: 1px solid;
+    }
 
     &:disabled {
       border-color: $anx-second-grey-light !important;
     }
 
     &.is-invalid {
+      border-color: $anx-error !important;
+
+      ~ .text {
+        color: $anx-error;
+      }
+    }
+
+    /**IE 9+ */
+    &.is-invalid::-ms-check {
       border-color: $anx-error !important;
 
       ~ .text {

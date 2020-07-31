@@ -243,6 +243,11 @@ export default class AnxInput extends Vue {
   &:read-only {
     border: none !important;
   }
+
+  /**for IE11 */
+  &[readonly="readonly"] {
+    border: none !important;
+  }
 }
 
 .anx-input.active label,
