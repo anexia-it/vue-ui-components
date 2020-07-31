@@ -112,6 +112,7 @@ export default class AnxTextarea extends Vue {
   font-family: $anx-font-family;
   font-size: 16px;
   resize: vertical;
+  overflow: auto;
 
   &:focus,
   &.filled {

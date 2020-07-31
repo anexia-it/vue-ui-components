@@ -19,11 +19,11 @@ export default class AnxButton extends Vue {
    * btnType: the Type of a button
    */
   @Prop({ default: "submit" }) btnType!: string;
-  /**className: the class of the button 
+  /**className: the class of the button
    * options:
    * "anx-button": the default class (green-animated-button to white outlined)
    * "anx-button btn-outline": outlined-button (white-animated to green)
-  */
+   */
   @Prop({ default: "anx-button" }) className!: string;
   @Prop({ default: "button" }) text!: string;
   @Prop({ default: "136px" }) width!: string;
