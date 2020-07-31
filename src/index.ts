@@ -1,18 +1,15 @@
-import Vue from 'vue';
-import AnxAlert from 'ui/src/components/AnxAlert.vue';
-import AnxButton from 'ui/src/components/AnxButton.vue';
+import _Vue from 'vue';
+import Components from './components';
 
-
-const Components = {
-    install(vue: typeof Vue): void {
-        vue.component('AnxAlert', AnxAlert);
-        vue.component('AnxButton', AnxButton);
+const UIPlugin = {
+    install(vue: typeof _Vue): void {
+        // Register all components, that have been loaded
+        for (const name in Components) {
+          console.log(name)
+          vue.component(name, Components[name])
+        }
     },
 };
 
-if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(Components, {});
-}
-
-export { AnxAlert, AnxButton };
-export default Components;
+export { Components };
+export default UIPlugin;
