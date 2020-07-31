@@ -36,5 +36,6 @@ export default class AnxIcon extends Vue {
 @import "../assets/scss/_variables.scss";
 img {
   width: var(--icon-width);
+  flex-shrink: 0;
 }
 </style>

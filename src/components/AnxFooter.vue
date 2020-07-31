@@ -88,6 +88,12 @@ export default class AnxFooter extends Vue {
 }
 .anx-footer-elements {
   display: flex;
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+    flex-direction: column;
+    -ms-flex-direction: column;
+  }
 }
 .anx-footer-right {
   text-align: right;

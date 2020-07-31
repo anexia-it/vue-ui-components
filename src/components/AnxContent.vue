@@ -41,7 +41,7 @@ export default class AnxContent extends Vue {
   }
 
   &.inversed-colors {
-    background-color: unset;
+    background-color: transparent;
     padding-left: 0 !important;
     padding-right: 0 !important;
     color: $anx-primary-white;
