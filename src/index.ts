@@ -5,8 +5,7 @@ const UIPlugin = {
     install(vue: typeof _Vue): void {
         // Register all components, that have been loaded
         for (const name in Components) {
-          console.log(name)
-          vue.component(name, Components[name])
+          vue.component(name, (Components as any)[name])
         }
     },
 };
