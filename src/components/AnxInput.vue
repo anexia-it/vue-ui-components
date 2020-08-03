@@ -76,7 +76,7 @@
       @blur="inputBlur"
       @input="$emit('input', updateInputField)"
     />
-    <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
+    <label :for="id">
       {{ label }}
     </label>
     <span v-if="assistiveText.length > 0" class="assistiv">{{
