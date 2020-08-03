@@ -63,13 +63,19 @@ export default class AnxFooter extends Vue {
 .anx-footer-logo {
   width: 64px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
     display: none;
   }
 }
 #footer-img-mobile {
   display: none;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
     margin-right: auto;
     margin-left: auto;
     display: inherit;
@@ -88,22 +94,23 @@ export default class AnxFooter extends Vue {
 }
 .anx-footer-elements {
   display: flex;
-
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    /* IE10+ CSS styles go here */
-    flex-direction: column;
-    -ms-flex-direction: column;
-  }
 }
 .anx-footer-right {
   text-align: right;
   width: 100%;
-  @media screen and (max-width: 500px) {
+  flex-direction: column;
+  -ms-flex-direction: column;
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
     margin-bottom: 20px;
   }
 }
 .anx-footer-text {
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
     display: block;
     text-align: center;
   }

@@ -288,6 +288,17 @@ export default class AnxSelect extends Vue {
   margin-left: -20px;
   background-position: 50%;
 }
+
+.anx-select .anx-select-options li.active {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+    color: $anx-primary-green;
+
+    &:before {
+      display: none;
+    }
+  }
+}
 .anx-select .anx-select-options li:hover {
   color: #fff;
   background: $anx-primary-green;
