@@ -1,11 +1,42 @@
 import _Vue from 'vue';
 import Components from './components';
 
+import VueI18n from "vue-i18n";
+import dePlugin from "./locales/de.json";
+import enPlugin from "./locales/en.json";
+
+
 const UIPlugin = {
-    install(vue: typeof _Vue): void {
+    install(Vue: typeof _Vue): void {
         // Register all components, that have been loaded
         for (const name in Components) {
-          vue.component(name, (Components as any)[name])
+          Vue.component(name, (Components as any)[name])
+        }
+
+        // TODO: the code below will only work for nuxt
+        // TODO: implement code for Vue apps before Merge !!!
+        if (Object.hasOwnProperty.call(Vue.prototype.$nuxt, "_i18n")) {
+          seti18n(Vue.prototype.$nuxt._i18n);
+        } else {
+          Vue.prototype.$nuxt._i18n = false;
+        }
+
+        function seti18n(i18n: VueI18n) {
+          const deConsumer = i18n.getLocaleMessage("de");
+          const enConsumer = i18n.getLocaleMessage("en");
+
+          const de = {
+            ...deConsumer,
+            ...dePlugin
+          };
+
+          const en = {
+            ...enConsumer,
+            ...enPlugin
+          };
+
+          i18n.setLocaleMessage("de", de);
+          i18n.setLocaleMessage("en", en);
         }
     },
 };
