@@ -10,7 +10,7 @@ import AnxParagraph from "./components/AnxParagraph.vue";
 import AnxCard from "./components/AnxCard.vue";
 import AnxInput from "./components/AnxInput.vue";
 import AnxButton from "./components/AnxButton.vue";
-import AnxReadOnly from "./components/AnxReadOnly.vue";
+import AnxReadOnly from "./components/AnxReadonly.vue";
 import AnxTable from "./components/AnxTable.vue";
 import AnxTableRow from "./components/AnxTableRow.vue";
 import AnxModal from "./components/AnxModal.vue";

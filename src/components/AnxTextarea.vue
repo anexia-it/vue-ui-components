@@ -33,7 +33,6 @@
       :name="id"
       :rows="rows"
       :disabled="disabled"
-      v-validate="'required'"
       v-model="message"
       :class="{ filled: message.length >= 1 }"
       @input="$emit('input', message)"

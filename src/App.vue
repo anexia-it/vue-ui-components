@@ -136,7 +136,7 @@
           <anx-button
             text="Show Modal >"
             @click="exampleModal = true"
-            width="100%"
+            width="212px"
             btnType="click"
           />
         </anx-paragraph>
@@ -206,6 +206,11 @@
             v-model="ip"
             rules="required|ip"
           />
+
+          <anx-paragraph size="h3">
+            <i>&lt;anx-input&gt;</i> without validation but with animation.
+          </anx-paragraph>
+          <anx-input name="mail" label="Mail" v-model="mail" />
 
           <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> can also be set to
@@ -367,6 +372,7 @@ export default class App extends Vue {
   text1 = "";
   text2 = "";
   checkbox = [];
+  mail = "";
 
   tableItems = [
     { age: 40, firstName: "Dickerson", lastName: "Macdonald" },

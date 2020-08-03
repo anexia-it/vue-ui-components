@@ -10,7 +10,7 @@
       :id="id"
       v-model="updateInputField"
       :data-vv-as="name"
-      type="text"
+      :type="type"
       :name="name"
       hide-details="true"
       @blur="inputBlur"
@@ -22,7 +22,12 @@
     </label>
   </div>
   <!-- the normal input field with validation provider -->
-  <ValidationProvider v-else v-slot="{ errors }" :name="name" :rules="rules">
+  <ValidationProvider
+    v-else-if="rules"
+    v-slot="{ errors }"
+    :name="name"
+    :rules="rules"
+  >
     <div
       class="anx-input"
       :class="{ active: active, filled: filled }"
@@ -34,7 +39,7 @@
         v-model="updateInputField"
         v-validate="rules"
         :data-vv-as="name"
-        type="text"
+        :type="type"
         :name="name"
         hide-details="true"
         @blur="inputBlur"
@@ -54,6 +59,30 @@
       >
     </div>
   </ValidationProvider>
+  <div
+    v-else-if="!rules"
+    class="anx-input"
+    :class="{ active: active, filled: filled }"
+    @click="active = true"
+    :style="cssProps"
+  >
+    <input
+      :id="id"
+      v-model="updateInputField"
+      :data-vv-as="name"
+      :type="type"
+      :name="name"
+      hide-details="true"
+      @blur="inputBlur"
+      @input="$emit('input', updateInputField)"
+    />
+    <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
+      {{ label }}
+    </label>
+    <span v-if="assistiveText.length > 0" class="assistiv">{{
+      assistiveText
+    }}</span>
+  </div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
@@ -75,6 +104,8 @@ export default class AnxInput extends Vue {
   @Prop({ default: "input-text-field" }) id!: string;
   /**label: the label-text of the input field */
   @Prop() label!: string;
+  /** type: type of the input-field for example: text, password */
+  @Prop({ default: "text" }) type!: string;
   /** rules: needed for validation
    * this are the rules, which will be used for teh input validation
    */
@@ -84,7 +115,7 @@ export default class AnxInput extends Vue {
   /**assistiveText: the hint-text under the input-field
    * it will only be showed, when there are no errors (validation)
    */
-  @Prop() assistiveText!: string;
+  @Prop({ default: "" }) assistiveText!: string;
   /**readonly: the readonly attribute for the input-field.
    * Is this prop is set (true) there will be now validation and you
    * can't change the value. But the animation will be execute, when the
