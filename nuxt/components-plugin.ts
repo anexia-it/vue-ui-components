@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import Components from 'ui'
+import UIPlugin from 'ui'
 
-Vue.use(Components)
+Vue.use(UIPlugin)

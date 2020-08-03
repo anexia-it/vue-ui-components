@@ -13,9 +13,8 @@ const UIPlugin = {
           Vue.component(name, (Components as any)[name])
         }
 
-        // TODO: the code below will only work for nuxt
-        // TODO: implement code for Vue apps before Merge !!!
-        if (Object.hasOwnProperty.call(Vue.prototype.$nuxt, "_i18n")) {
+        // TODO: implement i18n for nuxt and vue
+        /*if (Object.hasOwnProperty.call(Vue.prototype.$nuxt, "_i18n")) {
           seti18n(Vue.prototype.$nuxt._i18n);
         } else {
           Vue.prototype.$nuxt._i18n = false;
@@ -37,7 +36,7 @@ const UIPlugin = {
 
           i18n.setLocaleMessage("de", de);
           i18n.setLocaleMessage("en", en);
-        }
+        }*/
     },
 };
 
