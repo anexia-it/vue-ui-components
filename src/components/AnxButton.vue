@@ -47,7 +47,7 @@ button {
   font-size: 16px;
   vertical-align: middle;
   outline: 0 none;
-  padding: 0 2em; //links - rechts 32px
+  padding: 0 1.9375em; //links - rechts 31px (base 16px)
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -71,7 +71,7 @@ button {
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   text-align: center;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid $anx-primary-green;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
@@ -95,7 +95,7 @@ button {
   }
 
   &:before {
-    border: 1px solid $anx-primary-green;
+    //border: 1px solid $anx-primary-green;
     opacity: 0;
     -webkit-transform: scale3d(1.2, 1.2, 1);
     transform: scale3d(1.2, 1.2, 1);
