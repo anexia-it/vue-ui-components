@@ -25,7 +25,7 @@ import AnxTitle from "./AnxTitle.vue";
 export default {
   AnxAlert,
   AnxButton,
-  AnxCard,
+  /*AnxCard,
   AnxCheckbox,
   AnxContainer,
   AnxContent,
@@ -45,5 +45,5 @@ export default {
   AnxTableContainer,
   AnxTableRow,
   AnxTextarea,
-  AnxTitle
+  AnxTitle*/
 }
