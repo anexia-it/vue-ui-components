@@ -35,12 +35,13 @@ const baseConfig = {
       typescript({
         typescript: require("typescript")
       }),
+      // TODO: this doesn't work as it should because images are being rendered dynamically
+      // TODO: ../assets/ has to be replaced with ../src/assets
       assetUrlResolver({
         limit: 10 * 1024, // Limit for assets to 10KB
-        include: ["**/*.svg"],
         fileName: "[name][extname]",
         output: "./static/",
-        reserveImportInJs: true
+        reserveImportInJs: false
       }),
       buble({
         transforms: {

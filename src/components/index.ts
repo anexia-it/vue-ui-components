@@ -33,7 +33,7 @@ export default {
   AnxForm,
   AnxGlobal,
   AnxHeader,
-  AnxIcon,
+  // AnxIcon, // TODO: add after bugfix with icons
   AnxInput,
   AnxLink,
   AnxModal,
