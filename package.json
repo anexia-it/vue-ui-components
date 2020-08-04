@@ -20,7 +20,8 @@
   "author": "ANEXIA",
   "files": [
     "dist/*",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "nuxt/*"
   ],
   "dependencies": {},
   "devDependencies": {

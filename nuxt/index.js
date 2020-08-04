@@ -13,8 +13,8 @@ export default function(moduleOptions) {
 
   /** Add the componenets as plugin */
   this.addPlugin({
-    src: resolve(__dirname, "components-plugin.ts"),
-    fileName: join(namespace, "components-plugin.ts"),
+    src: resolve(__dirname, "ui-plugin.js"),
+    fileName: join(namespace, "ui-plugin.js"),
     options
   });
 }
