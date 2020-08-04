@@ -32,7 +32,6 @@
           <span class="f-900">Lorem ipsum dolor sit (weight 900)</span><br />
 
           <anx-hr-line />
-
         </anx-paragraph>
 
         <anx-paragraph title="Size h2" size="h2">
@@ -139,6 +138,15 @@
           <anx-button
             text="Show Modal >"
             @click="exampleModal = true"
+            width="212px"
+            btnType="click"
+          />
+        </anx-paragraph>
+        <anx-paragraph>
+          This is a example for a button with a longer text. It has the standard
+          width of 212px.<br /><br />
+          <anx-button
+            text="Button with long text >"
             width="212px"
             btnType="click"
           />
