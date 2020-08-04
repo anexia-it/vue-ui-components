@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="cssProps">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -44,6 +44,14 @@ import I18nLangSwitcher from "./I18nLangSwitcher.vue";
 export default class AnxHeader extends Vue {
   @Prop({ default: "anexia-logo" }) img!: string;
   @Prop({ default: null }) menus!: Array<object>;
+  /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
+  @Prop({ default: "530px" }) width!: string;
+
+  get cssProps() {
+    return {
+      "--width": this.width
+    };
+  }
 
   private mounted() {
     const hmenu = document.querySelectorAll(
@@ -91,7 +99,7 @@ hr {
 .header {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
+  width: var(--width);
   display: flex;
   @media screen and (max-width: 500px) {
     width: 100%;

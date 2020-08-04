@@ -1,5 +1,5 @@
 <template>
-  <div class="anx-footer">
+  <div class="anx-footer" :style="cssProps">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -42,6 +42,14 @@ import AnxIcon from "./AnxIcon.vue";
 @Component({ components: { AnxIcon } })
 export default class AnxFooter extends Vue {
   @Prop({ default: "anexia-logo" }) img!: string;
+  /**Specify the width of the Footer 530px => 500px real width (15px padding for mobile)*/
+  @Prop({ default: "530px" }) width!: string;
+
+  get cssProps() {
+    return {
+      "--width": this.width
+    };
+  }
 
   private footerLinks: Array<object> = [];
   mounted() {
@@ -85,7 +93,7 @@ export default class AnxFooter extends Vue {
 .anx-footer {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
+  width: var(--width);
   display: flex;
   height: 100px;
   @media screen and (max-width: 500px) {
