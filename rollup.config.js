@@ -11,18 +11,10 @@ import typescript from "rollup-plugin-typescript2";
 
 const argv = minimist(process.argv.slice(2));
 
+/** This is the base configuration. Note that this configuration will be overriden from the settings for the different transpile targets (Module, Unpkg, ...) */
 const baseConfig = {
   input: "src/index.ts",
-  plugins: [
-    /*preVue: [
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("production")
-      }),
-      commonjs(),
-      typescript({
-        typescript: require("typescript")
-      })
-    ],*/
+  /*plugins: [
     vue({
       css: true,
       template: {
@@ -30,25 +22,48 @@ const baseConfig = {
         transformAssetUrls: true
       }
     }),
+    commonjs(),
+    replace({
+      "process.env.NODE_ENV": JSON.stringify("production")
+    }),
     typescript({
       typescript: require("typescript")
     }),
     buble({
       transforms: {
-        asyncAwait: false
+        asyncAwait: false,
+        dangerousForOf: true
       }
     })
-    /*postVue: [
+  ]*/
+  plugins: {
+    /** The following plugins will be added before the vue plugin */
+    preVue: [
+      replace({
+        "process.env.NODE_ENV": JSON.stringify("production")
+      }),
+      commonjs()
+    ],
+    /** These are some properties for the vue plugin */
+    vue: {
+      css: true,
+      template: {
+        isProduction: true
+      }
+    },
+    /** The following plugins will be added after the vue plugin */
+    postVue: [
       typescript({
         typescript: require("typescript")
       }),
       buble({
         transforms: {
+          asyncAwait: false,
           dangerousForOf: true
         }
       })
-    ]*/
-  ]
+    ]
+  }
 };
 
 // Customize configs for individual targets
@@ -62,7 +77,7 @@ if (!argv.format || argv.format === "es") {
       exports: "named",
       sourcemap: true
     },
-    /*plugins: [
+    plugins: [
       ...baseConfig.plugins.preVue,
       css({
         output: pkg.style
@@ -78,7 +93,7 @@ if (!argv.format || argv.format === "es") {
         }
       }),
       resolve()
-    ]*/
+    ]
   };
   buildFormats.push(esConfig);
 }
@@ -94,7 +109,7 @@ if (!argv.format || argv.format === "cjs") {
       exports: "named",
       sourcemap: true
     },
-    /*plugins: [
+    plugins: [
       ...baseConfig.plugins.preVue,
       css({
         output: pkg.style
@@ -109,7 +124,7 @@ if (!argv.format || argv.format === "cjs") {
       }),
       ...baseConfig.plugins.postVue,
       resolve()
-    ]*/
+    ]
   };
   buildFormats.push(umdConfig);
 }
@@ -125,7 +140,7 @@ if (!argv.format || argv.format === "iife") {
       exports: "named",
       sourcemap: true
     },
-    /*plugins: [
+    plugins: [
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
@@ -135,7 +150,7 @@ if (!argv.format || argv.format === "iife") {
         }
       }),
       resolve()
-    ]*/
+    ]
   };
   buildFormats.push(unpkgConfig);
 }
