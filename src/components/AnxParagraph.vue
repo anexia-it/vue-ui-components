@@ -67,6 +67,7 @@ export default class AnxParagraph extends Vue {
     color: $anx-second-grey-light;
     font-size: 12px;
     line-height: 14px;
+    margin-bottom: 0px;
   }
 }
 </style>
