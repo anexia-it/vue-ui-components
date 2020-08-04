@@ -156,7 +156,7 @@ export default class AnxInput extends Vue {
    * state filled.
    */
   private mounted() {
-    this.updateInputField = this.value;
+    this.updateInputField = this.value !== null ? this.value : "";
     this.isFilled();
   }
 
