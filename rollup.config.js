@@ -26,7 +26,8 @@ const baseConfig = {
     vue({
       css: true,
       template: {
-        isProduction: true
+        isProduction: true,
+        transformAssetUrls: true
       }
     }),
     typescript({
