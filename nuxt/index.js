@@ -15,6 +15,7 @@ export default function(moduleOptions) {
   this.addPlugin({
     src: resolve(__dirname, "ui-plugin.js"),
     fileName: join(namespace, "ui-plugin.js"),
+    ssr: false,
     options
   });
 }

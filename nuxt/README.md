@@ -16,14 +16,6 @@ modules: [
 ]
 ```
 
-Add the transpile option to the build property
-
-```
-build: {
-  transpile: ['ui']
-}
-```
-
 ## TODO:
 Can this module be loaded as a build-only module?
 https://nuxtjs.org/guide/modules/#build-only-modules
