@@ -1,36 +1,40 @@
-// Import vue component
-import AnxAlert from "./test.vue";
+import AnxAlert from './components/AnxAlert.vue';
+/*import VueI18n from "vue-i18n";
+import dePlugin from "./locales/de.json";
+import enPlugin from "./locales/en.json";*/
+const UIPlugin = {
+    install(Vue) {
+        // Register all components, that have been loaded
+        /*for (const name in Components) {
+          Vue.component(name, (Components as any)[name])
+        }*/
+        Vue.component("AnxAlert", AnxAlert);
+        // TODO: implement i18n for nuxt and vue
+        /*if (Object.hasOwnProperty.call(Vue.prototype.$nuxt, "_i18n")) {
+          seti18n(Vue.prototype.$nuxt._i18n);
+        } else {
+          Vue.prototype.$nuxt._i18n = false;
+        }
 
-// install function executed by Vue.use()
-function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component("AnxAlert", AnxAlert);
-}
+        function seti18n(i18n: VueI18n) {
+          const deConsumer = i18n.getLocaleMessage("de");
+          const enConsumer = i18n.getLocaleMessage("en");
 
-// Create module definition for Vue.use()
-const plugin = {
-  install
+          const de = {
+            ...deConsumer,
+            ...dePlugin
+          };
+
+          const en = {
+            ...enConsumer,
+            ...enPlugin
+          };
+
+          i18n.setLocaleMessage("de", de);
+          i18n.setLocaleMessage("en", en);
+        }*/
+    },
 };
-
-// To auto-install when vue is found
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(plugin);
-}
-
-// Inject install function into component - allows component
-// to be registered via Vue.use() as well as Vue.component()
-AnxAlert.install = install;
-
-// Export component by default
-export default AnxAlert;
-
-// It's possible to expose named exports when writing components that can
-// also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
-// export const RollupDemoDirective = component;
+export { AnxAlert };
+export default UIPlugin;
+//# sourceMappingURL=index.js.map

@@ -13,8 +13,8 @@ const argv = minimist(process.argv.slice(2));
 
 const baseConfig = {
   input: "src/index.ts",
-  plugins: {
-    preVue: [
+  plugins: [
+    /*preVue: [
       replace({
         "process.env.NODE_ENV": JSON.stringify("production")
       }),
@@ -22,21 +22,28 @@ const baseConfig = {
       typescript({
         typescript: require("typescript")
       })
-    ],
-    vue: {
+    ],*/
+    vue({
       css: true,
       template: {
         isProduction: true
       }
-    },
-    postVue: [
+    }),
+    typescript({
+      typescript: require("typescript")
+    }),
+    buble()
+    /*postVue: [
+      typescript({
+        typescript: require("typescript")
+      }),
       buble({
         transforms: {
           dangerousForOf: true
         }
       })
-    ]
-  }
+    ]*/
+  ]
 };
 
 // Customize configs for individual targets
@@ -50,7 +57,7 @@ if (!argv.format || argv.format === "es") {
       exports: "named",
       sourcemap: true
     },
-    plugins: [
+    /*plugins: [
       ...baseConfig.plugins.preVue,
       css({
         output: pkg.style
@@ -66,7 +73,7 @@ if (!argv.format || argv.format === "es") {
         }
       }),
       resolve()
-    ]
+    ]*/
   };
   buildFormats.push(esConfig);
 }
@@ -82,7 +89,7 @@ if (!argv.format || argv.format === "cjs") {
       exports: "named",
       sourcemap: true
     },
-    plugins: [
+    /*plugins: [
       ...baseConfig.plugins.preVue,
       css({
         output: pkg.style
@@ -97,7 +104,7 @@ if (!argv.format || argv.format === "cjs") {
       }),
       ...baseConfig.plugins.postVue,
       resolve()
-    ]
+    ]*/
   };
   buildFormats.push(umdConfig);
 }
@@ -113,7 +120,7 @@ if (!argv.format || argv.format === "iife") {
       exports: "named",
       sourcemap: true
     },
-    plugins: [
+    /*plugins: [
       ...baseConfig.plugins.preVue,
       vue(baseConfig.plugins.vue),
       ...baseConfig.plugins.postVue,
@@ -123,7 +130,7 @@ if (!argv.format || argv.format === "iife") {
         }
       }),
       resolve()
-    ]
+    ]*/
   };
   buildFormats.push(unpkgConfig);
 }
