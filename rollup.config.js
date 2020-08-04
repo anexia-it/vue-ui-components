@@ -8,6 +8,7 @@ import css from "rollup-plugin-css-only";
 import minimist from "minimist";
 import pkg from "./package.json";
 import typescript from "rollup-plugin-typescript2";
+import assetUrlResolver from "rollup-plugin-asset-url";
 
 const argv = minimist(process.argv.slice(2));
 
@@ -33,6 +34,13 @@ const baseConfig = {
     postVue: [
       typescript({
         typescript: require("typescript")
+      }),
+      assetUrlResolver({
+        limit: 10 * 1024, // Limit for assets to 10KB
+        include: ["**/*.svg"],
+        fileName: "[name][extname]",
+        output: "./static/",
+        reserveImportInJs: true
       }),
       buble({
         transforms: {
