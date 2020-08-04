@@ -1,7 +1,7 @@
 <template>
   <button
     :type="btnType"
-    :class="className"
+    :class="inline ? className + ' inline' : this.className"
     :style="cssProps"
     @click="$emit(btnType)"
   >
@@ -27,6 +27,7 @@ export default class AnxButton extends Vue {
   @Prop({ default: "anx-button" }) className!: string;
   @Prop({ default: "button" }) text!: string;
   @Prop({ default: "136px" }) width!: string;
+  @Prop({ default: false }) inline!: boolean;
 
   get cssProps() {
     return {
@@ -158,5 +159,9 @@ button {
     color: white !important;
     text-decoration: none;
   }
+}
+
+.inline {
+  margin-right: 30px;
 }
 </style>
