@@ -7,17 +7,21 @@ import resolve from "rollup-plugin-node-resolve";
 import css from "rollup-plugin-css-only";
 import minimist from "minimist";
 import pkg from "./package.json";
+import typescript from "rollup-plugin-typescript2";
 
 const argv = minimist(process.argv.slice(2));
 
 const baseConfig = {
-  input: "src/index.js",
+  input: "src/index.ts",
   plugins: {
     preVue: [
       replace({
         "process.env.NODE_ENV": JSON.stringify("production")
       }),
-      commonjs()
+      commonjs(),
+      typescript({
+        typescript: require("typescript")
+      })
     ],
     vue: {
       css: true,
