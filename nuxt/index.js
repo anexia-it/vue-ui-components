@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 const { resolve, join } = require("path");
 
 export default function(moduleOptions) {
