@@ -20,7 +20,8 @@
   "files": [
     "lib/*",
     "src/**/*.vue",
-    "nuxt/*"
+    "nuxt/*",
+    "src/assets/*"
   ],
   "dependencies": {},
   "devDependencies": {

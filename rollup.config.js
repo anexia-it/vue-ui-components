@@ -14,28 +14,6 @@ const argv = minimist(process.argv.slice(2));
 /** This is the base configuration. Note that this configuration will be overriden from the settings for the different transpile targets (Module, Unpkg, ...) */
 const baseConfig = {
   input: "src/index.ts",
-  /*plugins: [
-    vue({
-      css: true,
-      template: {
-        isProduction: true,
-        transformAssetUrls: true
-      }
-    }),
-    commonjs(),
-    replace({
-      "process.env.NODE_ENV": JSON.stringify("production")
-    }),
-    typescript({
-      typescript: require("typescript")
-    }),
-    buble({
-      transforms: {
-        asyncAwait: false,
-        dangerousForOf: true
-      }
-    })
-  ]*/
   plugins: {
     /** The following plugins will be added before the vue plugin */
     preVue: [
@@ -105,7 +83,7 @@ if (!argv.format || argv.format === "cjs") {
       compact: true,
       file: pkg.main,
       format: "cjs",
-      name: "VueLazyLoad",
+      name: "AnxUi",
       exports: "named",
       sourcemap: true
     },
@@ -136,7 +114,7 @@ if (!argv.format || argv.format === "iife") {
       compact: true,
       file: pkg.unpkg,
       format: "iife",
-      name: "VueLazyLoad",
+      name: "AnxUi",
       exports: "named",
       sourcemap: true
     },

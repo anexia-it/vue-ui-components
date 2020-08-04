@@ -24,6 +24,12 @@ This command should be run every time, changes are made.
 npm run rollup
 ```
 
+## Rendered files
+The UI project will be rendered to /lib.
+The **anx-ui.ssr-js** will be used by modern applications like NUXT. This is the main entry of the npm package.
+The **anx-ui.min.js** can be used directly in the browser and can be imported with the <script> tag
+
+
 ### Run your unit tests
 ```
 npm run test:unit
