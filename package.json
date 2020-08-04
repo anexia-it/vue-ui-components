@@ -10,16 +10,15 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "prebuild": "rm -rf dist/",
-    "rollup": "rm -rf dist && env NODE_ENV=production rollup -c && tsc"
+    "rollup": "rm -rf lib && env NODE_ENV=production rollup -c"
   },
-  "main": "dist/anx-ui.ssr.js",
-  "module": "dist/anx-ui.esm.js",
-  "unpkg": "dist/anx-ui.min.js",
-  "style": "dist/anx-ui.css",
+  "main": "lib/anx-ui.ssr.js",
+  "module": "lib/anx-ui.esm.js",
+  "unpkg": "lib/anx-ui.min.js",
+  "style": "lib/anx-ui.css",
   "author": "ANEXIA",
   "files": [
-    "dist/*",
+    "lib/*",
     "src/**/*.vue",
     "nuxt/*"
   ],
