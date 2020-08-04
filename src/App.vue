@@ -30,6 +30,9 @@
           <span class="f-700">Lorem ipsum dolor sit (weight 700)</span><br />
           <span class="f-800">Lorem ipsum dolor sit (weight 800)</span><br />
           <span class="f-900">Lorem ipsum dolor sit (weight 900)</span><br />
+
+          <anx-hr-line />
+
         </anx-paragraph>
 
         <anx-paragraph title="Size h2" size="h2">
@@ -335,6 +338,7 @@ import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
 import AnxIcon from "@/components/AnxIcon.vue";
+import AnxHrLine from "@/components/AnxHrLine.vue";
 @Component({
   components: {
     AnxHeader,
@@ -355,7 +359,8 @@ import AnxIcon from "@/components/AnxIcon.vue";
     AnxCheckbox,
     AnxSelect,
     AnxTextarea,
-    AnxIcon
+    AnxIcon,
+    AnxHrLine
   }
 })
 export default class App extends Vue {

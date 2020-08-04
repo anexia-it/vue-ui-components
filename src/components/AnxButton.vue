@@ -43,12 +43,11 @@ export default class AnxButton extends Vue {
 button {
   width: var(--button-width);
   height: 2.5em; //40px
-  padding-top: 2px;
   border: none;
   font-size: 16px;
   vertical-align: middle;
   outline: 0 none;
-  padding: 0 1.9375em; //links - rechts 31px (base 16px)
+  padding: 4px 1.875em 0 1.875em; //links - rechts 30px (base 16px)
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;

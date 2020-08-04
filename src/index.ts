@@ -20,6 +20,7 @@ import AnxSelect from "./components/AnxSelect.vue";
 import AnxTextarea from "./components/AnxTextarea.vue";
 import AnxLink from "./components/AnxLink.vue";
 import AnxIcon from "./components/AnxIcon.vue";
+import AnxHrLine from "./components/AnxHrLine.vue";
 
 import VueI18n from "vue-i18n";
 
@@ -77,4 +78,5 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   Vue.component("AnxTextarea", AnxTextarea);
   Vue.component("AnxLink", AnxLink);
   Vue.component("AnxIcon", AnxIcon);
+  Vue.component("AnxHrLine", AnxHrLine);
 }
