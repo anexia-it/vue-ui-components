@@ -1,7 +1,6 @@
 import vue from "rollup-plugin-vue";
 import buble from "rollup-plugin-buble";
 import commonjs from "rollup-plugin-commonjs";
-import replace from "rollup-plugin-replace";
 import { terser } from "rollup-plugin-terser";
 import resolve from "rollup-plugin-node-resolve";
 import css from "rollup-plugin-css-only";
@@ -17,12 +16,7 @@ const baseConfig = {
   input: "src/index.ts",
   plugins: {
     /** The following plugins will be added before the vue plugin */
-    preVue: [
-      replace({
-        "process.env.NODE_ENV": JSON.stringify("production")
-      }),
-      commonjs()
-    ],
+    preVue: [commonjs()],
     /** These are some properties for the vue plugin */
     vue: {
       css: true,
@@ -70,8 +64,7 @@ if (!argv.format || argv.format === "es") {
         output: pkg.style
       }),
       vue({
-        ...baseConfig.plugins.vue,
-        css: false
+        ...baseConfig.plugins.vue
       }),
       ...baseConfig.plugins.postVue,
       terser({
