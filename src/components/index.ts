@@ -13,7 +13,7 @@ import AnxInput from "./AnxInput.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxParagraph from "./AnxParagraph.vue";
-import AnxReadOnly from "./AnxReadOnly.vue";
+import AnxReadonly from "./AnxReadonly.vue";
 import AnxSelect from "./AnxSelect.vue";
 import AnxTable from "./AnxTable.vue";
 import AnxTableCol from "./AnxTableCol.vue";
@@ -38,7 +38,7 @@ export default {
   AnxLink,
   AnxModal,
   AnxParagraph,
-  AnxReadOnly,
+  AnxReadonly,
   AnxSelect,
   AnxTable,
   AnxTableCol,

@@ -1,4 +1,4 @@
-import Components from './components/AnxAlert.vue';
+import Components from './components';
 /*import VueI18n from "vue-i18n";
 import dePlugin from "./locales/de.json";
 import enPlugin from "./locales/en.json";*/

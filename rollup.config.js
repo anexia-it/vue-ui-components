@@ -32,7 +32,11 @@ const baseConfig = {
     typescript({
       typescript: require("typescript")
     }),
-    buble()
+    buble({
+      transforms: {
+        asyncAwait: false
+      }
+    })
     /*postVue: [
       typescript({
         typescript: require("typescript")
