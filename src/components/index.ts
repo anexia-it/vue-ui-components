@@ -25,14 +25,14 @@ import AnxTitle from "./AnxTitle.vue";
 export default {
   AnxAlert,
   AnxButton,
-  AnxCard,
+  // AnxCard,
   AnxCheckbox,
   AnxContainer,
   AnxContent,
-  AnxFooter,
+  // AnxFooter,
   AnxForm,
   AnxGlobal,
-  AnxHeader,
+  // AnxHeader,
   // AnxIcon, // TODO: add after bugfix with icons
   AnxInput,
   AnxLink,
