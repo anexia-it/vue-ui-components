@@ -283,10 +283,9 @@ import enPlugin from "./locales/en.json";*/
 var UIPlugin = {
     install: function install(Vue) {
         // Register all components, that have been loaded
-        /*for (const name in Components) {
-          Vue.component(name, (Components as any)[name])
-        }*/
-        Vue.component("AnxAlert", __vue_component__);
+        for (var name in __vue_component__) {
+            Vue.component(name, __vue_component__[name]);
+        }
         // TODO: implement i18n for nuxt and vue
         /*if (Object.hasOwnProperty.call(Vue.prototype.$nuxt, "_i18n")) {
           seti18n(Vue.prototype.$nuxt._i18n);
@@ -315,5 +314,5 @@ var UIPlugin = {
 };
 
 export default UIPlugin;
-export { __vue_component__ as AnxAlert };
+export { __vue_component__ as Components };
 //# sourceMappingURL=anx-ui.esm.js.map

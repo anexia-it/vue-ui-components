@@ -1,14 +1,13 @@
-import AnxAlert from './components/AnxAlert.vue';
+import Components from './components/AnxAlert.vue';
 /*import VueI18n from "vue-i18n";
 import dePlugin from "./locales/de.json";
 import enPlugin from "./locales/en.json";*/
 const UIPlugin = {
     install(Vue) {
         // Register all components, that have been loaded
-        /*for (const name in Components) {
-          Vue.component(name, (Components as any)[name])
-        }*/
-        Vue.component("AnxAlert", AnxAlert);
+        for (const name in Components) {
+            Vue.component(name, Components[name]);
+        }
         // TODO: implement i18n for nuxt and vue
         /*if (Object.hasOwnProperty.call(Vue.prototype.$nuxt, "_i18n")) {
           seti18n(Vue.prototype.$nuxt._i18n);
@@ -35,6 +34,6 @@ const UIPlugin = {
         }*/
     },
 };
-export { AnxAlert };
+export { Components };
 export default UIPlugin;
 //# sourceMappingURL=index.js.map
