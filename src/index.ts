@@ -24,6 +24,8 @@ import AnxHrLine from "./components/AnxHrLine.vue";
 
 import VueI18n from "vue-i18n";
 
+import VeeValidate from "vee-validate";
+
 import dePlugin from "./locales/de.json";
 import enPlugin from "./locales/en.json";
 
@@ -57,6 +59,8 @@ export function UIPlugin(Vue: typeof _Vue, i18nConsumer?: VueI18n) {
   } else {
     Vue.prototype.$i18n = false;
   }
+
+  Vue.use(VeeValidate);
 
   Vue.component("AnxHeader", AnxHeader);
   Vue.component("AnxFooter", AnxFooter);
