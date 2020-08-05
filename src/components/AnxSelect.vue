@@ -186,6 +186,8 @@ export default class AnxSelect extends Vue {
   color: $anx-lightest-grey-dark;
   height: 25px;
   margin-bottom: $form-components-spacing;
+  margin-top: 23px; /*real margin 53px, because all form-components has 30px margin-bottom*/
+
   font-size: 16px;
 
   &.is_invalid {

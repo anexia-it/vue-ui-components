@@ -62,8 +62,9 @@ export default class AnxContent extends Vue {
 
   &.first-no-nav {
     margin: 0px;
-    padding-top: 10px;
-    padding-bottom: 30px;
+    padding: 0px;
+    margin-top: 15px; /* real margin to header-line 35px (hr has 20px) */
+    margin-bottom: 30px; /* real margin 35px (textbox) */
   }
 
   div:last-child {
