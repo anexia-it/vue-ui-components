@@ -151,11 +151,23 @@
         </anx-paragraph>
         <anx-paragraph>
           This is a example for a button with a longer text. The width can be
-          set manually.<br /><br />
+          set manually. This is also a example for a <i>confirmation AnxModal</i
+          ><br /><br />
+          <anx-modal
+            confirm="true"
+            v-if="exampleConfirmationModal"
+            title="Confirmation"
+            @close="exampleConfirmationModal = false"
+            @confirm="exampleConfirmationModal = false"
+          >
+            This is an example for a confirmation <i>&lt;anx-modal&gt;</i>.<br />
+            It will send two events, which can be catched: confirm and close.
+          </anx-modal>
           <anx-button
-            text="Button with long text >"
+            text="Show Confirmation Modal >"
             width="300px"
             btnType="click"
+            @click="exampleConfirmationModal = true"
           />
         </anx-paragraph>
 
@@ -478,6 +490,7 @@ export default class App extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleConfirmationModal = false;
 
   /** Display form Modal */
   private formModal = false;

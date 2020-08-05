@@ -22,13 +22,25 @@
         <div class="modal-body  anx-modal-body">
           <slot />
         </div>
-        <div class="modal-footer  anx-modal-footer">
+        <div v-if="confirm" class="modal-footer  anx-modal-footer">
+          <anx-button
+            :text="this.$i18n.t('uiplugin.modal.confirmButton')"
+            @submit="$emit('confirm')"
+          />
+          <div class="space"></div>
+          <anx-button
+            :text="this.$i18n.t('uiplugin.modal.cancelButton')"
+            @submit="$emit('close')"
+          />
+        </div>
+        <div v-else class="modal-footer  anx-modal-footer">
           <anx-button
             :text="this.$i18n.t('uiplugin.modal.closeButton')"
             v-if="hasCloseButton"
             @submit="$emit('close')"
           />
         </div>
+
       </div>
     </div>
   </div>
@@ -46,6 +58,8 @@ export default class AnxModal extends Vue {
   @Prop({ default: "TITLE" }) title!: string;
 
   @Prop({ default: true }) hasCloseButton!: boolean;
+
+  @Prop({ default: false }) confirm!: boolean;
 }
 </script>
 
@@ -183,5 +197,8 @@ export default class AnxModal extends Vue {
       position: inherit;
     }
   }
+}
+.space {
+  width: 30px;
 }
 </style>

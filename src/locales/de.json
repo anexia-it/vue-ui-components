@@ -2,7 +2,9 @@
     "uiplugin": {
       "header": "DEUTSCH !!",
       "modal": {
-        "closeButton": "Schließen"
+        "closeButton": "Schließen",
+        "cancelButton": "Abbrechen",
+        "confirmButton": "Okay"
       },
       "footer":
       {
