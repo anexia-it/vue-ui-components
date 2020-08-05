@@ -6,6 +6,12 @@
     <anx-header :menus="items" />
 
     <anx-container>
+      <anx-content inverse first>
+        <anx-paragraph>
+          You can make a first element of <i>&lt;anx-content&gt;</i> for additional infos to begin of the application.
+        </anx-paragraph>
+      </anx-content>
+
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
           This is a simple paragraph. Paragraphs are made for text. A paragraph
