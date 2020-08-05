@@ -8,7 +8,8 @@
     <anx-container>
       <anx-content inverse first>
         <anx-paragraph>
-          You can make a first element of <i>&lt;anx-content&gt;</i> for additional infos to begin of the application.
+          You can make a first element of <i>&lt;anx-content&gt;</i> for
+          additional infos to begin of the application.
         </anx-paragraph>
       </anx-content>
 
@@ -149,11 +150,11 @@
           />
         </anx-paragraph>
         <anx-paragraph>
-          This is a example for a button with a longer text. It has the standard
-          width of 212px.<br /><br />
+          This is a example for a button with a longer text. The width can be
+          set manually.<br /><br />
           <anx-button
             text="Button with long text >"
-            width="212px"
+            width="300px"
             btnType="click"
           />
         </anx-paragraph>
@@ -227,7 +228,7 @@
           <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> without validation but with animation.
           </anx-paragraph>
-          <anx-input name="mail" label="Mail" v-model="mail" />
+          <anx-input name="mail" label="Mail" v-model="mail" rules="email" />
 
           <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> can also be set to
