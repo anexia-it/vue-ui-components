@@ -153,6 +153,7 @@ export default class AnxModal extends Vue {
       margin: 0;
       font-size: 34px;
       line-height: 42px;
+      font-family: MetaWebPro-Thin;
     }
 
     .small-line {
@@ -169,6 +170,7 @@ export default class AnxModal extends Vue {
   .modal-body {
     margin: 40px;
     padding: 0 !important;
+    text-align: center;
 
     @media screen and (max-width: 500px) {
       margin: 2.5rem 1.25rem 2.5rem 1.25rem; // 40px 20px 40px 20px
