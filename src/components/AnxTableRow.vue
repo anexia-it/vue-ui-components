@@ -22,5 +22,6 @@ export default class AnxTableRow extends Vue {
 
 .anx-table-row {
   height: 40px;
+  min-height: 40px;
 }
 </style>

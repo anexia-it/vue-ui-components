@@ -40,7 +40,6 @@
             @submit="$emit('close')"
           />
         </div>
-
       </div>
     </div>
   </div>
