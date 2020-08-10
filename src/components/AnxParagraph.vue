@@ -4,7 +4,11 @@
       `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
     "
   >
-    <anx-title v-if="title !== null" :size="size" class="anx-paragraph-title">
+    <anx-title
+      v-if="title !== null"
+      :size="size"
+      :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
+    >
       {{ title }}
     </anx-title>
     <slot />
@@ -29,6 +33,9 @@ export default class AnxParagraph extends Vue {
 
   /** The paragraph can also be displayed as hint */
   @Prop({ default: null }) hint!: boolean;
+
+  /** The paragraph title has a line or not */
+  @Prop({ default: null }) noline!: boolean;
 }
 </script>
 
@@ -60,6 +67,15 @@ export default class AnxParagraph extends Vue {
     &::after {
       content: "\A\2014";
       white-space: pre;
+    }
+
+    &.noline {
+      margin-bottom: 19px !important; /*real margin isi 30px - because textbox size*/
+
+      &::after {
+        content: "" !important;
+        white-space: pre;
+      }
     }
   }
 

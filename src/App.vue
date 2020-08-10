@@ -45,6 +45,18 @@
           This is a paragraph with size H2 and its content
         </anx-paragraph>
 
+        <anx-paragraph title="Size h2 noline" size="h2" noline>
+          This is a paragraph with size H2 and its content.
+          <br />The line is now by all h in <i>&lt;anx-paragraph&gt;</i>
+          <b> optional</b> (set noline).
+        </anx-paragraph>
+
+        <anx-paragraph title="Size h3 noline" size="h3" noline>
+          This is a paragraph with size H3 and its content.
+          <br />The line is now by all h in <i>&lt;anx-paragraph&gt;</i>
+          <b> optional</b> (set noline).
+        </anx-paragraph>
+
         <anx-paragraph title="Size h3" size="h3">
           And this is the smallest paragraph<br /><br />
         </anx-paragraph>
@@ -160,7 +172,8 @@
             @close="exampleConfirmationModal = false"
             @confirm="exampleConfirmationModal = false"
           >
-            This is an example for a confirmation <i>&lt;anx-modal&gt;</i>.<br />
+            This is an example for a confirmation
+            <i>&lt;anx-modal&gt;</i>.<br />
             It will send two events, which can be catched: confirm and close.
           </anx-modal>
           <anx-button
