@@ -108,7 +108,7 @@ export default class AnxTable extends Vue {
       min-height: 40px;
       height: 40px;
       th {
-        padding: 0.5rem 0.5rem 0.438rem 0.5rem;
+        padding: 0.5rem 0.5rem 0.25rem 0.5rem;
       }
     }
   }
