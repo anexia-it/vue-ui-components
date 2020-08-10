@@ -56,8 +56,9 @@ export default class AnxCheckbox extends Vue {
   @Prop() name!: string;
   /**validation: is it set (true) then there are a default validation provider (check is_set/required) */
   @Prop({ default: false }) validation!: boolean;
+  @Prop({ default: false }) checkedBool!: boolean;
 
-  private checked = false;
+  private checked = this.checkedBool;
 }
 </script>
 
