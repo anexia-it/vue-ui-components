@@ -357,6 +357,18 @@
             :value="ip"
           />
 
+          <anx-input 
+            name="changeValue"
+            label="Change Value"
+            
+            :value="changeText"
+            />
+          <anx-button style="margin-bottom:20px"
+            text="default Value"
+            @click="changeVal"
+            width="auto"
+            btnType="click"
+          />
           <anx-paragraph size="h3" title="anx-checkbox">
             <i>&lt;anx-checkbox&gt;</i> can have a validation-provider.<br />
             First example with validation (default rule: required true), and the
@@ -532,7 +544,10 @@ export default class App extends Vue {
     { menu: "Software", link: "/x/" },
     { menu: "Hosting", link: "/y/" }
   ];
-
+  changeText=""
+  private changeVal(){
+    this.changeText="halloo"
+  }
   ip = "";
   showSuccessAlert = true;
   showErrorAlert = true;
