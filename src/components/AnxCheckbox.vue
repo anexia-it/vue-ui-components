@@ -14,9 +14,9 @@
           type="checkbox"
           v-validate="'required:true'"
           :value="name"
-          v-model="checked"
+          v-model="state"
           :class="errors && errors.length > 0 ? 'is-invalid' : ''"
-          @change="$emit('input', { checked, name })"
+          @change="$emit('input', { state, name })"
         />
         <div class="text">{{ name }}</div>
       </label>
@@ -31,8 +31,8 @@
         :name="name"
         type="checkbox"
         :value="name"
-        v-model="checked"
-        @change="$emit('input', { checked, name })"
+        v-model="state"
+        @change="$emit('input', { state, name })"
       />
       <div class="text">{{ name }}</div>
     </label>
@@ -56,9 +56,9 @@ export default class AnxCheckbox extends Vue {
   @Prop() name!: string;
   /**validation: is it set (true) then there are a default validation provider (check is_set/required) */
   @Prop({ default: false }) validation!: boolean;
-  @Prop({ default: false }) checkedBool!: boolean;
+  @Prop({ default: false }) checked!: boolean;
 
-  private checked = this.checkedBool;
+  private state = this.checked;
 }
 </script>
 

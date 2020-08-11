@@ -380,11 +380,7 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-          <anx-checkbox
-            name="Checkbox"
-            v-model="checkbox[1]"
-            :checkedBool="true"
-          />
+          <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
           <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
             and hava a prop for the options (array&lt;{value: string, text:
@@ -552,7 +548,7 @@ export default class App extends Vue {
   selected2 = "";
   text1 = "";
   text2 = "";
-  checkbox = [];
+  checkbox = [false, true];
   mail = "";
 
   private tableOptions: {
