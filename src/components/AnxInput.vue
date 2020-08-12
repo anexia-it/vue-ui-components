@@ -146,7 +146,7 @@ export default class AnxInput extends Vue {
       this.active = true;
     }
   }
-  /**FOR READONLY!
+  /**
    * Watch the attribute/prop value. When the value change, then it set the updateInputField
    * variabel with the new value (need to be pass to the parent) and set the input-field to filled.
    */
