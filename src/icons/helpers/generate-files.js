@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-console.log("Auto generating files for AnxIcons");
+console.log("\x1b[34mAuto generating files for AnxIcons\x1b[0m\n");
 
 const fs = require("fs");
 const path = require("path");
@@ -81,7 +81,7 @@ function generateIconsTsFile(icons) {
 /** Generates a file with the given content */
 function generateFile(name, content) {
   fs.writeFile(path.join(__PATH__, name), content, () => {
-    console.log(`Generated ${name}`);
+    console.log(`\x1b[32mGenerated ${name}\x1b[0m`);
   });
 }
 
