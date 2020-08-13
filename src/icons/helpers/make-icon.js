@@ -13,7 +13,18 @@ export const makeIcon = (name, content) => {
     name: iconName,
     functional: true,
     props: {
-      // Props can be added here
+      height: {
+        type: String,
+        default: "100%"
+      },
+      width: {
+        type: String,
+        default: "100%"
+      },
+      margin: {
+        type: String,
+        default: "0px"
+      }
     },
     render(h, { data, props }) {
       return h(
@@ -23,8 +34,10 @@ export const makeIcon = (name, content) => {
           props: { ...props },
           attrs: {
             "aria-label": name,
-            width: "100%",
-            height: "100%"
+            style:
+              (props.width ? `width: ${props.width};` : "") +
+              (props.height ? ` height: ${props.height};` : "") +
+              (props.margin ? `margin: ${props.margin};` : "")
           },
           domProps: { innerHTML: svgContent }
         })

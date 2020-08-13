@@ -61,11 +61,11 @@
           /src/assets/icons. You just have to pass the icon name as
           <strong>img</strong> property to the
           <i>&lt;anx-icon&gt;</i> component. You can additionally set a
-          different width for the icons.
+          different width, height and margin for the icons.
         </anx-paragraph>
-        <anx-icon width="30px" style="margin: 20px" />
-        <anx-icon icon="alexa" width="50px" style="margin: 20px" />
-        <anx-icon icon="3d.svg" width="80px" style="margin: 20px" />
+        <anx-icon width="30px" margin="20px" />
+        <anx-icon icon="alexa" width="50px" margin="20px" />
+        <anx-icon icon="3d" width="80px" margin="20px" />
       </anx-content>
 
       <anx-content title="Tables" size="h2">

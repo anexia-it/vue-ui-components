@@ -4,6 +4,7 @@
     class="anx-icon"
     :width="width"
     :height="height"
+    :margin="margin"
   ></component>
 </template>
 
@@ -15,6 +16,7 @@ export default class AnxIcon extends Vue {
   @Prop({ default: "anexia" }) icon!: string;
   @Prop({ default: "" }) width!: string;
   @Prop({ default: "" }) height!: string;
+  @Prop({ default: "" }) margin!: string;
 
   get iconName() {
     if (this.icon.indexOf("anx-icon") === 0) return this.icon;
@@ -25,4 +27,8 @@ export default class AnxIcon extends Vue {
 
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
+
+.anx-icon {
+  display: inline-block;
+}
 </style>
