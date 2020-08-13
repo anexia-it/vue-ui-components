@@ -1,35 +1,31 @@
 import Vue from "vue";
 import { mergeData } from "vue-functional-data-merge";
-
-// TODO: remove the unnecessary code if this file and check it again
+import { kebab } from "./string-utils";
 
 export const makeIcon = (name, content) => {
-  console.log("in make icon");
-  // For performance reason we pre-compute some values, so that
-  // they are not computed on each render of the icon component
-  const kebabName = name; // TODO implmenet kebap function
+  const kebabName = kebab(name);
   const iconName = `AnxIcon${name}`;
-  const iconNameClass = `anx-icon-${kebabName}`;
+  const iconNameClass = `anx-icon anx-icon-${kebabName}`;
   const svgContent = content;
-  console.log("iconName:", iconName)
+
   // Return the icon component definition
-  return /*#__PURE__*/ Vue.extend({
+  return Vue.extend({
     name: iconName,
     functional: true,
     props: {
-      //...commonIconProps,
-      stacked: {
-        type: Boolean,
-        default: false
-      }
+      // Props can be added here
     },
     render(h, { data, props }) {
       return h(
-        "svg",
+        "div",
         mergeData(data, {
           staticClass: iconNameClass,
-          props: { ...props, content: svgContent },
-          attrs: { "aria-label": kebabName.replace(/-/g, " ") },
+          props: { ...props },
+          attrs: {
+            "aria-label": name,
+            width: "100%",
+            height: "100%"
+          },
           domProps: { innerHTML: svgContent }
         })
       );

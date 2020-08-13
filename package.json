@@ -11,7 +11,7 @@
     "lint": "vue-cli-service lint",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "rollup": "npm run generate:icons && rm -rf lib && rollup -c",
-    "generate:icons": "node ./src/icons/helpers/generate-files.js"
+    "generate:icons": "node ./src/icons/helpers/generate-files.js && vue-cli-service lint ./src/icons/*.js"
   },
   "main": "lib/anx-ui.ssr.js",
   "module": "lib/anx-ui.esm.js",

@@ -1,8 +1,8 @@
-import Vue, {PluginObject} from 'vue'
+import Vue, { PluginObject } from "vue";
 
 // Plugin
-export declare const AnxIconsPlugin: PluginObject<any>
-export declare const AnxIconsNames: Array<string>
+export declare const AnxIconsPlugin: PluginObject<any>;
+export declare const AnxIconsNames: Array<string>;
 
 // Component: anx-icon
 export declare class AnxIcon extends Vue {}

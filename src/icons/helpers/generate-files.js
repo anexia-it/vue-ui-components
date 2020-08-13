@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const sutils = require("./string-utils");
 const __PATH__ = "src/icons/";
-const __ICONS_PATH__ = "src/assets/icons";
+const __ICONS_PATH__ = "src/assets/icons/";
 
 const fileTitle = `// --- BEGIN AUTO-GENERATED FILE ---
 //
@@ -34,18 +34,19 @@ function generatePluginsFileContent(icons) {
   });
   content = content.slice(0, -2);
 
-  content += `\n];\n\nexport const AnxIconsPlugin = {
-  install: function() {
-    // TODO: implement install logic here
-    console.log("installing AnxIconsPlugin");
-    Vue.component("AnxIconEuro", AnxIconEuro);
-  }\n};`;
+  content += `\n];\n\nexport const AnxIconsPlugin = {\n  install: function() {\n`;
+  icons.forEach(({ fullName }) => {
+    content += `    Vue.component("${fullName}", ${fullName});\n`;
+  });
+  content = content.slice(0, -2);
+  content += `\n}\n};`;
 
   content += fileFooter;
 
   return content;
 }
 
+/** Generate the content for the icons.js file */
 function generateIconsFile(icons) {
   let content = fileTitle;
 
@@ -72,6 +73,7 @@ function generateFile(name, content) {
 fs.readdir(__ICONS_PATH__, (err, files) => {
   if (err) {
     console.error("Error reading icon files directory!");
+    console.error(err);
   } else {
     const icons = [];
     files.forEach(file => {
@@ -87,12 +89,18 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
         /** Add the AnxIcon prefix */
         const fullName = "AnxIcon" + name;
 
+        /** Read the svg content from the file and replace new lines and quotation marks*/
+        let svg = fs.readFileSync(__ICONS_PATH__ + file, "utf8");
+        svg = sutils.removeNewLines(svg);
+        svg = sutils.replaceQuotationMarks(svg);
+        svg = sutils.replaceWidthAndHeightForSvg(svg); // Replace the width and height to 100%
+
         /** Add the original and modified file names to the array */
         icons.push({
           original: file,
           fullName: fullName,
-          name: name, // TODO: add svg automatically
-          svg: "<defs><style>  .cls-1 {	fill: none;	stroke: #77bc1f;	stroke-miterlimit: 10;	stroke-width: 7.5px;  }</style></defs><title>073-Euro</title><g><circle class='cls-1' cx='129' cy='129' r='125'/><g>  <line class='cls-1' x1='59.62' y1='113.75' x2='143.14' y2='113.75'/>  <line class='cls-1' x1='59.62' y1='140.43' x2='143.14' y2='140.43'/>  <path class='cls-1' d='M167.44,70.58a63.62,63.62,0,1,0,0,116.86'/></g></g>"
+          name: name,
+          svg: svg
         });
       }
     });
