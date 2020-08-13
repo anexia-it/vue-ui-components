@@ -58,10 +58,14 @@
         <anx-paragraph>
           You can easily include anexia icons in your design using the
           <i>&lt;anx-icon&gt;</i> component. All icons are located in
-          /src/assets/icons. You just have to pass the icon name as
-          <strong>img</strong> property to the
+          /src/assets/icons and are rendered automatically on build and
+          registered as plugin. You just have to pass the icon name as
+          <strong>icon</strong> property to the
           <i>&lt;anx-icon&gt;</i> component. You can additionally set a
-          different width, height and margin for the icons.
+          different width, height and margin for the icons.<br /><br />In
+          addition to this, you can also use a the individual icon component
+          itself. You can also use <i>&lt;anx-icon-dokument&gt;</i> to render an
+          icon.
         </anx-paragraph>
         <anx-icon
           v-for="icon in AnxIcons"
@@ -72,8 +76,8 @@
         ></anx-icon>
         <br />
         <anx-icon width="30px" margin="20px" />
-        <anx-icon icon="alexa" width="50px" margin="20px" />
-        <anx-icon icon="3d" width="80px" margin="20px" />
+        <anx-icon-alexa width="50px" margin="20px" />
+        <anx-icon-3d width="80px" margin="20px" />
       </anx-content>
 
       <anx-content title="Tables" size="h2">
