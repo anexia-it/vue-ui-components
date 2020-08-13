@@ -114,7 +114,10 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
         /** Replace height and width with 100% */
         svg = sutils.replaceWidthAndHeightForSvg(svg);
         /** Replace the class names by unique class name, so that the styles of the SVGs don't interfere with each other */
-        svg = svg.replace(/cls-/g, sutils.kebab(fullName) + "-cls");
+        svg = svg.replace(
+          /cls-/g,
+          `${sutils.kebab(fullName)}-${Math.floor(Math.random() * 1000)}-cls`
+        );
 
         /** Add the original and modified file names to the array */
         icons.push({
