@@ -9,9 +9,10 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
+    "lint:icons": "vue-cli-service lint ./src/icons/*.js ./src/icons/*.ts",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "rollup": "npm run generate:icons && rm -rf lib && rollup -c",
-    "generate:icons": "node ./src/icons/helpers/generate-files.js && vue-cli-service lint ./src/icons/*.js"
+    "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons"
   },
   "main": "lib/anx-ui.ssr.js",
   "module": "lib/anx-ui.esm.js",
