@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="header-container d-flex">
             <div class="header-image">
-              <anx-icon alt="anx-header-logo" :img="img" />
+              <anx-icon alt="anx-header-logo" :icon="img" />
             </div>
             <div class="header-language-nav" v-if="$i18n">
               <div v-if="!menus">

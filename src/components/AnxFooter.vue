@@ -8,7 +8,7 @@
             <anx-icon
               class="anx-footer-logo"
               alt="anx-footer-logo"
-              :img="img"
+              :icon="img"
             />
 
             <div class="anx-footer-right">
@@ -28,7 +28,11 @@
               </div>
             </div>
           </div>
-          <anx-icon class="anx-footer-logo" id="footer-img-mobile" :img="img" />
+          <anx-icon
+            class="anx-footer-logo"
+            id="footer-img-mobile"
+            :icon="img"
+          />
         </div>
       </div>
     </div>

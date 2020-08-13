@@ -64,8 +64,8 @@
           different width for the icons.
         </anx-paragraph>
         <anx-icon width="30px" style="margin: 20px" />
-        <anx-icon img="alexa" width="50px" style="margin: 20px" />
-        <anx-icon img="3d.svg" width="80px" style="margin: 20px" />
+        <anx-icon icon="alexa" width="50px" style="margin: 20px" />
+        <anx-icon icon="3d.svg" width="80px" style="margin: 20px" />
       </anx-content>
 
       <anx-content title="Tables" size="h2">
@@ -115,7 +115,7 @@
             v-for="(item, i) in secondTableItems"
             v-slot:[getImgCellName(i)]="{ content }"
           >
-            <anx-icon :img="content" :key="i" width="25px" />
+            <anx-icon :icon="content" :key="i" width="25px" />
           </template>
         </anx-table>
       </anx-content>
@@ -281,12 +281,12 @@
           Below this paragraph are two examples for <i>&lt;anx-card&gt;</i>.
         </anx-paragraph>
 
-        <anx-card img="anexia.svg" title="One card" link="#" link-text="more >">
+        <anx-card icon="anexia" title="One card" link="#" link-text="more >">
           This is the text of the card
         </anx-card>
 
         <anx-card
-          img="anexia.svg"
+          icon="dokument"
           title="And another card"
           link="#"
           link-text="more >"
