@@ -105,11 +105,16 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
         /** Add the AnxIcon prefix */
         const fullName = "AnxIcon" + name;
 
-        /** Read the svg content from the file and replace new lines and quotation marks*/
+        /** Read the svg content from the file */
         let svg = fs.readFileSync(__ICONS_PATH__ + file, "utf8");
+        /** Remove the line breaks */
         svg = sutils.removeNewLines(svg);
+        /** Replace double quotation marks with single quotation marks */
         svg = sutils.replaceQuotationMarks(svg);
-        svg = sutils.replaceWidthAndHeightForSvg(svg); // Replace the width and height to 100%
+        /** Replace height and width with 100% */
+        svg = sutils.replaceWidthAndHeightForSvg(svg);
+        /** Replace the class names by unique class name, so that the styles of the SVGs don't interfere with each other */
+        svg = svg.replace(/cls-/g, sutils.kebab(fullName) + "-cls");
 
         /** Add the original and modified file names to the array */
         icons.push({
