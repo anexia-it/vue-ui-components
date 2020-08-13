@@ -12,11 +12,11 @@ export default function(moduleOptions) {
   if (!options.namespace) options.namespace = "anx-ui";
   const { namespace } = options;
 
-  /** Add the componenets as plugin */
+  /** Add the components as plugin */
   this.addPlugin({
     src: resolve(__dirname, "ui-plugin.js"),
     fileName: join(namespace, "ui-plugin.js"),
-    ssr: false,
+    ssr: false, // TODO: this should be set to true if it works
     options
   });
 }
