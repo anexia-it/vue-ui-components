@@ -62,6 +62,22 @@ function generateIconsFile(icons) {
   return content;
 }
 
+/** Generate the content for the icons.d.ts declarations file */
+function generateIconsTsFile(icons) {
+  let content = fileTitle;
+
+  content += `import Vue from "vue";\n\n`;
+
+  icons.forEach(({ fullName }) => {
+    content += `export declare class ${fullName} extends Vue {}\n\n`;
+  });
+  content = content.slice(0, -2);
+
+  content += fileFooter;
+
+  return content;
+}
+
 /** Generates a file with the given content */
 function generateFile(name, content) {
   fs.writeFile(path.join(__PATH__, name), content, () => {
@@ -112,5 +128,9 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
     /** Generate the icons.js file */
     const iconsJsFile = generateIconsFile(icons);
     generateFile("icons.js", iconsJsFile);
+
+    /** Generate the icons.d.ts declarations file */
+    const iconsTsFile = generateIconsTsFile(icons);
+    generateFile("icons.d.ts", iconsTsFile);
   }
 });
