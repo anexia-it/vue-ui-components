@@ -63,6 +63,14 @@
           <i>&lt;anx-icon&gt;</i> component. You can additionally set a
           different width, height and margin for the icons.
         </anx-paragraph>
+        <anx-icon
+          v-for="icon in AnxIcons"
+          :key="icon"
+          :icon="icon"
+          width="50px"
+          margin="20px"
+        ></anx-icon>
+        <br />
         <anx-icon width="30px" margin="20px" />
         <anx-icon icon="alexa" width="50px" margin="20px" />
         <anx-icon icon="3d" width="80px" margin="20px" />
@@ -310,7 +318,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import { AnxIconsNames } from "@/icons";
 import AnxHeader from "@/components/AnxHeader.vue";
 import AnxFooter from "@/components/AnxFooter.vue";
 import AnxGlobal from "@/components/AnxGlobal.vue";
@@ -382,37 +390,37 @@ export default class App extends Vue {
       age: 40,
       firstName: "Dickerson",
       lastName: "Macdonald",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 21,
       firstName: "Larsen",
       lastName: "Shaw",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 89,
       firstName: "Geneva",
       lastName: "Wilson",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 38,
       firstName: "Jami",
       lastName: "Carney",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 40,
       firstName: "Dickerson",
       lastName: "Macdonald",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 21,
       firstName: "Larsen",
       lastName: "Shaw",
-      image: "anexia.svg"
+      image: "anexia"
     }
   ];
 
@@ -443,6 +451,16 @@ export default class App extends Vue {
     this.secondTableItems.forEach(object => {
       object.image = images[Math.floor(Math.random() * images.length)];
     });
+  }
+
+  /** Returns a list of all anx icons in kebab case */
+  get AnxIcons() {
+    const icons: Array<string> = [];
+    AnxIconsNames.forEach(name => {
+      name = name[0].toLowerCase() + name.substring(1);
+      icons.push(name.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`));
+    });
+    return icons;
   }
 
   /** Return the name of the cell for image with an specific index */
