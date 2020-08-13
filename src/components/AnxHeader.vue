@@ -5,7 +5,7 @@
         <div class="col-md-12">
           <div class="header-container d-flex">
             <div class="header-image">
-              <anx-icon alt="anx-header-logo" :img="img" />
+              <img alt="anx-header-logo" v-bind:src="img" />
             </div>
             <div class="header-language-nav" v-if="$i18n">
               <div v-if="!menus">
@@ -35,14 +35,12 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import AnxIcon from "./AnxIcon.vue";
 import I18nLangSwitcher from "./I18nLangSwitcher.vue";
-
 @Component({
-  components: { I18nLangSwitcher, AnxIcon }
+  components: { I18nLangSwitcher }
 })
 export default class AnxHeader extends Vue {
-  @Prop({ default: "anexia-logo" }) img!: string;
+  @Prop({ default: require("../assets/anexia-logo.svg") }) img!: string;
   @Prop({ default: null }) menus!: Array<object>;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
@@ -92,7 +90,7 @@ hr {
     width: 100%;
     text-align: right;
     margin: auto 0 auto 0;
-    color: $anx-primary-white;
+    color: $anx-primary-blue;
   }
 }
 
