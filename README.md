@@ -34,7 +34,7 @@ npm run build:bundle
 #### Rendered files (library)
 The library can easily be included into existing projects.  
 **ui.umd.js** this is the UMD version of our project. These are modules which are capable of working everywhere, be it in the client, on the server or elsewhere.  
-**ui.umd.min.js** this is the minified version. This version is used to be included directly into websites using the <script> tag.  
+**ui.umd.min.js** this is the minified version. This version is used to be included directly into websites using the &lt;script&gt; tag.  
 **ui.common.js** this is a commonJS bundle for consuming via bundlers
 
 ### Run your unit tests
