@@ -11,24 +11,31 @@ This command should be used for local develpoment. The preview website will be r
 npm run serve
 ```
 
-### Compiles and minifies for production
-This command can be used to create a production preview website of the ui project. The preview website will be exported to /dist
+### Build the app and library
+This command build both, the library and app version of this project. See **Build App** and **Build Library**
 ```
 npm run build
 ```
 
-### Rollup
-When integrating the UI project via npm, the /lib files are used. This command is used to build these files.
-This command should be run every time, changes are made.
+### Build App
+This command builds the files for the UI project to run as app. The files are exported to /dist.
+This files can directly be used as a web app and preview website.
 ```
-npm run rollup
+npm run build:app
 ```
 
-## Rendered files
-The UI project will be rendered to /lib.
-The **anx-ui.ssr-js** will be used by modern applications like NUXT. This is the main entry of the npm package.
-The **anx-ui.min.js** can be used directly in the browser and can be imported with the <script> tag
+### Build Library
+This command builds the necessary files to include the UI project as a library. The files are exported to /lib.
+This directory should also be pushed to git, to be available for download via npm.
+```
+npm run build:bundle
+```
 
+#### Rendered files (library)
+The library can easily be included into existing projects. 
+**ui.umd.js** this is the UMD version of our project. These are modules which are capable of working everywhere, be it in the client, on the server or elsewhere.
+**ui.umd.min.js** this is the minified version. This version is used to be included directly into websites using the <script> tag.
+**ui.common.js** this is a commonJS bundle for consuming via bundlers
 
 ### Run your unit tests
 ```
