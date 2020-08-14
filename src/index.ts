@@ -1,5 +1,6 @@
 import _Vue from 'vue';
 import Components from './components';
+import { AnxIconsPlugin, AnxIconsNames } from './icons';
 
 /*import VueI18n from "vue-i18n";
 import dePlugin from "./locales/de.json";
@@ -40,5 +41,5 @@ const UIPlugin = {
     },
 };
 
-export { Components };
+export { Components, AnxIconsNames, AnxIconsPlugin };
 export default UIPlugin;
