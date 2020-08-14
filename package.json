@@ -13,9 +13,9 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "rollup": "npm run generate:icons && rm -rf lib && rollup -c",
     "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons",
-    "build:bundle": "vue-cli-service build --target lib --inline-vue --dest lib"
+    "build:bundle": "vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts"
   },
-  "main": "lib/ui.common.js",
+  "main": "lib/ui.umd.js",
   "unpkg": "lib/ui.umd.min.js",
   "style": "lib/ui.css",
   "author": "ANEXIA",
