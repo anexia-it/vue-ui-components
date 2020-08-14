@@ -18,23 +18,23 @@ npm run build
 ```
 
 ### Build App
-This command builds the files for the UI project to run as app. The files are exported to /dist.
+This command builds the files for the UI project to run as app. The files are exported to /dist.  
 This files can directly be used as a web app and preview website.
 ```
 npm run build:app
 ```
 
 ### Build Library
-This command builds the necessary files to include the UI project as a library. The files are exported to /lib.
+This command builds the necessary files to include the UI project as a library. The files are exported to /lib.  
 This directory should also be pushed to git, to be available for download via npm.
 ```
 npm run build:bundle
 ```
 
 #### Rendered files (library)
-The library can easily be included into existing projects. 
-**ui.umd.js** this is the UMD version of our project. These are modules which are capable of working everywhere, be it in the client, on the server or elsewhere.
-**ui.umd.min.js** this is the minified version. This version is used to be included directly into websites using the <script> tag.
+The library can easily be included into existing projects.  
+**ui.umd.js** this is the UMD version of our project. These are modules which are capable of working everywhere, be it in the client, on the server or elsewhere.  
+**ui.umd.min.js** this is the minified version. This version is used to be included directly into websites using the <script> tag.  
 **ui.common.js** this is a commonJS bundle for consuming via bundlers
 
 ### Run your unit tests
