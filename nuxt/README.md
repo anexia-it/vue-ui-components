@@ -9,13 +9,12 @@ npm i --save-dev git+ssh://git@code.anexia.com:am/shared/ui.git
 ```
 
 Add the module to nuxt.config.js  
-Our module is only needed during development and building, so it can be added as a **buildModule**
 
 ```
 /*
-** Nuxt.js dev-modules
+** Nuxt.js modules
 */
-buildModules: [
+modules: [
   'ui/nuxt'
 ]
 ```
