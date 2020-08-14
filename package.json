@@ -5,15 +5,16 @@
   "private": true,
   "scripts": {
     "serve": "npm run generate:icons && vue-cli-service serve",
-    "build": "npm run generate:icons && vue-cli-service build",
+    "build": "npm run generate:icons  && npm run build:bundle && npm run build:app",
+    "build:app": "npm run generate:icons && vue-cli-service build",
+    "build:bundle": "vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "lint:icons": "vue-cli-service lint ./src/icons/*.js ./src/icons/*.ts",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "rollup": "npm run generate:icons && rm -rf lib && rollup -c",
-    "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons",
-    "build:bundle": "vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts"
+    "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons"
   },
   "main": "lib/ui.umd.js",
   "unpkg": "lib/ui.umd.min.js",
@@ -21,9 +22,7 @@
   "author": "ANEXIA",
   "files": [
     "lib/*",
-    "src/**/*.vue",
-    "nuxt/*",
-    "src/assets/*"
+    "nuxt/*"
   ],
   "dependencies": {},
   "devDependencies": {
