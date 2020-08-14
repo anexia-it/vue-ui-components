@@ -5,17 +5,28 @@ The UI Tool can easily be imported as a module into an existing Nuxt project.
 Install the UI Tool via NPM
 
 ``` 
-npm i git+ssh://git@code.anexia.com:am/shared/ui.git
+npm i --save-dev git+ssh://git@code.anexia.com:am/shared/ui.git
 ```
 
-Add the module to nuxt.config.js
+Add the module to nuxt.config.js  
+Our module is only needed during development and building, so it can be added as a **buildModule**
 
 ```
-modules: [
+/*
+** Nuxt.js dev-modules
+*/
+buildModules: [
   'ui/nuxt'
 ]
 ```
 
-## TODO:
-Can this module be loaded as a build-only module?
-https://nuxtjs.org/guide/modules/#build-only-modules
+Add the styles to nuxt.config.js
+
+```
+/*
+** Global CSS
+*/
+css: [
+  'ui/lib/ui.css'
+],
+```
