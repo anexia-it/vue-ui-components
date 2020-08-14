@@ -34,7 +34,7 @@ npm run build:bundle
 #### Rendered files (library)
 The library can easily be included into existing projects.  
 **ui.umd.js** this is the UMD version of our project. These are modules which are capable of working everywhere, be it in the client, on the server or elsewhere.  
-**ui.umd.min.js** this is the minified version. This version is used to be included directly into websites using the &lt;script&gt; tag.  
+**ui.umd.min.js** this is the minified version of the UMD version.  
 **ui.common.js** this is a commonJS bundle for consuming via bundlers  
 **ui.css** due to the compatibility with NUXT, we are not able to inject the style via javascript. So the style is being rendered to a single css file, that has to be imported/included, when using the UI tool.
 
