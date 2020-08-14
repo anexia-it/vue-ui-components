@@ -47,7 +47,7 @@ button {
   font-size: 16px;
   vertical-align: middle;
   outline: 0 none;
-  padding: 4px 1.875em 0 1.875em; //links - rechts 30px (base 16px)
+  padding-top: 4px;
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
