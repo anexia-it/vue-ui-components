@@ -1,5 +1,5 @@
 {
-  "name": "ui",
+  "name": "anx-ui",
   "version": "0.1.8",
   "description": "Anexia Mini Tool UI",
   "private": true,
@@ -12,11 +12,12 @@
     "lint:icons": "vue-cli-service lint ./src/icons/*.js ./src/icons/*.ts",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "rollup": "npm run generate:icons && rm -rf lib && rollup -c",
-    "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons"
+    "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons",
+    "build:bundle": "vue-cli-service build --target lib --inline-vue --dest lib"
   },
-  "main": "lib/anx-ui.ssr.js",
-  "module": "lib/anx-ui.esm.js",
-  "unpkg": "lib/anx-ui.min.js",
+  "main": "lib/anx-ui.common.js",
+  "unpkg": "lib/anx-ui.umd.min.js",
+  "style": "lib/anx-ui.css",
   "author": "ANEXIA",
   "files": [
     "lib/*",
