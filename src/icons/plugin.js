@@ -13,7 +13,6 @@ import {
   AnxIconAlexa,
   AnxIconAnderesWeiteresTeil,
   AnxIconAndroid,
-  AnxIconAnexiaLogo,
   AnxIconAnexia,
   AnxIconApp,
   AnxIconApple,
@@ -171,7 +170,6 @@ export const AnxIconsNames = [
   "AnxIconAlexa",
   "AnxIconAnderesWeiteresTeil",
   "AnxIconAndroid",
-  "AnxIconAnexiaLogo",
   "AnxIconAnexia",
   "AnxIconApp",
   "AnxIconApple",
@@ -333,7 +331,6 @@ export const AnxIconsPlugin = {
     Vue.component("AnxIconAlexa", AnxIconAlexa);
     Vue.component("AnxIconAnderesWeiteresTeil", AnxIconAnderesWeiteresTeil);
     Vue.component("AnxIconAndroid", AnxIconAndroid);
-    Vue.component("AnxIconAnexiaLogo", AnxIconAnexiaLogo);
     Vue.component("AnxIconAnexia", AnxIconAnexia);
     Vue.component("AnxIconApp", AnxIconApp);
     Vue.component("AnxIconApple", AnxIconApple);

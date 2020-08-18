@@ -1,7 +1,14 @@
 <template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
-    <anx-header img="anexia-logo" />
+    <anx-header>
+      <template v-slot:icon>
+        <img
+          alt="anx-header-logo"
+          v-bind:src="require('./assets/img/anexia-logo.svg')"
+        />
+      </template>
+    </anx-header>
     <div class="space"></div>
     <anx-header :menus="items" />
 

@@ -23,7 +23,7 @@
                   :key="link.id"
                   :href="`${link.link}`"
                 >
-                  {{ $t(link.text) }}
+                  {{ footerLinks }}
                 </a>
               </div>
             </div>
@@ -52,12 +52,12 @@ export default class AnxFooter extends Vue {
     this.createFooterLinks();
   }
   private createFooterLinks() {
-    Object.keys(this.$i18n.t("uiplugin.footer.text")).forEach(element => {
+    /*Object.keys(this.$i18n.t("uiplugin.footer.text")).forEach(element => {
       this.footerLinks.push({
         text: "uiplugin.footer.text." + element,
         link: "uiplugin.footer.link." + element
       });
-    });
+    });*/
   }
 }
 </script>

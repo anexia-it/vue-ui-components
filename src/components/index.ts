@@ -11,6 +11,7 @@ import AnxHeader from "./AnxHeader.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxInput from "./AnxInput.vue";
 import AnxLink from "./AnxLink.vue";
+import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxParagraph from "./AnxParagraph.vue";
 import AnxReadonly from "./AnxReadonly.vue";
@@ -35,6 +36,7 @@ export default {
   AnxHeader,
   AnxIcon,
   AnxInput,
+  AnxLanguageSwitcher,
   AnxLink,
   AnxModal,
   AnxParagraph,

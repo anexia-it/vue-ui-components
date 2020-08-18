@@ -12,7 +12,6 @@
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "lint:icons": "vue-cli-service lint ./src/icons/*.js ./src/icons/*.ts",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
     "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons"
   },
   "main": "lib/ui.umd.js",
@@ -28,7 +27,6 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
-    "@intlify/vue-i18n-loader": "^2.0.0-alpha.3",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^5.2.4",
     "@types/webpack": "^4.4.0",
@@ -61,9 +59,8 @@
     "vee-validate": "^2.2.15",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
-    "vue-cli-plugin-i18n": "~1.0.1",
     "vue-functional-data-merge": "^3.1.0",
-    "vue-i18n": "^8.18.2",
+    "vue-i18n": "^8.21.0",
     "vue-property-decorator": "^8.4.2",
     "vue-template-compiler": "^2.6.11"
   }
