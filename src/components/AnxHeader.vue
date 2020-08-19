@@ -8,7 +8,7 @@
               <slot name="icon">
                 <anx-icon
                   alt="anx-header-logo"
-                  :icon="img"
+                  :icon="icon"
                   :height="iconSize"
                   :width="iconSize"
                 />

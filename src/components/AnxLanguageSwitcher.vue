@@ -37,7 +37,6 @@ export default class I18nLangSwitcher extends Vue {
 
   private mounted() {
     this.locale = this.i18n.locale;
-    console.log("get locale", this.locale);
   }
 }
 </script>
