@@ -141,6 +141,7 @@ export default class AnxFooter extends Vue {
   }
 }
 .anx-footer {
+  font-size: 12px;
   margin-left: auto;
   margin-right: auto;
   width: var(--width);
