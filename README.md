@@ -63,3 +63,35 @@ You must do it for every project which use this package.
   <!-- will only load by IE -->
     <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"><\x2fscript>');</script>
 ```
+
+## Integration
+
+### Vue
+Register the UI Plugin in you main.ts  
+```
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from '@/store'
+import UIPlugin from 'ui'
+
+Vue.use(UIPlugin)
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+```
+
+In our UI tool, the styles are not injected via Javascript. So you have to load the style additionally.  
+You can do this by adding loading the style in your App.vue  
+```
+<template>
+    <router-view/>
+</template>
+<style src='ui/lib/ui.css'></style>
+```
+
+### Nuxt
+See [README.md](nuxt/README.md) file in nuxt folder.

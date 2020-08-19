@@ -21,7 +21,8 @@
   "author": "ANEXIA",
   "files": [
     "lib/*",
-    "nuxt/*"
+    "nuxt/*",
+    "index.d.ts"
   ],
   "dependencies": {},
   "devDependencies": {
