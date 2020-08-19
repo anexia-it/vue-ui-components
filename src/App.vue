@@ -1,7 +1,7 @@
 <template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
-    <anx-header>
+    <anx-header :i18n="$i18n">
       <template v-slot:icon>
         <img
           alt="anx-header-logo"
@@ -10,7 +10,7 @@
       </template>
     </anx-header>
     <div class="space"></div>
-    <anx-header :menus="items" />
+    <anx-header :menus="items" :i18n="$i18n" />
 
     <anx-container>
       <anx-content inverse first>
