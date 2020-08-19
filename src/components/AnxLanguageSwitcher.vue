@@ -1,19 +1,11 @@
 <template>
   <div v-if="i18n">
     <div class="anx-language-switcher">
-      <a
-        :class="locale === 'de' ? 'selected' : 'not-selected'"
-        @click="setLocale('de')"
-      >
-        DE
-      </a>
-      /
-      <a
-        :class="locale === 'en' ? 'selected' : 'not-selected'"
-        @click="setLocale('en')"
-      >
-        EN
-      </a>
+      <anx-link v-if="locale === 'en'" @click="setLocale('de')">DE</anx-link>
+      <span v-else>DE</span>
+      <span> / </span>
+      <anx-link v-if="locale === 'de'" @click="setLocale('en')">EN</anx-link>
+      <span v-else>EN</span>
     </div>
   </div>
   <div v-else>
@@ -23,9 +15,14 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import AnxLink from "./AnxLink.vue";
 import VueI18n from "vue-i18n";
 
-@Component({})
+@Component({
+  components: {
+    AnxLink
+  }
+})
 export default class I18nLangSwitcher extends Vue {
   /** The i18n instance from the root vue project */
   @Prop({ default: null }) i18n!: VueI18n;
@@ -35,6 +32,7 @@ export default class I18nLangSwitcher extends Vue {
   private setLocale(locale: string) {
     this.locale = locale;
     this.i18n.locale = locale;
+    console.log("ste locale");
   }
 
   private mounted() {
@@ -48,32 +46,8 @@ export default class I18nLangSwitcher extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-language-switcher {
-  color: $anx-primary-green;
-  a,
-  a:link,
-  a:visited,
-  a:focus {
-    cursor: pointer;
-    margin: 0px;
+  span {
     color: $anx-primary-white;
-    text-decoration: none;
-  }
-  .selected {
-    cursor: default;
-    color: $anx-primary-white;
-
-    &:hover {
-      color: $anx-primary-white !important;
-    }
-  }
-  a:hover {
-    color: $anx-primary-green;
-  }
-
-  .not-selected {
-    text-decoration: none;
-    color: $anx-primary-green;
-    cursor: pointer;
   }
 }
 </style>

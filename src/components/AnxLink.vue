@@ -1,14 +1,19 @@
 <template>
-  <a class="anx-link">
+  <a class="anx-link" @click="click()">
     <slot />
   </a>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Emit } from "vue-property-decorator";
 
 @Component({})
-export default class AnxLink extends Vue {}
+export default class AnxLink extends Vue {
+  @Emit("click")
+  click() {
+    return;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
