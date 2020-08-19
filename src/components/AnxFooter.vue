@@ -67,14 +67,32 @@ export default class AnxFooter extends Vue {
 
   private setFooter() {
     const footer = document.getElementById("anx-footer") as HTMLElement;
-    document.body.scrollHeight < window.innerHeight
+    document.body.scrollHeight + footer.scrollHeight < window.innerHeight
       ? footer.classList.add("bottom")
       : footer.classList.remove("bottom");
   }
 
-  mounted() {
+  private mounted() {
     this.setFooter();
+    /** Set footer on window resize */
     window.addEventListener("resize", this.setFooter);
+    /** Additionally add a listener for height change of document.body */
+    this.onElementHeightChange(document.body, this.setFooter);
+  }
+
+  /**
+   * Custom function to listen on height change of elements
+   */
+  private onElementHeightChange(elm: HTMLElement, callback: () => void) {
+    let lastHeight = elm.clientHeight,
+      newHeight;
+    (function run() {
+      newHeight = elm.clientHeight;
+      if (lastHeight != newHeight) callback();
+      lastHeight = newHeight;
+
+      window.setTimeout(run, 100);
+    })();
   }
 }
 </script>
