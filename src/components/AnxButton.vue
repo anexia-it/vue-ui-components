@@ -1,7 +1,7 @@
 <template>
   <button
     :type="btnType"
-    :class="className"
+    :class="inline ? className + ' inline' : this.className"
     :style="cssProps"
     @click="$emit(btnType)"
   >
@@ -27,6 +27,7 @@ export default class AnxButton extends Vue {
   @Prop({ default: "anx-button" }) className!: string;
   @Prop({ default: "button" }) text!: string;
   @Prop({ default: "136px" }) width!: string;
+  @Prop({ default: false }) inline!: boolean;
 
   get cssProps() {
     return {
@@ -42,12 +43,11 @@ export default class AnxButton extends Vue {
 button {
   width: var(--button-width);
   height: 2.5em; //40px
-  padding-top: 2px;
   border: none;
   font-size: 16px;
   vertical-align: middle;
   outline: 0 none;
-  padding: 0 2em; //links - rechts 32px
+  padding-top: 4px;
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -71,7 +71,7 @@ button {
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   text-align: center;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 1px solid $anx-primary-green;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
@@ -95,7 +95,7 @@ button {
   }
 
   &:before {
-    border: 1px solid $anx-primary-green;
+    //border: 1px solid $anx-primary-green;
     opacity: 0;
     -webkit-transform: scale3d(1.2, 1.2, 1);
     transform: scale3d(1.2, 1.2, 1);
@@ -158,5 +158,9 @@ button {
     color: white !important;
     text-decoration: none;
   }
+}
+
+.inline {
+  margin-right: 30px;
 }
 </style>

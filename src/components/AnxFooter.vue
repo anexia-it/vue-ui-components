@@ -1,5 +1,6 @@
 <template>
-  <div class="anx-footer">
+<div class="anx-footer-container" id="anx-footer">
+  <div class="anx-footer" :style="cssProps">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -37,6 +38,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -46,9 +48,27 @@ import AnxIcon from "./AnxIcon.vue";
 @Component({ components: { AnxIcon } })
 export default class AnxFooter extends Vue {
   @Prop({ default: "anexia-logo" }) img!: string;
+  /**Specify the width of the Footer 530px => 500px real width (15px padding for mobile)*/
+  @Prop({ default: "530px" }) width!: string;
+
+  get cssProps() {
+    return {
+      "--width": this.width
+    };
+  }
 
   private footerLinks: Array<object> = [];
+  
+  private setFooter() {
+    const footer = document.getElementById('anx-footer') as HTMLElement
+    document.body.scrollHeight < window.innerHeight ?
+      footer.classList.add("bottom") : footer.classList.remove("bottom")
+  }
+
   mounted() {
+    this.setFooter();
+    window.addEventListener("resize", this.setFooter);
+    
     this.createFooterLinks();
   }
   private createFooterLinks() {
@@ -64,16 +84,32 @@ export default class AnxFooter extends Vue {
 
 <style scoped lang="scss">
 @import "../assets/scss/_variables.scss";
+
+.anx-footer-container.bottom {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+  display: flex;
+}
+
 .anx-footer-logo {
   width: 64px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
     display: none;
   }
 }
 #footer-img-mobile {
   display: none;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
     margin-right: auto;
     margin-left: auto;
     display: inherit;
@@ -83,31 +119,35 @@ export default class AnxFooter extends Vue {
 .anx-footer {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
+  width: var(--width);
   display: flex;
-  height: 100px;
+  height: 100%;
+  padding-bottom: 20px;
   @media screen and (max-width: 500px) {
     width: 100%;
+    padding-bottom: 0px;
+
   }
 }
 .anx-footer-elements {
   display: flex;
-
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    /* IE10+ CSS styles go here */
-    flex-direction: column;
-    -ms-flex-direction: column;
-  }
 }
 .anx-footer-right {
   text-align: right;
   width: 100%;
-  @media screen and (max-width: 500px) {
+  flex-direction: column;
+  -ms-flex-direction: column;
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
     margin-bottom: 20px;
   }
 }
 .anx-footer-text {
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 500px),
+    (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
     display: block;
     text-align: center;
   }

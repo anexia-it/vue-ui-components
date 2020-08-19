@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :style="cssProps">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -58,6 +58,14 @@ export default class AnxHeader extends Vue {
   @Prop({ default: "45px" }) iconSize!: string;
   /** The menus for the header */
   @Prop({ default: null }) menus!: Array<object>;
+  /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
+  @Prop({ default: "530px" }) width!: string;
+
+  get cssProps() {
+    return {
+      "--width": this.width
+    };
+  }
 
   private mounted() {
     const hmenu = document.querySelectorAll(
@@ -98,14 +106,14 @@ hr {
     width: 100%;
     text-align: right;
     margin: auto 0 auto 0;
-    color: $anx-primary-white;
+    color: $anx-primary-blue;
   }
 }
 
 .header {
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
+  width: var(--width);
   display: flex;
   @media screen and (max-width: 500px) {
     width: 100%;

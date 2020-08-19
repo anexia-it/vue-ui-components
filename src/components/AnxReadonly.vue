@@ -1,5 +1,5 @@
 <template>
-  <div id="testanx" class="anx-readonly" @click="copy($event)">
+  <div :id="name" class="anx-readonly" @click="copy($event)">
     <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
       <slot />
     </div>
@@ -11,8 +11,8 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
 export default class AnxReadonly extends Vue {
-  /** This is the id of the alert */
-  @Prop({ default: "anx-alert" }) name!: string;
+  /** This is the id of the readonly */
+  @Prop({ default: "anx-readonly" }) name!: string;
 
   /** Should the text be selcted and copied to the clipboard on click? */
   @Prop({ default: null }) copyOnClick!: boolean;
@@ -48,7 +48,7 @@ export default class AnxReadonly extends Vue {
   width: 100%;
 
   .inner-text {
-    line-height: 16px;
+    line-height: 24px;
     padding: 16px;
     color: $anx-lightest-grey-dark;
 

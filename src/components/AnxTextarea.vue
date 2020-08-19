@@ -33,7 +33,6 @@
       :name="id"
       :rows="rows"
       :disabled="disabled"
-      v-validate="'required'"
       v-model="message"
       :class="{ filled: message.length >= 1 }"
       @input="$emit('input', message)"
@@ -90,7 +89,7 @@ export default class AnxTextarea extends Vue {
   display: block;
   position: relative;
   padding-top: 9px;
-  margin-bottom: 30px;
+  margin-bottom: $form-components-spacing; /* real margin ~35px */
 
   @media only screen and (width: 1125px), only screen and (width: 1200px) {
     display: inline-block !important;

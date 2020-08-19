@@ -1,5 +1,11 @@
 <template>
-  <div :class="'anx-content ' + (inverse !== null ? 'inversed-colors ' : '')">
+  <div
+    :class="
+      'anx-content ' +
+        (inverse !== null ? 'inversed-colors ' : '') +
+        (first !== null ? 'first-no-nav ' : '')
+    "
+  >
     <anx-title v-if="title !== null" :size="size">
       {{ title }}
     </anx-title>
@@ -25,6 +31,9 @@ export default class AnxContent extends Vue {
 
   /** If this property is set to true, the colors will be inversed (blue background and white font) */
   @Prop({ default: null }) inverse!: boolean;
+
+  /** If this property is set to true, the element will be handled as first inforamtion element*/
+  @Prop({ default: null }) first!: boolean;
 }
 </script>
 
@@ -49,6 +58,13 @@ export default class AnxContent extends Vue {
     .anx-title {
       color: $anx-primary-white;
     }
+  }
+
+  &.first-no-nav {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 15px; /* real margin to header-line 35px (hr has 20px) */
+    margin-bottom: 30px; /* real margin 35px (textbox) */
   }
 
   div:last-child {

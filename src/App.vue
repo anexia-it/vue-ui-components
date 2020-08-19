@@ -13,6 +13,13 @@
     <anx-header :menus="items" />
 
     <anx-container>
+      <anx-content inverse first>
+        <anx-paragraph>
+          You can make a first element of <i>&lt;anx-content&gt;</i> for
+          additional infos to begin of the application.
+        </anx-paragraph>
+      </anx-content>
+
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
           This is a simple paragraph. Paragraphs are made for text. A paragraph
@@ -37,10 +44,24 @@
           <span class="f-700">Lorem ipsum dolor sit (weight 700)</span><br />
           <span class="f-800">Lorem ipsum dolor sit (weight 800)</span><br />
           <span class="f-900">Lorem ipsum dolor sit (weight 900)</span><br />
+
+          <anx-hr-line />
         </anx-paragraph>
 
         <anx-paragraph title="Size h2" size="h2">
           This is a paragraph with size H2 and its content
+        </anx-paragraph>
+
+        <anx-paragraph title="Size h2 noline" size="h2" noline>
+          This is a paragraph with size H2 and its content.
+          <br />The line is now by all h in <i>&lt;anx-paragraph&gt;</i>
+          <b> optional</b> (set noline).
+        </anx-paragraph>
+
+        <anx-paragraph title="Size h3 noline" size="h3" noline>
+          This is a paragraph with size H3 and its content.
+          <br />The line is now by all h in <i>&lt;anx-paragraph&gt;</i>
+          <b> optional</b> (set noline).
         </anx-paragraph>
 
         <anx-paragraph title="Size h3" size="h3">
@@ -155,8 +176,30 @@
           <anx-button
             text="Show Modal >"
             @click="exampleModal = true"
-            width="100%"
+            width="212px"
             btnType="click"
+          />
+        </anx-paragraph>
+        <anx-paragraph>
+          This is a example for a button with a longer text. The width can be
+          set manually. This is also a example for a <i>confirmation AnxModal</i
+          ><br /><br />
+          <anx-modal
+            confirm="true"
+            v-if="exampleConfirmationModal"
+            title="Confirmation"
+            @close="exampleConfirmationModal = false"
+            @confirm="exampleConfirmationModal = false"
+          >
+            This is an example for a confirmation
+            <i>&lt;anx-modal&gt;</i>.<br />
+            It will send two events, which can be catched: confirm and close.
+          </anx-modal>
+          <anx-button
+            text="Show Confirmation Modal >"
+            width="300px"
+            btnType="click"
+            @click="exampleConfirmationModal = true"
           />
         </anx-paragraph>
 
@@ -227,6 +270,11 @@
           />
 
           <anx-paragraph size="h3">
+            <i>&lt;anx-input&gt;</i> without validation but with animation.
+          </anx-paragraph>
+          <anx-input name="mail" label="Mail" v-model="mail" rules="email" />
+
+          <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> can also be set to
             <strong>readonly</strong> by providing the <i>readonly</i> property.
             In this example, the value is binded to the ip field. The readonly
@@ -251,7 +299,7 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-
+          <anx-checkbox name="Checkbox" v-model="checkbox[1]" :checkedBool="true"/>
           <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
             and hava a prop for the options (array&lt;{value: string, text:
@@ -349,6 +397,7 @@ import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
 import AnxIcon from "@/components/AnxIcon.vue";
+import AnxHrLine from "@/components/AnxHrLine.vue";
 @Component({
   components: {
     AnxHeader,
@@ -369,7 +418,8 @@ import AnxIcon from "@/components/AnxIcon.vue";
     AnxCheckbox,
     AnxSelect,
     AnxTextarea,
-    AnxIcon
+    AnxIcon,
+    AnxHrLine
   }
 })
 export default class App extends Vue {
@@ -386,6 +436,7 @@ export default class App extends Vue {
   text1 = "";
   text2 = "";
   checkbox = [];
+  mail = "";
 
   tableItems = [
     { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
@@ -481,6 +532,7 @@ export default class App extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleConfirmationModal = false;
 
   /** Display form Modal */
   private formModal = false;

@@ -105,8 +105,10 @@ export default class AnxTable extends Vue {
   thead {
     background-color: $anx-table-header-background;
     tr {
+      min-height: 40px;
+      height: 40px;
       th {
-        padding: 0.5rem 0.5rem 0.438rem 0.5rem;
+        padding: 0.5rem 0.5rem 0.25rem 0.5rem;
       }
     }
   }
@@ -116,6 +118,8 @@ export default class AnxTable extends Vue {
 
     thead {
       tr {
+        min-height: 40px;
+        height: 40px;
         th {
           border: 1px solid $anx-table-border !important;
           border-bottom: 2px solid $anx-table-border !important;
@@ -146,6 +150,12 @@ export default class AnxTable extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-table {
+  tbody {
+    tr {
+      min-height: 40px;
+      height: 40px;
+    }
+  }
   &.anx-table-bordered {
     tbody {
       tr {
