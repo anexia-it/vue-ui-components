@@ -1,7 +1,7 @@
 <template>
   <div class="anx-card">
     <div class="anx-card-content d-flex">
-      <anx-icon class="anx-card-icon" :img="img" />
+      <anx-icon class="anx-card-icon" :icon="icon" />
       <anx-paragraph :title="title" size="h3">
         <p>
           <slot />
@@ -36,7 +36,7 @@ export default class Card extends Vue {
   @Prop({ default: "#" }) link!: string;
 
   /** The image of the card */
-  @Prop({ default: null }) img!: string;
+  @Prop({ default: null }) icon!: string;
 }
 </script>
 

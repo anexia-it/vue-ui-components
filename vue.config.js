@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
   pluginOptions: {
     i18n: {
@@ -8,5 +6,8 @@ module.exports = {
       localeDir: "locales",
       enableInSFC: true
     }
+  },
+  css: {
+    extract: true
   }
 };

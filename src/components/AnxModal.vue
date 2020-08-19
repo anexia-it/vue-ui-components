@@ -35,7 +35,7 @@
         </div>
         <div v-else class="modal-footer  anx-modal-footer">
           <anx-button
-            :text="this.$i18n.t('uiplugin.modal.closeButton')"
+            :text="closeButtonText"
             v-if="hasCloseButton"
             @submit="$emit('close')"
           />
@@ -57,6 +57,8 @@ export default class AnxModal extends Vue {
   @Prop({ default: "TITLE" }) title!: string;
 
   @Prop({ default: true }) hasCloseButton!: boolean;
+
+  @Prop({ default: "Close" }) closeButtonText!: string;
 
   @Prop({ default: false }) confirm!: boolean;
 }

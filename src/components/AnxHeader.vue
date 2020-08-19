@@ -5,11 +5,18 @@
         <div class="col-md-12">
           <div class="header-container d-flex">
             <div class="header-image">
-              <img alt="anx-header-logo" v-bind:src="img" />
+              <slot name="icon">
+                <anx-icon
+                  alt="anx-header-logo"
+                  :icon="img"
+                  :height="iconSize"
+                  :width="iconSize"
+                />
+              </slot>
             </div>
-            <div class="header-language-nav" v-if="$i18n">
+            <div class="header-language-nav" v-if="i18n">
               <div v-if="!menus">
-                <I18nLangSwitcher />
+                <AnxLanguageSwitcher :i18n="i18n" />
               </div>
             </div>
           </div>
@@ -21,9 +28,9 @@
                 {{ menu.menu }}
               </a>
             </div>
-            <div class="menu-text right" v-if="$i18n">
+            <div class="menu-text right" v-if="i18n">
               <div v-if="menus">
-                <I18nLangSwitcher />
+                <AnxLanguageSwitcher :i18n="i18n" />
               </div>
             </div>
           </div>
@@ -35,12 +42,21 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import I18nLangSwitcher from "./I18nLangSwitcher.vue";
+import AnxIcon from "./AnxIcon.vue";
+import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
+import VueI18n from "vue-i18n";
+
 @Component({
-  components: { I18nLangSwitcher }
+  components: { AnxLanguageSwitcher, AnxIcon }
 })
 export default class AnxHeader extends Vue {
-  @Prop({ default: require("../assets/anexia-logo.svg") }) img!: string;
+  /** The i18n instance from the root vue project */
+  @Prop({ default: null }) i18n!: VueI18n;
+  /** The icon for the header */
+  @Prop({ default: "anexia" }) icon!: string;
+  /** The icon size for the header */
+  @Prop({ default: "45px" }) iconSize!: string;
+  /** The menus for the header */
   @Prop({ default: null }) menus!: Array<object>;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;

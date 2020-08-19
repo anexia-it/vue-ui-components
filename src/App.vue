@@ -1,9 +1,16 @@
 <template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
-    <anx-header :img="require('@/assets/anexia-logo.svg')" />
+    <anx-header :i18n="$i18n">
+      <template v-slot:icon>
+        <img
+          alt="anx-header-logo"
+          v-bind:src="require('./assets/img/anexia-logo.svg')"
+        />
+      </template>
+    </anx-header>
     <div class="space"></div>
-    <anx-header :menus="items" />
+    <anx-header :menus="items" :i18n="$i18n" />
 
     <anx-container>
       <anx-content inverse first>
@@ -79,14 +86,26 @@
         <anx-paragraph>
           You can easily include anexia icons in your design using the
           <i>&lt;anx-icon&gt;</i> component. All icons are located in
-          /src/assets/icons. You just have to pass the icon name as
-          <strong>img</strong> property to the
+          /src/assets/icons and are rendered automatically on build and
+          registered as plugin. You just have to pass the icon name as
+          <strong>icon</strong> property to the
           <i>&lt;anx-icon&gt;</i> component. You can additionally set a
-          different width for the icons.
+          different width, height and margin for the icons.<br /><br />In
+          addition to this, you can also use a the individual icon component
+          itself. You can also use <i>&lt;anx-icon-dokument&gt;</i> to render an
+          icon.
         </anx-paragraph>
-        <anx-icon width="30px" style="margin: 20px" />
-        <anx-icon img="alexa" width="50px" style="margin: 20px" />
-        <anx-icon img="3d.svg" width="80px" style="margin: 20px" />
+        <anx-icon
+          v-for="icon in AnxIcons"
+          :key="icon"
+          :icon="icon"
+          width="50px"
+          margin="20px"
+        ></anx-icon>
+        <br />
+        <anx-icon width="30px" margin="20px" />
+        <anx-icon-alexa width="50px" margin="20px" />
+        <anx-icon-3d width="80px" margin="20px" />
       </anx-content>
 
       <anx-content title="Tables" size="h2">
@@ -136,7 +155,7 @@
             v-for="(item, i) in secondTableItems"
             v-slot:[getImgCellName(i)]="{ content }"
           >
-            <anx-icon :img="content" :key="i" width="25px" />
+            <anx-icon :icon="content" :key="i" width="25px" />
           </template>
         </anx-table>
       </anx-content>
@@ -280,7 +299,11 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-          <anx-checkbox name="Checkbox" v-model="checkbox[1]" :checkedBool="true"/>
+          <anx-checkbox
+            name="Checkbox"
+            v-model="checkbox[1]"
+            :checkedBool="true"
+          />
           <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
             and hava a prop for the options (array&lt;{value: string, text:
@@ -329,12 +352,12 @@
           Below this paragraph are two examples for <i>&lt;anx-card&gt;</i>.
         </anx-paragraph>
 
-        <anx-card img="anexia.svg" title="One card" link="#" link-text="more >">
+        <anx-card icon="anexia" title="One card" link="#" link-text="more >">
           This is the text of the card
         </anx-card>
 
         <anx-card
-          img="anexia.svg"
+          icon="dokument"
           title="And another card"
           link="#"
           link-text="more >"
@@ -352,13 +375,28 @@
       </anx-content>
     </anx-container>
 
-    <anx-footer />
+    <anx-footer
+      :links="[
+        { text: 'Impressum', link: '#' },
+        { text: 'AGB', link: '#' }
+      ]"
+    >
+      <template v-slot:icon>
+        <img
+          class="anx-logo-footer"
+          alt="anx-logo-footer"
+          v-bind:src="require('./assets/img/anexia-logo.svg')"
+          width="56px"
+          height="23px"
+        />
+      </template>
+    </anx-footer>
   </anx-global>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import { AnxIconsNames } from "@/icons";
 import AnxHeader from "@/components/AnxHeader.vue";
 import AnxFooter from "@/components/AnxFooter.vue";
 import AnxGlobal from "@/components/AnxGlobal.vue";
@@ -433,37 +471,37 @@ export default class App extends Vue {
       age: 40,
       firstName: "Dickerson",
       lastName: "Macdonald",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 21,
       firstName: "Larsen",
       lastName: "Shaw",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 89,
       firstName: "Geneva",
       lastName: "Wilson",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 38,
       firstName: "Jami",
       lastName: "Carney",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 40,
       firstName: "Dickerson",
       lastName: "Macdonald",
-      image: "anexia.svg"
+      image: "anexia"
     },
     {
       age: 21,
       firstName: "Larsen",
       lastName: "Shaw",
-      image: "anexia.svg"
+      image: "anexia"
     }
   ];
 
@@ -494,6 +532,16 @@ export default class App extends Vue {
     this.secondTableItems.forEach(object => {
       object.image = images[Math.floor(Math.random() * images.length)];
     });
+  }
+
+  /** Returns a list of all anx icons in kebab case */
+  get AnxIcons() {
+    const icons: Array<string> = [];
+    AnxIconsNames.forEach(name => {
+      name = name[0].toLowerCase() + name.substring(1);
+      icons.push(name.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`));
+    });
+    return icons;
   }
 
   /** Return the name of the cell for image with an specific index */
