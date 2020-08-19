@@ -1,0 +1,24 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>079-Herz</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <path class="cls-2" d="M94.82,63.54c-20.73,0-37.56,17.8-37.56,39.74,0,44.61,38.62,51.34,71.53,91.18,33.15-39.84,71.53-48,71.53-91.18,0-21.94-16.82-39.74-37.55-39.74-15,0-28,9.4-34,22.91-6-13.51-18.94-22.91-34-22.91Z"/>
+  </g>
+</svg>

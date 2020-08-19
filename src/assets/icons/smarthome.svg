@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>121-Smarthome</title>
+  <g>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <g>
+      <polyline class="cls-2" points="69.8 114.32 43.31 114.32 129 38.14 214.69 114.32 188.21 114.32"/>
+      <path class="cls-1" d="M188.21,197.18H69.79V112.72L129,62l59.21,50.68Z"/>
+    </g>
+  </g>
+  <g>
+    <path class="cls-2" d="M115.57,119a27.08,27.08,0,1,0,26.86,0"/>
+    <line class="cls-3" x1="129" y1="113.96" x2="129" y2="142"/>
+  </g>
+</svg>

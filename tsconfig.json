@@ -14,7 +14,9 @@
     "types": [
       "webpack-env",
       "mocha",
-      "chai"
+      "chai",
+      "webpack",
+      "webpack-env"
     ],
     "paths": {
       "@/*": [
@@ -26,7 +28,8 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*.ts",

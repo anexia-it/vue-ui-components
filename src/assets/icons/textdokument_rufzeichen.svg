@@ -1,0 +1,45 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-3 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>105-Textdokument_Rufzeichen</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <g>
+        <polyline class="cls-1" points="117.98 58.58 117.98 95.3 74.97 95.3"/>
+        <polyline class="cls-2" points="183.03 186.5 183.03 199.42 74.97 199.42 74.97 95.3 117.98 58.58 183.03 58.58 183.03 118.16"/>
+      </g>
+      <line class="cls-2" x1="89.73" y1="130.01" x2="147.54" y2="130.01"/>
+      <line class="cls-2" x1="89.73" y1="113.53" x2="154.9" y2="113.53"/>
+      <line class="cls-2" x1="89.73" y1="146.5" x2="140.72" y2="146.5"/>
+      <line class="cls-2" x1="89.73" y1="162.98" x2="142.93" y2="162.98"/>
+      <line class="cls-2" x1="89.73" y1="179.47" x2="136.49" y2="179.47"/>
+    </g>
+    <g>
+      <g>
+        <circle class="cls-3" cx="175.67" cy="168.08" r="4.56"/>
+        <line class="cls-2" x1="175.67" y1="160.48" x2="175.67" y2="132.56"/>
+      </g>
+      <circle class="cls-2" cx="175.67" cy="152.33" r="34.95"/>
+    </g>
+  </g>
+</svg>

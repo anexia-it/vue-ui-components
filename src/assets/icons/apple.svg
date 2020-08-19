@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>089-apple</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g id="_Gruppe_" data-name="&lt;Gruppe&gt;">
+      <path id="_Pfad_" data-name="&lt;Pfad&gt;" class="cls-1" d="M129,85.58s-3.79-28,29.64-33.95C158.65,51.63,161.17,80.72,129,85.58Z"/>
+      <path id="_Pfad_2" data-name="&lt;Pfad&gt;" class="cls-2" d="M185.85,106.29s-15.54-23.68-45.28-11.43c0,0-6.71,3.11-10.5,3.11s-12-3.69-12-3.69-10.68-5.83-25.16-.39-20,19-20,19S58.6,135.24,79.3,176.05c0,0,13.85,25.48,27.26,25.48,0,0,4.81,1.05,15.45-4.2s24.78,1.95,24.78,1.95,10.64,4.9,18.51-.63,20.12-20.85,24.64-35.57c0,0-20.41-8.89-20.41-28.86A31.65,31.65,0,0,1,185.85,106.29Z"/>
+    </g>
+  </g>
+</svg>

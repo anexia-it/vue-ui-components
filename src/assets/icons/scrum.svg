@@ -1,0 +1,28 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>126-Scrum</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <path class="cls-1" d="M91.82,81.09a24.46,24.46,0,1,0,2.33,28.21"/>
+      <path class="cls-1" d="M45.44,183h83.07s5.85,0,11.83-.29a76,76,0,0,0,10-1.09,51.59,51.59,0,1,0-54.39-25.59"/>
+      <line class="cls-1" x1="123.99" y1="183.02" x2="205.7" y2="183.02"/>
+      <polygon class="cls-2" points="196 194.22 215.4 183.02 196 171.81 196 194.22"/>
+      <polygon class="cls-2" points="80.9 149.52 98.37 163.53 101.77 141.39 80.9 149.52"/>
+      <polygon class="cls-2" points="74.97 81.94 97.25 84.22 88.09 63.78 74.97 81.94"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>149-Microcontroller</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <rect class="cls-1" x="79.08" y="79.08" width="99.85" height="99.85"/>
+  <line class="cls-1" x1="91.67" y1="79.08" x2="91.67" y2="52.13"/>
+  <line class="cls-1" x1="166.33" y1="79.08" x2="166.33" y2="52.13"/>
+  <line class="cls-1" x1="129" y1="79.08" x2="129" y2="52.13"/>
+  <line class="cls-1" x1="110.34" y1="79.08" x2="110.34" y2="52.13"/>
+  <line class="cls-1" x1="147.66" y1="79.08" x2="147.66" y2="52.13"/>
+  <line class="cls-1" x1="91.67" y1="205.87" x2="91.67" y2="178.92"/>
+  <line class="cls-1" x1="166.33" y1="205.87" x2="166.33" y2="178.92"/>
+  <line class="cls-1" x1="129" y1="205.87" x2="129" y2="178.92"/>
+  <line class="cls-1" x1="110.34" y1="205.87" x2="110.34" y2="178.92"/>
+  <line class="cls-1" x1="147.66" y1="205.87" x2="147.66" y2="178.92"/>
+  <line class="cls-1" x1="178.92" y1="91.67" x2="205.87" y2="91.67"/>
+  <line class="cls-1" x1="178.92" y1="166.33" x2="205.87" y2="166.33"/>
+  <line class="cls-1" x1="178.92" y1="129" x2="205.87" y2="129"/>
+  <line class="cls-1" x1="178.92" y1="110.34" x2="205.87" y2="110.34"/>
+  <line class="cls-1" x1="178.92" y1="147.66" x2="205.87" y2="147.66"/>
+  <line class="cls-1" x1="52.13" y1="91.67" x2="79.08" y2="91.67"/>
+  <line class="cls-1" x1="52.13" y1="166.33" x2="79.08" y2="166.33"/>
+  <line class="cls-1" x1="52.13" y1="129" x2="79.08" y2="129"/>
+  <line class="cls-1" x1="52.13" y1="110.34" x2="79.08" y2="110.34"/>
+  <line class="cls-1" x1="52.13" y1="147.66" x2="79.08" y2="147.66"/>
+</svg>

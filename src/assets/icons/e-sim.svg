@@ -1,0 +1,33 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 6.75px;
+      }
+    </style>
+  </defs>
+  <title>120-E-Sim</title>
+  <circle class="cls-1" cx="129" cy="129" r="125"/>
+  <g>
+    <rect class="cls-2" x="69.42" y="58" width="119.17" height="141.99"/>
+    <polygon class="cls-2" points="101 86.92 86.98 100.94 86.98 171.08 171.02 171.08 171.02 86.92 101 86.92"/>
+    <rect class="cls-2" x="86.98" y="58" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="111.16" y="58" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="135.33" y="58" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="159.51" y="58" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="86.98" y="186.16" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="111.16" y="186.16" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="135.33" y="186.16" width="11.51" height="13.84"/>
+    <rect class="cls-2" x="159.51" y="186.16" width="11.51" height="13.84"/>
+  </g>
+</svg>

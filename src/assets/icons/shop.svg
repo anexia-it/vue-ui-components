@@ -1,0 +1,33 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>113-Shop</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <g>
+        <rect class="cls-2" x="129.3" y="140.44" width="43.09" height="46.86"/>
+        <rect class="cls-2" x="86.21" y="140.44" width="43.09" height="46.86"/>
+      </g>
+      <polyline class="cls-2" points="192.46 118.29 192.46 187.3 66.13 187.3 66.13 118.29"/>
+      <path class="cls-2" d="M86.71,107.83c1.43,6,7.2,10.46,14,10.46a14.18,14.18,0,0,0,13.87-10.46h.82a14.49,14.49,0,0,0,27.84,0H144a14.47,14.47,0,0,0,27.81,0h.81a14.18,14.18,0,0,0,13.91,10.46c7.9,0,14.31-6.1,14.31-13.63,0-8.62-17.55-36.83-17.55-36.83h-108S57.73,96,57.73,104.66c0,7.53,6.41,13.63,14.31,13.63A14.18,14.18,0,0,0,85.9,107.83Z"/>
+      <line class="cls-2" x1="75.88" y1="93.06" x2="182.71" y2="93.06"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>092-VR</title>
+  <g>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <g>
+      <path class="cls-2" d="M198.28,171.43H142l-13-13.9-11.81,13.9H59.72a9,9,0,0,1-8.95-9V101.65a9,9,0,0,1,8.95-9H198.28a9,9,0,0,1,8.95,9v60.82A9,9,0,0,1,198.28,171.43Z"/>
+      <path class="cls-2" d="M175.51,106.74h9c4.14,0,7.52,2.91,7.52,6.46v6.63"/>
+      <rect class="cls-2" x="37.45" y="109.36" width="13.32" height="50.37"/>
+      <rect class="cls-2" x="207.23" y="109.36" width="13.32" height="50.37"/>
+    </g>
+  </g>
+</svg>

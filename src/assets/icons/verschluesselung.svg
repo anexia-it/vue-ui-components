@@ -1,0 +1,20 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>046-Verschluesselung</title>
+  <g>
+    <path class="cls-1" d="M191.74,187.33H66.26V106.06H191.74Z"/>
+    <path class="cls-1" d="M156.75,106.06h-55.5V88.23a27.75,27.75,0,1,1,55.5,0Z"/>
+    <path class="cls-1" d="M254,129A125,125,0,1,1,129,4,125,125,0,0,1,254,129Z"/>
+    <path class="cls-1" d="M142.52,106.06h-27V88.2a13.52,13.52,0,0,1,27,0Z"/>
+    <path class="cls-1" d="M136.48,147.1l3.87,16.36h-22.7l3.87-16.36a11.72,11.72,0,1,1,15,0Z"/>
+  </g>
+</svg>

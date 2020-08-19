@@ -1,0 +1,25 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>085-Strom-energie</title>
+  <g>
+    <polygon class="cls-1" points="178.99 115.87 129 116.15 129 60.88 79.02 139.8 129 139.52 129 194.79 178.99 115.87"/>
+    <circle class="cls-2" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

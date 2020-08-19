@@ -1,0 +1,21 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>074-Dollar</title>
+  <g>
+    <g>
+      <path class="cls-1" d="M88.93,156.54c0,15.21,17.94,27.54,40.07,27.54s40.07-12.33,40.07-27.54S151.13,129,129,129s-34.61-12.33-34.61-27.54S106.87,73.92,129,73.92s40.07,12.33,40.07,27.54"/>
+      <line class="cls-1" x1="121.72" y1="57.71" x2="121.72" y2="200.29"/>
+      <line class="cls-1" x1="141.23" y1="57.71" x2="141.23" y2="200.29"/>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

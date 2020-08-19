@@ -1,0 +1,22 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>026-Vollbild-verschieben</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <line class="cls-1" x1="129" y1="54.42" x2="129" y2="203.58"/>
+    <line class="cls-1" x1="54.42" y1="129" x2="203.58" y2="129"/>
+    <polyline class="cls-1" points="105.59 77.83 129 54.42 152.41 77.83"/>
+    <polyline class="cls-1" points="152.41 180.17 129 203.58 105.59 180.17"/>
+    <polyline class="cls-1" points="77.83 152.41 54.42 129 77.83 105.59"/>
+    <polyline class="cls-1" points="180.17 105.59 203.58 129 180.17 152.41"/>
+  </g>
+</svg>

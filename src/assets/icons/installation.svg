@@ -1,0 +1,41 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        fill: #77bc1f;
+      }
+    </style>
+  </defs>
+  <title>141-Installation</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <polyline class="cls-2" points="117.02 79.86 85.61 79.86 54.39 134.96 203.61 134.96 172.92 79.86 140.98 79.86"/>
+      <rect class="cls-2" x="54.39" y="134.96" width="149.22" height="35.45"/>
+      <line class="cls-3" x1="73.07" y1="152.68" x2="173.43" y2="152.68"/>
+      <circle class="cls-4" cx="187.49" cy="152.68" r="3.9"/>
+    </g>
+  </g>
+  <g>
+    <line class="cls-1" x1="129" y1="47.21" x2="129" y2="113.95"/>
+    <polyline class="cls-1" points="146.55 96.4 129 113.95 111.45 96.4"/>
+  </g>
+</svg>

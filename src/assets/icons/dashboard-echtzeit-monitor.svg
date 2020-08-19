@@ -1,0 +1,37 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>053-Dashboard-Echtzeit-monitor</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <path class="cls-1" d="M129,56.72c-39.69,0-71.92,33.53-71.92,75.56v17.2H200.92v-17.2C201,90.25,168.69,56.72,129,56.72Z"/>
+      <line class="cls-1" x1="129.02" y1="56.72" x2="129.02" y2="76.67"/>
+      <g>
+        <line class="cls-1" x1="57.08" y1="120.43" x2="80.66" y2="120.43"/>
+        <line class="cls-1" x1="177.34" y1="120.43" x2="200.92" y2="120.43"/>
+      </g>
+      <g>
+        <line class="cls-1" x1="80.67" y1="77.29" x2="95.39" y2="92.01"/>
+        <line class="cls-1" x1="163.35" y1="91.28" x2="177.34" y2="77.29"/>
+      </g>
+      <path class="cls-2" d="M128.7,132.65l-20.41-20.4,39.25-17.32Z"/>
+    </g>
+  </g>
+</svg>

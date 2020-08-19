@@ -1,0 +1,53 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-3, .cls-4 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        fill: #77bc1f;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>142-Redundant</title>
+  <g>
+    <g>
+      <rect class="cls-1" x="57.15" y="160.89" width="143.69" height="34.14"/>
+      <circle class="cls-2" cx="183.97" cy="177.96" r="6.11"/>
+      <line class="cls-3" x1="75.16" y1="184.71" x2="86.68" y2="173.18"/>
+      <line class="cls-3" x1="99.14" y1="184.71" x2="110.67" y2="173.18"/>
+      <line class="cls-3" x1="123.3" y1="184.71" x2="134.82" y2="173.18"/>
+      <rect class="cls-1" x="57.15" y="62.98" width="143.69" height="34.14"/>
+      <circle class="cls-2" cx="183.97" cy="80.04" r="6.11"/>
+      <line class="cls-3" x1="75.16" y1="86.8" x2="86.68" y2="75.27"/>
+      <line class="cls-3" x1="99.14" y1="86.8" x2="110.67" y2="75.27"/>
+      <line class="cls-3" x1="123.3" y1="86.8" x2="134.82" y2="75.27"/>
+    </g>
+    <g>
+      <g>
+        <polyline class="cls-3" points="174.49 129.74 161.24 142.99 147.99 129.74"/>
+        <line class="cls-3" x1="161.24" y1="142.99" x2="161.24" y2="115.01"/>
+      </g>
+      <g>
+        <polyline class="cls-3" points="83.52 128.26 96.76 115.01 110.01 128.26"/>
+        <line class="cls-3" x1="96.76" y1="115.01" x2="96.76" y2="142.99"/>
+      </g>
+    </g>
+    <circle class="cls-4" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

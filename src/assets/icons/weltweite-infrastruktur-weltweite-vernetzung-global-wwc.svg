@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 7.5px;
+      }
+
+      .cls-2 {
+        stroke-width: 5.5px;
+      }
+    </style>
+  </defs>
+  <title>040-weltweite-Infrastruktur-weltweite-Vernetzung-Global-WWC</title>
+  <g>
+    <circle class="cls-1" cx="129.13" cy="129" r="47.87"/>
+    <ellipse class="cls-2" cx="129.13" cy="129" rx="11.51" ry="47.87"/>
+    <ellipse class="cls-2" cx="129.13" cy="129" rx="31.07" ry="47.87"/>
+    <g>
+      <path class="cls-1" d="M182.16,106c13.88-20.53,19.65-37.32,13.4-43.57s-23-.48-43.57,13.4"/>
+      <path class="cls-1" d="M75.84,152C62,172.52,56.19,189.31,62.44,195.56s23,.48,43.57-13.4"/>
+    </g>
+    <g>
+      <path class="cls-1" d="M106,75.84C85.48,62,68.69,56.19,62.44,62.44S62,85.48,75.84,106"/>
+      <path class="cls-1" d="M152,182.16c20.53,13.88,37.32,19.65,43.57,13.4s.48-23-13.4-43.57"/>
+    </g>
+    <ellipse class="cls-2" cx="129.13" cy="129" rx="47.87" ry="14.67"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

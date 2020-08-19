@@ -1,0 +1,29 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>045-Netzwerk</title>
+  <g>
+    <g>
+      <circle class="cls-1" cx="129" cy="80.33" r="15.47"/>
+      <g>
+        <line class="cls-1" x1="129.16" y1="108.37" x2="129.16" y2="127.39"/>
+        <line class="cls-1" x1="129.16" y1="127.39" x2="96.13" y2="160.42"/>
+        <line class="cls-1" x1="129.16" y1="127.39" x2="161.87" y2="160.1"/>
+      </g>
+      <g>
+        <circle class="cls-1" cx="78.56" cy="180.89" r="12.25"/>
+        <circle class="cls-1" cx="129.16" cy="180.89" r="12.25"/>
+        <circle class="cls-1" cx="179.44" cy="180.89" r="12.25"/>
+      </g>
+    </g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

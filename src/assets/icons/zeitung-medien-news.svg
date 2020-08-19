@@ -1,0 +1,27 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-miterlimit: 10;
+        stroke-width: 7.5px;
+      }
+    </style>
+  </defs>
+  <title>078-Zeitung-Medien-News</title>
+  <g>
+    <path class="cls-1" d="M183,193.76H84.71V75.38H203.09v98.3A20.08,20.08,0,0,1,183,193.76Z"/>
+    <path class="cls-1" d="M54.91,177.28v-73a9.9,9.9,0,0,1,9.9-9.9h19.9v96H68.08A13.17,13.17,0,0,1,54.91,177.28Z"/>
+    <path class="cls-1" d="M84.71,174H74.87A5.05,5.05,0,0,1,69.81,169V94.42h14.9Z"/>
+    <path class="cls-1" d="M157.6,156.09H102.71V129H157.6Z"/>
+    <path class="cls-1" d="M99.61,174h60.78"/>
+    <path class="cls-1" d="M99.61,111.53h88.58"/>
+    <path class="cls-1" d="M99.61,94.42h24.91"/>
+    <path class="cls-1" d="M138.18,94.42h50"/>
+    <path class="cls-1" d="M188.19,129H170.1"/>
+    <path class="cls-1" d="M188.19,151.13H170.1"/>
+    <path class="cls-1" d="M188.19,174H170.1"/>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+  </g>
+</svg>

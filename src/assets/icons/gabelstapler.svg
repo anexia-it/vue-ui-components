@@ -1,0 +1,35 @@
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" width="258" height="258" viewBox="0 0 258 258">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #77bc1f;
+        stroke-width: 7.5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <title>111-Gabelstapler</title>
+  <g>
+    <circle class="cls-1" cx="129" cy="129" r="125"/>
+    <g>
+      <circle class="cls-2" cx="77.51" cy="174.69" r="14.03"/>
+      <circle class="cls-2" cx="132.44" cy="174.69" r="14.03"/>
+      <line class="cls-2" x1="91.51" y1="173.86" x2="118.41" y2="173.86"/>
+      <polyline class="cls-2" points="146.44 173.86 158.16 173.86 158.16 121.82 130.25 121.82 110.68 69.28 68.13 69.28 68.13 121.82 52.91 121.82 52.91 173.86 63.5 173.86"/>
+      <line class="cls-2" x1="158.16" y1="173.86" x2="202.62" y2="173.86"/>
+      <rect class="cls-2" x="170.05" y="138.81" width="35.05" height="35.05"/>
+      <rect class="cls-2" x="170.05" y="104.05" width="35.05" height="35.05"/>
+      <rect class="cls-2" x="170.05" y="69.28" width="35.05" height="35.05"/>
+      <polygon class="cls-2" points="82.61 144.26 82.61 83.76 100.63 83.76 115.77 124.43 115.77 144.26 82.61 144.26"/>
+    </g>
+  </g>
+</svg>
