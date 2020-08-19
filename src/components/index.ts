@@ -8,6 +8,7 @@ import AnxFooter from "./AnxFooter.vue";
 import AnxForm from "./AnxForm.vue";
 import AnxGlobal from "./AnxGlobal.vue";
 import AnxHeader from "./AnxHeader.vue";
+import AnxHrLine from "./AnxHrLine.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxInput from "./AnxInput.vue";
 import AnxLink from "./AnxLink.vue";
@@ -34,6 +35,7 @@ export default {
   AnxForm,
   AnxGlobal,
   AnxHeader,
+  AnxHrLine,
   AnxIcon,
   AnxInput,
   AnxLanguageSwitcher,
