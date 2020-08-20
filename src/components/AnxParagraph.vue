@@ -1,7 +1,9 @@
 <template>
   <div
     :class="
-      `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
+      `anx-paragraph anx-paragraph-${size} ` +
+        (hint !== null ? 'hint ' : '') +
+        (inverse !== null ? 'inversed-colors' : '')
     "
   >
     <anx-title
@@ -36,6 +38,9 @@ export default class AnxParagraph extends Vue {
 
   /** The paragraph title has a line or not */
   @Prop({ default: null }) noline!: boolean;
+
+  /** Inverse the colors of the paragraph */
+  @Prop({ default: null }) inverse!: boolean;
 }
 </script>
 
@@ -84,6 +89,14 @@ export default class AnxParagraph extends Vue {
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 0px;
+  }
+
+  &.inversed-colors {
+    color: $anx-primary-white;
+
+    .anx-paragraph-title {
+      color: $anx-primary-white;
+    }
   }
 }
 </style>
