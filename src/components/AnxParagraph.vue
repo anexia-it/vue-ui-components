@@ -10,6 +10,7 @@
       v-if="title !== null"
       :size="size"
       :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
+      :no-margin="noMarginTitle"
     >
       {{ title }}
     </anx-title>
@@ -41,6 +42,9 @@ export default class AnxParagraph extends Vue {
 
   /** Inverse the colors of the paragraph */
   @Prop({ default: null }) inverse!: boolean;
+
+  /** No margin after the title */
+  @Prop({ default: null }) noMarginTitle!: boolean;
 }
 </script>
 
@@ -75,7 +79,7 @@ export default class AnxParagraph extends Vue {
     }
 
     &.noline {
-      margin-bottom: 19px !important; /*real margin isi 30px - because textbox size*/
+      margin-bottom: 19px; /*real margin isi 30px - because textbox size*/
 
       &::after {
         content: "" !important;
