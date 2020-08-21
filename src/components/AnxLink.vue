@@ -23,10 +23,6 @@ export default class AnxLink extends Vue {
   click() {
     return;
   }
-
-  private mounted() {
-    console.log(this.href, this.disabled);
-  }
 }
 </script>
 

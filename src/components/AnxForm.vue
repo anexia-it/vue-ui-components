@@ -26,13 +26,11 @@ import AnxButton from "./AnxButton.vue";
 })
 export default class AnxAlert extends Vue {
   /** With this property, a submit button can be set */
-  /**
-   * Props
-   * text: The text of the button
-   * disabled: Whether or not the button is disabled on invalid input
-   * width: The width of the button, default is 100%
-   */
-  @Prop({ default: null }) submitButton!: Record<string, string>;
+  @Prop({ default: null }) submitButton!: {
+    text: string;
+    disabled: boolean;
+    width: string;
+  };
 
   /** The name of the form. This is important when using several forms on one page */
   @Prop({ default: "anx-form" }) name!: string;
