@@ -73,7 +73,7 @@ export default class AnxList extends Vue {
       margin-bottom: 20px;
     }
 
-    li:nth-last-child(1) {
+    li:last-child {
       margin-bottom: 0;
     }
   }
