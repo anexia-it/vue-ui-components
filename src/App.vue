@@ -127,7 +127,42 @@
           you need to implement such a table.
         </anx-paragraph>
 
-        <anx-table :items="tableItems" hover />
+        <anx-form>
+          <anx-checkbox
+            v-model="tableOptions.bordered"
+            @input="tableOptions.bordered = $event.checked ? true : null"
+            name="bordered"
+          />
+          <anx-checkbox
+            v-model="tableOptions.borderless"
+            @input="tableOptions.borderless = $event.checked ? true : null"
+            name="borderless"
+          />
+          <anx-checkbox
+            v-model="tableOptions.stripped"
+            @input="tableOptions.stripped = $event.checked ? true : null"
+            name="stripped"
+          />
+          <anx-checkbox
+            v-model="tableOptions.hover"
+            @input="tableOptions.hover = $event.checked ? true : null"
+            name="hover"
+          />
+          <anx-checkbox
+            v-model="tableOptions.noHeader"
+            @input="tableOptions.noHeader = $event.checked ? true : null"
+            name="no-header"
+          />
+        </anx-form>
+
+        <anx-table
+          :items="tableItems"
+          :bordered="tableOptions.bordered"
+          :borderless="tableOptions.borderless"
+          :stripped="tableOptions.stripped"
+          :hover="tableOptions.hover"
+          :noHeader="tableOptions.noHeader"
+        />
 
         <anx-paragraph title="Complex table" size="h3">
           The following table is a little bit more complex.<br /><br />
@@ -485,6 +520,20 @@ export default class App extends Vue {
   text2 = "";
   checkbox = [];
   mail = "";
+
+  private tableOptions: {
+    bordered: boolean | null;
+    borderless: boolean | null;
+    stripped: boolean | null;
+    hover: boolean | null;
+    noHeader: boolean | null;
+  } = {
+    bordered: null,
+    borderless: null,
+    stripped: null,
+    hover: null,
+    noHeader: null
+  };
 
   tableItems = [
     { age: 40, firstName: "Dickerson", lastName: "Macdonald" },

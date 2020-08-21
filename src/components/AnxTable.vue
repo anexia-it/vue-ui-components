@@ -8,11 +8,15 @@
         'anx-table ' +
           (stripped !== null ? 'anx-table-striped ' : '') +
           (bordered !== null ? 'anx-table-bordered ' : '') +
+          (borderless !== null ? 'anx-table-borderless ' : '') +
           (scrollable !== null ? 'anx-table-scrollable ' : '') +
           (hover !== null ? 'anx-table-hover ' : '')
       "
     >
-      <thead :class="uppercaseTitle !== null ? 'text-uppercase' : ''">
+      <thead
+        v-if="noHeader === null"
+        :class="uppercaseTitle !== null ? 'text-uppercase' : ''"
+      >
         <tr>
           <th
             v-for="(item, index) in items[0]"
@@ -25,13 +29,15 @@
         </tr>
       </thead>
       <tbody>
-        <anx-table-row v-for="(item, i) in items" :key="i" :item="item">
-          <anx-table-col v-for="(content, name) in item" :key="name">
-            <slot :name="`${name}${i}`" v-bind:content="content">
-              {{ content }}
-            </slot>
-          </anx-table-col>
-        </anx-table-row>
+        <slot name="tbody">
+          <anx-table-row v-for="(item, i) in items" :key="i" :item="item">
+            <anx-table-col v-for="(content, name) in item" :key="name">
+              <slot :name="`${name}${i}`" v-bind:content="content">
+                {{ content }}
+              </slot>
+            </anx-table-col>
+          </anx-table-row>
+        </slot>
       </tbody>
     </table>
   </anx-table-container>
@@ -57,8 +63,11 @@ export default class AnxTable extends Vue {
   /** Wheter the table is stripped or not */
   @Prop({ default: null }) stripped!: boolean;
 
-  /** Wheter the table is bordered or not */
+  /** Wheter the tables outline is bordered or not */
   @Prop({ default: null }) bordered!: boolean;
+
+  /** Do not show any borders */
+  @Prop({ default: null }) borderless!: boolean;
 
   /** Wheter the table is bordered or not */
   @Prop({ default: null }) hover!: boolean;
@@ -74,6 +83,9 @@ export default class AnxTable extends Vue {
 
   /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the column named age 100 px */
   @Prop() widths!: Record<string, string>;
+
+  /** Remove the header of the table */
+  @Prop({ default: null }) noHeader!: boolean;
 
   /** Searches if the width for a specific column is set and returns it */
   private getWidthForColumn(index: string): string {
@@ -114,15 +126,15 @@ export default class AnxTable extends Vue {
   }
 
   &.anx-table-bordered {
-    border: 1px solid $anx-table-border !important;
+    border: 1px solid $anx-table-border;
 
     thead {
       tr {
         min-height: 40px;
         height: 40px;
         th {
-          border: 1px solid $anx-table-border !important;
-          border-bottom: 2px solid $anx-table-border !important;
+          border: 1px solid $anx-table-border;
+          border-bottom: 2px solid $anx-table-border;
         }
       }
     }
@@ -150,18 +162,50 @@ export default class AnxTable extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-table {
+  thead {
+    th {
+      border-bottom: 2px solid $anx-table-border;
+    }
+  }
   tbody {
     tr {
       min-height: 40px;
       height: 40px;
+      border-bottom: 1px solid $anx-table-border;
+    }
+
+    tr:last-child {
+      border-bottom: 0;
     }
   }
   &.anx-table-bordered {
     tbody {
       tr {
-        border: 1px solid $anx-table-border !important;
+        border: 1px solid $anx-table-border;
         td {
-          border: 1px solid $anx-table-border !important;
+          border: 1px solid $anx-table-border;
+        }
+      }
+    }
+  }
+
+  &.anx-table-borderless {
+    border: 0 !important;
+
+    thead {
+      tr {
+        th {
+          border: 0 !important;
+          border-bottom: 0 !important;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border: 0 !important;
+        td {
+          border: 0 !important;
         }
       }
     }
