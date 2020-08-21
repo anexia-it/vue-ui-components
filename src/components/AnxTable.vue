@@ -14,7 +14,7 @@
       "
     >
       <thead
-        v-if="noHeader === null"
+        v-if="noHeader === null && items"
         :class="uppercaseTitle !== null ? 'text-uppercase' : ''"
       >
         <tr>
@@ -79,7 +79,7 @@ export default class AnxTable extends Vue {
   @Prop({ default: null }) uppercaseTitle!: boolean;
 
   /** The items for the table */
-  @Prop({ default: [] }) items!: Array<object>;
+  @Prop({ default: null }) items!: Array<object> | null;
 
   /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the column named age 100 px */
   @Prop() widths!: Record<string, string>;
