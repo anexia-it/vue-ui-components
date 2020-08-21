@@ -1,17 +1,31 @@
 <template>
-  <a class="anx-link" @click="click()">
+  <a
+    :class="'anx-link ' + (disabled ? 'disabled ' : '')"
+    @click="click()"
+    :href="disabled ? 'javascript:void(0)' : href"
+  >
     <slot />
   </a>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Emit } from "vue-property-decorator";
+import { Vue, Component, Emit, Prop } from "vue-property-decorator";
 
 @Component({})
 export default class AnxLink extends Vue {
+  /** If the link is active or not */
+  @Prop({ default: null }) disabled!: boolean;
+  /** The link */
+  @Prop({ default: null }) href!: string;
+
+  /** Emit the click event */
   @Emit("click")
   click() {
     return;
+  }
+
+  private mounted() {
+    console.log(this.href, this.disabled);
   }
 }
 </script>
@@ -28,6 +42,16 @@ export default class AnxLink extends Vue {
     color: $anx-primary-green;
     cursor: pointer;
     border-bottom: 1px solid $anx-primary-green;
+  }
+
+  &.disabled {
+    color: $anx-primary-white;
+    border-bottom: 1px solid $anx-primary-green;
+
+    &:hover {
+      color: $anx-primary-white;
+      cursor: unset;
+    }
   }
 }
 </style>
