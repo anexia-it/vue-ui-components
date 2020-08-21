@@ -44,6 +44,7 @@
           <anx-list
             :items="['test', 'zwei', 'drei']"
             list-style-type="decimal"
+            no-spacing
           />
 
           <br />

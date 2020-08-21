@@ -3,7 +3,8 @@
     :class="
       'anx-list ' +
         (noPadding !== null ? 'no-padding ' : '') +
-        (icon !== null ? 'with-icon ' : '')
+        (icon !== null ? 'with-icon ' : '') +
+        (noSpacing !== null ? 'no-spacing ' : '')
     "
     :style="listStyleType ? `list-style-type: ${listStyleType}; ` : ''"
   >
@@ -36,6 +37,8 @@ export default class AnxList extends Vue {
   @Prop({ default: null }) listStyleType!: string;
   /** No padding on the left side for the anx-list */
   @Prop({ default: null }) noPadding!: boolean;
+  /** To disable spacing between the lines */
+  @Prop({ default: null }) noSpacing!: boolean;
 }
 </script>
 
@@ -55,12 +58,23 @@ export default class AnxList extends Vue {
     .anx-icon-list {
       width: 15px;
       height: 15px;
-      margin-right: 5px;
+      display: table-cell;
     }
 
     span {
-      line-height: 15px;
+      padding-left: 5px;
       vertical-align: text-top;
+      display: table-cell;
+    }
+  }
+
+  &:not(.no-spacing) {
+    li {
+      margin-bottom: 20px;
+    }
+
+    li:nth-last-child(1) {
+      margin-bottom: 0;
     }
   }
 }
