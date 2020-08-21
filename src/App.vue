@@ -385,9 +385,17 @@
           <strong>inverse</strong> property on the AnxContent component
         </anx-paragraph>
 
-        <anx-paragraph inverse noline no-margin-title title="Special Paragraph" size="h2">
-          This is an <strong>inverse</strong> paragraph. This means that the color of the title is inversed.<br>
-          This paragraph also has the properties <strong>noline</strong> and <strong>no-margin-title</strong>.
+        <anx-paragraph
+          inverse
+          noline
+          no-margin-title
+          title="Special Paragraph"
+          size="h2"
+        >
+          This is an <strong>inverse</strong> paragraph. This means that the
+          color of the title is inversed.<br />
+          This paragraph also has the properties <strong>noline</strong> and
+          <strong>no-margin-title</strong>.
         </anx-paragraph>
       </anx-content>
     </anx-container>

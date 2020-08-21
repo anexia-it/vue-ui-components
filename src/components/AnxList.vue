@@ -8,14 +8,12 @@
     :style="listStyleType ? `list-style-type: ${listStyleType}; ` : ''"
   >
     <li v-for="(item, i) in items" :key="`${i}-${item}`">
-
-        <slot name="icon">
-          <anx-icon v-if="icon" class="anx-icon-list" :icon="icon" />
-        </slot>
-        <slot :name="`item${i}`">
-               <span> {{ item }}    </span>
-        </slot>
-  
+      <slot name="icon">
+        <anx-icon v-if="icon" class="anx-icon-list" :icon="icon" />
+      </slot>
+      <slot :name="`item${i}`">
+        <span> {{ item }} </span>
+      </slot>
     </li>
   </ul>
 </template>
@@ -65,7 +63,5 @@ export default class AnxList extends Vue {
       vertical-align: text-top;
     }
   }
-
-
 }
 </style>
