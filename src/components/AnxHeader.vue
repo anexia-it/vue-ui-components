@@ -16,7 +16,10 @@
             </div>
             <div class="header-language-nav" v-if="i18n">
               <div v-if="!menus">
-                <AnxLanguageSwitcher :i18n="i18n" />
+                <AnxLanguageSwitcher
+                  :i18n="i18n"
+                  @localeChange="localeChange($event)"
+                />
               </div>
             </div>
           </div>
@@ -30,7 +33,10 @@
             </div>
             <div class="menu-text right" v-if="i18n">
               <div v-if="menus">
-                <AnxLanguageSwitcher :i18n="i18n" />
+                <AnxLanguageSwitcher
+                  :i18n="i18n"
+                  @localeChange="localeChange($event)"
+                />
               </div>
             </div>
           </div>
@@ -41,7 +47,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import AnxIcon from "./AnxIcon.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
@@ -60,6 +66,12 @@ export default class AnxHeader extends Vue {
   @Prop({ default: null }) menus!: Array<object>;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
+
+  /** Emit the @localeChange event when the locale is changed via the AnxLanguageSwitcher */
+  @Emit("localeChange")
+  localeChange(locale: string) {
+    return locale;
+  }
 
   get cssProps() {
     return {

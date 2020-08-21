@@ -10,7 +10,11 @@
       </template>
     </anx-header>
     <div class="space"></div>
-    <anx-header :menus="items" :i18n="$i18n" />
+    <anx-header
+      :menus="items"
+      :i18n="$i18n"
+      @localeChange="localeChange($event)"
+    />
 
     <anx-container>
       <anx-content inverse first>
@@ -582,6 +586,11 @@ export default class App extends Vue {
       image: "anexia"
     }
   ];
+
+  /** This is a demo function to demonstrate how to use the @localeChange event of the AnxHeader */
+  private localeChange(locale: string): void {
+    alert(`locale changed to "${locale}"`);
+  }
 
   private mounted() {
     /** This code demonstrates, that the images can be changed dynamically */

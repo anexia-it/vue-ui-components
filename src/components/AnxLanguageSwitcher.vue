@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import AnxLink from "./AnxLink.vue";
 import VueI18n from "vue-i18n";
 
@@ -27,16 +27,22 @@ export default class I18nLangSwitcher extends Vue {
   /** The i18n instance from the root vue project */
   @Prop({ default: null }) i18n!: VueI18n;
 
-  private locale = "";
-
-  private setLocale(locale: string) {
+  /** Emit the changes languages as @localeChange event */
+  @Emit("localeChange")
+  setLocale(locale: string) {
     this.locale = locale;
     this.i18n.locale = locale;
-    console.log("ste locale");
+    return locale;
   }
 
+  /** The current locale */
+  private locale = "";
+
+  /** Sync the current locale with the i18n locale on mount */
   private mounted() {
-    this.locale = this.i18n.locale;
+    if (this.i18n) {
+      this.locale = this.i18n.locale;
+    }
   }
 }
 </script>
