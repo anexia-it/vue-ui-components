@@ -28,11 +28,23 @@
           You can simply use <strong>inline HTML</strong> and line breaks.<br />
           In general, there are three different sizes for AnxContent,
           AnxParagraph and AnxTitle:<br />
-          <ul>
-            <li>h1</li>
-            <li>h2</li>
-            <li>h3</li>
-          </ul>
+
+          <br />
+
+          <anx-list :items="['h1', 'h2', 'h3']" icon="check-green" no-padding />
+
+          <br />
+
+          The <strong>&lt;anx-list&gt;</strong> can have the properties
+          <strong>icon</strong>, <strong>no-padding</strong> and
+          <strong>list-style-type</strong>. The are very self-descriptive.<br />
+
+          <br />
+
+          <anx-list
+            :items="['test', 'zwei', 'drei']"
+            list-style-type="decimal"
+          />
 
           <br />
           <span class="f-100">Lorem ipsum dolor sit (weight 100)</span><br />
@@ -422,6 +434,8 @@ import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
 import AnxIcon from "@/components/AnxIcon.vue";
 import AnxHrLine from "@/components/AnxHrLine.vue";
+import AnxList from "@/components/AnxList.vue";
+
 @Component({
   components: {
     AnxHeader,
@@ -443,7 +457,8 @@ import AnxHrLine from "@/components/AnxHrLine.vue";
     AnxSelect,
     AnxTextarea,
     AnxIcon,
-    AnxHrLine
+    AnxHrLine,
+    AnxList
   }
 })
 export default class App extends Vue {
