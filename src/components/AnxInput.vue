@@ -146,10 +146,10 @@ export default class AnxInput extends Vue {
    */
   @Watch("value")
   valueChanged() {
-    if (this.readonly !== false) {
+   // if (this.readonly !== false) {
       this.updateInputField = this.value !== null ? this.value : "";
       this.isFilled();
-    }
+    //}
   }
 
   /**After creation the value will be save in the updateInputField and check if it has the
