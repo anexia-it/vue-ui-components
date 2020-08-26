@@ -8,7 +8,7 @@
   >
     <input
       :id="id"
-      v-model="value"
+      v-model="updateInputField"
       :data-vv-as="name"
       :type="type"
       :name="name"
@@ -36,7 +36,7 @@
     >
       <input
         :id="id"
-        :value="value"
+        v-model="updateInputField"
         v-validate="rules"
         :data-vv-as="name"
         :type="type"
