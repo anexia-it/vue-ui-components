@@ -36,7 +36,7 @@
     >
       <input
         :id="id"
-        v-model="value"
+        :value="value"
         v-validate="rules"
         :data-vv-as="name"
         :type="type"
