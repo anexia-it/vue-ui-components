@@ -58,7 +58,9 @@ export default class Card extends Vue {
       margin-bottom: auto;
       margin-right: 20px;
       height: 80px;
+      min-height: 80px;
       width: 80px;
+      min-width: 80px;
       @media screen and (max-width: 500px) {
         display: none;
         margin-right: 0;

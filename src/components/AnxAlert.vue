@@ -88,7 +88,6 @@ export default class AnxAlert extends Vue {
 
     /** Check if the alert should be auto closed and set a timeout */
     if (this.autoClose !== null) {
-      console.log("should be auto closable");
       if (typeof window !== "undefined") {
         window.setTimeout(() => {
           this.input(false);
