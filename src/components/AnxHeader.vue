@@ -91,6 +91,9 @@ export default class AnxHeader extends Vue {
 
   /** Checks if the specified link matches the window link */
   private isLinkActive(link: string): boolean {
+    /** Checking if the window is defined. On the nuxt server side, the window will be undefinded and the following code of this function would throw an error */
+    if (typeof window === "undefined") return false;
+
     const path = this.formatPath(window.location.pathname);
 
     return path === this.formatPath(link);
