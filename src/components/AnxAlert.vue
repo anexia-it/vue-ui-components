@@ -52,12 +52,12 @@ export default class AnxAlert extends Vue {
   }
 
   /** Variables for anx-alert */
-  visibility = true;
+  visibility = false;
   fadeOut = false;
   fadeIn = false;
 
   /** Set visibility when mounting */
-  private mounted() {
+  private beforeCreate() {
     this.visibility = this.value;
   }
 
@@ -94,8 +94,8 @@ export default class AnxAlert extends Vue {
 
 .anx-alert {
   margin-bottom: $form-components-spacing;
-  display: flex;
-  opacity: 1;
+  display: none;
+  opacity: 0;
 
   &.fade-out {
     opacity: 0 !important;
@@ -113,6 +113,11 @@ export default class AnxAlert extends Vue {
     -moz-transition: opacity 0.5s ease-in-out;
     -ms-transition: opacity 0.5s ease-in-out;
     -o-transition: opacity 0.5s ease-in-out;
+  }
+
+  &.visible {
+    opacity: 1;
+    display: flex;
   }
 
   &.hidden {
