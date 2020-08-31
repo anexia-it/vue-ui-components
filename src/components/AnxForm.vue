@@ -24,7 +24,7 @@ import AnxButton from "./AnxButton.vue";
     ValidationObserver
   }
 })
-export default class AnxAlert extends Vue {
+export default class AnxForm extends Vue {
   /** With this property, a submit button can be set */
   @Prop({ default: null }) submitButton!: {
     text: string;

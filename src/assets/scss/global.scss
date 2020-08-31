@@ -41,6 +41,10 @@ html {
       &.attention {
         color: $anx-primary-blue;
         font-weight: 600;
+
+        &.attention-grey {
+          color: $anx-lightest-grey-dark;
+        }
       }
     }
   }
