@@ -8,6 +8,7 @@
         :width="submitButton.width ? submitButton.width : '100%'"
         :text="submitButton.text"
         :disabled="submitButton.disabled && invalid"
+        :inline="submitButton.inline"
       />
     </form>
   </ValidationObserver>
