@@ -35,6 +35,12 @@ export default class AnxAlert extends Vue {
   /** This is the type of the error. Possible is error, success */
   @Prop({ default: "error" }) type!: string;
 
+  /** If this option is set, the alert will be auto closed */
+  @Prop({ default: null }) autoClose!: boolean;
+
+  /** This is the timeout for the auto close logic */
+  @Prop({ default: 5000 }) autoCloseTimeout!: number;
+
   /** Watcher for show changes */
   @Watch("value")
   onShowChanged(val: boolean) {
@@ -57,20 +63,37 @@ export default class AnxAlert extends Vue {
   fadeIn = false;
 
   /** Set visibility when mounting */
-  private beforeCreate() {
+  private created() {
     this.visibility = this.value;
+
+    /** If the Alert is visible by default, the show action has to be called at the beginning */
+    if (this.value) {
+      this.showAction();
+    }
   }
 
   /** Show the alert */
   private showAction() {
     if (this.animations) {
       this.fadeIn = true;
-      window.setTimeout(() => {
-        this.fadeIn = false;
-        this.visibility = true;
-      }, 1000);
+      if (typeof window !== "undefined") {
+        window.setTimeout(() => {
+          this.fadeIn = false;
+          this.visibility = true;
+        }, 1000);
+      }
     } else {
       this.visibility = true;
+    }
+
+    /** Check if the alert should be auto closed and set a timeout */
+    if (this.autoClose !== null) {
+      console.log("should be auto closable");
+      if (typeof window !== "undefined") {
+        window.setTimeout(() => {
+          this.input(false);
+        }, this.autoCloseTimeout);
+      }
     }
   }
 
@@ -130,7 +153,7 @@ export default class AnxAlert extends Vue {
 
   .message {
     padding: 16px;
-    line-height: 16px;
+    line-height: 22px;
   }
 
   .dismiss {

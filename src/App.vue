@@ -94,6 +94,17 @@
           This is an error message
         </anx-alert>
 
+        <anx-alert
+          v-model="showSuccessAlertAutoClose"
+          type="success"
+          auto-close
+          :auto-close-timeout="5000"
+        >
+          This is a auto closable alert.<br />
+          This alert will automatically be dismissed after
+          <strong>5</strong> seconds.
+        </anx-alert>
+
         <anx-paragraph hint>
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
@@ -519,6 +530,7 @@ export default class App extends Vue {
   ip = "";
   showSuccessAlert = true;
   showErrorAlert = true;
+  showSuccessAlertAutoClose = true;
   selected1 = "";
   selected2 = "";
   text1 = "";
