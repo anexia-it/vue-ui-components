@@ -307,6 +307,8 @@ export declare class AnxIconWindows extends Vue {}
 
 export declare class AnxIconWlan extends Vue {}
 
+export declare class AnxIconX extends Vue {}
+
 export declare class AnxIconZeitungMedienNews extends Vue {}
 
 export declare class AnxIconZertifikat extends Vue {}
