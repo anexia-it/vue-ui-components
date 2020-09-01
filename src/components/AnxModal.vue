@@ -1,5 +1,5 @@
 <template>
-  <div id="modal" class="modal anx-modal">
+  <div id="modal" :class="`modal anx-modal anx-modal-size-${size}`">
     <div :class="'modal-dialog modal-dialog-scrollable'">
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
@@ -61,6 +61,9 @@ export default class AnxModal extends Vue {
   @Prop({ default: "Close" }) closeButtonText!: string;
 
   @Prop({ default: false }) confirm!: boolean;
+
+  /** The size of the model [s, m, l, xl, xxl] */
+  @Prop({ default: "m" }) size!: string;
 }
 </script>
 
@@ -83,11 +86,41 @@ export default class AnxModal extends Vue {
 .anx-modal {
   .modal-dialog {
     background-color: $anx-primary-white;
-    width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 178px;
   }
+
+  &.anx-modal-size-s {
+    .modal-dialog {
+      width: 400px;
+    }
+  }
+
+  &.anx-modal-size-m {
+    .modal-dialog {
+      width: 500px;
+    }
+  }
+
+  &.anx-modal-size-l {
+    .modal-dialog {
+      width: 600px;
+    }
+  }
+
+  &.anx-modal-size-xl {
+    .modal-dialog {
+      width: 800px;
+    }
+  }
+
+  &.anx-modal-size-xxl {
+    .modal-dialog {
+      width: 1000px;
+    }
+  }
+
   .anx-modal-content {
     position: relative;
     border-radius: 0px;
