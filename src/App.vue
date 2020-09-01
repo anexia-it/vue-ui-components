@@ -172,6 +172,11 @@
         </anx-form>
 
         <anx-table
+          :columns="[
+            { name: 'Alter', index: 'age', width: '50px' },
+            { name: 'First name', index: 'lastName' },
+            { name: 'Last name', index: 'firstName' }
+          ]"
           :items="tableItems"
           :bordered="tableOptions.bordered"
           :borderless="tableOptions.borderless"
@@ -202,7 +207,7 @@
           scrollable
           uppercase-title
           height="200px"
-          :items="secondTableItems"
+          :items="tableItems"
           :widths="{ age: '50px' }"
         >
           <!-- This is an example for replacing content. In this case we change the styling for a specific cell -->
@@ -216,7 +221,7 @@
 
           <!-- Replace all cells with images with an image -->
           <template
-            v-for="(item, i) in secondTableItems"
+            v-for="(item, i) in tableItems"
             v-slot:[getImgCellName(i)]="{ content }"
           >
             <anx-icon :icon="content" :key="i" width="25px" />
@@ -553,15 +558,6 @@ export default class App extends Vue {
   };
 
   tableItems = [
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw" },
-    { age: 89, firstName: "Geneva", lastName: "Wilson" },
-    { age: 38, firstName: "Jami", lastName: "Carney" },
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw" }
-  ];
-
-  secondTableItems = [
     {
       age: 40,
       firstName: "Dickerson",
@@ -629,7 +625,7 @@ export default class App extends Vue {
       "controller"
     ];
 
-    this.secondTableItems.forEach(object => {
+    this.tableItems.forEach(object => {
       object.image = images[Math.floor(Math.random() * images.length)];
     });
   }

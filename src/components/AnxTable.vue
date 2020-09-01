@@ -14,26 +14,33 @@
       "
     >
       <thead
-        v-if="noHeader === null && items"
+        v-if="noHeader === null && displayColumns.length > 0"
         :class="uppercaseTitle !== null ? 'text-uppercase' : ''"
       >
         <tr>
           <th
-            v-for="(item, index) in items[0]"
-            :key="index"
+            v-for="column in displayColumns"
+            :key="column.index"
             scope="col"
-            :width="getWidthForColumn(index)"
+            :width="column.width"
           >
-            {{ camelCaseToText(index) }}
+            {{ column.name }}
           </th>
         </tr>
       </thead>
       <tbody>
         <slot name="tbody">
           <anx-table-row v-for="(item, i) in items" :key="i" :item="item">
-            <anx-table-col v-for="(content, name) in item" :key="name">
-              <slot :name="`${name}${i}`" v-bind:content="content">
-                {{ content }}
+            <anx-table-col
+              v-for="column in displayColumns"
+              :key="`col-${i}-${column.index}`"
+              :width="column.width"
+            >
+              <slot
+                :name="`${column.index}${i}`"
+                v-bind:content="item[column.index]"
+              >
+                {{ item[column.index] }}
               </slot>
             </anx-table-col>
           </anx-table-row>
@@ -81,25 +88,48 @@ export default class AnxTable extends Vue {
   /** The items for the table */
   @Prop({ default: null }) items!: Array<object> | null;
 
-  /** The widths for all the colums, this has to be an object. Example: { age: '100px' } to make the width of the column named age 100 px */
-  @Prop() widths!: Record<string, string>;
+  /** With this property, the names for the columns and the linked index of the items can be defined */
+  @Prop({ default: null }) columns!: {
+    name: string;
+    index: string;
+    width: string | null;
+  }[];
 
   /** Remove the header of the table */
   @Prop({ default: null }) noHeader!: boolean;
-
-  /** Searches if the width for a specific column is set and returns it */
-  private getWidthForColumn(index: string): string {
-    if (this.widths && index in this.widths) {
-      return this.widths[index];
-    }
-    return "auto";
-  }
 
   /** Converts camelCase to Text */
   private camelCaseToText(camelCase: string) {
     return camelCase.replace(/([A-Z])/g, " $1").replace(/^./, function(str) {
       return str.toUpperCase();
     });
+  }
+
+  /** Returns the colums that should be displayed */
+  private get displayColumns() {
+    let columns: {
+      name: string;
+      index: string;
+      width: string | null;
+    }[] = [];
+
+    if (this.columns === null) {
+      /** If no specific columns are defined, we use the first entry of the items to get the names of the columns */
+      if (this.items && this.items.length > 0) {
+        for (const key of Object.keys(this.items[0])) {
+          columns.push({
+            name: this.camelCaseToText(key),
+            index: key,
+            width: "auto"
+          });
+        }
+      }
+    } else {
+      /** If the columns property is defined, we use it for the names */
+      columns = this.columns;
+    }
+
+    return columns;
   }
 }
 </script>
