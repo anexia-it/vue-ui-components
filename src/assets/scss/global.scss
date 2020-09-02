@@ -9,6 +9,18 @@ html {
       text-transform: uppercase;
     }
 
+    .text-left {
+      text-align: left;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
     span {
       &.f-100 {
         font-weight: 100;

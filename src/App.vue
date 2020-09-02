@@ -173,7 +173,7 @@
 
         <anx-table
           :columns="[
-            { name: 'Alter', index: 'age', width: '50px' },
+            { name: 'Alter', index: 'age', width: '70px', align: 'center' },
             { name: 'First name', index: 'lastName' },
             { name: 'Last name', index: 'firstName' }
           ]"

@@ -23,6 +23,7 @@
             :key="column.index"
             scope="col"
             :width="column.width"
+            :class="column.align ? `text-${column.align}` : ''"
           >
             {{ column.name }}
           </th>
@@ -35,6 +36,7 @@
               v-for="column in displayColumns"
               :key="`col-${i}-${column.index}`"
               :width="column.width"
+              :align="column.align ? column.align : left"
             >
               <slot
                 :name="`${column.index}${i}`"
@@ -93,6 +95,7 @@ export default class AnxTable extends Vue {
     name: string;
     index: string;
     width: string | null;
+    align: string | null;
   }[];
 
   /** Remove the header of the table */
@@ -111,6 +114,7 @@ export default class AnxTable extends Vue {
       name: string;
       index: string;
       width: string | null;
+      align: string | null;
     }[] = [];
 
     if (this.columns === null) {
@@ -120,7 +124,8 @@ export default class AnxTable extends Vue {
           columns.push({
             name: this.camelCaseToText(key),
             index: key,
-            width: "auto"
+            width: "auto",
+            align: "left"
           });
         }
       }
