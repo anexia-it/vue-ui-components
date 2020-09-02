@@ -26,6 +26,7 @@ export default class AnxTableCol extends Vue {
   padding-left: 8px;
   font-size: 16px;
   vertical-align: middle;
+  overflow-wrap: anywhere;
 
   img {
     max-height: 20px;

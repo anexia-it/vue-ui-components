@@ -53,9 +53,14 @@ export default class AnxParagraph extends Vue {
 
 .anx-paragraph {
   line-height: 24px;
+  overflow-wrap: anywhere;
 
   p {
     margin: 0;
+  }
+
+  span {
+    overflow-wrap: anywhere;
   }
 
   &.anx-paragraph-h1 {
