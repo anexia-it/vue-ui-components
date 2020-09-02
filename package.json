@@ -22,6 +22,7 @@
   "files": [
     "lib/*",
     "nuxt/*",
+    "src/*",
     "index.d.ts"
   ],
   "dependencies": {},
