@@ -98,11 +98,15 @@ export default class AnxModal extends Vue {
 }
 .anx-modal {
   .modal-dialog {
-    background-color: $anx-primary-white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    @media screen and (max-width: 500px) {
+      padding: 0 15px;
+      width: 100% !important;
+    }
   }
 
   &.anx-modal-size-s {
@@ -136,6 +140,7 @@ export default class AnxModal extends Vue {
   }
 
   .anx-modal-content {
+    background-color: $anx-primary-white;
     position: relative;
     border-radius: 0px;
     border: none !important;
