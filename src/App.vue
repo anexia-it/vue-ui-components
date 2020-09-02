@@ -239,6 +239,7 @@
             v-if="exampleModal"
             title="AnxModal"
             @close="exampleModal = false"
+            close-button-align="right"
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
