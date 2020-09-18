@@ -529,8 +529,8 @@ import AnxList from "@/components/AnxList.vue";
 })
 export default class App extends Vue {
   public items: Array<object> = [
-    { menu: "Software", link: "/x/" },
-    { menu: "Hosting", link: "/y/" }
+    { menu: "Kitchensink", link: "#/kitchensink" },
+    { menu: "Login", link: "#/login" }
   ];
 
   ip = "";
