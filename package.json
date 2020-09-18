@@ -1,25 +1,24 @@
 {
   "name": "ui",
   "version": "0.1.14",
-  "description": "Anexia Mini Tool UI",
   "private": true,
+  "description": "Anexia Mini Tool UI",
+  "author": "ANEXIA",
   "scripts": {
     "serve": "npm run generate:icons && vue-cli-service serve",
     "build": "npm run build:bundle && npm run build:app",
-    "build:app": "npm run generate:icons && vue-cli-service build",
-    "build:bundle": "npm run generate:icons && vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "lint:icons": "vue-cli-service lint ./src/icons/*.js ./src/icons/*.ts",
+    "build:app": "npm run generate:icons && vue-cli-service build",
+    "build:bundle": "npm run generate:icons && vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts",
     "generate:icons": "node ./src/icons/helpers/generate-files.js && npm run lint:icons",
-    "git:add-bundle": "ts-node git/pre-commit.ts"
+    "git:add-bundle": "ts-node git/pre-commit.ts",
+    "lint:icons": "vue-cli-service lint ./src/icons/*.js ./src/icons/*.ts"
   },
   "main": "lib/ui.umd.js",
   "module": "lib/ui.common.js",
   "unpkg": "lib/ui.umd.min.js",
-  "style": "lib/ui.css",
-  "author": "ANEXIA",
   "files": [
     "lib/*",
     "nuxt/*",
@@ -40,6 +39,7 @@
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "^4.5.6",
     "@vue/cli-plugin-typescript": "~4.4.0",
     "@vue/cli-plugin-unit-mocha": "~4.4.0",
     "@vue/cli-service": "~4.4.0",
@@ -75,5 +75,6 @@
   "pre-commit": [
     "build:bundle",
     "git:add-bundle"
-  ]
+  ],
+  "style": "lib/ui.css"
 }
