@@ -527,7 +527,7 @@ import AnxList from "@/components/AnxList.vue";
     AnxList
   }
 })
-export default class App extends Vue {
+export default class Kitchensink extends Vue {
   public items: Array<object> = [
     { menu: "Kitchensink", link: "#/kitchensink" },
     { menu: "Login", link: "#/login" }
