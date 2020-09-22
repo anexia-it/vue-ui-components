@@ -14,9 +14,10 @@
         </slot>
       </div>
 
-      <anx-form class="anx-login-form">
+      <anx-form class="anx-login-form" @submit="login">
         <slot name="username-input">
           <anx-input
+            v-model="username"
             :name="usernameName"
             :id="usernameId"
             :label="usernameLabel"
@@ -29,6 +30,7 @@
 
         <slot name="password-input">
           <anx-input
+            v-model="password"
             :name="passwordName"
             :id="passwordId"
             :label="passwordLabel"
@@ -78,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import AnxButton from "./AnxButton.vue";
 import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
@@ -116,7 +118,7 @@ export default class AnxLogin extends Vue {
   /** The label for the username field */
   @Prop({ default: "Username" }) usernameLabel!: string;
   /** The rules for the username field */
-  @Prop({ default: "" }) usernameRules!: string;
+  @Prop({ default: "required" }) usernameRules!: string;
   /** The assistive text for the username field */
   @Prop({ default: "" }) usernameAssistiveText!: string;
 
@@ -128,7 +130,7 @@ export default class AnxLogin extends Vue {
   /** The label for the password field */
   @Prop({ default: "Password" }) passwordLabel!: string;
   /** The rules for the password field */
-  @Prop({ default: "" }) passwordRules!: string;
+  @Prop({ default: "required" }) passwordRules!: string;
   /** The assistive text for the password field */
   @Prop({ default: "" }) passwordAssistiveText!: string;
 
@@ -149,6 +151,19 @@ export default class AnxLogin extends Vue {
   @Prop({ default: "anexia-stamp" }) footerIcon!: string;
   /** The size of the icon of the footer */
   @Prop({ default: "60px" }) footerIconSize!: string;
+
+  /** The variables for username and password */
+  private username = "";
+  private password = "";
+
+  /** When the user hits the login button and the entered data passes validation, the login event is emitted */
+  @Emit()
+  login() {
+    return {
+      username: this.username,
+      password: this.password
+    };
+  }
 }
 </script>
 
