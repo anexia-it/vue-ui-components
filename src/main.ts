@@ -1,4 +1,3 @@
-
 import { AnxIconsPlugin } from "./icons";
 import Vue from "vue";
 import App from "./App.vue";

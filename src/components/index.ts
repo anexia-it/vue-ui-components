@@ -52,4 +52,4 @@ export default {
   AnxTableRow,
   AnxTextarea,
   AnxTitle
-}
+};
