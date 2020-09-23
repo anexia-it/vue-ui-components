@@ -3,7 +3,7 @@
   <div
     v-if="readonly !== false"
     class="anx-input"
-    :class="{ filled: filled }"
+    :class="{ filled: filled, inline: inline !== null ? true : false }"
     :style="cssProps"
   >
     <input
@@ -30,7 +30,11 @@
   >
     <div
       class="anx-input"
-      :class="{ active: active, filled: filled }"
+      :class="{
+        active: active,
+        filled: filled,
+        inline: inline !== null ? true : false
+      }"
       @click="active = true"
       :style="cssProps"
     >
@@ -45,6 +49,7 @@
         @blur="inputBlur"
         :class="errors && errors.length > 0 ? 'is-invalid' : ''"
         @input="$emit('input', updateInputField)"
+        :autocomplete="autocomplete"
       />
       <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
         {{ label }}
@@ -75,6 +80,7 @@
       hide-details="true"
       @blur="inputBlur"
       @input="$emit('input', updateInputField)"
+      :autocomplete="autocomplete"
     />
     <label :for="id">
       {{ label }}
@@ -126,6 +132,10 @@ export default class AnxInput extends Vue {
    * is the value who will be show as input
    */
   @Prop({ default: "" }) value!: string;
+  /** Display the input field inline */
+  @Prop({ default: null }) inline!: boolean;
+  /** Autocomplete attribute */
+  @Prop({ default: null }) autocomplete!: string;
 
   private active = false;
   private filled = false;
@@ -140,23 +150,21 @@ export default class AnxInput extends Vue {
       this.active = true;
     }
   }
-  /**FOR READONLY!
+  /**
    * Watch the attribute/prop value. When the value change, then it set the updateInputField
    * variabel with the new value (need to be pass to the parent) and set the input-field to filled.
    */
   @Watch("value")
   valueChanged() {
-    if (this.readonly !== false) {
-      this.updateInputField = this.value !== null ? this.value : "";
-      this.isFilled();
-    }
+    this.updateInputField = this.value !== null ? this.value : "";
+    this.isFilled();
   }
 
   /**After creation the value will be save in the updateInputField and check if it has the
    * state filled.
    */
   private mounted() {
-    this.updateInputField = this.value !== null ? this.value : "";
+    this.updateInputField = this.value;
     this.isFilled();
   }
 
@@ -200,6 +208,10 @@ export default class AnxInput extends Vue {
   position: relative;
   width: var(--input-width);
   margin-bottom: $form-components-spacing;
+
+  &.inline {
+    display: inline-block;
+  }
 
   input {
     outline: none;
@@ -326,6 +338,7 @@ span.error {
   color: $anx-error;
   padding: 0;
   white-space: nowrap;
+  position: absolute;
 }
 
 span.assistiv {

@@ -13,6 +13,7 @@ import {
   AnxIconAlexa,
   AnxIconAnderesWeiteresTeil,
   AnxIconAndroid,
+  AnxIconAnexiaStamp,
   AnxIconAnexia,
   AnxIconApp,
   AnxIconApple,
@@ -157,6 +158,7 @@ import {
   AnxIconWidgets,
   AnxIconWindows,
   AnxIconWlan,
+  AnxIconX,
   AnxIconZeitungMedienNews,
   AnxIconZertifikat,
   AnxIconZielMarkierung
@@ -170,6 +172,7 @@ export const AnxIconsNames = [
   "AnxIconAlexa",
   "AnxIconAnderesWeiteresTeil",
   "AnxIconAndroid",
+  "AnxIconAnexiaStamp",
   "AnxIconAnexia",
   "AnxIconApp",
   "AnxIconApple",
@@ -314,6 +317,7 @@ export const AnxIconsNames = [
   "AnxIconWidgets",
   "AnxIconWindows",
   "AnxIconWlan",
+  "AnxIconX",
   "AnxIconZeitungMedienNews",
   "AnxIconZertifikat",
   "AnxIconZielMarkierung"
@@ -331,6 +335,7 @@ export const AnxIconsPlugin = {
     Vue.component("AnxIconAlexa", AnxIconAlexa);
     Vue.component("AnxIconAnderesWeiteresTeil", AnxIconAnderesWeiteresTeil);
     Vue.component("AnxIconAndroid", AnxIconAndroid);
+    Vue.component("AnxIconAnexiaStamp", AnxIconAnexiaStamp);
     Vue.component("AnxIconAnexia", AnxIconAnexia);
     Vue.component("AnxIconApp", AnxIconApp);
     Vue.component("AnxIconApple", AnxIconApple);
@@ -520,6 +525,7 @@ export const AnxIconsPlugin = {
     Vue.component("AnxIconWidgets", AnxIconWidgets);
     Vue.component("AnxIconWindows", AnxIconWindows);
     Vue.component("AnxIconWlan", AnxIconWlan);
+    Vue.component("AnxIconX", AnxIconX);
     Vue.component("AnxIconZeitungMedienNews", AnxIconZeitungMedienNews);
     Vue.component("AnxIconZertifikat", AnxIconZertifikat);
     Vue.component("AnxIconZielMarkierung", AnxIconZielMarkierung);

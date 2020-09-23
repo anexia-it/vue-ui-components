@@ -8,7 +8,7 @@
               <slot name="icon">
                 <anx-icon
                   alt="anx-header-logo"
-                  :icon="img"
+                  :icon="icon"
                   :height="iconSize"
                   :width="iconSize"
                 />
@@ -16,7 +16,10 @@
             </div>
             <div class="header-language-nav" v-if="i18n">
               <div v-if="!menus">
-                <AnxLanguageSwitcher :i18n="i18n" />
+                <AnxLanguageSwitcher
+                  :i18n="i18n"
+                  @localeChange="localeChange($event)"
+                />
               </div>
             </div>
           </div>
@@ -24,13 +27,22 @@
           <div class="header-nav-menu" v-if="menus">
             <div class="menu-text left">
               <!--add DTO -->
-              <a v-for="menu in menus" :key="menu.id" :href="`${menu.link}`">
+              <anx-link
+                v-for="menu in menus"
+                :key="menu.id"
+                :href="`${menu.link}`"
+                class="anx-link-header"
+                :disabled="isLinkActive(menu.link)"
+              >
                 {{ menu.menu }}
-              </a>
+              </anx-link>
             </div>
             <div class="menu-text right" v-if="i18n">
               <div v-if="menus">
-                <AnxLanguageSwitcher :i18n="i18n" />
+                <AnxLanguageSwitcher
+                  :i18n="i18n"
+                  @localeChange="localeChange($event)"
+                />
               </div>
             </div>
           </div>
@@ -41,13 +53,14 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import AnxIcon from "./AnxIcon.vue";
+import AnxLink from "./AnxLink.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
 
 @Component({
-  components: { AnxLanguageSwitcher, AnxIcon }
+  components: { AnxLanguageSwitcher, AnxIcon, AnxLink }
 })
 export default class AnxHeader extends Vue {
   /** The i18n instance from the root vue project */
@@ -57,9 +70,18 @@ export default class AnxHeader extends Vue {
   /** The icon size for the header */
   @Prop({ default: "45px" }) iconSize!: string;
   /** The menus for the header */
-  @Prop({ default: null }) menus!: Array<object>;
+  @Prop({ default: null }) menus!: Array<{
+    menu: string;
+    link: string;
+  }>;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
+
+  /** Emit the @localeChange event when the locale is changed via the AnxLanguageSwitcher */
+  @Emit("localeChange")
+  localeChange(locale: string) {
+    return locale;
+  }
 
   get cssProps() {
     return {
@@ -67,22 +89,27 @@ export default class AnxHeader extends Vue {
     };
   }
 
-  private mounted() {
-    const hmenu = document.querySelectorAll(
-      ".header-nav-menu > .menu-text.left > a"
-    );
+  /** Checks if the specified link matches the window link */
+  private isLinkActive(link: string): boolean {
+    /** Checking if the window is defined. On the nuxt server side, the window will be undefinded and the following code of this function would throw an error */
+    if (typeof window === "undefined") return false;
 
-    let path = window.location.pathname;
-    hmenu.forEach(el => {
-      if (path[path.length - 1] !== "/") {
-        path += "/";
-      }
-      if ((el as HTMLElement).getAttribute("href") === path) {
-        el.classList.add("active");
-      }
-    });
+    const path = this.formatPath(window.location.pathname);
 
-    return;
+    return path === this.formatPath(link);
+  }
+
+  /** Adds a / to the end of the path if it is not present */
+  private formatPath(path: string | null): string {
+    if (!path) {
+      return "";
+    }
+
+    if (path[path.length - 1] !== "/") {
+      path += "/";
+    }
+
+    return path;
   }
 }
 </script>
@@ -122,18 +149,6 @@ hr {
 img {
   height: 45px;
 }
-a {
-  color: $anx-primary-green;
-  text-decoration: none;
-  &.active {
-    color: $anx-primary-white;
-    border-bottom: 1px solid $anx-primary-green;
-  }
-}
-a:hover {
-  text-decoration: none;
-  color: $anx-primary-green;
-}
 
 .header-nav-menu {
   display: table;
@@ -146,12 +161,14 @@ a:hover {
     padding-top: none;
   }
   .menu-text {
-    a {
+    .anx-link-header {
       margin-right: 20px;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
-    a:last-of-type {
-      margin-right: 0;
-    }
+
     &.left {
       float: left;
       padding-top: 0;

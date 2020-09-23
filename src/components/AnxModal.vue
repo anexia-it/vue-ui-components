@@ -1,5 +1,5 @@
 <template>
-  <div id="modal" class="modal anx-modal">
+  <div id="modal" :class="`modal anx-modal anx-modal-size-${size}`">
     <div :class="'modal-dialog modal-dialog-scrollable'">
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
@@ -22,23 +22,26 @@
         <div class="modal-body  anx-modal-body">
           <slot />
         </div>
-        <div v-if="confirm" class="modal-footer  anx-modal-footer">
-          <anx-button
-            :text="this.$i18n.t('uiplugin.modal.confirmButton')"
-            @submit="$emit('confirm')"
-          />
-          <div class="space"></div>
-          <anx-button
-            :text="this.$i18n.t('uiplugin.modal.cancelButton')"
-            @submit="$emit('close')"
-          />
+        <div v-if="confirm" class="modal-footer anx-modal-footer">
+          <slot name="modal-footer">
+            <anx-button :text="closeButtonText" @submit="$emit('close')" />
+            <div class="space"></div>
+            <anx-button :text="confirmButtonText" @submit="$emit('confirm')" />
+          </slot>
         </div>
-        <div v-else class="modal-footer  anx-modal-footer">
-          <anx-button
-            :text="closeButtonText"
-            v-if="hasCloseButton"
-            @submit="$emit('close')"
-          />
+        <div
+          v-else
+          :class="
+            `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
+          "
+        >
+          <slot name="modal-footer">
+            <anx-button
+              :text="closeButtonText"
+              v-if="hasCloseButton"
+              @submit="$emit('close')"
+            />
+          </slot>
         </div>
       </div>
     </div>
@@ -54,13 +57,26 @@ import AnxButton from "./AnxButton.vue";
   }
 })
 export default class AnxModal extends Vue {
-  @Prop({ default: "TITLE" }) title!: string;
+  /** This is the title of the modal */
+  @Prop({ default: "Enter a title for the modal" }) title!: string;
 
+  /** Defines whether the modal has a close button or not */
   @Prop({ default: true }) hasCloseButton!: boolean;
 
+  /** This is the text for the close button */
   @Prop({ default: "Close" }) closeButtonText!: string;
 
+  /** This is the align for the close button [left, center, right]. Note: This will only work, if the modal is not confirmable */
+  @Prop({ default: "center" }) closeButtonAlign!: string;
+
+  /** Show confirmation modal. A 'close' or a 'confirm' event will be emited, depending on the user input */
   @Prop({ default: false }) confirm!: boolean;
+
+  /** If the confirm option is true, this is the text for the confirm button */
+  @Prop({ default: "Confirm" }) confirmButtonText!: string;
+
+  /** The size of the model [s, m, l, xl, xxl] */
+  @Prop({ default: "m" }) size!: string;
 }
 </script>
 
@@ -82,13 +98,49 @@ export default class AnxModal extends Vue {
 }
 .anx-modal {
   .modal-dialog {
-    background-color: $anx-primary-white;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 178px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @media screen and (max-width: 500px) {
+      padding: 0 15px;
+      width: 100% !important;
+    }
   }
+
+  &.anx-modal-size-s {
+    .modal-dialog {
+      width: 400px;
+    }
+  }
+
+  &.anx-modal-size-m {
+    .modal-dialog {
+      width: 500px;
+    }
+  }
+
+  &.anx-modal-size-l {
+    .modal-dialog {
+      width: 600px;
+    }
+  }
+
+  &.anx-modal-size-xl {
+    .modal-dialog {
+      width: 800px;
+    }
+  }
+
+  &.anx-modal-size-xxl {
+    .modal-dialog {
+      width: 1000px;
+    }
+  }
+
   .anx-modal-content {
+    background-color: $anx-primary-white;
     position: relative;
     border-radius: 0px;
     border: none !important;
@@ -182,7 +234,19 @@ export default class AnxModal extends Vue {
     border: none;
     padding: 0 2.5rem 2.5rem 2.5rem;
     display: flex;
-    justify-content: center;
+
+    &.footer-content-left {
+      justify-content: flex-start;
+    }
+
+    &.footer-content-center {
+      justify-content: center;
+    }
+
+    &.footer-content-right {
+      justify-content: flex-end;
+    }
+
     @media screen and (max-width: 500px) {
       padding: 0 1.25rem 2.5rem 1.25rem; // 0px 20px 40px 20px
 
@@ -198,6 +262,10 @@ export default class AnxModal extends Vue {
 
     button {
       position: inherit;
+    }
+
+    &.close-button-left {
+      color: red;
     }
   }
 }

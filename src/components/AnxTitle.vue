@@ -1,5 +1,7 @@
 <template>
-  <div :class="`anx-title size-${size}`">
+  <div
+    :class="`anx-title size-${size} ` + (noMargin !== null ? 'no-margin ' : '')"
+  >
     <span>
       <slot />
     </span>
@@ -13,6 +15,9 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 export default class AnxContent extends Vue {
   /** This is the size of the header (h1, h2, h3) */
   @Prop({ default: "h1" }) size!: string;
+
+  /** No margin after the title */
+  @Prop({ default: null }) noMargin!: boolean;
 }
 </script>
 
@@ -23,6 +28,10 @@ export default class AnxContent extends Vue {
   text-transform: uppercase;
   color: $anx-primary-blue;
   margin-bottom: 20px;
+
+  &.no-margin {
+    margin-bottom: 0px !important;
+  }
 
   &.size-h1 {
     font-size: 28px;

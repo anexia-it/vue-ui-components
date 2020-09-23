@@ -35,6 +35,12 @@ export default class AnxAlert extends Vue {
   /** This is the type of the error. Possible is error, success */
   @Prop({ default: "error" }) type!: string;
 
+  /** If this option is set, the alert will be auto closed */
+  @Prop({ default: null }) autoClose!: boolean;
+
+  /** This is the timeout for the auto close logic */
+  @Prop({ default: 5000 }) autoCloseTimeout!: number;
+
   /** Watcher for show changes */
   @Watch("value")
   onShowChanged(val: boolean) {
@@ -52,25 +58,41 @@ export default class AnxAlert extends Vue {
   }
 
   /** Variables for anx-alert */
-  visibility = true;
+  visibility = false;
   fadeOut = false;
   fadeIn = false;
 
   /** Set visibility when mounting */
-  private mounted() {
+  private created() {
     this.visibility = this.value;
+
+    /** If the Alert is visible by default, the show action has to be called at the beginning */
+    if (this.value) {
+      this.showAction();
+    }
   }
 
   /** Show the alert */
   private showAction() {
     if (this.animations) {
       this.fadeIn = true;
-      window.setTimeout(() => {
-        this.fadeIn = false;
-        this.visibility = true;
-      }, 1000);
+      if (typeof window !== "undefined") {
+        window.setTimeout(() => {
+          this.fadeIn = false;
+          this.visibility = true;
+        }, 1000);
+      }
     } else {
       this.visibility = true;
+    }
+
+    /** Check if the alert should be auto closed and set a timeout */
+    if (this.autoClose !== null) {
+      if (typeof window !== "undefined") {
+        window.setTimeout(() => {
+          this.input(false);
+        }, this.autoCloseTimeout);
+      }
     }
   }
 
@@ -94,8 +116,8 @@ export default class AnxAlert extends Vue {
 
 .anx-alert {
   margin-bottom: $form-components-spacing;
-  display: flex;
-  opacity: 1;
+  display: none;
+  opacity: 0;
 
   &.fade-out {
     opacity: 0 !important;
@@ -115,6 +137,11 @@ export default class AnxAlert extends Vue {
     -o-transition: opacity 0.5s ease-in-out;
   }
 
+  &.visible {
+    opacity: 1;
+    display: flex;
+  }
+
   &.hidden {
     opacity: 0;
   }
@@ -125,7 +152,7 @@ export default class AnxAlert extends Vue {
 
   .message {
     padding: 16px;
-    line-height: 16px;
+    line-height: 22px;
   }
 
   .dismiss {

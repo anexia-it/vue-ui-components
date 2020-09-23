@@ -12,6 +12,7 @@ import AnxHrLine from "./AnxHrLine.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxInput from "./AnxInput.vue";
 import AnxLink from "./AnxLink.vue";
+import AnxList from "./AnxList.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxParagraph from "./AnxParagraph.vue";
@@ -40,6 +41,7 @@ export default {
   AnxInput,
   AnxLanguageSwitcher,
   AnxLink,
+  AnxList,
   AnxModal,
   AnxParagraph,
   AnxReadonly,
@@ -50,4 +52,4 @@ export default {
   AnxTableRow,
   AnxTextarea,
   AnxTitle
-}
+};

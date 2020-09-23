@@ -19,6 +19,8 @@ export declare class AnxIconAnderesWeiteresTeil extends Vue {}
 
 export declare class AnxIconAndroid extends Vue {}
 
+export declare class AnxIconAnexiaStamp extends Vue {}
+
 export declare class AnxIconAnexia extends Vue {}
 
 export declare class AnxIconApp extends Vue {}
@@ -306,6 +308,8 @@ export declare class AnxIconWidgets extends Vue {}
 export declare class AnxIconWindows extends Vue {}
 
 export declare class AnxIconWlan extends Vue {}
+
+export declare class AnxIconX extends Vue {}
 
 export declare class AnxIconZeitungMedienNews extends Vue {}
 

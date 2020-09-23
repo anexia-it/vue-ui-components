@@ -65,16 +65,46 @@ export default class AnxFooter extends Vue {
 
   private footerLinks: Array<object> = [];
 
+  /** The current state of the footer, if it is fixed to bottom or not */
+  private bottom = false;
+
+  /** If the document height is to less, the footer should be fixed to the bottom of the page */
   private setFooter() {
     const footer = document.getElementById("anx-footer") as HTMLElement;
-    document.body.scrollHeight < window.innerHeight
-      ? footer.classList.add("bottom")
-      : footer.classList.remove("bottom");
+
+    /** If the footer is fixed to bottom, the height has to be added to document.body.scrollHeight */
+    let documentHeight = document.body.scrollHeight;
+    if (this.bottom) documentHeight += footer.scrollHeight;
+
+    /** Compare the height of the document with the actual window height */
+    if (documentHeight < window.innerHeight) {
+      footer.classList.add("bottom");
+      this.bottom = true;
+    } else {
+      footer.classList.remove("bottom");
+      this.bottom = false;
+    }
   }
 
-  mounted() {
+  private mounted() {
     this.setFooter();
+    /** Set footer on window resize */
     window.addEventListener("resize", this.setFooter);
+    /** Additionally add a listener for height change of document.body */
+    this.onElementHeightChange(document.body, this.setFooter);
+  }
+
+  /** Custom function to listen on height change of elements */
+  private onElementHeightChange(elm: HTMLElement, callback: () => void) {
+    let lastHeight = elm.clientHeight,
+      newHeight;
+    (function run() {
+      newHeight = elm.clientHeight;
+      if (lastHeight != newHeight) callback();
+      lastHeight = newHeight;
+
+      window.setTimeout(run, 100);
+    })();
   }
 }
 </script>
@@ -123,6 +153,7 @@ export default class AnxFooter extends Vue {
   }
 }
 .anx-footer {
+  font-size: 12px;
   margin-left: auto;
   margin-right: auto;
   width: var(--width);

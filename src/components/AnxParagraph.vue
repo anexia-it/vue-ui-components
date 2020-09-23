@@ -1,13 +1,16 @@
 <template>
   <div
     :class="
-      `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
+      `anx-paragraph anx-paragraph-${size} ` +
+        (hint !== null ? 'hint ' : '') +
+        (inverse !== null ? 'inversed-colors' : '')
     "
   >
     <anx-title
       v-if="title !== null"
       :size="size"
       :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
+      :no-margin="noMarginTitle"
     >
       {{ title }}
     </anx-title>
@@ -36,6 +39,12 @@ export default class AnxParagraph extends Vue {
 
   /** The paragraph title has a line or not */
   @Prop({ default: null }) noline!: boolean;
+
+  /** Inverse the colors of the paragraph */
+  @Prop({ default: null }) inverse!: boolean;
+
+  /** No margin after the title */
+  @Prop({ default: null }) noMarginTitle!: boolean;
 }
 </script>
 
@@ -44,9 +53,14 @@ export default class AnxParagraph extends Vue {
 
 .anx-paragraph {
   line-height: 24px;
+  overflow-wrap: anywhere;
 
   p {
     margin: 0;
+  }
+
+  span {
+    overflow-wrap: anywhere;
   }
 
   &.anx-paragraph-h1 {
@@ -70,7 +84,7 @@ export default class AnxParagraph extends Vue {
     }
 
     &.noline {
-      margin-bottom: 19px !important; /*real margin isi 30px - because textbox size*/
+      margin-bottom: 19px; /*real margin isi 30px - because textbox size*/
 
       &::after {
         content: "" !important;
@@ -84,6 +98,14 @@ export default class AnxParagraph extends Vue {
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 0px;
+  }
+
+  &.inversed-colors {
+    color: $anx-primary-white;
+
+    .anx-paragraph-title {
+      color: $anx-primary-white;
+    }
   }
 }
 </style>
