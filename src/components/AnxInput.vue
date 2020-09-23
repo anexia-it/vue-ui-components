@@ -49,6 +49,7 @@
         @blur="inputBlur"
         :class="errors && errors.length > 0 ? 'is-invalid' : ''"
         @input="$emit('input', updateInputField)"
+        :autocomplete="autocomplete"
       />
       <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
         {{ label }}
@@ -79,6 +80,7 @@
       hide-details="true"
       @blur="inputBlur"
       @input="$emit('input', updateInputField)"
+      :autocomplete="autocomplete"
     />
     <label :for="id">
       {{ label }}
@@ -132,6 +134,8 @@ export default class AnxInput extends Vue {
   @Prop({ default: "" }) value!: string;
   /** Display the input field inline */
   @Prop({ default: null }) inline!: boolean;
+  /** Autocomplete attribute */
+  @Prop({ default: null }) autocomplete!: string;
 
   private active = false;
   private filled = false;

@@ -36,7 +36,7 @@
               v-for="column in displayColumns"
               :key="`col-${i}-${column.index}`"
               :width="column.width"
-              :align="column.align ? column.align : left"
+              :align="column.align ? column.align : 'left'"
             >
               <slot
                 :name="`${column.index}${i}`"
