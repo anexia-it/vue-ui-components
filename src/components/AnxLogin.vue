@@ -41,6 +41,14 @@
           />
         </slot>
 
+        <span class="error" v-if="hasLoginError">
+          <slot name="error">
+            <anx-alert v-model="hasLoginError" type="error">
+              {{ loginError }}
+            </anx-alert>
+          </slot>
+        </span>
+
         <slot name="submit-button">
           <div :class="`button-container button-${submitButtonAlign}`">
             <anx-button
@@ -80,7 +88,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit, Watch } from "vue-property-decorator";
+import AnxAlert from "./AnxAlert.vue";
 import AnxButton from "./AnxButton.vue";
 import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
@@ -91,6 +100,7 @@ import AnxInput from "./AnxInput.vue";
 
 @Component({
   components: {
+    AnxAlert,
     AnxButton,
     AnxContainer,
     AnxContent,
@@ -109,6 +119,9 @@ export default class AnxLogin extends Vue {
 
   /** This is the src attribute of the customer logo */
   @Prop({ default: null }) customerLogo!: string;
+
+  /** If this is not null, the string will be displayed as error */
+  @Prop({ default: null }) loginError!: string;
 
   /** Modify the username input */
   /** The name of the username field */
@@ -155,6 +168,19 @@ export default class AnxLogin extends Vue {
   /** The variables for username and password */
   private username = "";
   private password = "";
+
+  /** Shows the error message if this is true */
+  private hasLoginError = false;
+
+  /** Watches the error message and sets the variable to show the error if needed */
+  @Watch("loginError")
+  onLoginErrorChanged(newVal: string) {
+    if (newVal === null || !newVal) {
+      this.hasLoginError = false;
+    } else {
+      this.hasLoginError = true;
+    }
+  }
 
   /** When the user hits the login button and the entered data passes validation, the login event is emitted */
   @Emit()
