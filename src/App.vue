@@ -380,11 +380,17 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-          <anx-checkbox
-            name="Checkbox"
-            v-model="checkbox[1]"
-            :checkedBool="true"
-          />
+          <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
+          <anx-paragraph size="h3">
+            <strong>Note: </strong>You just have to pass a variable via v-model
+            to the checkbox. Depending on the value of this variable, the
+            checkbox will be checked or not. You can easily change the value of
+            the variable in the parent component and the child component will
+            automatically update. This will also work in the other direction. If
+            the value of the varibale is updated in the child
+            (<i>&lt;anx-checkbox&gt;</i>), the variable in the parent (the one
+            you passed via v-model) will automatically be updated.
+          </anx-paragraph>
           <anx-paragraph size="h3" title="anx-select">
             <i>&lt;anx-select&gt;</i> can have a specific width (default 100%)
             and hava a prop for the options (array&lt;{value: string, text:
@@ -552,7 +558,7 @@ export default class App extends Vue {
   selected2 = "";
   text1 = "";
   text2 = "";
-  checkbox = [];
+  checkbox = [false, true];
   mail = "";
 
   private tableOptions: {
