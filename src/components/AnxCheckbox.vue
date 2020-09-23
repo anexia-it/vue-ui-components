@@ -13,10 +13,9 @@
           :name="name"
           type="checkbox"
           v-validate="'required:true'"
-          :value="name"
-          v-model="state"
+          v-model="valueModel"
           :class="errors && errors.length > 0 ? 'is-invalid' : ''"
-          @change="$emit('input', { state, name })"
+          @change="$emit('input', valueModel)"
         />
         <div class="text">{{ name }}</div>
       </label>
@@ -30,9 +29,8 @@
         :id="name"
         :name="name"
         type="checkbox"
-        :value="name"
-        v-model="state"
-        @change="$emit('input', { state, name })"
+        v-model="valueModel"
+        @change="$emit('input', valueModel)"
       />
       <div class="text">{{ name }}</div>
     </label>
@@ -40,7 +38,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationProvider } from "vee-validate";
 
 @Component({
@@ -49,16 +47,26 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxCheckbox extends Vue {
-  /**with this property, a checkbox can be set */
-  /**Props
-   * name: the name of the input with type checkbox and the label text
-   */
+  /** This is the name of the input with type checkbox and the label text */
   @Prop() name!: string;
-  /**validation: is it set (true) then there are a default validation provider (check is_set/required) */
+  /** If the validation property is set, a ValidationProvider with "required" validation will be added */
   @Prop({ default: false }) validation!: boolean;
-  @Prop({ default: false }) checked!: boolean;
+  /** This is the property, that can be used via v-model. The @input event will automatically be emitted on change */
+  @Prop({}) value!: boolean;
 
-  private state = this.checked;
+  /** Watch, if the value in the parent changes */
+  @Watch("value")
+  onValueChanged(newVal: boolean) {
+    this.valueModel = newVal;
+  }
+
+  /** Use a seperate variable for v-model in the AnxCheckbox component to avoid mutating the parent property directly */
+  private valueModel = false;
+
+  /** Assign the value to the variable we use for v-model */
+  private beforeMount() {
+    this.valueModel = this.value;
+  }
 }
 </script>
 
