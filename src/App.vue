@@ -357,6 +357,17 @@
             :value="ip"
           />
 
+          <anx-paragraph size="h3">
+            It is also possible to change the value of the
+            <i>&lt;anx-input&gt;</i> from the parent. To do this, you have to
+            use the v-model property and change the value of the variable passed
+            via v-model. <strong>Don't use</strong> v-model and value at one
+            component. When using a read-only <i>&lt;anx-input&gt;</i>, you can
+            use the value property.<br />
+            The v-model works with the value property and automatically handles
+            the update of the value variable.
+          </anx-paragraph>
+
           <anx-paragraph size="h3" title="anx-checkbox">
             <i>&lt;anx-checkbox&gt;</i> can have a validation-provider.<br />
             First example with validation (default rule: required true), and the
