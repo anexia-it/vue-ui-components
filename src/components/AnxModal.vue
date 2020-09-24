@@ -24,9 +24,9 @@
         </div>
         <div v-if="confirm !== null" class="modal-footer anx-modal-footer">
           <slot name="modal-footer">
-            <anx-button :text="closeButtonText" @submit="$emit('close')" />
+            <anx-button :text="closeButtonText" @click="$emit('close')" />
             <div class="space"></div>
-            <anx-button :text="confirmButtonText" @submit="$emit('confirm')" />
+            <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
           </slot>
         </div>
         <div
@@ -38,8 +38,13 @@
           <slot name="modal-footer">
             <anx-button
               :text="closeButtonText"
+<<<<<<< HEAD
               v-if="hasCloseButton !== null"
               @submit="$emit('close')"
+=======
+              v-if="hasCloseButton"
+              @click="$emit('close')"
+>>>>>>> a3e948f... fix: button click event
             />
           </slot>
         </div>
