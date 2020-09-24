@@ -56,9 +56,7 @@
       </label>
       <span v-if="errors.length > 0" class="error">{{ errors[0] }}</span>
       <span
-        v-else-if="
-          errors.length === 0 && assistiveText && assistiveText.length > 0
-        "
+        v-else-if="assistiveText && assistiveText.length > 0"
         class="assistiv"
         >{{ assistiveText }}</span
       >
@@ -85,7 +83,7 @@
     <label :for="id">
       {{ label }}
     </label>
-    <span v-if="assistiveText.length > 0" class="assistiv">{{
+    <span v-if="assistiveText && assistiveText.length > 0" class="assistiv">{{
       assistiveText
     }}</span>
   </div>
@@ -146,7 +144,7 @@ export default class AnxInput extends Vue {
    */
   @Watch("updateInputField")
   nameChanged(newVal: string) {
-    if (newVal.length) {
+    if (newVal && newVal.length) {
       this.active = true;
     }
   }
@@ -176,10 +174,10 @@ export default class AnxInput extends Vue {
 
   /** Check if the input-field is filled, Set class filled. */
   protected isFilled() {
-    if (!this.updateInputField.length) {
-      this.filled = false;
-    } else {
+    if (this.updateInputField && this.updateInputField.length > 0) {
       this.filled = true;
+    } else {
+      this.filled = false;
     }
   }
 

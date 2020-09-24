@@ -72,17 +72,20 @@ export default class AnxFooter extends Vue {
   private setFooter() {
     const footer = document.getElementById("anx-footer") as HTMLElement;
 
-    /** If the footer is fixed to bottom, the height has to be added to document.body.scrollHeight */
-    let documentHeight = document.body.scrollHeight;
-    if (this.bottom) documentHeight += footer.scrollHeight;
+    /** Check if the footer has been found and is on the page */
+    if (footer) {
+      /** If the footer is fixed to bottom, the height has to be added to document.body.scrollHeight */
+      let documentHeight = document.body.scrollHeight;
+      if (this.bottom) documentHeight += footer.scrollHeight;
 
-    /** Compare the height of the document with the actual window height */
-    if (documentHeight < window.innerHeight) {
-      footer.classList.add("bottom");
-      this.bottom = true;
-    } else {
-      footer.classList.remove("bottom");
-      this.bottom = false;
+      /** Compare the height of the document with the actual window height */
+      if (documentHeight < window.innerHeight) {
+        footer.classList.add("bottom");
+        this.bottom = true;
+      } else {
+        footer.classList.remove("bottom");
+        this.bottom = false;
+      }
     }
   }
 
