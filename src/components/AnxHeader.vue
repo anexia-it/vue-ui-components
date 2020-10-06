@@ -157,8 +157,7 @@ img {
 
 .header-nav-menu {
   display: table;
-  // padding-top: 17px;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   width: 100%;
   @media screen and (max-width: 500px) {
     display: flex;

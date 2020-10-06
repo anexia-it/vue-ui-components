@@ -43,19 +43,19 @@ export default class AnxContent extends Vue {
 
   &.size-h1 {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   &.size-h2 {
     font-size: 23px;
     line-height: 27.6px;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   &.size-h3 {
     font-size: 18px;
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 500;
     color: $anx-lightest-grey-dark;
   }
 }

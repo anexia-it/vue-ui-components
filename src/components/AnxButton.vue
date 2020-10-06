@@ -27,7 +27,7 @@ export default class AnxButton extends Vue {
   /** This is the text of the button. This can also be set using the slot */
   @Prop({ default: "button" }) text!: string;
   /** This is the width of the button */
-  @Prop({ default: "136px" }) width!: string;
+  @Prop({ default: null }) width!: string | null;
   /** With this property, the button can be set to inline */
   @Prop({ default: null }) inline!: boolean | null;
   /** This is the name of the event, that will be emitted on click */
@@ -35,7 +35,7 @@ export default class AnxButton extends Vue {
 
   get cssProps() {
     return {
-      "--button-width": this.width
+      "--button-width": this.width !== null ? this.width : "auto"
     };
   }
 }
@@ -75,6 +75,8 @@ button {
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   text-align: center;
   background-color: transparent;
+  padding-left: 2em;
+  padding-right: 2em;
   border: 1px solid $anx-primary-green;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

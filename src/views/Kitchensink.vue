@@ -224,12 +224,7 @@
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
-          <anx-button
-            text="Show Modal >"
-            @click="exampleModal = true"
-            width="212px"
-            btnType="click"
-          />
+          <anx-button text="Show Modal >" @click="exampleModal = true" />
         </anx-paragraph>
         <anx-paragraph>
           This is a example for a button with a longer text. The width can be
@@ -248,8 +243,6 @@
           </anx-modal>
           <anx-button
             text="Show Confirmation Modal >"
-            width="300px"
-            btnType="click"
             @click="exampleConfirmationModal = true"
           />
         </anx-paragraph>

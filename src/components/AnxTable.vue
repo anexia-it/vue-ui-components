@@ -202,6 +202,7 @@ export default class AnxTable extends Vue {
   thead {
     th {
       border-bottom: 2px solid $anx-table-border;
+      font-weight: 600;
     }
   }
   tbody {
