@@ -1,7 +1,7 @@
 <template>
   <!-- if validation=true then this will be rendered, anx-select + validation-provider -->
   <ValidationProvider
-    v-if="validation"
+    v-if="validation !== null"
     :name="label"
     rules="excluded:null"
     v-slot="{ errors }"
@@ -116,7 +116,7 @@ export default class AnxSelect extends Vue {
   /**width: the width for the eternaly anx-select */
   @Prop({ default: "100%" }) width!: string;
   /**validation: When this is set to true, there will be a validation-provider */
-  @Prop({ default: false }) validation!: boolean;
+  @Prop({ default: null }) validation!: boolean | null;
 
   private selected = this.options[0].value;
   private selectedText = this.options[0].text;
@@ -136,7 +136,7 @@ export default class AnxSelect extends Vue {
    */
   @Watch("selected", { immediate: false })
   async onSelectedChanged(val: string) {
-    if (val && this.validation) {
+    if (val && this.validation !== null) {
       await this.verify(val);
     }
   }

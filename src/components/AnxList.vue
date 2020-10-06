@@ -30,15 +30,15 @@ import AnxIcon from "./AnxIcon.vue";
 })
 export default class AnxList extends Vue {
   /** The name of the icon if one should be set */
-  @Prop({ default: null }) icon!: string;
+  @Prop({ default: null }) icon!: string | null;
   /** The items for the list */
   @Prop({ default: [] }) items!: Array<string>;
   /** List style type css property */
-  @Prop({ default: null }) listStyleType!: string;
+  @Prop({ default: null }) listStyleType!: string | null;
   /** No padding on the left side for the anx-list */
-  @Prop({ default: null }) noPadding!: boolean;
+  @Prop({ default: null }) noPadding!: boolean | null;
   /** To disable spacing between the lines */
-  @Prop({ default: null }) noSpacing!: boolean;
+  @Prop({ default: null }) noSpacing!: boolean | null;
 }
 </script>
 

@@ -115,13 +115,13 @@ export default class AnxLogin extends Vue {
   @Prop({ default: "400px" }) width!: string;
 
   /** This is the src for the logo in the header */
-  @Prop({ default: null }) logo!: string;
+  @Prop({ default: null }) logo!: string | null;
 
   /** This is the src attribute of the customer logo */
-  @Prop({ default: null }) customerLogo!: string;
+  @Prop({ default: null }) customerLogo!: string | null;
 
   /** If this is not null, the string will be displayed as error */
-  @Prop({ default: null }) loginError!: string;
+  @Prop({ default: null }) loginError!: string | null;
 
   /** Modify the username input */
   /** The name of the username field */
@@ -157,7 +157,7 @@ export default class AnxLogin extends Vue {
 
   /** Modify the footer */
   /** This property can be set to hide the footer */
-  @Prop({ default: null }) noFooter!: boolean;
+  @Prop({ default: null }) noFooter!: boolean | null;
   /** These are the lines for the text in the footer */
   @Prop({ default: [] }) footerText!: Array<string>;
   /** The icon of the footer */

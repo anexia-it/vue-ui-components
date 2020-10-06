@@ -9,6 +9,8 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 export default class AnxHrLine extends Vue {
   /** The color of the hr line (grey, green, blue) */
   @Prop({ default: "grey" }) color!: string;
+
+  /** The margin top and bottom */
   @Prop({ default: "40px" }) margin!: string;
 
   get cssProps() {

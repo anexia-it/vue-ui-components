@@ -14,9 +14,9 @@ import { Vue, Component, Emit, Prop } from "vue-property-decorator";
 @Component({})
 export default class AnxLink extends Vue {
   /** If the link is active or not */
-  @Prop({ default: null }) disabled!: boolean;
+  @Prop({ default: null }) disabled!: boolean | null;
   /** The link */
-  @Prop({ default: null }) href!: string;
+  @Prop({ default: null }) href!: string | null;
 
   /** Emit the click event */
   @Emit("click")

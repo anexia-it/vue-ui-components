@@ -64,7 +64,7 @@ import VueI18n from "vue-i18n";
 })
 export default class AnxHeader extends Vue {
   /** The i18n instance from the root vue project */
-  @Prop({ default: null }) i18n!: VueI18n;
+  @Prop({ default: null }) i18n!: VueI18n | null;
   /** The icon for the header */
   @Prop({ default: "anexia" }) icon!: string;
   /** The icon size for the header */
@@ -73,7 +73,7 @@ export default class AnxHeader extends Vue {
   @Prop({ default: null }) menus!: Array<{
     menu: string;
     link: string;
-  }>;
+  }> | null;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
 

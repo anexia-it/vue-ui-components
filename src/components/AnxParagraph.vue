@@ -29,22 +29,22 @@ import AnxTitle from "./AnxTitle.vue";
 })
 export default class AnxParagraph extends Vue {
   /** The title of the paragrapg */
-  @Prop({ default: null }) title!: string;
+  @Prop({ default: null }) title!: string | null;
 
   /** The size of the paragraph (h1, h2 or h3) */
   @Prop({ default: "h1" }) size!: string;
 
   /** The paragraph can also be displayed as hint */
-  @Prop({ default: null }) hint!: boolean;
+  @Prop({ default: null }) hint!: boolean | null;
 
   /** The paragraph title has a line or not */
-  @Prop({ default: null }) noline!: boolean;
+  @Prop({ default: null }) noline!: boolean | null;
 
   /** Inverse the colors of the paragraph */
-  @Prop({ default: null }) inverse!: boolean;
+  @Prop({ default: null }) inverse!: boolean | null;
 
   /** No margin after the title */
-  @Prop({ default: null }) noMarginTitle!: boolean;
+  @Prop({ default: null }) noMarginTitle!: boolean | null;
 }
 </script>
 

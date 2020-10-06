@@ -1,7 +1,7 @@
 <template>
   <button
     :type="btnType"
-    :class="inline ? className + ' inline' : this.className"
+    :class="inline !== null ? className + ' inline' : this.className"
     :style="cssProps"
     @click="$emit(eventName)"
   >
@@ -29,7 +29,7 @@ export default class AnxButton extends Vue {
   /** This is the width of the button */
   @Prop({ default: "136px" }) width!: string;
   /** With this property, the button can be set to inline */
-  @Prop({ default: false }) inline!: boolean;
+  @Prop({ default: null }) inline!: boolean | null;
   /** This is the name of the event, that will be emitted on click */
   @Prop({ default: "click" }) eventName!: string;
 

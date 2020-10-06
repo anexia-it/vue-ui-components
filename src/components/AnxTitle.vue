@@ -17,7 +17,7 @@ export default class AnxContent extends Vue {
   @Prop({ default: "h1" }) size!: string;
 
   /** No margin after the title */
-  @Prop({ default: null }) noMargin!: boolean;
+  @Prop({ default: null }) noMargin!: boolean | null;
 }
 </script>
 

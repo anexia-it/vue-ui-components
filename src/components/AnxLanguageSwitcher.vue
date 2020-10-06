@@ -25,13 +25,19 @@ import VueI18n from "vue-i18n";
 })
 export default class I18nLangSwitcher extends Vue {
   /** The i18n instance from the root vue project */
-  @Prop({ default: null }) i18n!: VueI18n;
+  @Prop({ default: null }) i18n!: VueI18n | null;
 
   /** Emit the changes languages as @localeChange event */
   @Emit("localeChange")
   setLocale(locale: string) {
+    /** Set the locale in the property */
     this.locale = locale;
-    this.i18n.locale = locale;
+
+    /** Set the locale for the i18n instance if provided */
+    if (this.i18n !== null) {
+      this.i18n.locale = locale;
+    }
+
     return locale;
   }
 

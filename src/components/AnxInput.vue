@@ -1,7 +1,7 @@
 <template>
   <!--The readonly Input field -->
   <div
-    v-if="readonly !== false"
+    v-if="readonly !== null"
     class="anx-input"
     :class="{ filled: filled, inline: inline !== null ? true : false }"
     :style="cssProps"
@@ -15,7 +15,7 @@
       hide-details="true"
       @blur="inputBlur"
       :class="errors && errors.length > 0 ? 'is-invalid' : ''"
-      readonly="readonly !== false ? true"
+      :readonly="readonly !== null ? true : false"
     />
     <label :for="id">
       {{ label }}
@@ -105,7 +105,7 @@ export default class AnxInput extends Vue {
   /**Props
    * name: is the name of the input-field
    */
-  @Prop() name!: string;
+  @Prop({ default: "anx-input" }) name!: string;
   /**id: the id of the input field */
   @Prop({ default: "input-text-field" }) id!: string;
   /**label: the label-text of the input field */
@@ -115,27 +115,27 @@ export default class AnxInput extends Vue {
   /** rules: needed for validation
    * this are the rules, which will be used for teh input validation
    */
-  @Prop() rules!: string;
+  @Prop({ default: null }) rules!: string | null;
   /**width: the width of the input-field */
   @Prop({ default: "100%" }) width!: string;
   /**assistiveText: the hint-text under the input-field
    * it will only be showed, when there are no errors (validation)
    */
-  @Prop({ default: "" }) assistiveText!: string;
+  @Prop({ default: null }) assistiveText!: string | null;
   /**readonly: the readonly attribute for the input-field.
-   * Is this prop is set (true) there will be now validation and you
+   * Is this prop is set there will be now validation and you
    * can't change the value. But the animation will be execute, when the
    * value is set.
    */
-  @Prop({ default: false }) readonly!: boolean;
+  @Prop({ default: null }) readonly!: boolean | null;
   /**vallue: only needed if readonly
    * is the value who will be show as input
    */
   @Prop({ default: "" }) value!: string;
   /** Display the input field inline */
-  @Prop({ default: null }) inline!: boolean;
+  @Prop({ default: null }) inline!: boolean | null;
   /** Autocomplete attribute */
-  @Prop({ default: null }) autocomplete!: string;
+  @Prop({ default: "" }) autocomplete!: string;
 
   private active = false;
   private filled = false;

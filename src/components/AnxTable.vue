@@ -67,39 +67,41 @@ import AnxTableCol from "./AnxTableCol.vue";
 })
 export default class AnxTable extends Vue {
   /** Whether the table should be scrollable or not */
-  @Prop({ default: null }) scrollable!: boolean;
+  @Prop({ default: null }) scrollable!: boolean | null;
 
   /** Wheter the table is stripped or not */
-  @Prop({ default: null }) stripped!: boolean;
+  @Prop({ default: null }) stripped!: boolean | null;
 
   /** Wheter the tables outline is bordered or not */
-  @Prop({ default: null }) bordered!: boolean;
+  @Prop({ default: null }) bordered!: boolean | null;
 
   /** Do not show any borders */
-  @Prop({ default: null }) borderless!: boolean;
+  @Prop({ default: null }) borderless!: boolean | null;
 
   /** Wheter the table is bordered or not */
-  @Prop({ default: null }) hover!: boolean;
+  @Prop({ default: null }) hover!: boolean | null;
 
   /** Wheter the table is bordered or not */
-  @Prop({ default: null }) height!: string;
+  @Prop({ default: null }) height!: string | null;
 
   /** Whether to display the header columns in uppercase or not */
-  @Prop({ default: null }) uppercaseTitle!: boolean;
+  @Prop({ default: null }) uppercaseTitle!: boolean | null;
 
   /** The items for the table */
   @Prop({ default: null }) items!: Array<object> | null;
 
   /** With this property, the names for the columns and the linked index of the items can be defined */
-  @Prop({ default: null }) columns!: {
-    name: string;
-    index: string;
-    width: string | null;
-    align: string | null;
-  }[];
+  @Prop({ default: null }) columns!:
+    | {
+        name: string;
+        index: string;
+        width: string | null;
+        align: string | null;
+      }[]
+    | null;
 
   /** Remove the header of the table */
-  @Prop({ default: null }) noHeader!: boolean;
+  @Prop({ default: null }) noHeader!: boolean | null;
 
   /** Converts camelCase to Text */
   private camelCaseToText(camelCase: string) {
