@@ -37,5 +37,6 @@ export default class AnxIcon extends Vue {
 
 .anx-icon {
   display: inline-block;
+  font-size: 0px;
 }
 </style>

@@ -129,6 +129,11 @@ hr {
 .header-container {
   margin-top: 30px;
   margin-bottom: 10px;
+
+  .header-image {
+    font-size: 0px;
+  }
+
   .header-language-nav {
     width: 100%;
     text-align: right;
