@@ -1,7 +1,7 @@
 <template>
   <!-- textarea with validationn-provider -->
   <ValidationProvider
-    v-if="validation"
+    v-if="validation !== null"
     v-slot="{ errors }"
     name="textarea"
     :rules="rules"
@@ -16,7 +16,7 @@
         :id="id"
         :name="id"
         :rows="rows"
-        :disabled="disabled"
+        :disabled="disabled !== null"
         v-validate="rules"
         v-model="message"
         :class="{ filled: message.length >= 1 }"
@@ -32,7 +32,7 @@
       :id="id"
       :name="id"
       :rows="rows"
-      :disabled="disabled"
+      :disabled="disabled !== null"
       v-model="message"
       :class="{ filled: message.length >= 1 }"
       @input="$emit('input', message)"
@@ -62,11 +62,11 @@ export default class AnxTextarea extends Vue {
   /**disabled: set the diasbled attribute of the textarea.
    * When the textarea should be diabled you must set it in most cases with this prop
    */
-  @Prop({ default: false }) disabled!: boolean;
+  @Prop({ default: null }) disabled!: boolean | null;
   /**width: the width of the textarea */
   @Prop({ default: "100%" }) width!: string;
   /**validation: is it set (true) then there will be validation-provider */
-  @Prop({ default: false }) validation!: boolean;
+  @Prop({ default: null }) validation!: boolean | null;
   /**rules: the rules for the validation. default is required */
   @Prop({ default: "required" }) rules!: string;
 

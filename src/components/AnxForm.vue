@@ -31,7 +31,7 @@ export default class AnxForm extends Vue {
     text: string;
     disabled: boolean;
     width: string;
-  };
+  } | null;
 
   /** The name of the form. This is important when using several forms on one page */
   @Prop({ default: "anx-form" }) name!: string;

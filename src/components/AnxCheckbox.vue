@@ -1,7 +1,7 @@
 <template>
   <!-- Checkbox with validation provider -->
   <ValidationProvider
-    v-if="validation"
+    v-if="validation !== null"
     v-slot="{ errors }"
     :name="name"
     rules="required:true"
@@ -50,7 +50,7 @@ export default class AnxCheckbox extends Vue {
   /** This is the name of the input with type checkbox and the label text */
   @Prop() name!: string;
   /** If the validation property is set, a ValidationProvider with "required" validation will be added */
-  @Prop({ default: false }) validation!: boolean;
+  @Prop({ default: null }) validation!: boolean | null;
   /** This is the property, that can be used via v-model. The @input event will automatically be emitted on change */
   @Prop({}) value!: boolean;
 

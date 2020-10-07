@@ -1,5 +1,5 @@
 <template>
-  <div v-if="scrollable" class="anx-table-container">
+  <div v-if="scrollable !== null" class="anx-table-container">
     <div
       class="anx-table-container-scrollable"
       :style="height !== null ? `height: ${height};` : ''"
@@ -19,9 +19,10 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({})
 export default class AnxTable extends Vue {
   /** Whether the table should be scrollable or not */
-  @Prop({ default: false }) scrollable!: boolean;
+  @Prop({ default: null }) scrollable!: boolean | null;
 
-  @Prop({ default: null }) height!: string;
+  /** The height of the table container */
+  @Prop({ default: null }) height!: string | null;
 }
 </script>
 

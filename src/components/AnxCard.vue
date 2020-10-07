@@ -30,13 +30,13 @@ export default class Card extends Vue {
   @Prop() title!: string;
 
   /** This is the text for the link */
-  @Prop({ default: null }) linkText!: string;
+  @Prop({ default: null }) linkText!: string | null;
 
   /** This is the link for the card */
   @Prop({ default: "#" }) link!: string;
 
   /** The image of the card */
-  @Prop({ default: null }) icon!: string;
+  @Prop({ default: null }) icon!: string | null;
 }
 </script>
 

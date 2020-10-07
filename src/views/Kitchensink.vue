@@ -240,6 +240,7 @@
             title="AnxModal"
             @close="exampleModal = false"
             close-button-align="right"
+            has-close-button
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
@@ -255,7 +256,7 @@
           set manually. This is also a example for a <i>confirmation AnxModal</i
           ><br /><br />
           <anx-modal
-            confirm="true"
+            confirm
             v-if="exampleConfirmationModal"
             title="Confirmation"
             @close="exampleConfirmationModal = false"

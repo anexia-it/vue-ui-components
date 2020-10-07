@@ -22,7 +22,7 @@
         <div class="modal-body  anx-modal-body">
           <slot />
         </div>
-        <div v-if="confirm" class="modal-footer anx-modal-footer">
+        <div v-if="confirm !== null" class="modal-footer anx-modal-footer">
           <slot name="modal-footer">
             <anx-button :text="closeButtonText" @submit="$emit('close')" />
             <div class="space"></div>
@@ -38,7 +38,7 @@
           <slot name="modal-footer">
             <anx-button
               :text="closeButtonText"
-              v-if="hasCloseButton"
+              v-if="hasCloseButton !== null"
               @submit="$emit('close')"
             />
           </slot>
@@ -61,7 +61,7 @@ export default class AnxModal extends Vue {
   @Prop({ default: "Enter a title for the modal" }) title!: string;
 
   /** Defines whether the modal has a close button or not */
-  @Prop({ default: true }) hasCloseButton!: boolean;
+  @Prop({ default: null }) hasCloseButton!: boolean | null;
 
   /** This is the text for the close button */
   @Prop({ default: "Close" }) closeButtonText!: string;
@@ -70,7 +70,7 @@ export default class AnxModal extends Vue {
   @Prop({ default: "center" }) closeButtonAlign!: string;
 
   /** Show confirmation modal. A 'close' or a 'confirm' event will be emited, depending on the user input */
-  @Prop({ default: false }) confirm!: boolean;
+  @Prop({ default: null }) confirm!: boolean | null;
 
   /** If the confirm option is true, this is the text for the confirm button */
   @Prop({ default: "Confirm" }) confirmButtonText!: string;

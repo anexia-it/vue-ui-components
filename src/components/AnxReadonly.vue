@@ -15,10 +15,10 @@ export default class AnxReadonly extends Vue {
   @Prop({ default: "anx-readonly" }) name!: string;
 
   /** Should the text be selcted and copied to the clipboard on click? */
-  @Prop({ default: null }) copyOnClick!: boolean;
+  @Prop({ default: null }) copyOnClick!: boolean | null;
 
   /** Should the text be bold? */
-  @Prop({ default: null }) bold!: boolean;
+  @Prop({ default: null }) bold!: boolean | null;
 
   /** Select and copy the text of the area */
   private copy(event: Event) {

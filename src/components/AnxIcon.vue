@@ -13,10 +13,17 @@ import { Vue, Prop, Component } from "vue-property-decorator";
 
 @Component({})
 export default class AnxIcon extends Vue {
+  /** The name of the icon (With this property, different icons can be loaded) */
   @Prop({ default: "anexia" }) icon!: string;
-  @Prop({ default: "" }) width!: string;
-  @Prop({ default: "" }) height!: string;
-  @Prop({ default: "" }) margin!: string;
+
+  /** The width of the icon */
+  @Prop({ default: null }) width!: string | null;
+
+  /** The height of the icon */
+  @Prop({ default: null }) height!: string | null;
+
+  /** The margin of the icon */
+  @Prop({ default: null }) margin!: string | null;
 
   get iconName() {
     if (this.icon.indexOf("anx-icon") === 0) return this.icon;

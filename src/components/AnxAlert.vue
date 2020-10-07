@@ -27,7 +27,7 @@ export default class AnxAlert extends Vue {
   @Prop({ default: "anx-alert" }) name!: string;
 
   /** The state of the alert (equals to show) */
-  @Prop({ default: null }) value!: boolean;
+  @Prop({ default: false }) value!: boolean;
 
   /** Define if animations like fade-in and fade-out should be used */
   @Prop({ default: true }) animations!: boolean;
@@ -36,7 +36,7 @@ export default class AnxAlert extends Vue {
   @Prop({ default: "error" }) type!: string;
 
   /** If this option is set, the alert will be auto closed */
-  @Prop({ default: null }) autoClose!: boolean;
+  @Prop({ default: null }) autoClose!: boolean | null;
 
   /** This is the timeout for the auto close logic */
   @Prop({ default: 5000 }) autoCloseTimeout!: number;

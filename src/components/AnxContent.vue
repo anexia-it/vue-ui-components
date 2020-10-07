@@ -24,16 +24,16 @@ import AnxTitle from "./AnxTitle.vue";
 })
 export default class AnxContent extends Vue {
   /** The title for the content */
-  @Prop({ default: null }) title!: string;
+  @Prop({ default: null }) title!: string | null;
 
   /** This is the size of the header (h1, h2, h3) */
   @Prop({ default: "h1" }) size!: string;
 
   /** If this property is set to true, the colors will be inversed (blue background and white font) */
-  @Prop({ default: null }) inverse!: boolean;
+  @Prop({ default: null }) inverse!: boolean | null;
 
   /** If this property is set to true, the element will be handled as first inforamtion element*/
-  @Prop({ default: null }) first!: boolean;
+  @Prop({ default: null }) first!: boolean | null;
 }
 </script>
 
