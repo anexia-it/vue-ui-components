@@ -18,14 +18,10 @@ export default class AnxContent extends Vue {
   @Prop({ default: "h1" }) size!: string;
 
   /** No margin after the title */
-<<<<<<< HEAD
-  @Prop({ default: null }) noMargin!: boolean | null;
-=======
   @Prop({ default: null }) noMargin!: boolean;
 
   /** The text, to be displayed (can also be set via slot) */
   @Prop({ default: "" }) text!: string;
->>>>>>> 8901a73... fix: anx title changes tags to header
 }
 </script>
 
