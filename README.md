@@ -95,3 +95,13 @@ You can do this by adding loading the style in your App.vue
 
 ### Nuxt
 See [README.md](nuxt/README.md) file in nuxt folder.
+
+## Usage
+
+For a detailed description of how to use the components, please check out our Kitchensink.
+You can also check out Kitchensink.vue itself, to find some example coding implementations.
+
+## Git
+
+Due to the bundle process of our project, we use a special git worklfow.
+Please see: [UI Git Workflow](https://ais.anexia-it.com/pages/viewpage.action?pageId=69967415).

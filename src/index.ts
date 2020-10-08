@@ -8,6 +8,9 @@ const UIPlugin = {
     for (const name in Components) {
       Vue.component(name, (Components as any)[name]);
     }
+
+    /** Register the AnxIconsPlugin (this registers all icons as components) */
+    Vue.use(AnxIconsPlugin);
   }
 };
 
