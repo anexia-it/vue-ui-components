@@ -32,6 +32,7 @@ export default class AnxContent extends Vue {
   text-transform: uppercase;
   color: $anx-primary-blue;
   margin-bottom: 20px;
+  margin-top: 0px;
 
   &.no-margin {
     margin-bottom: 0px !important;

@@ -268,7 +268,8 @@ export default class AnxInput extends Vue {
   height: 34px !important;
   line-height: 25.6px;
   margin: 0;
-  padding: 6px 0;
+  padding-top: 2px;
+  padding-bottom: 6px;
   text-align: left;
   text-indent: 0;
   text-rendering: auto;

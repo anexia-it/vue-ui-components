@@ -269,7 +269,7 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options li {
   text-align: right;
   padding-right: 18px;
-  padding-top: 5px;
+  padding-top: 3.5px;
   margin: 0;
   -moz-transition: all 0.15s ease-in;
   -o-transition: all 0.15s ease-in;
@@ -289,6 +289,10 @@ export default class AnxSelect extends Vue {
   top: 5px;
   margin-left: -20px;
   background-position: 50%;
+}
+
+.anx-select .anx-select-options li.active:hover:before {
+  background-image: url(../assets/icons/check-white.svg) !important;
 }
 
 .anx-select .anx-select-options li.active {
