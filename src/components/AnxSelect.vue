@@ -1,5 +1,11 @@
 <template>
   <!-- if validation=true then this will be rendered, anx-select + validation-provider -->
+  <!-- 
+    //TODO: Refactor!
+    //TODO: See AnxInput.vue
+    //TODO: The v-if condition is not necessary. The ValidationProvider can be rendered as div with the needed classes and styles.
+    //TODO: This minimizes the lines of code and makes the component easier to maintain.
+  -->
   <ValidationProvider
     v-if="validation !== null"
     :name="label"

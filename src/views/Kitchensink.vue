@@ -291,6 +291,10 @@
           :submit-button="{ text: 'Send >', disabled: false }"
         >
           <anx-paragraph size="h3" title="anx-input">
+            The following input is the simplest form of the
+            <i>&lt;anx-input&gt;</i>. It does not have any validation or
+            features.<br /><br />
+            <anx-input name="input" label="Input" />
             The validation rules itself have to be set at the input fields. This
             <i>&lt;anx-input&gt;</i> is an example for how to use rules to
             validate an user input.<br /><br /><i>&lt;anx-input&gt;</i> has
