@@ -40,6 +40,8 @@
           {{ option.text }}
         </li>
       </ul>
+    </div>
+    <div v-if="error.length > 0 || errors.length > 0" class="anx-select-error">
       <span v-if="error.length > 0" class="error">{{ error[0] }}</span>
       <span v-else class="error">{{ errors[0] }}</span>
     </div>
@@ -125,7 +127,7 @@ export default class AnxSelect extends Vue {
 
   get cssProps() {
     return {
-      width: this.width
+      "--select-width": this.width
     };
   }
 
@@ -191,6 +193,8 @@ export default class AnxSelect extends Vue {
   font-size: 16px;
 
   &.is_invalid {
+    margin-bottom: 0px;
+
     label {
       color: $anx-error;
     }
@@ -200,17 +204,6 @@ export default class AnxSelect extends Vue {
         background-image: url(../assets/icons/arrow-red-bottom.svg);
       }
     }
-  }
-
-  span.error {
-    display: block !important;
-    opacity: 1;
-    font-size: 12px;
-    color: $anx-error;
-    padding: 0;
-    white-space: nowrap;
-    top: 12px;
-    position: relative;
   }
 }
 
@@ -308,5 +301,17 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options li:hover {
   color: #fff;
   background: $anx-primary-green;
+}
+
+.anx-select-error {
+  margin-bottom: $form-components-spacing;
+  margin-top: 5px;
+
+  span {
+    font-size: 12px;
+    color: $anx-error;
+    padding: 0;
+    white-space: nowrap;
+  }
 }
 </style>
