@@ -95,3 +95,8 @@ You can do this by adding loading the style in your App.vue
 
 ### Nuxt
 See [README.md](nuxt/README.md) file in nuxt folder.
+
+## Workflow
+
+### Git
+https://ais.anexia-it.com/pages/viewpage.action?pageId=69967415
