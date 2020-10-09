@@ -38,8 +38,6 @@
 
           <anx-list :items="['h1', 'h2', 'h3']" icon="check-green" no-padding />
 
-          <br />
-
           The <strong>&lt;anx-list&gt;</strong> can have the properties
           <strong>icon</strong>, <strong>no-padding</strong> and
           <strong>list-style-type</strong>. The are very self-descriptive.<br />
@@ -52,7 +50,6 @@
             no-spacing
           />
 
-          <br />
           <span class="f-100">Lorem ipsum dolor sit (weight 100)</span><br />
           <span class="f-200">Lorem ipsum dolor sit (weight 200)</span><br />
           <span class="f-300">Lorem ipsum dolor sit (weight 300)</span><br />
