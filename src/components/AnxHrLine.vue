@@ -13,9 +13,17 @@ export default class AnxHrLine extends Vue {
   /** The margin top and bottom */
   @Prop({ default: "40px" }) margin!: string;
 
+  /** The margin top (if set, margin property will be overwritten) */
+  @Prop({ default: null }) marginTop!: string | null;
+
+  /** The margin bottom (if set, margin property will be overwritten) */
+  @Prop({ default: null }) marginBottom!: string | null;
+
   get cssProps() {
     return {
-      "--margin": this.margin
+      "--marginTop": this.marginTop !== null ? this.marginTop : this.margin,
+      "--marginBottom":
+        this.marginBottom !== null ? this.marginBottom : this.margin
     };
   }
 }
@@ -26,8 +34,8 @@ export default class AnxHrLine extends Vue {
 
 .anx-hr-line {
   height: 1px;
-  margin-top: var(--margin);
-  margin-bottom: var(--margin);
+  margin-top: var(--marginTop);
+  margin-bottom: var(--marginBottom);
   border: 0;
   box-sizing: inherit;
 

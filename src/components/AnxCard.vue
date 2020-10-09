@@ -50,8 +50,7 @@ export default class Card extends Vue {
 
   .anx-card-content {
     padding: 0 20px 0 20px;
-    margin-top: 24px;
-    margin-bottom: 17px;
+    margin: 20px 0;
 
     .anx-card-icon {
       margin-top: auto;
