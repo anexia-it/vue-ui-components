@@ -128,11 +128,6 @@ export default class AnxInput extends Vue {
   private mounted() {
     this.updateInputField = this.value;
     this.isFilled();
-
-    console.log(
-      this.name,
-      this.assistiveText === null || this.assistiveText.length === 0
-    );
   }
 
   get cssProps() {
