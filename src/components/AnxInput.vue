@@ -1,6 +1,6 @@
 <template>
   <ValidationProvider
-    v-slot="{ errors }"
+    v-slot="{ errors, valid }"
     :name="name"
     :rules="rules"
     tag="div"
@@ -8,11 +8,7 @@
     :class="{
       active: active,
       filled: filled,
-      inline: inline !== null ? true : false,
-      'with-margin': !(
-        errors.length > 0 ||
-        (assistiveText && assistiveText.length > 0)
-      )
+      inline: inline !== null ? true : false
     }"
     :style="cssProps"
   >
@@ -26,7 +22,7 @@
       hide-details="true"
       @blur="inputBlur"
       @click="clickInputField()"
-      :class="errors && errors.length > 0 ? 'is-invalid' : ''"
+      :class="{ 'is-invalid': !valid, 'with-margin': valid && !assistiveText }"
       @input="$emit('input', updateInputField)"
       :autocomplete="autocomplete"
       :readonly="readonly !== null ? true : false"
@@ -47,6 +43,12 @@
         class="assistiv"
         >{{ assistiveText }}</span
       >
+    </div>
+
+    <div v-if="inline !== null" class="inline-content-right">
+      <slot>
+        <!-- The content in here will be displayed on the right (to use inline elements) -->
+      </slot>
     </div>
   </ValidationProvider>
 </template>
@@ -126,6 +128,11 @@ export default class AnxInput extends Vue {
   private mounted() {
     this.updateInputField = this.value;
     this.isFilled();
+
+    console.log(
+      this.name,
+      this.assistiveText === null || this.assistiveText.length === 0
+    );
   }
 
   get cssProps() {
@@ -180,12 +187,33 @@ export default class AnxInput extends Vue {
   position: relative;
   width: var(--input-width);
 
-  &.with-margin {
+  &.inline {
+    width: 100% !important;
+  }
+
+  .with-margin {
     margin-bottom: $form-components-spacing;
   }
 
   input {
     outline: none;
+  }
+
+  &.inline {
+    input {
+      outline: none;
+      width: var(--input-width);
+    }
+
+    label {
+      width: var(--input-width);
+    }
+  }
+
+  .inline-content-right {
+    position: absolute;
+    right: 0px;
+    top: 14px;
   }
 }
 
@@ -246,7 +274,7 @@ export default class AnxInput extends Vue {
   line-height: 25.6px;
   margin: 0;
   padding-top: 2px;
-  padding-bottom: 6px;
+  padding-bottom: 3px;
   text-align: left;
   text-indent: 0;
   text-rendering: auto;

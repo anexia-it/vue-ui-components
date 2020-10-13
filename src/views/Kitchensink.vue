@@ -324,15 +324,15 @@
             rules="email"
             width="250px"
             inline
-          />
-          <anx-button
-            btn-type="button"
-            width="150px"
-            style="margin-left: 20px; margin-right: 0px"
-            inline
           >
-            Inline
-          </anx-button>
+            <anx-button
+              btn-type="button"
+              width="150px"
+              style="margin-left: 20px; margin-right: 0px"
+            >
+              Inline
+            </anx-button>
+          </anx-input>
 
           <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> can also be set to
