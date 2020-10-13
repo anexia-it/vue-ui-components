@@ -94,6 +94,7 @@ export default class AnxSelect extends Vue {
   /**label: the text for the label, is also the name for the field in the error-message
    */
   @Prop({ default: "Auswahl treffen" }) label!: string;
+  @Prop({ default: 0 }) selectedIndex!: number;
   /**options: this are the options for the select.
    * This is a Array<{ value: string; text: string }>
    * value: the value of the options and the value who will be passed to the parent
@@ -118,8 +119,8 @@ export default class AnxSelect extends Vue {
   /**validation: When this is set to true, there will be a validation-provider */
   @Prop({ default: null }) validation!: boolean | null;
 
-  private selected = this.options[0].value;
-  private selectedText = this.options[0].text;
+  private selected = this.options[this.selectedIndex].value;
+  private selectedText = this.options[this.selectedIndex].text;
   private show = false;
   private error: string[] = [];
 
