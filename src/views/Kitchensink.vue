@@ -119,10 +119,41 @@
           registered as plugin. You just have to pass the icon name as
           <strong>icon</strong> property to the
           <i>&lt;anx-icon&gt;</i> component. You can additionally set a
-          different width, height and margin for the icons.<br /><br />In
-          addition to this, you can also use a the individual icon component
+          different width, height and margin for the icons.<br /><br />
+          So to add a new icon to the ui tool, you just have to paste the *.svg
+          file into the /src/assets/icons folder. Please use
+          <strong>kebap-case</strong> as file name. E.g. you could add a file
+          named <i>storage-backup.svg</i>. Then you have to run npm run
+          serve/build or any of the other build processes to build the necessary
+          files.<br /><br />
+          To use this icon you have to passe the name of the icon via the icon
+          property of the <i>&lt;anx-icon&gt;</i> component. Here you can decide
+          if you want to use <strong>kebap-case</strong> or
+          <strong>PascalCase</strong>. So you can write
+          <i
+            >&lt;anx-icon icon="StorageBackup" width="50px" height="50px"
+            /&gt;</i
+          >
+          to create the following icon:<br /><br />
+          <anx-icon icon="StorageBackup" width="50px" height="50px" />
+          <br /><br />
+          In addition to this, you can also use a the individual icon component
           itself. You can also use <i>&lt;anx-icon-dokument&gt;</i> to render an
-          icon.
+          icon.<br /><br />
+          The way, AnxIcons work is a little bit more complex. The serve/build
+          npm script automatically trigger the
+          <storng>generate:icons</storng> npm script. Now the
+          <i>/src/icons/helpers/generate-files.js</i> is executed. This file
+          automatically creates all the files located in
+          <i>/src/icons/</i> except for the index.js, index.d.ts and the files
+          inside the helper folder.<br />
+          Now all icons are exported as Vue Components in the icons.js and
+          icons.d.ts files. So, each icon is an individual vue component. All
+          this components are automatically registered into your vue application
+          if you include our UI tool. You don't have to import single icons if
+          you want to use them.<br /><br />
+          Here is a list of all AnxIcons, that are currently included in the UI
+          tool:
         </anx-paragraph>
         <anx-icon
           v-for="icon in AnxIcons"
