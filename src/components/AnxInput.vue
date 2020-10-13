@@ -22,7 +22,10 @@
       hide-details="true"
       @blur="inputBlur"
       @click="clickInputField()"
-      :class="{ 'is-invalid': !valid, 'with-margin': valid && !assistiveText }"
+      :class="{
+        'is-invalid': errors && errors.length > 0,
+        'with-margin': valid && !assistiveText
+      }"
       @input="$emit('input', updateInputField)"
       :autocomplete="autocomplete"
       :readonly="readonly !== null ? true : false"
