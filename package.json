@@ -19,6 +19,9 @@
   "main": "lib/ui.umd.js",
   "module": "lib/ui.common.js",
   "unpkg": "lib/ui.umd.min.js",
+  "browser": {
+    "./sfc": "src/components/index.ts"
+  },
   "files": [
     "lib/*",
     "nuxt/*",
