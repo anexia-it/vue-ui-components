@@ -1,37 +1,150 @@
-# ui
+<p align="center">
+  <img src="./src/assets/icons/anexia.svg" width="150px">
+</p>
 
-## Project setup
+# ANX UI-Tool
+-----------
+
+**Author:** Anexia Marketing
+
+-----------
+
+## Installation
+
+There are different ways to install the UI tool in your project. The way of installation depends on the project you want to include the UI tool in.
+
+### Vue
+
+First of, you have to install the UI tool via npm.
+
+```
+npm install git+ssh://git@code.anexia.com:am/shared/ui.git#master
+```
+
+Next, you have to load the UI plugin in your apps entry point. This is most likely your **main.ts** file.
+
+```javascript
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import UIPlugin from "ui/src";
+
+Vue.config.productionTip = false;
+
+Vue.use(UIPlugin)
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount("#app");
+```
+
+**Note:**
+> When using Vue, you have to import 'ui/src'. When importing 'ui' you would import the bundled version of the ui tool. This can lead to failures and disadvantages when building your project (no tree-shaking)
+
+This automatically globally register all anx components in your application. You don't have to register any components manually.
+
+If you don't want to import all the components, you can also register the required components manually.  
+Therefore, you can import the required components from the components folder in the UI tool. For example, you only want to use the _AnxAlert_ and _AnxButton_ component.
+
+```javascript
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+import { Components } from "ui/src";
+
+Vue.config.productionTip = false;
+
+// Register the required componenets manually
+Vue.component("AnxAlert", Components.AnxAlert);
+Vue.component("AnxButton", Components.AnxButton);
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount("#app");
+```
+
+**Note:**
+> If you want to use icons, you additionally have to import the AnxIconsPlugin. (When using ```Vue.use(UIPlugin)``` the icons plugin is automatically installed)
+
+```javascript
+import { AnxIconsPlugin } from "ui/src";
+
+Vue.use(AnxIconsPlugin);
+```
+
+### Nuxt
+
+See [README.md](nuxt/README.md) file in nuxt folder.
+
+### Using bundled versions
+
+If you want to import the bundled version of the ui tool, you can use
+```javascript
+import UIPlugin from 'ui';
+```
+
+**Note:**
+> If you import the bundled version, the style is not injected via javascript and has to be imported additionally
+
+```html
+<style src='ui/lib/ui.css'></style>
+```
+
+### Web
+
+If you want to use our ui tool in web, just import the minified bundled javascript and the style.
+
+```html
+<link rel="stylesheet" type="text/css" href="/css/anx-ui.css">
+<script src="/js/anx-ui.min.js"></script>
+```
+
+## Usage
+
+For a detailed description of how to use the components, please check out our Kitchensink.
+You can also check out Kitchensink.vue itself, to find some example coding implementations.
+
+## Local setup and commands
+
+In order to view the kitchensink you have to set up the ui tool locally. The setup process is very easy. You just set it up like any other vue based project.
+
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-This command should be used for local develpoment. The preview website will be reachable at http://localhost:3000
-```
 npm run serve
 ```
 
-### Build the app and library
-This command build both, the library and app version of this project. See **Build App** and **Build Library**
+### Build the app and bundle
+
+This command builds both, the library and app version of this project. See **Build App** and **Build Library**
+
 ```
 npm run build
 ```
 
-### Build App
+### Build app
 This command builds the files for the UI project to run as app. The files are exported to /dist.  
 This files can directly be used as a web app and preview website.
+
 ```
 npm run build:app
 ```
 
-### Build Library
+### Build bundle
 This command builds the necessary files to include the UI project as a library. The files are exported to /lib.  
 This directory should also be pushed to git, to be available for download via npm.
+
 ```
 npm run build:bundle
 ```
 
-#### Rendered files (library)
+#### Rendered files (bundle)
+
 The library can easily be included into existing projects.  
 **ui.umd.js** this is the UMD version of our project. These are modules which are capable of working everywhere, be it in the client, on the server or elsewhere.  
 **ui.umd.min.js** this is the minified version of the UMD version.  
@@ -59,47 +172,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### IE 9+ support for custom properties
 Add this to the project public/index.html to make the custom properties work in ie.
 You must do it for every project which use this package.
-```
+```html
   <!-- will only load by IE -->
     <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"><\x2fscript>');</script>
 ```
-
-## Integration
-
-### Vue
-Register the UI Plugin in you main.ts  
-```
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from '@/store'
-import UIPlugin from 'ui'
-
-Vue.use(UIPlugin)
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
-```
-
-In our UI tool, the styles are not injected via Javascript. So you have to load the style additionally.  
-You can do this by adding loading the style in your App.vue  
-```
-<template>
-    <router-view/>
-</template>
-<style src='ui/lib/ui.css'></style>
-```
-
-### Nuxt
-See [README.md](nuxt/README.md) file in nuxt folder.
-
-## Usage
-
-For a detailed description of how to use the components, please check out our Kitchensink.
-You can also check out Kitchensink.vue itself, to find some example coding implementations.
 
 ## Git
 
