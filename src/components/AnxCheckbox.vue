@@ -95,6 +95,7 @@ export default class AnxCheckbox extends Vue {
     appearance: none;
     content: " ";
     outline: none;
+    display: inline-block;
 
     /** IE9+ */
     &[type="checkbox"]::-ms-check {
@@ -144,6 +145,9 @@ export default class AnxCheckbox extends Vue {
 
   .text {
     display: inline-block;
+
+    /** The full width minus the width of the checkbox itself and the margin of the checkbox */
+    width: calc(100% - 23px);
   }
 
   span.error {

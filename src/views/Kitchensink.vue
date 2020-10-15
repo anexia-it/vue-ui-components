@@ -377,7 +377,11 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-          <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
+          <anx-checkbox
+            name="This checkbox has the same v-model as the one above. The only difference is the multiline text, to test the design of the checkbox"
+            v-model="checkbox[1]"
+          />
+
           <anx-paragraph size="h3">
             <strong>Note: </strong>You just have to pass a variable via v-model
             to the checkbox. Depending on the value of this variable, the

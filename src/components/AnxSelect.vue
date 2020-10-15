@@ -268,7 +268,7 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options li {
   text-align: right;
   padding-right: 18px;
-  padding-top: 3.5px;
+  padding-top: 4px;
   margin: 0;
   -moz-transition: all 0.15s ease-in;
   -o-transition: all 0.15s ease-in;
@@ -285,7 +285,7 @@ export default class AnxSelect extends Vue {
   background-image: url(../assets/icons/check-green.svg);
   background-repeat: no-repeat;
   position: absolute;
-  top: 5px;
+  top: 4px;
   margin-left: -20px;
   background-position: 50%;
 }

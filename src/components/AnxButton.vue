@@ -51,7 +51,8 @@ button {
   font-size: 16px;
   vertical-align: middle;
   outline: 0 none;
-  padding-top: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
