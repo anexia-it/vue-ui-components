@@ -1,6 +1,6 @@
 <template>
   <anx-table-container
-    :scrollable="scrollable !== null ? true : false"
+    :scrollable="scrollable"
     :height="height !== null ? height : 'auto'"
   >
     <table

@@ -142,7 +142,7 @@
           icon.<br /><br />
           The way, AnxIcons work is a little bit more complex. The serve/build
           npm script automatically trigger the
-          <storng>generate:icons</storng> npm script. Now the
+          <strong>generate:icons</strong> npm script. Now the
           <i>/src/icons/helpers/generate-files.js</i> is executed. This file
           automatically creates all the files located in
           <i>/src/icons/</i> except for the index.js, index.d.ts and the files
@@ -175,31 +175,11 @@
         </anx-paragraph>
 
         <anx-form>
-          <anx-checkbox
-            v-model="tableOptions.bordered"
-            @input="tableOptions.bordered = $event.checked ? true : null"
-            name="bordered"
-          />
-          <anx-checkbox
-            v-model="tableOptions.borderless"
-            @input="tableOptions.borderless = $event.checked ? true : null"
-            name="borderless"
-          />
-          <anx-checkbox
-            v-model="tableOptions.stripped"
-            @input="tableOptions.stripped = $event.checked ? true : null"
-            name="stripped"
-          />
-          <anx-checkbox
-            v-model="tableOptions.hover"
-            @input="tableOptions.hover = $event.checked ? true : null"
-            name="hover"
-          />
-          <anx-checkbox
-            v-model="tableOptions.noHeader"
-            @input="tableOptions.noHeader = $event.checked ? true : null"
-            name="no-header"
-          />
+          <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
+          <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
+          <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
+          <anx-checkbox v-model="tableOptions.hover" name="hover" />
+          <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
         </anx-form>
 
         <anx-table
@@ -209,11 +189,11 @@
             { name: 'Last name', index: 'firstName' }
           ]"
           :items="tableItems"
-          :bordered="tableOptions.bordered"
-          :borderless="tableOptions.borderless"
-          :stripped="tableOptions.stripped"
-          :hover="tableOptions.hover"
-          :noHeader="tableOptions.noHeader"
+          :bordered="tableOptions.bordered === true ? true : null"
+          :borderless="tableOptions.borderless === true ? true : null"
+          :stripped="tableOptions.stripped === true ? true : null"
+          :hover="tableOptions.hover === true ? true : null"
+          :noHeader="tableOptions.noHeader === true ? true : null"
         />
 
         <anx-paragraph title="Complex table" size="h3">
