@@ -13,7 +13,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 @Component({})
 export default class AnxTableRow extends Vue {
   /** The columns for the row */
-  @Prop({ default: {} }) item!: Record<string, string>;
+  @Prop({ default: null }) item!: Record<string, string> | null;
 }
 </script>
 
