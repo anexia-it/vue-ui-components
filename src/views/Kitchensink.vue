@@ -146,11 +146,13 @@
         </anx-paragraph>
 
         <anx-form>
-          <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
-          <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
-          <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
-          <anx-checkbox v-model="tableOptions.hover" name="hover" />
-          <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
+          <anx-form-container>
+            <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
+            <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
+            <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
+            <anx-checkbox v-model="tableOptions.hover" name="hover" />
+            <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
+          </anx-form-container>
         </anx-form>
 
         <anx-table
@@ -412,6 +414,35 @@
           </anx-paragraph>
           <anx-textarea width="100%" validation="true" v-model="text2" />
 
+          <anx-paragraph size="h3" title="anx-form-container">
+            The default spacing between the input components is declared by the
+            $form-components-spacing variable in _variables.scss. The default
+            spacing is <strong>30px</strong>.<br />
+            <br />Sometimes you might want to group some input components
+            together, to make it clear, that they belong to each other.
+            Therefore, you can use the
+            <i>&lt;anx-form-container&gt;</i> component. All input components
+            inside this container have a spacing of <strong>10px</strong> to
+            each other. After the container, the default spacing of 30px is
+            applied.<br /><br />
+            In the example below, alle the checkboxes are inside an
+            <i>&lt;anx-form-container&gt;</i>.
+          </anx-paragraph>
+
+          <anx-input
+            name="ip"
+            label="IP address"
+            assistive-text="Enter your local ip address"
+            v-model="ip"
+            rules="required|ip"
+          />
+
+          <anx-form-container>
+            <anx-checkbox name="Hosting" />
+            <anx-checkbox name="Cloud" />
+            <anx-checkbox name="Software" />
+          </anx-form-container>
+
           <anx-modal
             v-if="formModal"
             title="Form submit"
@@ -507,6 +538,7 @@ import AnxTable from "@/components/AnxTable.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
 import AnxModal from "@/components/AnxModal.vue";
 import AnxForm from "@/components/AnxForm.vue";
+import AnxFormContainer from "@/components/AnxFormContainer.vue";
 import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
@@ -531,6 +563,7 @@ import AnxList from "@/components/AnxList.vue";
     AnxTableRow,
     AnxModal,
     AnxForm,
+    AnxFormContainer,
     AnxCheckbox,
     AnxSelect,
     AnxTextarea,
