@@ -1,4 +1,4 @@
 import Vue from "vue";
-import UIPlugin from "ui/src";
+import UIPlugin from "ui";
 
 Vue.use(UIPlugin);
