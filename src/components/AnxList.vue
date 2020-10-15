@@ -48,7 +48,7 @@ export default class AnxList extends Vue {
   @Prop({ default: "0px" }) marginTop!: string;
 
   /** The margin bottom for the AnxList */
-  @Prop({ default: "10px" }) marginBottom!: string;
+  @Prop({ default: "0px" }) marginBottom!: string;
 }
 </script>
 
@@ -57,6 +57,10 @@ export default class AnxList extends Vue {
 
 .anx-list {
   margin: 0px;
+
+  li::marker {
+    font-variant-numeric: lining-nums;
+  }
 
   &.no-padding {
     padding-left: 0px;
@@ -80,7 +84,7 @@ export default class AnxList extends Vue {
 
   &:not(.no-spacing) {
     li {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     li:last-child {

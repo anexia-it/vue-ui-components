@@ -38,8 +38,11 @@
 
           <anx-list :items="['h1', 'h2', 'h3']" icon="check-green" no-padding />
 
+          <br />
+
           The <strong>&lt;anx-list&gt;</strong> can have the properties
-          <strong>icon</strong>, <strong>no-padding</strong> and
+          <strong>icon</strong>, <strong>no-padding</strong> (at the left side
+          of the list), <strong>no-spacing</strong> (between the lines) and
           <strong>list-style-type</strong>. The are very self-descriptive.<br />
 
           <br />
@@ -49,6 +52,8 @@
             list-style-type="decimal"
             no-spacing
           />
+
+          <br />
 
           <span class="f-100">Lorem ipsum dolor sit (weight 100)</span><br />
           <span class="f-200">Lorem ipsum dolor sit (weight 200)</span><br />

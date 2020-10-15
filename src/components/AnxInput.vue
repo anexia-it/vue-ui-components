@@ -195,6 +195,7 @@ export default class AnxInput extends Vue {
 
   input {
     outline: none;
+    font-variant-numeric: lining-nums;
   }
 
   &.inline {

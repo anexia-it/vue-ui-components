@@ -58,6 +58,7 @@ export default class I18nLangSwitcher extends Vue {
 
 .anx-language-switcher {
   span {
+    font-weight: 500;
     color: $anx-primary-white;
   }
 }
