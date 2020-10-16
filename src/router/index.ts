@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import Kitchensink from "../views/Kitchensink.vue";
+import Crud from "../views/Crud.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes: Array<RouteConfig> = [
     path: "/kitchensink",
     name: "Kitchensink",
     component: Kitchensink
+  },
+  {
+    path: "/crud",
+    name: "Crud",
+    component: Crud
   },
   {
     path: "/login",
