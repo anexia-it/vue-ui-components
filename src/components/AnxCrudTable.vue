@@ -11,18 +11,23 @@
             <anx-icon
               icon="loeschen"
               width="40px"
-              @click.native="showDeleteModal = true"
+              @click.native="
+                showDeleteModal = true;
+                selectedItem = instance;
+              "
             />
           </anx-table-col>
         </anx-table-row>
       </template>
     </anx-table>
     <anx-modal
+      title="Confirm delete"
       v-if="showDeleteModal"
       confirm
       has-close-button
       close-button-align="right"
       @close="showDeleteModal = false"
+      @click="deleteSelectedItem"
     >
       Do you really want to delete?
     </anx-modal>
@@ -53,6 +58,7 @@ export default class AnxCrudTable extends Vue {
 
   private instances: AbstractModel[] = [];
   private showDeleteModal = false;
+  private selectedItem: AbstractModel | null = null;
 
   private mounted() {
     if (this.modelClass instanceof AbstractModel) {
@@ -84,6 +90,14 @@ export default class AnxCrudTable extends Vue {
       return;
     }
     this.instances = await this.modelClass.getAll();
+  }
+
+  private deleteSelectedItem() {
+    if (this.selectedItem) {
+      this.selectedItem.delete();
+    } else {
+      throw new Error("No selected item to delete set!");
+    }
   }
 }
 </script>
