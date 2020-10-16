@@ -7,7 +7,14 @@
             {{ instanceProp }}
           </anx-table-col>
           <anx-table-col align="center">
-            <anx-icon icon="einstellungen-verwaltung" width="40px" />
+            <anx-icon
+              icon="einstellungen-verwaltung"
+              width="40px"
+              @click.native="
+                showEditModal = true;
+                selectedItem = instance;
+              "
+            />
             <anx-icon
               icon="loeschen"
               width="40px"
@@ -31,6 +38,22 @@
     >
       Do you really want to delete?
     </anx-modal>
+
+    <anx-modal
+      title="Edit"
+      v-if="showEditModal"
+      has-close-button
+      close-button-align="right"
+      @close="showEditModal = false"
+    >
+      <span v-for="(instanceProp, i) in selectedItem" :key="i">
+        <br /><br />
+        {{ i }}: <input type="text" :value="instanceProp" />
+      </span>
+      <template slot="modal-footer">
+        <anx-button>Save</anx-button>
+      </template>
+    </anx-modal>
   </div>
 </template>
 
@@ -42,6 +65,7 @@ import AnxTableRow from "./AnxTableRow.vue";
 import AnxTableCol from "./AnxTableCol.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxModal from "./AnxModal.vue";
+import AnxButton from "./AnxButton.vue";
 import { AbstractModel } from "@/lib/models/AbstractModel";
 
 @Component({
@@ -50,15 +74,18 @@ import { AbstractModel } from "@/lib/models/AbstractModel";
     AnxTableRow,
     AnxTableCol,
     AnxIcon,
-    AnxModal
+    AnxModal,
+    AnxButton
   }
 })
 export default class AnxCrudTable extends Vue {
   @Prop({ default: null }) modelClass!: typeof AbstractModel | null;
 
   private instances: AbstractModel[] = [];
-  private showDeleteModal = false;
   private selectedItem: AbstractModel | null = null;
+
+  private showDeleteModal = false;
+  private showEditModal = false;
 
   private mounted() {
     if (this.modelClass instanceof AbstractModel) {
