@@ -117,7 +117,7 @@ export default class AnxCrudTable extends Vue {
 
   private mounted() {
     if (this.modelClass instanceof AbstractModel) {
-      this.fetch;
+      this.fetch();
     }
   }
 
