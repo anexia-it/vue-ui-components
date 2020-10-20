@@ -51,7 +51,7 @@ import AnxIcon from "./AnxIcon.vue";
 @Component({ components: { AnxIcon } })
 export default class AnxFooter extends Vue {
   /** The links for the footer */
-  @Prop({ default: [] }) links!: Array<{ text: string; link: string }>;
+  @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
   /** The icon for the footer. If you want to use images, use the named slot "icon" */
   @Prop({ default: "anexia" }) icon!: string;
   /**Specify the width of the Footer 530px => 500px real width (15px padding for mobile)*/
