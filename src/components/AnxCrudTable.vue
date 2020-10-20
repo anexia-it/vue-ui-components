@@ -1,5 +1,37 @@
 <template>
   <div>
+    <anx-button
+      @click.native="
+        createInstance = new modelClass();
+        showCreateModal = true;
+      "
+      >Create
+    </anx-button>
+    <br />
+    <br />
+    <anx-modal
+      title="Create"
+      v-if="showCreateModal"
+      has-close-button
+      close-button-align="right"
+      @close="showCreateModal = false"
+    >
+      <span v-for="(instanceProp, i) in createInstance" :key="i">
+        <div v-if="i !== 'id'">
+          <br /><br />
+          {{ i }}: <input type="text" v-model="createInstance[i]" />
+        </div>
+      </span>
+      <template slot="modal-footer">
+        <anx-button
+          @click.native="
+            createInstance.save();
+            showCreateModal = false;
+          "
+          >Save
+        </anx-button>
+      </template>
+    </anx-modal>
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
         <anx-table-row v-for="(instance, i) in instances" :key="i">
@@ -83,9 +115,11 @@ export default class AnxCrudTable extends Vue {
 
   private instances: AbstractModel[] = [];
   private selectedItem: AbstractModel | null = null;
+  private createInstance: AbstractModel | null = null;
 
   private showDeleteModal = false;
   private showEditModal = false;
+  private showCreateModal = false;
 
   private mounted() {
     if (this.modelClass instanceof AbstractModel) {
