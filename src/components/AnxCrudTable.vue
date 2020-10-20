@@ -92,7 +92,7 @@ import AnxTableCol from "./AnxTableCol.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxButton from "./AnxButton.vue";
-import { AbstractModel } from "@/lib/models/AbstractModel";
+import { AbstractModel } from "../lib/models/AbstractModel";
 
 @Component({
   components: {
