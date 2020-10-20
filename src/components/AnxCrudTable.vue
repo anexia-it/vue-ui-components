@@ -1,7 +1,7 @@
 <template>
   <div>
     <anx-button
-      @click.native="
+      @click="
         createInstance = new modelClass();
         showCreateModal = true;
       "
@@ -74,7 +74,7 @@
     >
       <span v-for="(instanceProp, i) in selectedItem" :key="i">
         <br /><br />
-        {{ i }}: <input type="text" :value="instanceProp" />
+        {{ i }}: <input type="text" v-model="selectedItem[i]" />
       </span>
       <template slot="modal-footer">
         <anx-button @click="editSelectedItem">Save</anx-button>
