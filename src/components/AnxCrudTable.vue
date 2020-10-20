@@ -23,7 +23,7 @@
         </div>
       </span>
       <template slot="modal-footer">
-        <anx-button @click="createInstance.save()">Save </anx-button>
+        <anx-button @click="createItem">Save </anx-button>
       </template>
     </anx-modal>
     <anx-table stripped bordered hover :columns="tableColumns">
@@ -60,7 +60,7 @@
       has-close-button
       close-button-align="right"
       @close="showDeleteModal = false"
-      @click="deleteSelectedItem"
+      @confirm="deleteSelectedItem"
     >
       Do you really want to delete?
     </anx-modal>
@@ -77,7 +77,7 @@
         {{ i }}: <input type="text" :value="instanceProp" />
       </span>
       <template slot="modal-footer">
-        <anx-button>Save</anx-button>
+        <anx-button @click="editSelectedItem">Save</anx-button>
       </template>
     </anx-modal>
   </div>
@@ -147,12 +147,33 @@ export default class AnxCrudTable extends Vue {
     this.instances = await this.modelClass.getAll();
   }
 
-  private deleteSelectedItem() {
+  private async deleteSelectedItem() {
     if (this.selectedItem) {
-      this.selectedItem.delete();
+      await this.selectedItem.delete();
+      await this.fetch();
+      this.showDeleteModal = false;
     } else {
       throw new Error("No selected item to delete set!");
     }
+  }
+
+  private async editSelectedItem() {
+    if (this.selectedItem) {
+      await this.selectedItem.update();
+      await this.fetch();
+      this.showEditModal = false;
+    } else {
+      throw new Error("No selected item to update!");
+    }
+  }
+
+  private async createItem() {
+    if (!this.createInstance) {
+      return;
+    }
+    await this.createInstance.save();
+    await this.fetch();
+    this.showCreateModal = false;
   }
 }
 </script>
