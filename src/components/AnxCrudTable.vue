@@ -23,13 +23,7 @@
         </div>
       </span>
       <template slot="modal-footer">
-        <anx-button
-          @click.native="
-            createInstance.save();
-            showCreateModal = false;
-          "
-          >Save
-        </anx-button>
+        <anx-button @click="createInstance.save()">Save </anx-button>
       </template>
     </anx-modal>
     <anx-table stripped bordered hover :columns="tableColumns">
