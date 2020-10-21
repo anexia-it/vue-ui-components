@@ -117,13 +117,16 @@ export default class AnxCrudTable extends Vue {
 
   private mounted() {
     if (this.modelClass instanceof AbstractModel) {
+      console.log("fetch");
       this.fetch();
     }
+    console.log("not fetch");
   }
 
   @Watch("modelClass")
   onModelClassChange() {
     this.fetch();
+    console.log("change fetch");
   }
   get tableColumns() {
     if (this.instances.length) {
