@@ -43,7 +43,7 @@
           <slot name="modal-footer">
             <anx-button
               :text="closeButtonText"
-              v-if="hasCloseButton"
+              v-if="hasCloseButton !== null"
               @click="$emit('close')"
             />
           </slot>

@@ -159,7 +159,7 @@ export default class AnxLogin extends Vue {
   /** This property can be set to hide the footer */
   @Prop({ default: null }) noFooter!: boolean | null;
   /** These are the lines for the text in the footer */
-  @Prop({ default: [] }) footerText!: Array<string>;
+  @Prop({ default: null }) footerText!: Array<string> | null;
   /** The icon of the footer */
   @Prop({ default: "anexia-stamp" }) footerIcon!: string;
   /** The size of the icon of the footer */

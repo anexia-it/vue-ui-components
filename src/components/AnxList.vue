@@ -33,8 +33,7 @@ export default class AnxList extends Vue {
   @Prop({ default: null }) icon!: string | null;
 
   /** The items for the list */
-  @Prop({ default: [] }) items!: Array<string>;
-
+  @Prop({ default: null }) items!: Array<string> | null;
   /** List style type css property */
   @Prop({ default: "initial" }) listStyleType!: string;
 

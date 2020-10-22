@@ -56,8 +56,7 @@ import AnxHrLine from "./AnxHrLine.vue";
 @Component({ components: { AnxIcon, AnxHrLine } })
 export default class AnxFooter extends Vue {
   /** The links for the footer */
-  @Prop({ default: [] }) links!: Array<{ text: string; link: string }>;
-
+  @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
   /** The icon for the footer. If you want to use images, use the named slot "icon" */
 
   @Prop({ default: "anexia" }) icon!: string;
