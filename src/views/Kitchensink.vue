@@ -337,11 +337,11 @@
               itself. With the <strong>width</strong> property you can define a
               specific width. <br /><br />
 
-              <anx-button>test button</anx-button>
+              <anx-button width="100%">test button</anx-button>
 
-              You can decide if you want to set the text of the button via the
-              <strong>text</strong> property or by using the default slot.
-              <br /><br />
+              <br /><br />You can decide if you want to set the text of the
+              button via the <strong>text</strong> property or by using the
+              default slot. <br /><br />
               The button also has some properties that can be set to change the
               layout of the button. Like <strong>inline</strong> (this sets the
               styles to use the button inside a line with a textbox e.g.) or
@@ -349,12 +349,23 @@
               itself.<br /><br />
               You should always use the <i>default</i> button for "positive"
               actions like save and the <i>outline</i> button for actions like
-              cancel or delete<br />
+              cancel or delete<br /><br />
 
-              <anx-button inline width="200px" text="save" />
-              <anx-button inline outline width="200px" text="cancel" />
+              <anx-button
+                inline
+                width="200px"
+                text="save"
+                style="margin-right: 20px"
+              />
+              <anx-button
+                inline
+                outline
+                width="200px"
+                text="cancel"
+                style="margin-right: 0px"
+              />
 
-              By default, the <i>&lt;anx-button&gt;</i> emits the
+              <br /><br />By default, the <i>&lt;anx-button&gt;</i> emits the
               <strong>@click</strong> event. This can be changed by setting the
               <strong>event-name</strong> property. This is not needed in most
               cases.<br /><br />
