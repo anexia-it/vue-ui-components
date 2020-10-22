@@ -1,7 +1,11 @@
 <template>
   <button
     :type="btnType"
-    :class="inline !== null ? className + ' inline' : this.className"
+    :class="{
+      'anx-button': true,
+      inline: inline !== null,
+      'btn-outline': outline !== null
+    }"
     :style="cssProps"
     @click="$emit(eventName)"
   >
@@ -18,12 +22,8 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 export default class AnxButton extends Vue {
   /** This is the type of the button */
   @Prop({ default: "submit" }) btnType!: string;
-  /**className: the class of the button
-   * options:
-   * "anx-button": the default class (green-animated-button to white outlined)
-   * "anx-button btn-outline": outlined-button (white-animated to green)
-   */
-  @Prop({ default: "anx-button" }) className!: string;
+  /** The type of the button (default, outline) */
+  @Prop({ default: null }) outline!: boolean | null;
   /** This is the text of the button. This can also be set using the slot */
   @Prop({ default: "button" }) text!: string;
   /** This is the width of the button */

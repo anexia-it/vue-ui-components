@@ -328,6 +328,41 @@
           name="ip-form"
           :submit-button="{ text: 'Send >', disabled: false }"
         >
+          <anx-paragraph size="h3" title="anx-button">
+            <anx-form>
+              The <i>&lt;anx-button&gt;</i> works like any other button. You can
+              define some additional properties. You can set the
+              <strong>btn-type</strong> property to define the type of the
+              button. This only affects the <i>type</i> property of the button
+              itself. With the <strong>width</strong> property you can define a
+              specific width. <br /><br />
+
+              <anx-button>test button</anx-button>
+
+              You can decide if you want to set the text of the button via the
+              <strong>text</strong> property or by using the default slot.
+              <br /><br />
+              The button also has some properties that can be set to change the
+              layout of the button. Like <strong>inline</strong> (this sets the
+              styles to use the button inside a line with a textbox e.g.) or
+              <strong>outline</strong> this changes the design of the button
+              itself.<br /><br />
+              You should always use the <i>default</i> button for "positive"
+              actions like save and the <i>outline</i> button for actions like
+              cancel or delete<br />
+
+              <anx-button inline width="200px" text="save" />
+              <anx-button inline outline width="200px" text="cancel" />
+
+              By default, the <i>&lt;anx-button&gt;</i> emits the
+              <strong>@click</strong> event. This can be changed by setting the
+              <strong>event-name</strong> property. This is not needed in most
+              cases.<br /><br />
+
+              <anx-button text="alert" @click="testalert('Clicked')" />
+            </anx-form>
+          </anx-paragraph>
+
           <anx-paragraph size="h3" title="anx-input">
             The following input is the simplest form of the
             <i>&lt;anx-input&gt;</i>. It does not have any validation or
@@ -688,6 +723,11 @@ export default class Kitchensink extends Vue {
     window.setInterval(() => {
       this.seedTableImages();
     }, 4000);
+  }
+
+  /** This shows an alert for testing purposes */
+  private testalert(text = "test") {
+    alert(text);
   }
 
   /** Change the images for the second table randomly */
