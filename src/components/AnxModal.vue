@@ -29,7 +29,11 @@
           "
         >
           <slot name="modal-footer">
-            <anx-button :text="closeButtonText" @click="$emit('close')" />
+            <anx-button
+              :text="closeButtonText"
+              @click="$emit('close')"
+              outline
+            />
             <div class="space"></div>
             <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
           </slot>
@@ -45,6 +49,7 @@
               :text="closeButtonText"
               v-if="hasCloseButton !== null"
               @click="$emit('close')"
+              outline
             />
           </slot>
         </div>
