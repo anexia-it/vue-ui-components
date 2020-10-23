@@ -152,7 +152,7 @@ export default class AnxAlert extends Vue {
 
   .message {
     padding: 16px;
-    line-height: 22px;
+    line-height: 1.5em;
   }
 
   .dismiss {

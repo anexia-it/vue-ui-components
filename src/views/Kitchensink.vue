@@ -26,9 +26,12 @@
 
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
-          This is a simple paragraph. Paragraphs are made for text. A paragraph
-          can additionally have a title. This paragraph for example, does not
-          have a title.<br /><br />
+          <p>
+            This is a simple paragraph. Paragraphs are made for text. A
+            paragraph can additionally have a title. This paragraph for example,
+            does not have a title.
+          </p>
+          <br />
           You can simply use <strong>inline HTML</strong> and line breaks or
           <span class="attention">formatted texts</span>.<br />
           In general, there are three different sizes for AnxContent,

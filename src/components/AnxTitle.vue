@@ -33,6 +33,7 @@ export default class AnxContent extends Vue {
   color: $anx-primary-blue;
   margin-bottom: 20px;
   margin-top: 0px;
+  line-height: 1.2em;
 
   &.no-margin {
     margin-bottom: 0px !important;
@@ -45,13 +46,11 @@ export default class AnxContent extends Vue {
 
   &.size-h2 {
     font-size: 23px;
-    line-height: 27.6px;
     font-weight: 500;
   }
 
   &.size-h3 {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 20px;
     font-weight: 500;
     color: $anx-lightest-grey-dark;
   }
