@@ -45,7 +45,7 @@ export default class AnxContent extends Vue {
   background-color: $anx-primary-white;
   padding: 40px;
 
-  @media (max-width: $screen-md) {
+  @media (max-width: $screen-xs) {
     padding: 20px;
   }
 
