@@ -32,8 +32,20 @@ module.exports = {
   },
 
   replaceWidthAndHeightForSvg: text => {
-    return text
+    /** We only want to replace the width and height
+     * property of the first <svg> element, so we extract
+     * it from the rest of the string */
+    let svgElement = text.substring(
+      text.indexOf("<svg "),
+      text.indexOf(">") + 1
+    );
+
+    /** Replace the width and the height in the svg element */
+    svgElement = svgElement
       .replace(/\bwidth='(\d+)'/g, `width='100%'`)
       .replace(/\bheight='(\d+)'/g, `height='100%'`);
+
+    /** Return the whole svg element and insert the modified svg element */
+    return text.replace(/<svg [\s\S]*?>/, svgElement);
   }
 };
