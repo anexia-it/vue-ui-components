@@ -155,7 +155,7 @@
           if you include our UI tool. You don't have to import single icons if
           you want to use them.<br /><br />
           Here is a list of all AnxIcons, that are currently included in the UI
-          tool:
+          tool: <i>(hover over an icon to see its name)</i>
         </anx-paragraph>
         <anx-icon
           v-for="icon in AnxIcons"
