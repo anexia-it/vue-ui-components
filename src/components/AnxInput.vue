@@ -1,94 +1,59 @@
 <template>
-  <!--The readonly Input field -->
-  <div
-    v-if="readonly !== null"
+  <ValidationProvider
+    v-slot="{ errors, valid }"
+    :name="name"
+    :rules="rules"
+    tag="div"
     class="anx-input"
-    :class="{ filled: filled, inline: inline !== null ? true : false }"
+    :class="{
+      active: active,
+      filled: filled,
+      inline: inline !== null ? true : false
+    }"
     :style="cssProps"
   >
     <input
       :id="id"
       v-model="updateInputField"
+      v-validate="rules"
       :data-vv-as="name"
       :type="type"
       :name="name"
       hide-details="true"
       @blur="inputBlur"
-      :class="errors && errors.length > 0 ? 'is-invalid' : ''"
+      @click="clickInputField()"
+      :class="{
+        'is-invalid': errors && errors.length > 0,
+        'with-margin': valid && !assistiveText
+      }"
+      @input="$emit('input', updateInputField)"
+      :autocomplete="autocomplete"
       :readonly="readonly !== null ? true : false"
     />
-    <label :for="id">
+    <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
       {{ label }}
     </label>
-  </div>
-  <!-- the normal input field with validation provider -->
-  <ValidationProvider
-    v-else-if="rules"
-    v-slot="{ errors }"
-    :name="name"
-    :rules="rules"
-  >
     <div
-      class="anx-input"
+      v-if="errors.length > 0 || (assistiveText && assistiveText.length > 0)"
       :class="{
-        active: active,
-        filled: filled,
+        'anx-input-hint': true,
         inline: inline !== null ? true : false
       }"
-      @click="active = true"
-      :style="cssProps"
     >
-      <input
-        :id="id"
-        v-model="updateInputField"
-        v-validate="rules"
-        :data-vv-as="name"
-        :type="type"
-        :name="name"
-        hide-details="true"
-        @blur="inputBlur"
-        :class="errors && errors.length > 0 ? 'is-invalid' : ''"
-        @input="$emit('input', updateInputField)"
-        :autocomplete="autocomplete"
-      />
-      <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
-        {{ label }}
-      </label>
       <span v-if="errors.length > 0" class="error">{{ errors[0] }}</span>
       <span
-        v-else-if="
-          errors.length === 0 && assistiveText && assistiveText.length > 0
-        "
+        v-else-if="assistiveText && assistiveText.length > 0"
         class="assistiv"
         >{{ assistiveText }}</span
       >
     </div>
+
+    <div v-if="inline !== null" class="inline-content-right">
+      <slot>
+        <!-- The content in here will be displayed on the right (to use inline elements) -->
+      </slot>
+    </div>
   </ValidationProvider>
-  <div
-    v-else-if="!rules"
-    class="anx-input"
-    :class="{ active: active, filled: filled }"
-    @click="active = true"
-    :style="cssProps"
-  >
-    <input
-      :id="id"
-      v-model="updateInputField"
-      :data-vv-as="name"
-      :type="type"
-      :name="name"
-      hide-details="true"
-      @blur="inputBlur"
-      @input="$emit('input', updateInputField)"
-      :autocomplete="autocomplete"
-    />
-    <label :for="id">
-      {{ label }}
-    </label>
-    <span v-if="assistiveText.length > 0" class="assistiv">{{
-      assistiveText
-    }}</span>
-  </div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
@@ -146,7 +111,7 @@ export default class AnxInput extends Vue {
    */
   @Watch("updateInputField")
   nameChanged(newVal: string) {
-    if (newVal.length) {
+    if (newVal && newVal.length) {
       this.active = true;
     }
   }
@@ -176,10 +141,10 @@ export default class AnxInput extends Vue {
 
   /** Check if the input-field is filled, Set class filled. */
   protected isFilled() {
-    if (!this.updateInputField.length) {
-      this.filled = false;
-    } else {
+    if (this.updateInputField && this.updateInputField.length > 0) {
       this.filled = true;
+    } else {
+      this.filled = false;
     }
   }
 
@@ -187,8 +152,20 @@ export default class AnxInput extends Vue {
    * the state filled will be checked.
    */
   protected inputBlur() {
-    this.active = !this.active;
-    this.isFilled();
+    if (this.readonly === null) {
+      this.active = !this.active;
+      this.isFilled();
+    }
+  }
+
+  /**
+   * This function is called, when the user clicks the input field
+   * If the field is readonly, nothing should happen
+   */
+  private clickInputField() {
+    if (this.readonly === null) {
+      this.active = true;
+    }
   }
 }
 </script>
@@ -207,15 +184,40 @@ export default class AnxInput extends Vue {
   padding-top: 20px;
   position: relative;
   width: var(--input-width);
-  margin-bottom: $form-components-spacing;
 
   &.inline {
-    display: inline-block;
+    width: 100% !important;
+  }
+
+  .with-margin {
+    margin-bottom: $form-components-spacing;
   }
 
   input {
     outline: none;
+    font-variant-numeric: lining-nums;
   }
+
+  &.inline {
+    input {
+      outline: none;
+      width: var(--input-width);
+    }
+
+    label {
+      width: var(--input-width);
+    }
+  }
+
+  .inline-content-right {
+    position: absolute;
+    right: 0px;
+    top: 14px;
+  }
+}
+
+.inline {
+  display: inline-block;
 }
 
 .anx-input label {
@@ -270,7 +272,8 @@ export default class AnxInput extends Vue {
   height: 34px !important;
   line-height: 25.6px;
   margin: 0;
-  padding: 6px 0;
+  padding-top: 2px;
+  padding-bottom: 3px;
   text-align: left;
   text-indent: 0;
   text-rendering: auto;
@@ -290,6 +293,10 @@ export default class AnxInput extends Vue {
   /**for IE11 */
   &[readonly="readonly"] {
     border: none !important;
+
+    ~ label:after {
+      background-color: unset;
+    }
   }
 }
 
@@ -309,6 +316,11 @@ export default class AnxInput extends Vue {
   visibility: visible;
   width: 100%;
 }
+
+.anx-input.active input.is-invalid ~ label:after {
+  background-color: $anx-error !important;
+}
+
 .anx-input.active input {
   background-color: transparent;
   outline: 0 none $anx-lightest-grey-dark;
@@ -326,25 +338,23 @@ export default class AnxInput extends Vue {
   }
 }
 
-label.error {
-  color: $anx-error !important;
-}
-label.error::after {
-  background-color: $anx-error !important;
-}
-
-span.error {
+.anx-input-hint {
   font-size: 12px;
-  color: $anx-error;
   padding: 0;
   white-space: nowrap;
-  position: absolute;
-}
+  margin-bottom: $form-components-spacing;
+  margin-top: 5px;
 
-span.assistiv {
-  font-size: 12px;
-  color: $anx-primary-grey-light;
-  padding: 0;
-  white-space: nowrap;
+  .error {
+    color: $anx-error;
+  }
+
+  .error::after {
+    background-color: $anx-error !important;
+  }
+
+  .assistiv {
+    color: $anx-primary-grey-light;
+  }
 }
 </style>

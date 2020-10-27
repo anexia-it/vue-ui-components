@@ -26,9 +26,12 @@
 
       <anx-content title="Simple styling">
         <anx-paragraph size="h1">
-          This is a simple paragraph. Paragraphs are made for text. A paragraph
-          can additionally have a title. This paragraph for example, does not
-          have a title.<br /><br />
+          <p>
+            This is a simple paragraph. Paragraphs are made for text. A
+            paragraph can additionally have a title. This paragraph for example,
+            does not have a title.
+          </p>
+          <br />
           You can simply use <strong>inline HTML</strong> and line breaks or
           <span class="attention">formatted texts</span>.<br />
           In general, there are three different sizes for AnxContent,
@@ -41,7 +44,8 @@
           <br />
 
           The <strong>&lt;anx-list&gt;</strong> can have the properties
-          <strong>icon</strong>, <strong>no-padding</strong> and
+          <strong>icon</strong>, <strong>no-padding</strong> (at the left side
+          of the list), <strong>no-spacing</strong> (between the lines) and
           <strong>list-style-type</strong>. The are very self-descriptive.<br />
 
           <br />
@@ -53,6 +57,7 @@
           />
 
           <br />
+
           <span class="f-100">Lorem ipsum dolor sit (weight 100)</span><br />
           <span class="f-200">Lorem ipsum dolor sit (weight 200)</span><br />
           <span class="f-300">Lorem ipsum dolor sit (weight 300)</span><br />
@@ -153,7 +158,7 @@
           if you include our UI tool. You don't have to import single icons if
           you want to use them.<br /><br />
           Here is a list of all AnxIcons, that are currently included in the UI
-          tool:
+          tool: <i>(hover over an icon to see its name)</i>
         </anx-paragraph>
         <anx-icon
           v-for="icon in AnxIcons"
@@ -175,11 +180,13 @@
         </anx-paragraph>
 
         <anx-form>
-          <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
-          <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
-          <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
-          <anx-checkbox v-model="tableOptions.hover" name="hover" />
-          <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
+          <anx-form-container>
+            <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
+            <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
+            <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
+            <anx-checkbox v-model="tableOptions.hover" name="hover" />
+            <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
+          </anx-form-container>
         </anx-form>
 
         <anx-table
@@ -255,12 +262,7 @@
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
-          <anx-button
-            text="Show Modal >"
-            @click="exampleModal = true"
-            width="212px"
-            btnType="click"
-          />
+          <anx-button text="Show Modal >" @click="exampleModal = true" />
         </anx-paragraph>
         <anx-paragraph>
           This is a example for a button with a longer text. The width can be
@@ -279,8 +281,6 @@
           </anx-modal>
           <anx-button
             text="Show Confirmation Modal >"
-            width="300px"
-            btnType="click"
             @click="exampleConfirmationModal = true"
           />
         </anx-paragraph>
@@ -331,7 +331,57 @@
           name="ip-form"
           :submit-button="{ text: 'Send >', disabled: false }"
         >
+          <anx-paragraph size="h3" title="anx-button">
+            <anx-form>
+              The <i>&lt;anx-button&gt;</i> works like any other button. You can
+              define some additional properties. You can set the
+              <strong>btn-type</strong> property to define the type of the
+              button. This only affects the <i>type</i> property of the button
+              itself. With the <strong>width</strong> property you can define a
+              specific width. <br /><br />
+
+              <anx-button width="100%">test button</anx-button>
+
+              <br /><br />You can decide if you want to set the text of the
+              button via the <strong>text</strong> property or by using the
+              default slot. <br /><br />
+              The button also has some properties that can be set to change the
+              layout of the button. Like <strong>inline</strong> (this sets the
+              styles to use the button inside a line with a textbox e.g.) or
+              <strong>outline</strong> this changes the design of the button
+              itself.<br /><br />
+              You should always use the <i>default</i> button for "positive"
+              actions like save and the <i>outline</i> button for actions like
+              cancel or delete<br /><br />
+
+              <anx-button
+                inline
+                width="200px"
+                text="save"
+                style="margin-right: 20px"
+              />
+              <anx-button
+                inline
+                outline
+                width="200px"
+                text="cancel"
+                style="margin-right: 0px"
+              />
+
+              <br /><br />By default, the <i>&lt;anx-button&gt;</i> emits the
+              <strong>@click</strong> event. This can be changed by setting the
+              <strong>event-name</strong> property. This is not needed in most
+              cases.<br /><br />
+
+              <anx-button text="alert" @click="testalert('Clicked')" />
+            </anx-form>
+          </anx-paragraph>
+
           <anx-paragraph size="h3" title="anx-input">
+            The following input is the simplest form of the
+            <i>&lt;anx-input&gt;</i>. It does not have any validation or
+            features.<br /><br />
+            <anx-input name="input" label="Input" />
             The validation rules itself have to be set at the input fields. This
             <i>&lt;anx-input&gt;</i> is an example for how to use rules to
             validate an user input.<br /><br /><i>&lt;anx-input&gt;</i> has
@@ -354,7 +404,22 @@
           <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> without validation but with animation.
           </anx-paragraph>
-          <anx-input name="mail" label="Mail" v-model="mail" rules="email" />
+          <anx-input
+            name="mail"
+            label="Mail"
+            v-model="mail"
+            rules="email"
+            width="250px"
+            inline
+          >
+            <anx-button
+              btn-type="button"
+              width="150px"
+              style="margin-left: 20px; margin-right: 0px"
+            >
+              Inline
+            </anx-button>
+          </anx-input>
 
           <anx-paragraph size="h3">
             <i>&lt;anx-input&gt;</i> can also be set to
@@ -392,7 +457,11 @@
             v-model="checkbox[0]"
           />
           <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
-          <anx-checkbox name="Checkbox" v-model="checkbox[1]" />
+          <anx-checkbox
+            name="This checkbox has the same v-model as the one above. The only difference is the multiline text, to test the design of the checkbox"
+            v-model="checkbox[1]"
+          />
+
           <anx-paragraph size="h3">
             <strong>Note: </strong>You just have to pass a variable via v-model
             to the checkbox. Depending on the value of this variable, the
@@ -428,6 +497,35 @@
             rule required. The rule can be changed.
           </anx-paragraph>
           <anx-textarea width="100%" validation="true" v-model="text2" />
+
+          <anx-paragraph size="h3" title="anx-form-container">
+            The default spacing between the input components is declared by the
+            $form-components-spacing variable in _variables.scss. The default
+            spacing is <strong>30px</strong>.<br />
+            <br />Sometimes you might want to group some input components
+            together, to make it clear, that they belong to each other.
+            Therefore, you can use the
+            <i>&lt;anx-form-container&gt;</i> component. All input components
+            inside this container have a spacing of <strong>10px</strong> to
+            each other. After the container, the default spacing of 30px is
+            applied.<br /><br />
+            In the example below, alle the checkboxes are inside an
+            <i>&lt;anx-form-container&gt;</i>.
+          </anx-paragraph>
+
+          <anx-input
+            name="ip"
+            label="IP address"
+            assistive-text="Enter your local ip address"
+            v-model="ip"
+            rules="required|ip"
+          />
+
+          <anx-form-container>
+            <anx-checkbox name="Hosting" />
+            <anx-checkbox name="Cloud" />
+            <anx-checkbox name="Software" />
+          </anx-form-container>
 
           <anx-modal
             v-if="formModal"
@@ -524,6 +622,7 @@ import AnxTable from "@/components/AnxTable.vue";
 import AnxTableRow from "@/components/AnxTableRow.vue";
 import AnxModal from "@/components/AnxModal.vue";
 import AnxForm from "@/components/AnxForm.vue";
+import AnxFormContainer from "@/components/AnxFormContainer.vue";
 import AnxCheckbox from "@/components/AnxCheckbox.vue";
 import AnxSelect from "@/components/AnxSelect.vue";
 import AnxTextarea from "@/components/AnxTextarea.vue";
@@ -548,6 +647,7 @@ import AnxList from "@/components/AnxList.vue";
     AnxTableRow,
     AnxModal,
     AnxForm,
+    AnxFormContainer,
     AnxCheckbox,
     AnxSelect,
     AnxTextarea,
@@ -637,6 +737,11 @@ export default class Kitchensink extends Vue {
     window.setInterval(() => {
       this.seedTableImages();
     }, 4000);
+  }
+
+  /** This shows an alert for testing purposes */
+  private testalert(text = "test") {
+    alert(text);
   }
 
   /** Change the images for the second table randomly */

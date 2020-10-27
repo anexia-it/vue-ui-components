@@ -1,12 +1,12 @@
 <template>
   <ul
-    :class="
-      'anx-list ' +
-        (noPadding !== null ? 'no-padding ' : '') +
-        (icon !== null ? 'with-icon ' : '') +
-        (noSpacing !== null ? 'no-spacing ' : '')
-    "
-    :style="listStyleType ? `list-style-type: ${listStyleType}; ` : ''"
+    :class="{
+      'anx-list': true,
+      'no-padding': noPadding !== null,
+      'with-icon': icon !== null,
+      'no-spacing': noSpacing !== null
+    }"
+    :style="{ listStyleType, marginBottom, marginTop }"
   >
     <li v-for="(item, i) in items" :key="`${i}-${item}`">
       <slot name="icon">
@@ -31,14 +31,23 @@ import AnxIcon from "./AnxIcon.vue";
 export default class AnxList extends Vue {
   /** The name of the icon if one should be set */
   @Prop({ default: null }) icon!: string | null;
+
   /** The items for the list */
   @Prop({ default: null }) items!: Array<string> | null;
   /** List style type css property */
-  @Prop({ default: null }) listStyleType!: string | null;
+  @Prop({ default: "initial" }) listStyleType!: string;
+
   /** No padding on the left side for the anx-list */
   @Prop({ default: null }) noPadding!: boolean | null;
+
   /** To disable spacing between the lines */
   @Prop({ default: null }) noSpacing!: boolean | null;
+
+  /** The margin top for the AnxList */
+  @Prop({ default: "0px" }) marginTop!: string;
+
+  /** The margin bottom for the AnxList */
+  @Prop({ default: "0px" }) marginBottom!: string;
 }
 </script>
 
@@ -47,6 +56,10 @@ export default class AnxList extends Vue {
 
 .anx-list {
   margin: 0px;
+
+  li::marker {
+    font-variant-numeric: lining-nums;
+  }
 
   &.no-padding {
     padding-left: 0px;
@@ -70,7 +83,7 @@ export default class AnxList extends Vue {
 
   &:not(.no-spacing) {
     li {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     li:last-child {

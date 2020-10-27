@@ -1,7 +1,11 @@
 <template>
   <button
     :type="btnType"
-    :class="inline !== null ? className + ' inline' : this.className"
+    :class="{
+      'anx-button': true,
+      inline: inline !== null,
+      'btn-outline': outline !== null
+    }"
     :style="cssProps"
     @click="$emit(eventName)"
   >
@@ -18,16 +22,12 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 export default class AnxButton extends Vue {
   /** This is the type of the button */
   @Prop({ default: "submit" }) btnType!: string;
-  /**className: the class of the button
-   * options:
-   * "anx-button": the default class (green-animated-button to white outlined)
-   * "anx-button btn-outline": outlined-button (white-animated to green)
-   */
-  @Prop({ default: "anx-button" }) className!: string;
+  /** The type of the button (default, outline) */
+  @Prop({ default: null }) outline!: boolean | null;
   /** This is the text of the button. This can also be set using the slot */
   @Prop({ default: "button" }) text!: string;
   /** This is the width of the button */
-  @Prop({ default: "136px" }) width!: string;
+  @Prop({ default: null }) width!: string | null;
   /** With this property, the button can be set to inline */
   @Prop({ default: null }) inline!: boolean | null;
   /** This is the name of the event, that will be emitted on click */
@@ -35,7 +35,7 @@ export default class AnxButton extends Vue {
 
   get cssProps() {
     return {
-      "--button-width": this.width
+      "--button-width": this.width !== null ? this.width : "auto"
     };
   }
 }
@@ -51,7 +51,8 @@ button {
   font-size: 16px;
   vertical-align: middle;
   outline: 0 none;
-  padding-top: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -75,6 +76,8 @@ button {
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   text-align: center;
   background-color: transparent;
+  padding-left: 2em;
+  padding-right: 2em;
   border: 1px solid $anx-primary-green;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;

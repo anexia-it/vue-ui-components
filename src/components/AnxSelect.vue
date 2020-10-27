@@ -1,5 +1,11 @@
 <template>
   <!-- if validation=true then this will be rendered, anx-select + validation-provider -->
+  <!-- 
+    //TODO: Refactor!
+    //TODO: See AnxInput.vue
+    //TODO: The v-if condition is not necessary. The ValidationProvider can be rendered as div with the needed classes and styles.
+    //TODO: This minimizes the lines of code and makes the component easier to maintain.
+  -->
   <ValidationProvider
     v-if="validation !== null"
     :name="label"
@@ -40,6 +46,8 @@
           {{ option.text }}
         </li>
       </ul>
+    </div>
+    <div v-if="error.length > 0 || errors.length > 0" class="anx-select-error">
       <span v-if="error.length > 0" class="error">{{ error[0] }}</span>
       <span v-else class="error">{{ errors[0] }}</span>
     </div>
@@ -126,7 +134,7 @@ export default class AnxSelect extends Vue {
 
   get cssProps() {
     return {
-      width: this.width
+      "--select-width": this.width
     };
   }
 
@@ -192,6 +200,8 @@ export default class AnxSelect extends Vue {
   font-size: 16px;
 
   &.is_invalid {
+    margin-bottom: 0px;
+
     label {
       color: $anx-error;
     }
@@ -201,17 +211,6 @@ export default class AnxSelect extends Vue {
         background-image: url(../assets/icons/arrow-red-bottom.svg);
       }
     }
-  }
-
-  span.error {
-    display: block !important;
-    opacity: 1;
-    font-size: 12px;
-    color: $anx-error;
-    padding: 0;
-    white-space: nowrap;
-    top: 12px;
-    position: relative;
   }
 }
 
@@ -270,7 +269,7 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options li {
   text-align: right;
   padding-right: 18px;
-  padding-top: 5px;
+  padding-top: 4px;
   margin: 0;
   -moz-transition: all 0.15s ease-in;
   -o-transition: all 0.15s ease-in;
@@ -287,9 +286,13 @@ export default class AnxSelect extends Vue {
   background-image: url(../assets/icons/check-green.svg);
   background-repeat: no-repeat;
   position: absolute;
-  top: 5px;
+  top: 4px;
   margin-left: -20px;
   background-position: 50%;
+}
+
+.anx-select .anx-select-options li.active:hover:before {
+  background-image: url(../assets/icons/check-white.svg) !important;
 }
 
 .anx-select .anx-select-options li.active {
@@ -305,5 +308,17 @@ export default class AnxSelect extends Vue {
 .anx-select .anx-select-options li:hover {
   color: #fff;
   background: $anx-primary-green;
+}
+
+.anx-select-error {
+  margin-bottom: $form-components-spacing;
+  margin-top: 5px;
+
+  span {
+    font-size: 12px;
+    color: $anx-error;
+    padding: 0;
+    white-space: nowrap;
+  }
 }
 </style>

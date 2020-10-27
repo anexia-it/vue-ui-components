@@ -6,6 +6,7 @@ import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
 import AnxFooter from "./AnxFooter.vue";
 import AnxForm from "./AnxForm.vue";
+import AnxFormContainer from "./AnxFormContainer.vue";
 import AnxGlobal from "./AnxGlobal.vue";
 import AnxHeader from "./AnxHeader.vue";
 import AnxHrLine from "./AnxHrLine.vue";
@@ -34,6 +35,7 @@ export default {
   AnxContent,
   AnxFooter,
   AnxForm,
+  AnxFormContainer,
   AnxGlobal,
   AnxHeader,
   AnxHrLine,
