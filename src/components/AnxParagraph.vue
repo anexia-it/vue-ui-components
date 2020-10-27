@@ -1,5 +1,5 @@
 <template>
-  <div
+  <component :is="element"
     :class="
       `anx-paragraph anx-paragraph-${size} ` +
         (hint !== null ? 'hint ' : '') +
@@ -15,7 +15,7 @@
       {{ title }}
     </anx-title>
     <slot />
-  </div>
+  </component>
 </template>
 
 <script lang="ts">
@@ -45,6 +45,9 @@ export default class AnxParagraph extends Vue {
 
   /** No margin after the title */
   @Prop({ default: null }) noMarginTitle!: boolean | null;
+
+  /** This is the element that will be inserted for anx-paragraph */
+  @Prop({ default: "p" }) element!: string;
 }
 </script>
 
@@ -52,7 +55,8 @@ export default class AnxParagraph extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-paragraph {
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 1.5em;
   overflow-wrap: anywhere;
 
   p {
@@ -96,7 +100,7 @@ export default class AnxParagraph extends Vue {
   &.hint {
     color: $anx-second-grey-light;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.2em;
     margin-bottom: 0px;
   }
 

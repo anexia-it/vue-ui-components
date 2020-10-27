@@ -17,7 +17,7 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({})
-export default class AnxTable extends Vue {
+export default class AnxTableContainer extends Vue {
   /** Whether the table should be scrollable or not */
   @Prop({ default: null }) scrollable!: boolean | null;
 

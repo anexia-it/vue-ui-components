@@ -15,7 +15,9 @@
               </slot>
             </div>
             <div class="header-language-nav" v-if="i18n">
-              <div v-if="!menus">
+              <div
+                :class="{ 'header-lang-switcher-top-nav': true, show: !menus }"
+              >
                 <AnxLanguageSwitcher
                   :i18n="i18n"
                   @localeChange="localeChange($event)"
@@ -37,7 +39,10 @@
                 {{ menu.menu }}
               </anx-link>
             </div>
-            <div class="menu-text right" v-if="i18n">
+            <div
+              class="menu-text right header-lang-switcher-bottom-nav"
+              v-if="i18n"
+            >
               <div v-if="menus">
                 <AnxLanguageSwitcher
                   :i18n="i18n"
@@ -129,6 +134,11 @@ hr {
 .header-container {
   margin-top: 30px;
   margin-bottom: 10px;
+
+  .header-image {
+    font-size: 0px;
+  }
+
   .header-language-nav {
     width: 100%;
     text-align: right;
@@ -142,6 +152,25 @@ hr {
   margin-right: auto;
   width: var(--width);
   display: flex;
+
+  .header-lang-switcher-top-nav {
+    display: none;
+
+    &.show {
+      display: block !important;
+    }
+  }
+
+  @media (max-width: $screen-xs) {
+    .header-lang-switcher-top-nav {
+      display: block;
+    }
+
+    .header-lang-switcher-bottom-nav {
+      display: none;
+    }
+  }
+
   @media screen and (max-width: 500px) {
     width: 100%;
   }
@@ -152,8 +181,7 @@ img {
 
 .header-nav-menu {
   display: table;
-  // padding-top: 17px;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   width: 100%;
   @media screen and (max-width: 500px) {
     display: flex;

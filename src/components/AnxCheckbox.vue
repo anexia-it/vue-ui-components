@@ -32,7 +32,11 @@
         v-model="valueModel"
         @change="$emit('input', valueModel)"
       />
-      <div class="text">{{ name }}</div>
+      <div class="text">
+        <span>
+          {{ name }}
+        </span>
+      </div>
     </label>
   </div>
 </template>
@@ -95,6 +99,8 @@ export default class AnxCheckbox extends Vue {
     appearance: none;
     content: " ";
     outline: none;
+    display: inline-block;
+    vertical-align: top;
 
     /** IE9+ */
     &[type="checkbox"]::-ms-check {
@@ -144,6 +150,9 @@ export default class AnxCheckbox extends Vue {
 
   .text {
     display: inline-block;
+
+    /** The full width minus the width of the checkbox itself and the margin of the checkbox */
+    width: calc(100% - 23px);
   }
 
   span.error {

@@ -115,6 +115,11 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
         svg = sutils.replaceWidthAndHeightForSvg(svg);
         /** Replace the class names by unique class name, so that the styles of the SVGs don't interfere with each other */
         svg = svg.replace(/cls-/g, `${sutils.kebab(fullName)}-cls`);
+        /** Replace the title of the svg file by the name of the icon */
+        svg = svg.replace(
+          /<title>[\s\S]*?<\/title>/,
+          "<title>" + fullName + "</title>"
+        );
 
         /** Add the original and modified file names to the array */
         icons.push({

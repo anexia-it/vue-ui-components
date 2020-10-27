@@ -33,7 +33,7 @@ export const makeIcon = (name, content) => {
           staticClass: iconNameClass,
           props: { ...props },
           attrs: {
-            "aria-label": name,
+            "aria-label": iconName,
             style:
               (props.width ? `width: ${props.width};` : "") +
               (props.height ? ` height: ${props.height};` : "") +

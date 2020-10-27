@@ -4,7 +4,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <hr />
+            <anx-hr-line
+              color="blue"
+              :margin-top="marginTop"
+              margin-bottom="20px"
+            />
             <div class="anx-footer-elements">
               <div class="anx-footer-desktop">
                 <slot name="icon">
@@ -47,15 +51,21 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxIcon from "./AnxIcon.vue";
+import AnxHrLine from "./AnxHrLine.vue";
 
-@Component({ components: { AnxIcon } })
+@Component({ components: { AnxIcon, AnxHrLine } })
 export default class AnxFooter extends Vue {
   /** The links for the footer */
   @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
   /** The icon for the footer. If you want to use images, use the named slot "icon" */
+
   @Prop({ default: "anexia" }) icon!: string;
+
   /**Specify the width of the Footer 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
+
+  /** This is the margin top for the footer (default is 0px) */
+  @Prop({ default: "0px" }) marginTop!: string;
 
   get cssProps() {
     return {
@@ -72,17 +82,20 @@ export default class AnxFooter extends Vue {
   private setFooter() {
     const footer = document.getElementById("anx-footer") as HTMLElement;
 
-    /** If the footer is fixed to bottom, the height has to be added to document.body.scrollHeight */
-    let documentHeight = document.body.scrollHeight;
-    if (this.bottom) documentHeight += footer.scrollHeight;
+    /** Check if the footer has been found and is on the page */
+    if (footer) {
+      /** If the footer is fixed to bottom, the height has to be added to document.body.scrollHeight */
+      let documentHeight = document.body.scrollHeight;
+      if (this.bottom) documentHeight += footer.scrollHeight;
 
-    /** Compare the height of the document with the actual window height */
-    if (documentHeight < window.innerHeight) {
-      footer.classList.add("bottom");
-      this.bottom = true;
-    } else {
-      footer.classList.remove("bottom");
-      this.bottom = false;
+      /** Compare the height of the document with the actual window height */
+      if (documentHeight < window.innerHeight) {
+        footer.classList.add("bottom");
+        this.bottom = true;
+      } else {
+        footer.classList.remove("bottom");
+        this.bottom = false;
+      }
     }
   }
 

@@ -10,7 +10,7 @@
             aria-label="Close"
             @click="$emit('close')"
           >
-            <span aria-hidden="true">&times;</span>
+            <div class="close-symbol"></div>
           </button>
           <div class="h2 modal-title heading">
             {{ title }}
@@ -22,9 +22,18 @@
         <div class="modal-body  anx-modal-body">
           <slot />
         </div>
-        <div v-if="confirm !== null" class="modal-footer anx-modal-footer">
+        <div
+          v-if="confirm !== null"
+          :class="
+            `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
+          "
+        >
           <slot name="modal-footer">
-            <anx-button :text="closeButtonText" @click="$emit('close')" />
+            <anx-button
+              :text="closeButtonText"
+              @click="$emit('close')"
+              outline
+            />
             <div class="space"></div>
             <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
           </slot>
@@ -40,6 +49,7 @@
               :text="closeButtonText"
               v-if="hasCloseButton !== null"
               @click="$emit('close')"
+              outline
             />
           </slot>
         </div>
@@ -202,21 +212,43 @@ export default class AnxModal extends Vue {
 
     .close {
       cursor: pointer;
-      padding: 0 2rem;
-      margin: 0;
-      font-size: 34px;
-      line-height: 42px;
+      margin: 15px 15px 0 0;
+      font-size: 12px;
+      line-height: 12px;
       font-family: MetaWebPro-Thin;
+      outline: 0 !important;
     }
 
     .small-line {
       font-size: 20px;
     }
 
-    span {
-      color: white;
-      font-size: 34px;
-      line-height: 42px;
+    .close-symbol {
+      width: 12px;
+      height: 12px;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        width: 16.97px;
+        height: 1px;
+        background-color: white;
+        left: -2.5px;
+        top: 6px;
+      }
+
+      &:before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
     }
   }
 

@@ -48,7 +48,7 @@ export default class AnxReadonly extends Vue {
   width: 100%;
 
   .inner-text {
-    line-height: 24px;
+    line-height: 1.5em;
     padding: 16px;
     color: $anx-lightest-grey-dark;
 
