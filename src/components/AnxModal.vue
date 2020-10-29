@@ -28,15 +28,10 @@
             `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
           "
         >
-          <slot name="modal-footer">
-            <anx-button
-              :text="closeButtonText"
-              @click="$emit('close')"
-              outline
-            />
-            <div class="space"></div>
-            <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
-          </slot>
+          <slot name="modal-footer"> </slot>
+          <anx-button :text="closeButtonText" @click="$emit('close')" outline />
+          <div class="space"></div>
+          <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
         </div>
         <div
           v-else
@@ -44,14 +39,18 @@
             `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
           "
         >
-          <slot name="modal-footer">
-            <anx-button
-              :text="closeButtonText"
-              v-if="hasCloseButton !== null"
-              @click="$emit('close')"
-              outline
-            />
-          </slot>
+          <slot name="modal-footer"> </slot>
+          <anx-button
+            v-for="button in buttons"
+            :key="button.event"
+            text="test"
+          />
+          <anx-button
+            :text="closeButtonText"
+            v-if="hasCloseButton !== null"
+            @click="$emit('close')"
+            outline
+          />
         </div>
       </div>
     </div>
