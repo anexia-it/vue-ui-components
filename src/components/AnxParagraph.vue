@@ -1,5 +1,6 @@
 <template>
-  <component :is="element"
+  <component
+    :is="element"
     :class="
       `anx-paragraph anx-paragraph-${size} ` +
         (hint !== null ? 'hint ' : '') +
