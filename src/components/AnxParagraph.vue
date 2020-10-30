@@ -17,7 +17,7 @@
   change our <p> to a <div> because we can't have an <h1> inside
   a <p>. This would throw an error in nuxt.
   -->
-  <div v-else>
+  <div v-else :class="{ 'inversed-colors': inverse !== null }">
     <anx-title
       :size="size"
       :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
@@ -28,9 +28,7 @@
     <component
       :is="element"
       :class="
-        `anx-paragraph anx-paragraph-${size} ` +
-          (hint !== null ? 'hint ' : '') +
-          (inverse !== null ? 'inversed-colors' : '')
+        `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
       "
     >
       <slot />
@@ -123,13 +121,13 @@ export default class AnxParagraph extends Vue {
     line-height: 1.2em;
     margin-bottom: 0px;
   }
+}
 
-  &.inversed-colors {
+.inversed-colors {
+  color: $anx-primary-white;
+
+  .anx-paragraph-title {
     color: $anx-primary-white;
-
-    .anx-paragraph-title {
-      color: $anx-primary-white;
-    }
   }
 }
 </style>
