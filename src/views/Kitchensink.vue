@@ -285,6 +285,40 @@
           />
         </anx-paragraph>
 
+        <anx-paragraph>
+          The following button will open a model with a custom. In this case,
+          the footer has three buttons.<br /><br />
+
+          <anx-button
+            text="Show custom Modal >"
+            @click="exampleCustomModal = true"
+          />
+
+          <anx-modal
+            confirm
+            confirm-button-text="Save"
+            v-if="exampleCustomModal"
+            title="Confirmation"
+            @close="exampleCustomModal = false"
+            @confirm="exampleCustomModal = false"
+          >
+            This is an example for a modal with a custom footer and confirm and
+            close button.<br /><br />
+            If you are not happy with the predefined buttons, you can remove the
+            <strong>confirm</strong> and
+            <strong>has-close-button</strong> property from the modal and
+            configure your own footer with your own buttons using the
+            <strong>modal-footer</strong> slot.
+            <template v-slot:modal-footer>
+              <anx-button
+                text="Upload"
+                @click="exampleCustomModal = true"
+                style="margin-left: 30px;"
+              />
+            </template>
+          </anx-modal>
+        </anx-paragraph>
+
         <!-- Anx Read Only -->
         <anx-paragraph size="h3" title="anx-readonly">
           The <i>&lt;anx-readonly&gt;</i> differs from the
@@ -782,6 +816,7 @@ export default class Kitchensink extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleCustomModal = false;
   private exampleConfirmationModal = false;
 
   /** Display form Modal */
