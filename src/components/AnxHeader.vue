@@ -25,7 +25,7 @@
               </div>
             </div>
           </div>
-          <hr />
+          <anx-hr-line margin-top="20px" margin-bottom="20px" color="blue" />
           <div class="header-nav-menu" v-if="menus">
             <div class="menu-text left">
               <!--add DTO -->
@@ -59,13 +59,14 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
+import AnxHrLine from "./AnxHrLine.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
 
 @Component({
-  components: { AnxLanguageSwitcher, AnxIcon, AnxLink }
+  components: { AnxHrLine, AnxLanguageSwitcher, AnxIcon, AnxLink }
 })
 export default class AnxHeader extends Vue {
   /** The i18n instance from the root vue project */
@@ -119,24 +120,19 @@ export default class AnxHeader extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../assets/scss/_variables.scss";
 
-hr {
-  background-color: $anx-primary-blue;
-  height: 1px;
-  margin-top: 1rem;
-  margin-bottom: 20px;
-  border: 0;
-  box-sizing: inherit;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
 .header-container {
   margin-top: 30px;
-  margin-bottom: 10px;
 
   .header-image {
     font-size: 0px;
+    height: 45px;
+
+    img {
+      height: 45px;
+    }
   }
 
   .header-language-nav {
@@ -174,9 +170,6 @@ hr {
   @media screen and (max-width: 500px) {
     width: 100%;
   }
-}
-img {
-  height: 45px;
 }
 
 .header-nav-menu {
