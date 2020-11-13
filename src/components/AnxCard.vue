@@ -38,7 +38,7 @@ export default class Card extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/scss/_variables.scss";
 
 .anx-card {

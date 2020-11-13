@@ -514,7 +514,7 @@
             inside this container have a spacing of <strong>10px</strong> to
             each other. After the container, the default spacing of 30px is
             applied.<br /><br />
-            In the example below, alle the checkboxes are inside an
+            In the example below, all the checkboxes are inside an
             <i>&lt;anx-form-container&gt;</i>.
           </anx-paragraph>
 
