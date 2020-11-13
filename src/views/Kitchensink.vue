@@ -257,13 +257,32 @@
             v-if="exampleModal"
             title="AnxModal"
             @close="exampleModal = false"
-            close-button-align="right"
             has-close-button
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
           <anx-button text="Show Modal >" @click="exampleModal = true" />
         </anx-paragraph>
+
+        <anx-paragraph>
+          The align of the close button can be changed using the
+          <strong>close-button-align</strong> property.<br /><br />
+          <anx-modal
+            v-if="exampleModalCloseButtonAlign"
+            title="AnxModal"
+            @close="exampleModalCloseButtonAlign = false"
+            close-button-align="right"
+            has-close-button
+          >
+            This is an example <i>&lt;anx-modal&gt;</i> with the close button on
+            the right side.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModalCloseButtonAlign = true"
+          />
+        </anx-paragraph>
+
         <anx-paragraph>
           This is a example for a button with a longer text. The width can be
           set manually. This is also a example for a <i>confirmation AnxModal</i
@@ -787,6 +806,7 @@ export default class Kitchensink extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleModalCloseButtonAlign = false;
   private exampleConfirmationModal = false;
 
   /** Display form Modal */

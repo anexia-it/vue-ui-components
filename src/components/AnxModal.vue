@@ -49,7 +49,6 @@
               :text="closeButtonText"
               v-if="hasCloseButton !== null"
               @click="$emit('close')"
-              outline
             />
           </slot>
         </div>
