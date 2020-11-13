@@ -165,6 +165,34 @@ export default class AnxSelect extends Vue {
    */
   public mounted() {
     this.error = [];
+
+    this.closeOnClickOutsideElement();
+  }
+
+  /** Close the select dialoag when the users clicks outside of the anx-select */
+  private closeOnClickOutsideElement() {
+    /** Add click event listener to the whole document */
+    document.body.addEventListener("click", event => {
+      /** This is the element, the user clicked */
+      const clickedElement = event.target as Node;
+
+      /** Check if the user clicked outside of the anx-select and close it */
+      if (clickedElement) {
+        if (!this.isElementOrChild(this.$el, clickedElement)) {
+          this.closeDialoag();
+        }
+      }
+    });
+  }
+
+  /** Handle a click outside the modal */
+  private closeDialoag() {
+    this.show = false;
+  }
+
+  /** Check if child matches elem or child is a child of elem */
+  private isElementOrChild(elem: Node, child: Node) {
+    return child === elem || elem.contains(child);
   }
 
   /**

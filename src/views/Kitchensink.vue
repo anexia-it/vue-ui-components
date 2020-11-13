@@ -485,6 +485,11 @@
             v-model="selected2"
             label="Auswahl treffen required"
           />
+          <anx-paragraph>
+            The dialoag of the <i>&lt;anx-select&gt;</i> will automatically be
+            closed if the users clickes somewhere on the page outside of the
+            respective <i>&lt;anx-select&gt;</i>.
+          </anx-paragraph>
 
           <anx-paragraph size="h3" title="anx-textarea">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
