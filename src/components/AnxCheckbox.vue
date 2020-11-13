@@ -92,7 +92,7 @@ export default class AnxCheckbox extends Vue {
     width: 13px !important;
     padding: 2px !important;
     border: 1px solid $anx-primary-green !important;
-    margin: 0px 10px 0px 0px !important;
+    margin: 1px 10px 0px 0px !important;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
