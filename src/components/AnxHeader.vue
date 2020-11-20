@@ -34,7 +34,7 @@
                 :key="menu.id"
                 :href="`${menu.link}`"
                 class="anx-link-header"
-                :disabled="isLinkActive(menu.link)"
+                :disabled="isLinkActive(menu.link) ? null : true"
               >
                 {{ menu.menu }}
               </anx-link>
@@ -63,6 +63,7 @@ import AnxIcon from "./AnxIcon.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
+import Url from "url-parse";
 
 @Component({
   components: { AnxLanguageSwitcher, AnxIcon, AnxLink }
@@ -96,25 +97,18 @@ export default class AnxHeader extends Vue {
 
   /** Checks if the specified link matches the window link */
   private isLinkActive(link: string): boolean {
-    /** Checking if the window is defined. On the nuxt server side, the window will be undefinded and the following code of this function would throw an error */
-    if (typeof window === "undefined") return false;
+    /** Try to get the current window url via window or $route ($route is more appropriate) */
+    let currentUrl = null;
+    if (typeof window !== "undefined") currentUrl = window.location.href;
+    if (this.$route) currentUrl = this.$route.path;
 
-    const path = this.formatPath(window.location.pathname);
+    /** If the current window url could not be retrieved, we can't compare the urls */
+    if (!currentUrl) return false;
 
-    return path === this.formatPath(link);
-  }
+    const url = new Url(link);
+    const windowUrl = new Url(currentUrl);
 
-  /** Adds a / to the end of the path if it is not present */
-  private formatPath(path: string | null): string {
-    if (!path) {
-      return "";
-    }
-
-    if (path[path.length - 1] !== "/") {
-      path += "/";
-    }
-
-    return path;
+    return url.href !== windowUrl.href;
   }
 }
 </script>
@@ -191,10 +185,6 @@ img {
   .menu-text {
     .anx-link-header {
       margin-right: 20px;
-
-      &:last-of-type {
-        margin-right: 0;
-      }
     }
 
     &.left {
