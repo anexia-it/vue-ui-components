@@ -109,6 +109,7 @@ export default class AnxTextarea extends Vue {
   border: 1px solid $anx-second-grey-light;
   color: $anx-lightest-grey-dark !important;
   font-family: $anx-font-family;
+  font-variant-numeric: lining-nums;
   font-size: 16px;
   resize: vertical;
   overflow: auto;

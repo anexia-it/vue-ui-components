@@ -1,7 +1,11 @@
 <template>
   <component
     :is="size"
-    :class="`anx-title size-${size} ` + (noMargin !== null ? 'no-margin ' : '')"
+    :class="
+      `anx-title size-${size} ` +
+        (noMargin !== null ? 'no-margin ' : '') +
+        (noline !== null ? 'no-line ' : '')
+    "
   >
     <slot>
       {{ text }}
@@ -18,10 +22,13 @@ export default class AnxContent extends Vue {
   @Prop({ default: "h1" }) size!: string;
 
   /** No margin after the title */
-  @Prop({ default: null }) noMargin!: boolean;
+  @Prop({ default: null }) noMargin!: boolean | null;
 
   /** The text, to be displayed (can also be set via slot) */
   @Prop({ default: "" }) text!: string;
+
+  /** Do not display a line after the title */
+  @Prop({ default: null }) noline!: boolean | null;
 }
 </script>
 
@@ -31,28 +38,36 @@ export default class AnxContent extends Vue {
 .anx-title {
   text-transform: uppercase;
   color: $anx-primary-blue;
-  margin-bottom: 20px;
   margin-top: 0px;
   line-height: 1.2em;
 
-  &.no-margin {
+  &.no-margin,
+  &:not(.noline) {
     margin-bottom: 0px !important;
   }
 
   &.size-h1 {
     font-size: 28px;
     font-weight: 500;
+    margin-bottom: 20px;
   }
 
   &.size-h2 {
     font-size: 23px;
     font-weight: 500;
+    margin-bottom: 10px;
   }
 
   &.size-h3 {
     font-size: 20px;
     font-weight: 500;
     color: $anx-lightest-grey-dark;
+    margin-bottom: 0px;
+  }
+
+  &:not(.noline):after {
+    content: "\a—";
+    white-space: pre;
   }
 }
 </style>

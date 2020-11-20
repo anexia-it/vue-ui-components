@@ -68,7 +68,7 @@ export default class AnxContent extends Vue {
   }
 
   *:last-child {
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
 }
 </style>

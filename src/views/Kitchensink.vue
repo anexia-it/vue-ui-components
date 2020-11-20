@@ -223,6 +223,10 @@
       </anx-content>
 
       <anx-content title="Tables" size="h2">
+        <anx-paragraph>
+          In this section the <i>&lt;anx-table&gt;</i> component is described.
+        </anx-paragraph>
+
         <anx-paragraph title="Simple table" size="h3">
           The table below is a very simple table to demonstrate, how less code
           you need to implement such a table.
@@ -251,6 +255,27 @@
           :hover="tableOptions.hover === true ? true : null"
           :noHeader="tableOptions.noHeader === true ? true : null"
         />
+
+        <anx-paragraph title="Passing data" size="h3">
+          See the code examples in the kitchensink for an example of how to pass
+          data to a <i>&lt;anx-table&gt;</i>.<br /><br />
+          In general, the <strong>items</strong> property is used to pass the
+          data of to the <i>&lt;anx-table&gt;</i>. The component automatically
+          creates columns with headers depending on the structure of the array
+          passed at <strong>items</strong>. So, passing an array of objects via
+          the <strong>item</strong> property to the table would be enough for
+          <i>&lt;anx-table&gt;</i> to work properly.<br /><br />
+          You also have the possibility to edit the names and the style of each
+          individual column. Therefore the <strong>columns</strong> property is
+          used. The columns property also is an array of objects. Each object
+          represents one column in the table (See table above).
+          <strong>width</strong>, <strong>align</strong> and the header for the
+          column <strong>name</strong> can be defined. Every column object must
+          have the <strong>index</strong> property. This property binds the data
+          of items to the respective column. (<strong>Note: </strong>
+          <i>&lt;anx-table&gt;</i> won't work properly if you only pass the
+          columns property and no items)
+        </anx-paragraph>
 
         <anx-paragraph title="Complex table" size="h3">
           The following table is a little bit more complex.<br /><br />
@@ -306,13 +331,32 @@
             v-if="exampleModal"
             title="AnxModal"
             @close="exampleModal = false"
-            close-button-align="right"
             has-close-button
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
           <anx-button text="Show Modal >" @click="exampleModal = true" />
         </anx-paragraph>
+
+        <anx-paragraph>
+          The align of the close button can be changed using the
+          <strong>close-button-align</strong> property.<br /><br />
+          <anx-modal
+            v-if="exampleModalCloseButtonAlign"
+            title="AnxModal"
+            @close="exampleModalCloseButtonAlign = false"
+            close-button-align="right"
+            has-close-button
+          >
+            This is an example <i>&lt;anx-modal&gt;</i> with the close button on
+            the right side.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModalCloseButtonAlign = true"
+          />
+        </anx-paragraph>
+
         <anx-paragraph>
           This is a example for a button with a longer text. The width can be
           set manually. This is also a example for a <i>confirmation AnxModal</i
@@ -568,6 +612,11 @@
             v-model="selected2"
             label="Auswahl treffen required"
           />
+          <anx-paragraph>
+            The dialoag of the <i>&lt;anx-select&gt;</i> will automatically be
+            closed if the users clickes somewhere on the page outside of the
+            respective <i>&lt;anx-select&gt;</i>.
+          </anx-paragraph>
 
           <anx-paragraph size="h3" title="anx-textarea">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
@@ -592,7 +641,7 @@
             inside this container have a spacing of <strong>10px</strong> to
             each other. After the container, the default spacing of 30px is
             applied.<br /><br />
-            In the example below, alle the checkboxes are inside an
+            In the example below, all the checkboxes are inside an
             <i>&lt;anx-form-container&gt;</i>.
           </anx-paragraph>
 
@@ -868,6 +917,7 @@ export default class Kitchensink extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleModalCloseButtonAlign = false;
   private exampleCustomModal = false;
   private exampleConfirmationModal = false;
 

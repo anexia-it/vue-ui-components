@@ -1,5 +1,5 @@
 <template>
-  <div :id="name" class="anx-readonly" @click="copy($event)">
+  <div :id="name" class="anx-readonly">
     <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
       <slot />
     </div>
@@ -20,20 +20,28 @@ export default class AnxReadonly extends Vue {
   /** Should the text be bold? */
   @Prop({ default: null }) bold!: boolean | null;
 
-  /** Select and copy the text of the area */
-  private copy(event: Event) {
+  /** Mount function */
+  private mounted() {
+    /** Init the copy event if necessary */
     if (this.copyOnClick !== null) {
-      const range = document.createRange();
-      range.selectNode(event.target as HTMLElement);
-
-      const selection = window.getSelection();
-      if (selection) {
-        selection.removeAllRanges();
-        selection.addRange(range);
-      }
-
-      document.execCommand("copy");
+      this.$el.addEventListener("click", () => {
+        this.copy(this.$el as HTMLElement);
+      });
     }
+  }
+
+  /** Select and copy the text of the area */
+  private copy(elem: HTMLElement) {
+    const range = document.createRange();
+    range.selectNode(elem);
+
+    const selection = window.getSelection();
+    if (selection) {
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    document.execCommand("copy");
   }
 }
 </script>
