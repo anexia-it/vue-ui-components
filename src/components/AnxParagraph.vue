@@ -1,5 +1,6 @@
 <template>
   <component
+    v-if="title === null"
     :is="element"
     :class="
       `anx-paragraph anx-paragraph-${size} ` +
@@ -7,16 +8,32 @@
         (inverse !== null ? 'inversed-colors' : '')
     "
   >
+    <slot />
+  </component>
+
+  <!-- 
+  We have to put the AnxTitle outside of the <component> because
+  if we use <p> as <component>, the browser would automatically
+  change our <p> to a <div> because we can't have an <h1> inside
+  a <p>. This would throw an error in nuxt.
+  -->
+  <div v-else :class="{ 'inversed-colors': inverse !== null }">
     <anx-title
-      v-if="title !== null"
       :size="size"
       :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
       :no-margin="noMarginTitle"
     >
       {{ title }}
     </anx-title>
-    <slot />
-  </component>
+    <component
+      :is="element"
+      :class="
+        `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
+      "
+    >
+      <slot />
+    </component>
+  </div>
 </template>
 
 <script lang="ts">
@@ -104,13 +121,13 @@ export default class AnxParagraph extends Vue {
     line-height: 1.2em;
     margin-bottom: 0px;
   }
+}
 
-  &.inversed-colors {
+.inversed-colors {
+  color: $anx-primary-white;
+
+  .anx-paragraph-title {
     color: $anx-primary-white;
-
-    .anx-paragraph-title {
-      color: $anx-primary-white;
-    }
   }
 }
 </style>
