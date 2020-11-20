@@ -161,7 +161,7 @@
           default link. Both links have the same url.<br /><br />
 
           <anx-link href="/login">Login (Vue Router --> fast)</anx-link><br />
-          <anx-link href="/#/login" external>Login (Default --> slow)</anx-link>
+          <anx-link href="/login" external>Login (Default --> slow)</anx-link>
         </anx-paragraph>
       </anx-content>
 
@@ -710,7 +710,8 @@ import AnxLink from "@/components/AnxLink.vue";
 export default class Kitchensink extends Vue {
   public items: Array<object> = [
     { menu: "Kitchensink", link: "/kitchensink" },
-    { menu: "Login", link: "/login" }
+    { menu: "Login", link: "/login" },
+    { menu: "Crud", link: "/crud" }
   ];
 
   ip = "";
