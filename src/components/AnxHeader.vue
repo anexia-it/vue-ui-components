@@ -25,7 +25,7 @@
               </div>
             </div>
           </div>
-          <hr />
+          <anx-hr-line margin-top="20px" margin-bottom="20px" color="blue" />
           <div class="header-nav-menu" v-if="menus">
             <div class="menu-text left">
               <!--add DTO -->
@@ -34,7 +34,7 @@
                 :key="menu.id"
                 :href="`${menu.link}`"
                 class="anx-link-header"
-                :disabled="isLinkActive(menu.link)"
+                :disabled="isLinkActive(menu.link) ? null : true"
               >
                 {{ menu.menu }}
               </anx-link>
@@ -59,13 +59,15 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
+import AnxHrLine from "./AnxHrLine.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
+import Url from "url-parse";
 
 @Component({
-  components: { AnxLanguageSwitcher, AnxIcon, AnxLink }
+  components: { AnxHrLine, AnxLanguageSwitcher, AnxIcon, AnxLink }
 })
 export default class AnxHeader extends Vue {
   /** The i18n instance from the root vue project */
@@ -96,47 +98,35 @@ export default class AnxHeader extends Vue {
 
   /** Checks if the specified link matches the window link */
   private isLinkActive(link: string): boolean {
-    /** Checking if the window is defined. On the nuxt server side, the window will be undefinded and the following code of this function would throw an error */
-    if (typeof window === "undefined") return false;
+    /** Try to get the current window url via window or $route ($route is more appropriate) */
+    let currentUrl = null;
+    if (typeof window !== "undefined") currentUrl = window.location.href;
+    if (this.$route) currentUrl = this.$route.path;
 
-    const path = this.formatPath(window.location.pathname);
+    /** If the current window url could not be retrieved, we can't compare the urls */
+    if (!currentUrl) return false;
 
-    return path === this.formatPath(link);
-  }
+    const url = new Url(link);
+    const windowUrl = new Url(currentUrl);
 
-  /** Adds a / to the end of the path if it is not present */
-  private formatPath(path: string | null): string {
-    if (!path) {
-      return "";
-    }
-
-    if (path[path.length - 1] !== "/") {
-      path += "/";
-    }
-
-    return path;
+    return url.href !== windowUrl.href;
   }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../assets/scss/_variables.scss";
 
-hr {
-  background-color: $anx-primary-blue;
-  height: 1px;
-  margin-top: 1rem;
-  margin-bottom: 20px;
-  border: 0;
-  box-sizing: inherit;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
 .header-container {
   margin-top: 30px;
-  margin-bottom: 10px;
 
   .header-image {
     font-size: 0px;
+    height: 45px;
+
+    img {
+      height: 45px;
+    }
   }
 
   .header-language-nav {
@@ -175,9 +165,6 @@ hr {
     width: 100%;
   }
 }
-img {
-  height: 45px;
-}
 
 .header-nav-menu {
   display: table;
@@ -191,10 +178,6 @@ img {
   .menu-text {
     .anx-link-header {
       margin-right: 20px;
-
-      &:last-of-type {
-        margin-right: 0;
-      }
     }
 
     &.left {

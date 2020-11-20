@@ -264,5 +264,15 @@ export default class AnxTable extends Vue {
       }
     }
   }
+
+  /** If the tabled is striped and has the hover effect, the all odd tables rows have to
+  *** change the background color to white on hover, so that the effect is visible */
+  &.anx-table-hover.anx-table-striped {
+    tbody {
+      tr:nth-of-type(odd):hover {
+        background-color: $anx-primary-white !important;
+      }
+    }
+  }
 }
 </style>

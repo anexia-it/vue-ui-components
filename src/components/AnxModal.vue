@@ -28,15 +28,10 @@
             `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
           "
         >
-          <slot name="modal-footer">
-            <anx-button
-              :text="closeButtonText"
-              @click="$emit('close')"
-              outline
-            />
-            <div class="space"></div>
-            <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
-          </slot>
+          <anx-button :text="closeButtonText" @click="$emit('close')" outline />
+          <div class="space"></div>
+          <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
+          <slot name="modal-footer" />
         </div>
         <div
           v-else
@@ -44,14 +39,12 @@
             `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
           "
         >
-          <slot name="modal-footer">
-            <anx-button
-              :text="closeButtonText"
-              v-if="hasCloseButton !== null"
-              @click="$emit('close')"
-              outline
-            />
-          </slot>
+          <anx-button
+            :text="closeButtonText"
+            v-if="hasCloseButton !== null"
+            @click="$emit('close')"
+          />
+          <slot name="modal-footer" />
         </div>
       </div>
     </div>
@@ -87,6 +80,30 @@ export default class AnxModal extends Vue {
 
   /** The size of the model [s, m, l, xl, xxl] */
   @Prop({ default: "m" }) size!: string;
+
+  /** Add event listeners for click event on mount */
+  private mounted() {
+    /** The timeout is needed, otherwise the click on the button to show the modal would trigger a click event and close the modal */
+    window.setTimeout(() => {
+      /** Add event listener for clicking the modal dialog and stop event propagation */
+      this.$el.children[0].addEventListener("click", event => {
+        event.stopPropagation();
+      });
+
+      /** Close the modal if the users clicked outside of the model */
+      document.body.addEventListener("click", this.clickedOutsideModal);
+    }, 50);
+  }
+
+  /** Remove the click event listeners before destroy */
+  private beforeDestroy() {
+    document.body.removeEventListener("click", this.clickedOutsideModal);
+  }
+
+  /** Handle a click outside the modal */
+  private clickedOutsideModal() {
+    this.$emit("close");
+  }
 }
 </script>
 

@@ -24,7 +24,7 @@
       @click="clickInputField()"
       :class="{
         'is-invalid': errors && errors.length > 0,
-        'with-margin': valid && !assistiveText
+        'with-margin': (typeof valid !== 'boolean' || valid) && !assistiveText
       }"
       @input="$emit('input', updateInputField)"
       :autocomplete="autocomplete"

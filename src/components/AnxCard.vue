@@ -3,9 +3,7 @@
     <div class="anx-card-content d-flex">
       <anx-icon class="anx-card-icon" :icon="icon" />
       <anx-paragraph :title="title" size="h3">
-        <p>
-          <slot />
-        </p>
+        <slot />
         <anx-link v-if="linkText" :href="link"> {{ linkText }}</anx-link>
       </anx-paragraph>
     </div>
@@ -40,7 +38,7 @@ export default class Card extends Vue {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/scss/_variables.scss";
 
 .anx-card {

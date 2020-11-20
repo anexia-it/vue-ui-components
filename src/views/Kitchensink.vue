@@ -116,6 +116,55 @@
         </anx-paragraph>
       </anx-content>
 
+      <anx-content title="Simple components" size="h2">
+        <anx-paragraph title="Anx-Link" size="h3">
+          The <i>&lt;anx-link&gt;</i> can be used very straight forward like a
+          regular HTML link. You just have to provide the
+          <strong>href</strong> property an the link will lead the user to this
+          direction on click.<br /><br />
+
+          <anx-link href="https://anexia.com">Anexia website</anx-link>
+          <br /><br />
+
+          You can also disable a link with the
+          <strong>disabled</strong> property. In this case the
+          <i>&lt;anx-link&gt;</i> will be rendered as &lt;span&gt;.<br /><br />
+
+          <anx-link href="https://anexia.com" disabled disabled-style="text">
+            Anexia website
+          </anx-link>
+          <br /><br />
+
+          You can tell the <i>&lt;anx-link&gt;</i> to open the url in a new tab
+          by using the <strong>new-tab</strong> property. This will work for
+          external and internal urls.<br /><br />
+
+          <anx-link href="https://anexia.com" new-tab>Anexia website</anx-link>
+          <br />
+          <anx-link href="/login" new-tab>Login page</anx-link>
+          <br /><br />
+
+          If you use internal links, you should always use the
+          <strong>Vue Router</strong>, because it is
+          <strong>much faster</strong> (does not reload the whole page) and this
+          is way more user friendly.<br />
+          <i>&lt;anx-link&gt;</i> <strong>automatically</strong> does this for
+          you. It checks, if the Vue Router is installed and if the provided
+          link is internal or external. Based on this information,
+          <i>&lt;anx-link&gt;</i> decides whether to use the Vue Router or
+          not.<br />
+          If you wish not to use the Vue Router although it is installed, you
+          can use the <strong>external</strong> property to handle the link like
+          an external.<br /><br />
+          Here is an example of the speed for the different types of routing.
+          The first link is a link made with Vue Router, the second link is a
+          default link. Both links have the same url.<br /><br />
+
+          <anx-link href="/login">Login (Vue Router --> fast)</anx-link><br />
+          <anx-link href="/login" external>Login (Default --> slow)</anx-link>
+        </anx-paragraph>
+      </anx-content>
+
       <anx-content title="Icons" size="h2">
         <anx-paragraph>
           You can easily include anexia icons in your design using the
@@ -174,6 +223,10 @@
       </anx-content>
 
       <anx-content title="Tables" size="h2">
+        <anx-paragraph>
+          In this section the <i>&lt;anx-table&gt;</i> component is described.
+        </anx-paragraph>
+
         <anx-paragraph title="Simple table" size="h3">
           The table below is a very simple table to demonstrate, how less code
           you need to implement such a table.
@@ -202,6 +255,27 @@
           :hover="tableOptions.hover === true ? true : null"
           :noHeader="tableOptions.noHeader === true ? true : null"
         />
+
+        <anx-paragraph title="Passing data" size="h3">
+          See the code examples in the kitchensink for an example of how to pass
+          data to a <i>&lt;anx-table&gt;</i>.<br /><br />
+          In general, the <strong>items</strong> property is used to pass the
+          data of to the <i>&lt;anx-table&gt;</i>. The component automatically
+          creates columns with headers depending on the structure of the array
+          passed at <strong>items</strong>. So, passing an array of objects via
+          the <strong>item</strong> property to the table would be enough for
+          <i>&lt;anx-table&gt;</i> to work properly.<br /><br />
+          You also have the possibility to edit the names and the style of each
+          individual column. Therefore the <strong>columns</strong> property is
+          used. The columns property also is an array of objects. Each object
+          represents one column in the table (See table above).
+          <strong>width</strong>, <strong>align</strong> and the header for the
+          column <strong>name</strong> can be defined. Every column object must
+          have the <strong>index</strong> property. This property binds the data
+          of items to the respective column. (<strong>Note: </strong>
+          <i>&lt;anx-table&gt;</i> won't work properly if you only pass the
+          columns property and no items)
+        </anx-paragraph>
 
         <anx-paragraph title="Complex table" size="h3">
           The following table is a little bit more complex.<br /><br />
@@ -257,13 +331,32 @@
             v-if="exampleModal"
             title="AnxModal"
             @close="exampleModal = false"
-            close-button-align="right"
             has-close-button
           >
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
           <anx-button text="Show Modal >" @click="exampleModal = true" />
         </anx-paragraph>
+
+        <anx-paragraph>
+          The align of the close button can be changed using the
+          <strong>close-button-align</strong> property.<br /><br />
+          <anx-modal
+            v-if="exampleModalCloseButtonAlign"
+            title="AnxModal"
+            @close="exampleModalCloseButtonAlign = false"
+            close-button-align="right"
+            has-close-button
+          >
+            This is an example <i>&lt;anx-modal&gt;</i> with the close button on
+            the right side.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModalCloseButtonAlign = true"
+          />
+        </anx-paragraph>
+
         <anx-paragraph>
           This is a example for a button with a longer text. The width can be
           set manually. This is also a example for a <i>confirmation AnxModal</i
@@ -283,6 +376,40 @@
             text="Show Confirmation Modal >"
             @click="exampleConfirmationModal = true"
           />
+        </anx-paragraph>
+
+        <anx-paragraph>
+          The following button will open a model with a custom. In this case,
+          the footer has three buttons.<br /><br />
+
+          <anx-button
+            text="Show custom Modal >"
+            @click="exampleCustomModal = true"
+          />
+
+          <anx-modal
+            confirm
+            confirm-button-text="Save"
+            v-if="exampleCustomModal"
+            title="Confirmation"
+            @close="exampleCustomModal = false"
+            @confirm="exampleCustomModal = false"
+          >
+            This is an example for a modal with a custom footer and confirm and
+            close button.<br /><br />
+            If you are not happy with the predefined buttons, you can remove the
+            <strong>confirm</strong> and
+            <strong>has-close-button</strong> property from the modal and
+            configure your own footer with your own buttons using the
+            <strong>modal-footer</strong> slot.
+            <template v-slot:modal-footer>
+              <anx-button
+                text="Upload"
+                @click="exampleCustomModal = true"
+                style="margin-left: 30px;"
+              />
+            </template>
+          </anx-modal>
         </anx-paragraph>
 
         <!-- Anx Read Only -->
@@ -485,6 +612,11 @@
             v-model="selected2"
             label="Auswahl treffen required"
           />
+          <anx-paragraph>
+            The dialoag of the <i>&lt;anx-select&gt;</i> will automatically be
+            closed if the users clickes somewhere on the page outside of the
+            respective <i>&lt;anx-select&gt;</i>.
+          </anx-paragraph>
 
           <anx-paragraph size="h3" title="anx-textarea">
             <i>&lt;anx-textarea&gt;</i> can have a specific width (default
@@ -509,7 +641,7 @@
             inside this container have a spacing of <strong>10px</strong> to
             each other. After the container, the default spacing of 30px is
             applied.<br /><br />
-            In the example below, alle the checkboxes are inside an
+            In the example below, all the checkboxes are inside an
             <i>&lt;anx-form-container&gt;</i>.
           </anx-paragraph>
 
@@ -629,6 +761,7 @@ import AnxTextarea from "@/components/AnxTextarea.vue";
 import AnxIcon from "@/components/AnxIcon.vue";
 import AnxHrLine from "@/components/AnxHrLine.vue";
 import AnxList from "@/components/AnxList.vue";
+import AnxLink from "@/components/AnxLink.vue";
 
 @Component({
   components: {
@@ -653,13 +786,15 @@ import AnxList from "@/components/AnxList.vue";
     AnxTextarea,
     AnxIcon,
     AnxHrLine,
-    AnxList
+    AnxList,
+    AnxLink
   }
 })
 export default class Kitchensink extends Vue {
   public items: Array<object> = [
-    { menu: "Kitchensink", link: "#/kitchensink" },
-    { menu: "Login", link: "#/login" }
+    { menu: "Kitchensink", link: "/kitchensink" },
+    { menu: "Login", link: "/login" },
+    { menu: "Crud", link: "/crud" }
   ];
 
   ip = "";
@@ -782,6 +917,8 @@ export default class Kitchensink extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleModalCloseButtonAlign = false;
+  private exampleCustomModal = false;
   private exampleConfirmationModal = false;
 
   /** Display form Modal */

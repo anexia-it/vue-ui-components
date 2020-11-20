@@ -67,8 +67,8 @@ export default class AnxContent extends Vue {
     margin-bottom: 30px; /* real margin 35px (textbox) */
   }
 
-  div:last-child {
-    margin-bottom: 0;
+  *:last-child {
+    margin-bottom: 0 !important;
   }
 }
 </style>
