@@ -2,7 +2,7 @@
   <a
     v-if="disabled === null"
     class="anx-link"
-    @click="click()"
+    @click="click($event)"
     :href="href"
     :target="newTab !== null ? '_blank' : '_self'"
   >
@@ -32,31 +32,26 @@ export default class AnxLink extends Vue {
 
   /** Emit the click event */
   @Emit("click")
-  click() {
-    return;
-  }
-
-  mounted() {
+  click(event: MouseEvent) {
     /** Check if the vue router can/should be used */
     if (this.useVueRouter) {
-      /** Add an event listener for the link */
-      this.$el.addEventListener("click", event => {
-        /** Prevent the default event for link */
-        event.preventDefault();
+      /** Prevent the default event for link */
+      event.preventDefault();
 
-        /** Only push to the new route if the link is different from the current location */
-        if (this.isDifferentUrl) {
-          /** Check if the url should be opened in a new tab */
-          if (this.newTab !== null) {
-            /** First resolve the url with router and then resolve the url with url-parser */
-            const url = new Url(this.$router.resolve(this.href).href);
-            window.open(url.href);
-          } else {
-            this.$router.push(this.href);
-          }
+      /** Only push to the new route if the link is different from the current location */
+      if (this.isDifferentUrl) {
+        /** Check if the url should be opened in a new tab */
+        if (this.newTab !== null) {
+          /** First resolve the url with router and then resolve the url with url-parser */
+          const url = new Url(this.$router.resolve(this.href).href);
+          window.open(url.href);
+        } else {
+          this.$router.push(this.href);
         }
-      });
+      }
     }
+
+    return;
   }
 
   /**
