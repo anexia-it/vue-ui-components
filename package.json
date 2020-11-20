@@ -29,11 +29,13 @@
     "index.d.ts"
   ],
   "dependencies": {
+    "@types/url-parse": "^1.4.3",
     "bootstrap": "^4.5.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^3.9.7",
+    "url-parse": "^1.4.7",
     "vee-validate": "^2.2.15",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",

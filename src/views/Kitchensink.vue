@@ -116,6 +116,55 @@
         </anx-paragraph>
       </anx-content>
 
+      <anx-content title="Simple components" size="h2">
+        <anx-paragraph title="Anx-Link" size="h3">
+          The <i>&lt;anx-link&gt;</i> can be used very straight forward like a
+          regular HTML link. You just have to provide the
+          <strong>href</strong> property an the link will lead the user to this
+          direction on click.<br /><br />
+
+          <anx-link href="https://anexia.com">Anexia website</anx-link>
+          <br /><br />
+
+          You can also disable a link with the
+          <strong>disabled</strong> property. In this case the
+          <i>&lt;anx-link&gt;</i> will be rendered as &lt;span&gt;.<br /><br />
+
+          <anx-link href="https://anexia.com" disabled disabled-style="text">
+            Anexia website
+          </anx-link>
+          <br /><br />
+
+          You can tell the <i>&lt;anx-link&gt;</i> to open the url in a new tab
+          by using the <strong>new-tab</strong> property. This will work for
+          external and internal urls.<br /><br />
+
+          <anx-link href="https://anexia.com" new-tab>Anexia website</anx-link>
+          <br />
+          <anx-link href="/login" new-tab>Login page</anx-link>
+          <br /><br />
+
+          If you use internal links, you should always use the
+          <strong>Vue Router</strong>, because it is
+          <strong>much faster</strong> (does not reload the whole page) and this
+          is way more user friendly.<br />
+          <i>&lt;anx-link&gt;</i> <strong>automatically</strong> does this for
+          you. It checks, if the Vue Router is installed and if the provided
+          link is internal or external. Based on this information,
+          <i>&lt;anx-link&gt;</i> decides whether to use the Vue Router or
+          not.<br />
+          If you wish not to use the Vue Router although it is installed, you
+          can use the <strong>external</strong> property to handle the link like
+          an external.<br /><br />
+          Here is an example of the speed for the different types of routing.
+          The first link is a link made with Vue Router, the second link is a
+          default link. Both links have the same url.<br /><br />
+
+          <anx-link href="/login">Login (Vue Router --> fast)</anx-link><br />
+          <anx-link href="/login" external>Login (Default --> slow)</anx-link>
+        </anx-paragraph>
+      </anx-content>
+
       <anx-content title="Icons" size="h2">
         <anx-paragraph>
           You can easily include anexia icons in your design using the
@@ -327,6 +376,40 @@
             text="Show Confirmation Modal >"
             @click="exampleConfirmationModal = true"
           />
+        </anx-paragraph>
+
+        <anx-paragraph>
+          The following button will open a model with a custom. In this case,
+          the footer has three buttons.<br /><br />
+
+          <anx-button
+            text="Show custom Modal >"
+            @click="exampleCustomModal = true"
+          />
+
+          <anx-modal
+            confirm
+            confirm-button-text="Save"
+            v-if="exampleCustomModal"
+            title="Confirmation"
+            @close="exampleCustomModal = false"
+            @confirm="exampleCustomModal = false"
+          >
+            This is an example for a modal with a custom footer and confirm and
+            close button.<br /><br />
+            If you are not happy with the predefined buttons, you can remove the
+            <strong>confirm</strong> and
+            <strong>has-close-button</strong> property from the modal and
+            configure your own footer with your own buttons using the
+            <strong>modal-footer</strong> slot.
+            <template v-slot:modal-footer>
+              <anx-button
+                text="Upload"
+                @click="exampleCustomModal = true"
+                style="margin-left: 30px;"
+              />
+            </template>
+          </anx-modal>
         </anx-paragraph>
 
         <!-- Anx Read Only -->
@@ -678,6 +761,7 @@ import AnxTextarea from "@/components/AnxTextarea.vue";
 import AnxIcon from "@/components/AnxIcon.vue";
 import AnxHrLine from "@/components/AnxHrLine.vue";
 import AnxList from "@/components/AnxList.vue";
+import AnxLink from "@/components/AnxLink.vue";
 
 @Component({
   components: {
@@ -702,13 +786,15 @@ import AnxList from "@/components/AnxList.vue";
     AnxTextarea,
     AnxIcon,
     AnxHrLine,
-    AnxList
+    AnxList,
+    AnxLink
   }
 })
 export default class Kitchensink extends Vue {
   public items: Array<object> = [
-    { menu: "Kitchensink", link: "#/kitchensink" },
-    { menu: "Login", link: "#/login" }
+    { menu: "Kitchensink", link: "/kitchensink" },
+    { menu: "Login", link: "/login" },
+    { menu: "Crud", link: "/crud" }
   ];
 
   ip = "";
@@ -832,6 +918,7 @@ export default class Kitchensink extends Vue {
   /*example Modal */
   private exampleModal = false;
   private exampleModalCloseButtonAlign = false;
+  private exampleCustomModal = false;
   private exampleConfirmationModal = false;
 
   /** Display form Modal */

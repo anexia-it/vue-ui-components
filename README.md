@@ -5,7 +5,13 @@
 # ANX UI-Tool
 -----------
 
-**Author:** Anexia Marketing
+**Author:** :blue_heart: Anexia Marketing :green_heart:
+
+- [Installation](#installation) :page_facing_up:
+  - [Vue](#vue)
+  - [Nuxt](#nuxt)
+- [Usage](#usage) :white_check_mark:
+- [Troubleshooting](#common-errors-and-troubleshooting) :interrobang:
 
 -----------
 
@@ -169,12 +175,45 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+## Common errors and troubleshooting
+
 ### IE 9+ support for custom properties
 Add this to the project public/index.html to make the custom properties work in ie.
 You must do it for every project which use this package.
 ```html
   <!-- will only load by IE -->
     <script>window.MSInputMethodContext && document.documentMode && document.write('<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"><\x2fscript>');</script>
+```
+
+### Experimental decorators
+
+If you have just created a fresh Vue project and installed the UI tool via npm, you could possibly get the following error:
+
+```bash
+ERROR in ./node_modules/ui/src/components/AnxTitle.vue(24,26):
+24:26 Experimental support for decorators is a feature that is subject to change in a future release. Set the 'experimentalDecorators' option in your 'tsconfig' or 'jsconfig' to remove this warning.
+    22 |
+    23 |   /** The text, to be displayed (can also be set via slot) */
+  > 24 |   @Prop({ default: "" }) text!: string;
+       |                          ^
+    25 | }
+    26 | </script>
+    27 |
+Version: typescript 3.9.7
+```
+
+Our UI tool uses a npm package called [vue-property-decorator](https://www.npmjs.com/package/vue-property-decorator). This package allows us to strcuture our components in a easier to read way.
+To fix this error you simply have to follow the instructions in the error message. Add the ```experimentalDecorators``` property to your ```compilerOptions```in your tsconfig.json like in the example below.
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "experimentalDecorators": true,
+    ...
+  },
+  ...
+}
 ```
 
 ## Git
