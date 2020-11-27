@@ -15,10 +15,12 @@
 
 <script lang="ts">
 import { Vue, Component, Emit, Prop } from "vue-property-decorator";
-import Url from "url-parse";
 
 @Component({})
 export default class AnxLink extends Vue {
+  /** Require the url module (import can't be used because it does not have @types) */
+  Url = require("url-parse");
+
   /** If the link is active or not */
   @Prop({ default: null }) disabled!: boolean | null;
   /** This is the style for the disabled link (default, text) */
@@ -43,7 +45,7 @@ export default class AnxLink extends Vue {
         /** Check if the url should be opened in a new tab */
         if (this.newTab !== null) {
           /** First resolve the url with router and then resolve the url with url-parser */
-          const url = new Url(this.$router.resolve(this.href).href);
+          const url = new this.Url(this.$router.resolve(this.href).href);
           window.open(url.href);
         } else {
           this.$router.push(this.href);
@@ -66,16 +68,16 @@ export default class AnxLink extends Vue {
 
   /** Checks if the provided url is internal */
   private get isInternalUrl() {
-    const url = new Url(this.href);
-    const currentUrl = new Url(window.location.href);
+    const url = new this.Url(this.href);
+    const currentUrl = new this.Url(window.location.href);
 
     return url.host == currentUrl.host;
   }
 
   /** Check if the provided url differs from the current url (window location) */
   private get isDifferentUrl() {
-    const url = new Url(this.href);
-    const currentUrl = new Url(window.location.href);
+    const url = new this.Url(this.href);
+    const currentUrl = new this.Url(window.location.href);
 
     return url.href !== currentUrl.href;
   }

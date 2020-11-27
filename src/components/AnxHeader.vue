@@ -64,12 +64,14 @@ import AnxIcon from "./AnxIcon.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
-import Url from "url-parse";
 
 @Component({
   components: { AnxHrLine, AnxLanguageSwitcher, AnxIcon, AnxLink }
 })
 export default class AnxHeader extends Vue {
+  /** Require the url module (import can't be used because it does not have @types) */
+  Url = require("url-parse");
+
   /** The i18n instance from the root vue project */
   @Prop({ default: null }) i18n!: VueI18n | null;
   /** The icon for the header */
@@ -106,8 +108,8 @@ export default class AnxHeader extends Vue {
     /** If the current window url could not be retrieved, we can't compare the urls */
     if (!currentUrl) return false;
 
-    const url = new Url(link);
-    const windowUrl = new Url(currentUrl);
+    const url = new this.Url(link);
+    const windowUrl = new this.Url(currentUrl);
 
     return url.href !== windowUrl.href;
   }
