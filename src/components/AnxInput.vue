@@ -15,7 +15,6 @@
     <input
       :id="id"
       v-model="updateInputField"
-      v-validate="rules"
       :data-vv-as="name"
       :type="type"
       :name="name"

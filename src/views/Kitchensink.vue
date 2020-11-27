@@ -626,7 +626,8 @@
           <anx-textarea width="100%" v-model="text1" />
           <anx-paragraph size="h3">
             This <i>&lt;anx-textarea&gt;</i> has a validation with the default
-            rule required. The rule can be changed.
+            rule required. The rule can be changed using the
+            <strong>rules</strong> property.
           </anx-paragraph>
           <anx-textarea width="100%" validation="true" v-model="text2" />
 
