@@ -12,7 +12,6 @@
           :id="name"
           :name="name"
           type="checkbox"
-          v-validate="'required:true'"
           v-model="valueModel"
           :class="errors && errors.length > 0 ? 'is-invalid' : ''"
           @change="$emit('input', valueModel)"
