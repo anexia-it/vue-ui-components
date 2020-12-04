@@ -14,6 +14,7 @@ import AnxIcon from "./AnxIcon.vue";
 import AnxInput from "./AnxInput.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxList from "./AnxList.vue";
+import AnxLogin from "./AnxLogin.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxParagraph from "./AnxParagraph.vue";
@@ -44,6 +45,7 @@ export default {
   AnxLanguageSwitcher,
   AnxLink,
   AnxList,
+  AnxLogin,
   AnxModal,
   AnxParagraph,
   AnxReadonly,
