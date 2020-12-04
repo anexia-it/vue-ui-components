@@ -52,6 +52,7 @@
         <slot name="submit-button">
           <div :class="`button-container button-${submitButtonAlign}`">
             <anx-button
+              class="login-button"
               type="submit"
               :width="submitButtonWidth"
               :text="submitButtonText"
@@ -149,7 +150,7 @@ export default class AnxLogin extends Vue {
 
   /** Modify the submit button */
   /** The width of the submit button */
-  @Prop({ default: "100px" }) submitButtonWidth!: string;
+  @Prop({ default: null }) submitButtonWidth!: string | null;
   /** The text of the submit button */
   @Prop({ default: "Log in" }) submitButtonText!: string;
   /** The align of the submit button */
@@ -225,6 +226,10 @@ export default class AnxLogin extends Vue {
     .anx-login-form {
       .button-container {
         width: 100%;
+
+        .login-button {
+          margin-right: 0px;
+        }
 
         &.button-left {
           text-align: left;
