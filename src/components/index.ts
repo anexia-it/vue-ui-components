@@ -4,6 +4,7 @@ import AnxCard from "./AnxCard.vue";
 import AnxCheckbox from "./AnxCheckbox.vue";
 import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
+import AnxCrudTable from "./AnxCrudTable.vue";
 import AnxFooter from "./AnxFooter.vue";
 import AnxForm from "./AnxForm.vue";
 import AnxFormContainer from "./AnxFormContainer.vue";
@@ -34,6 +35,7 @@ export default {
   AnxCheckbox,
   AnxContainer,
   AnxContent,
+  AnxCrudTable,
   AnxFooter,
   AnxForm,
   AnxFormContainer,
