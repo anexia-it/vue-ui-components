@@ -15,14 +15,19 @@
               </slot>
             </div>
             <div class="header-language-nav" v-if="i18n">
-              <div
-                :class="{ 'header-lang-switcher-top-nav': true, show: !menus }"
-              >
-                <AnxLanguageSwitcher
-                  :i18n="i18n"
-                  @localeChange="localeChange($event)"
-                />
-              </div>
+              <slot name="header-top-right">
+                <div
+                  :class="{
+                    'header-lang-switcher-top-nav': true,
+                    show: !menus
+                  }"
+                >
+                  <AnxLanguageSwitcher
+                    :i18n="i18n"
+                    @localeChange="localeChange($event)"
+                  />
+                </div>
+              </slot>
             </div>
           </div>
           <anx-hr-line margin-top="20px" margin-bottom="20px" color="blue" />
