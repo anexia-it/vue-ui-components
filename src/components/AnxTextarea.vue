@@ -128,7 +128,7 @@ export default class AnxTextarea extends Vue {
       transition: all 0.1s ease;
       position: absolute;
       left: 0;
-      top: 4px;
+      top: 1px;
       padding: 0 2px 0 2px;
     }
 
