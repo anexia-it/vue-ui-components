@@ -88,7 +88,7 @@
         </anx-paragraph>
 
         <anx-paragraph title="Size h3" size="h3">
-          And this is the smallest paragraph<br /><br />
+          And this is the smallest paragraph
         </anx-paragraph>
 
         <anx-alert v-model="showSuccessAlert" type="success">
@@ -481,26 +481,38 @@
               actions like save and the <i>outline</i> button for actions like
               cancel or delete<br /><br />
 
-              <anx-button
-                inline
-                width="200px"
-                text="save"
-                style="margin-right: 20px"
-              />
-              <anx-button
-                inline
-                outline
-                width="200px"
-                text="cancel"
-                style="margin-right: 0px"
-              />
+              <div class="button-multiline">
+                <anx-button
+                  inline
+                  width="200px"
+                  text="save"
+                  style="margin-right: 20px"
+                />
+                <anx-button
+                  inline
+                  outline
+                  width="200px"
+                  text="cancel"
+                  style="margin-right: 0px"
+                />
+              </div>
 
-              <br /><br />By default, the <i>&lt;anx-button&gt;</i> emits the
+              <br />By default, the <i>&lt;anx-button&gt;</i> emits the
               <strong>@click</strong> event. This can be changed by setting the
               <strong>event-name</strong> property. This is not needed in most
               cases.<br /><br />
 
               <anx-button text="alert" @click="testalert('Clicked')" />
+
+              <br /><br />
+              The following button is an example for a multiline button. The
+              button automatically changes to multiline, if the text is too
+              long.
+              <br /><br />
+
+              <anx-button width="200px">
+                This is a simple multiline button with no function
+              </anx-button>
             </anx-form>
           </anx-paragraph>
 
@@ -611,6 +623,7 @@
             validation="true"
             v-model="selected2"
             label="Auswahl treffen required"
+            :options="selectOptions"
           />
           <anx-paragraph>
             The dialoag of the <i>&lt;anx-select&gt;</i> will automatically be
@@ -809,6 +822,18 @@ export default class Kitchensink extends Vue {
   checkbox = [false, true];
   mail = "";
 
+  private selectOptions = [
+    { value: "null", text: "Auswahl treffen" },
+    { value: "Auswahl 1", text: "Auswahl 1" },
+    {
+      value: "Auswahl 2",
+      text:
+        "Auswahl 2 - This is a very long text to test the responsiveness of the anx-select element."
+    },
+    { value: "Auswahl 3", text: "Auswahl 3" },
+    { value: "Auswahl 4", text: "Auswahl 4" }
+  ];
+
   private tableOptions: {
     bordered: boolean | null;
     borderless: boolean | null;
@@ -932,7 +957,20 @@ export default class Kitchensink extends Vue {
 }
 </script>
 <style lang="scss">
+@import "../assets/scss/_variables.scss";
 .space {
   height: 20px;
+}
+
+@media (max-width: $screen-xs) {
+  .button-multiline {
+    .anx-button {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
 }
 </style>
