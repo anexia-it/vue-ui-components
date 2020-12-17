@@ -611,6 +611,7 @@
             validation="true"
             v-model="selected2"
             label="Auswahl treffen required"
+            :options="selectOptions"
           />
           <anx-paragraph>
             The dialoag of the <i>&lt;anx-select&gt;</i> will automatically be
@@ -808,6 +809,18 @@ export default class Kitchensink extends Vue {
   text2 = "";
   checkbox = [false, true];
   mail = "";
+
+  private selectOptions = [
+    { value: "null", text: "Auswahl treffen" },
+    { value: "Auswahl 1", text: "Auswahl 1" },
+    {
+      value: "Auswahl 2",
+      text:
+        "Auswahl 2 - This is a very long text to test the responsiveness of the anx-select element."
+    },
+    { value: "Auswahl 3", text: "Auswahl 3" },
+    { value: "Auswahl 4", text: "Auswahl 4" }
+  ];
 
   private tableOptions: {
     bordered: boolean | null;
