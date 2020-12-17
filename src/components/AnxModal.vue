@@ -181,6 +181,27 @@ export default class AnxModal extends Vue {
     .anx-modal-footer {
       border-radius: 0px;
 
+      /**
+       * Show buttons below each other on mobile
+       */
+      @media (max-width: $screen-xs) {
+        display: block;
+
+        .space {
+          display: none !important;
+        }
+
+        .anx-button {
+          width: 100%;
+          display: block;
+          margin: 0 0 20px 0 !important;
+
+          &:last-child {
+            margin-bottom: 0px !important;
+          }
+        }
+      }
+
       .button {
         margin-right: 0px !important;
 
