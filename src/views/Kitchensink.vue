@@ -481,21 +481,23 @@
               actions like save and the <i>outline</i> button for actions like
               cancel or delete<br /><br />
 
-              <anx-button
-                inline
-                width="200px"
-                text="save"
-                style="margin-right: 20px"
-              />
-              <anx-button
-                inline
-                outline
-                width="200px"
-                text="cancel"
-                style="margin-right: 0px"
-              />
+              <div class="button-multiline">
+                <anx-button
+                  inline
+                  width="200px"
+                  text="save"
+                  style="margin-right: 20px"
+                />
+                <anx-button
+                  inline
+                  outline
+                  width="200px"
+                  text="cancel"
+                  style="margin-right: 0px"
+                />
+              </div>
 
-              <br /><br />By default, the <i>&lt;anx-button&gt;</i> emits the
+              <br />By default, the <i>&lt;anx-button&gt;</i> emits the
               <strong>@click</strong> event. This can be changed by setting the
               <strong>event-name</strong> property. This is not needed in most
               cases.<br /><br />
@@ -955,7 +957,20 @@ export default class Kitchensink extends Vue {
 }
 </script>
 <style lang="scss">
+@import "../assets/scss/_variables.scss";
 .space {
   height: 20px;
+}
+
+@media (max-width: $screen-xs) {
+  .button-multiline {
+    .anx-button {
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
 }
 </style>
