@@ -501,6 +501,16 @@
               cases.<br /><br />
 
               <anx-button text="alert" @click="testalert('Clicked')" />
+
+              <br /><br />
+              The following button is an example for a multiline button. The
+              button automatically changes to multiline, if the text is too
+              long.
+              <br /><br />
+
+              <anx-button width="200px">
+                This is a simple multiline button with no function
+              </anx-button>
             </anx-form>
           </anx-paragraph>
 
