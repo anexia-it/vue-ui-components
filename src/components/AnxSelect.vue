@@ -200,7 +200,6 @@ export default class AnxSelect extends Vue {
   border-bottom: 1px solid $anx-second-grey-light;
 
   label {
-    display: table-cell;
     white-space: nowrap;
     width: auto;
   }
@@ -212,9 +211,9 @@ export default class AnxSelect extends Vue {
   }
 
   .anx-select-div {
+    float: right;
     color: $anx-primary-green;
     position: relative;
-    display: table-cell;
     top: 0;
     right: 0;
     bottom: -2px;
@@ -226,7 +225,6 @@ export default class AnxSelect extends Vue {
     transition: all 0.2s ease-in;
     text-align: right;
     padding: 0 18px;
-    width: var(--select-width);
 
     &:after {
       background-position: 0 0;

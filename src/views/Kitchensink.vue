@@ -622,7 +622,7 @@
             id="anx-select"
             validation="true"
             v-model="selected2"
-            label="Auswahl treffen required"
+            label="Auswahl treffen required with some long text"
             :options="selectOptions"
           />
           <anx-paragraph>
