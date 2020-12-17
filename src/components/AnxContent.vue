@@ -41,7 +41,7 @@ export default class AnxContent extends Vue {
 @import "../assets/scss/_variables.scss";
 
 .anx-content {
-  margin-bottom: 40px;
+  margin-bottom: $anx-content-spacing;
   background-color: $anx-primary-white;
   padding: 40px;
 

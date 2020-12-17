@@ -88,7 +88,7 @@
         </anx-paragraph>
 
         <anx-paragraph title="Size h3" size="h3">
-          And this is the smallest paragraph<br /><br />
+          And this is the smallest paragraph
         </anx-paragraph>
 
         <anx-alert v-model="showSuccessAlert" type="success">
