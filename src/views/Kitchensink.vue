@@ -513,6 +513,24 @@
               <anx-button width="200px">
                 This is a simple multiline button with no function
               </anx-button>
+
+              <br /><br />
+              Buttons can also have different colors. The default color is
+              <strong>$anx-primary-green</strong> defined in
+              <i>_variables.scss</i>. You can simply change the color by using
+              the <strong>color</strong> property. Note: The
+              <strong>outline</strong> property will still be available.
+
+              <br /><br />
+              <anx-button style="margin-right: 20px" color="#002D6E">
+                Blue
+              </anx-button>
+              <anx-button color="#002D6E" outline>Blue outline</anx-button>
+              <br /><br />
+              <anx-button style="margin-right: 20px" color="#d50000">
+                Red
+              </anx-button>
+              <anx-button color="#d50000" outline>Red outline</anx-button>
             </anx-form>
           </anx-paragraph>
 
