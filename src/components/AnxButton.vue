@@ -17,6 +17,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import design from "../assets/scss/_variables.scss";
 
 @Component({})
 export default class AnxButton extends Vue {
@@ -32,10 +33,14 @@ export default class AnxButton extends Vue {
   @Prop({ default: null }) inline!: boolean | null;
   /** This is the name of the event, that will be emitted on click */
   @Prop({ default: "click" }) eventName!: string;
+  /** Set the color of the button (property will be directly passed into css, so use e.g. HEX code) */
+  @Prop({ default: null }) color!: string | null;
 
   get cssProps() {
     return {
-      "--button-width": this.width !== null ? this.width : "auto"
+      "--button-width": this.width !== null ? this.width : "auto",
+      "--button-color":
+        this.color !== null ? this.color : design.defaultButtonColor
     };
   }
 }
@@ -76,10 +81,10 @@ button {
   transition: color 0.3s;
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   text-align: center;
-  background-color: $anx-primary-green;
+  background-color: var(--button-color);
   padding-left: 2em;
   padding-right: 2em;
-  border: 1px solid $anx-primary-green;
+  border: 1px solid var(--button-color);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
@@ -110,7 +115,7 @@ button {
   }
 
   &:visited {
-    color: $anx-primary-green;
+    color: var(--button-color);
     text-decoration: none;
   }
 
@@ -118,7 +123,7 @@ button {
     cursor: pointer;
 
     &:hover {
-      color: $anx-primary-green;
+      color: var(--button-color);
       background-color: $anx-primary-white;
       text-decoration: none;
 
@@ -139,8 +144,8 @@ button {
 
 /*btn-outline animated button*/
 .btn-outline {
-  color: $anx-primary-green !important;
-  border: 1px solid $anx-primary-green !important;
+  color: var(--button-color) !important;
+  border: 1px solid var(--button-color) !important;
   background-color: $anx-primary-white;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -155,7 +160,7 @@ button {
   }
 
   &:hover {
-    background-color: $anx-primary-green !important;
+    background-color: var(--button-color) !important;
     color: white !important;
     text-decoration: none;
   }
