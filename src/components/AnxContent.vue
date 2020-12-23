@@ -6,7 +6,7 @@
         (first !== null ? 'first-no-nav ' : '')
     "
   >
-    <anx-title v-if="title !== null" :size="size">
+    <anx-title v-if="title !== null" :size="size" :noline="noline">
       {{ title }}
     </anx-title>
     <slot />
@@ -34,6 +34,9 @@ export default class AnxContent extends Vue {
 
   /** If this property is set to true, the element will be handled as first inforamtion element*/
   @Prop({ default: null }) first!: boolean | null;
+
+  /** No line for the anx-title */
+  @Prop({ default: null }) noline!: boolean | null;
 }
 </script>
 

@@ -21,8 +21,9 @@
   <div v-else :class="{ 'inversed-colors': inverse !== null }">
     <anx-title
       :size="size"
-      :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
+      class="anx-paragraph-title"
       :no-margin="noMarginTitle"
+      :noline="noline"
     >
       {{ title }}
     </anx-title>

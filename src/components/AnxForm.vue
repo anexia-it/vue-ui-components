@@ -2,14 +2,15 @@
   <ValidationObserver :ref="name" v-slot="{ invalid }">
     <form :id="name" class="anx-form" @submit.prevent="checkValidation">
       <slot />
-      <anx-button
-        v-if="submitButton !== null"
-        type="submit"
-        :width="submitButton.width ? submitButton.width : '100%'"
-        :text="submitButton.text"
-        :disabled="submitButton.disabled && invalid"
-        :inline="submitButton.inline"
-      />
+      <div class="submit-button-wrapper" v-if="submitButton !== null">
+        <anx-button
+          type="submit"
+          :width="submitButton.width ? submitButton.width : null"
+          :text="submitButton.text"
+          :disabled="submitButton.disabled && invalid"
+          :inline="submitButton.inline"
+        />
+      </div>
     </form>
   </ValidationObserver>
 </template>
@@ -58,4 +59,12 @@ export default class AnxForm extends Vue {
 
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
+
+.anx-form {
+  .submit-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
 </style>
