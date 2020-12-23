@@ -5,14 +5,20 @@
         <div class="col-md-12">
           <div class="header-container d-flex">
             <div class="header-image">
-              <slot name="icon">
-                <anx-icon
-                  alt="anx-header-logo"
-                  :icon="icon"
-                  :height="iconSize"
-                  :width="iconSize"
-                />
-              </slot>
+              <anx-link
+                :href="iconUrl"
+                no-style
+                :disabled="iconUrl == null ? true : null"
+              >
+                <slot name="icon">
+                  <anx-icon
+                    alt="anx-header-logo"
+                    :icon="icon"
+                    :height="iconSize"
+                    :width="iconSize"
+                  />
+                </slot>
+              </anx-link>
             </div>
             <div class="header-language-nav" v-if="i18n">
               <div
@@ -85,6 +91,8 @@ export default class AnxHeader extends Vue {
   }> | null;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
+  /** The url for the click on the icon (set to null to disable) */
+  @Prop({ default: "/" }) iconUrl!: string | null;
 
   /** Emit the @localeChange event when the locale is changed via the AnxLanguageSwitcher */
   @Emit("localeChange")

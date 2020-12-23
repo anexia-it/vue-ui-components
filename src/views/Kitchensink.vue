@@ -13,6 +13,7 @@
     <anx-header
       :menus="items"
       :i18n="$i18n"
+      :icon-url="null"
       @localeChange="localeChange($event)"
     />
 
