@@ -4,6 +4,7 @@
       <anx-icon class="anx-card-icon" :icon="icon" />
       <anx-paragraph :title="title" size="h3">
         <slot />
+        <br v-if="linkText" />
         <anx-link v-if="linkText" :href="link"> {{ linkText }}</anx-link>
       </anx-paragraph>
     </div>
