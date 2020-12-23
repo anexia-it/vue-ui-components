@@ -93,7 +93,7 @@ export default class AnxSelect extends Vue {
   private get cValidationRules() {
     if (this.validationRules !== null) return this.validationRules;
 
-    if (this.validation !== null) return "excluded: null";
+    if (this.validation !== null) return "excluded:null";
 
     return "";
   }
@@ -125,9 +125,13 @@ export default class AnxSelect extends Vue {
    * Verfiy the selected value and generate the error-message for the custom select.
    */
   private async verify(value: string) {
-    const { errors } = await this.$validator.verify(value, "excluded:null", {
-      name: this.label
-    });
+    const { errors } = await this.$validator.verify(
+      value,
+      this.cValidationRules,
+      {
+        name: this.label
+      }
+    );
     this.error = errors;
   }
 
