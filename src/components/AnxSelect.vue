@@ -6,11 +6,12 @@
     tag="div"
   >
     <div
+      @click="show = !show"
       class="anx-select"
       :class="{ is_invalid: error.length > 0 || errors.length > 0 }"
       :style="cssProps"
     >
-      <label :for="id + '1'"> {{ label }}</label>
+      <label :for="id + '1'" @click.prevent> {{ label }}</label>
       <select :id="id + '1'" :name="id" v-model="selected">
         <option
           v-for="option in options"
@@ -20,7 +21,7 @@
           {{ option.text }}</option
         >
       </select>
-      <div class="anx-select-div" @click="show = !show">
+      <div class="anx-select-div">
         {{ selectedText }}
       </div>
       <ul class="anx-select-options" :class="{ show: show }">
@@ -29,7 +30,7 @@
           :key="option.value"
           :rel="option.value"
           :class="{ active: selected === option.value }"
-          @click="select(option)"
+          @click.stop="select(option)"
         >
           {{ option.text }}
         </li>
@@ -93,7 +94,7 @@ export default class AnxSelect extends Vue {
   private get cValidationRules() {
     if (this.validationRules !== null) return this.validationRules;
 
-    if (this.validation !== null) return "excluded: null";
+    if (this.validation !== null) return "excluded:null";
 
     return "";
   }
@@ -125,9 +126,13 @@ export default class AnxSelect extends Vue {
    * Verfiy the selected value and generate the error-message for the custom select.
    */
   private async verify(value: string) {
-    const { errors } = await this.$validator.verify(value, "excluded:null", {
-      name: this.label
-    });
+    const { errors } = await this.$validator.verify(
+      value,
+      this.cValidationRules,
+      {
+        name: this.label
+      }
+    );
     this.error = errors;
   }
 
@@ -202,6 +207,7 @@ export default class AnxSelect extends Vue {
   label {
     white-space: nowrap;
     width: auto;
+    cursor: pointer;
   }
 
   select {

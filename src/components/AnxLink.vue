@@ -1,14 +1,21 @@
 <template>
   <a
     v-if="disabled === null"
-    class="anx-link"
+    :class="{ 'anx-link': true, 'no-style': noStyle !== null }"
     @click="click($event)"
     :href="href"
     :target="newTab !== null ? '_blank' : '_self'"
   >
     <slot />
   </a>
-  <span v-else :class="'anx-link disabled disabled-style-' + disabledStyle">
+  <span
+    v-else
+    :class="
+      'anx-link disabled disabled-style-' +
+        disabledStyle +
+        (noStyle != null ? ' no-style' : '')
+    "
+  >
     <slot />
   </span>
 </template>
@@ -31,6 +38,9 @@ export default class AnxLink extends Vue {
   @Prop({ default: null }) external!: boolean | null;
   /** Open the link in a new tab */
   @Prop({ default: null }) newTab!: boolean | null;
+  /** Disable any style for the anx-link (can be used if the component, the anx-link
+   ** is wrapped around already has its own design; e.g. image) */
+  @Prop({ default: null }) noStyle!: boolean | null;
 
   /** Emit the click event */
   @Emit("click")
@@ -111,6 +121,11 @@ export default class AnxLink extends Vue {
     &:hover {
       cursor: unset;
     }
+  }
+
+  &.no-style {
+    border-bottom: unset !important;
+    color: unset !important;
   }
 }
 </style>
