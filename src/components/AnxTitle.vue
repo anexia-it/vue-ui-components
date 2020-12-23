@@ -42,7 +42,7 @@ export default class AnxContent extends Vue {
   line-height: 1.2em;
 
   &.no-margin,
-  &:not(.noline) {
+  &:not(.no-line) {
     margin-bottom: 0px !important;
   }
 
@@ -65,7 +65,7 @@ export default class AnxContent extends Vue {
     margin-bottom: 0px;
   }
 
-  &:not(.noline):after {
+  &:not(.no-line):after {
     content: "\a—";
     white-space: pre;
   }
