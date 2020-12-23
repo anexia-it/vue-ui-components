@@ -1,6 +1,7 @@
 <template>
   <component
     :is="size"
+    :style="cssProps"
     :class="
       `anx-title size-${size} ` +
         (noMargin !== null ? 'no-margin ' : '') +
@@ -15,6 +16,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import design from "../assets/scss/_variables.scss";
 
 @Component({})
 export default class AnxContent extends Vue {
@@ -29,6 +31,16 @@ export default class AnxContent extends Vue {
 
   /** Do not display a line after the title */
   @Prop({ default: null }) noline!: boolean | null;
+
+  /** The margin after the title */
+  @Prop({ default: null }) margin!: string | null;
+
+  get cssProps() {
+    return {
+      "--margin-bottom":
+        this.margin !== null ? this.margin : design.titleSpacing
+    };
+  }
 }
 </script>
 
@@ -40,6 +52,7 @@ export default class AnxContent extends Vue {
   color: $anx-primary-blue;
   margin-top: 0px;
   line-height: 1.2em;
+  margin-bottom: var(--margin-bottom);
 
   &.no-margin,
   &:not(.no-line) {
@@ -49,20 +62,17 @@ export default class AnxContent extends Vue {
   &.size-h1 {
     font-size: 28px;
     font-weight: 500;
-    margin-bottom: 20px;
   }
 
   &.size-h2 {
     font-size: 23px;
     font-weight: 500;
-    margin-bottom: 10px;
   }
 
   &.size-h3 {
     font-size: 20px;
     font-weight: 500;
     color: $anx-lightest-grey-dark;
-    margin-bottom: 0px;
   }
 
   &:not(.no-line):after {
