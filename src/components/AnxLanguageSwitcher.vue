@@ -2,14 +2,24 @@
   <div v-if="i18n">
     <div class="anx-language-switcher">
       <label v-for="(lang, key) in languages" :key="lang.code">
+        <!-- Render the link for changing the langauge -->
         <anx-link
-          v-if="locale !== lang.code"
+          v-if="locale !== lang.code && lang.link !== null"
           @click="setLocale(lang.code)"
           :href="lang.link"
         >
           {{ lang.text }}
         </anx-link>
+        <!-- Render link without url (if language is changed via JavaScript) -->
+        <anx-link
+          v-else-if="locale !== lang.code && lang.link === null"
+          @click="setLocale(lang.code)"
+        >
+          {{ lang.text }}
+        </anx-link>
+        <!-- Render span if the language is currently active -->
         <span v-else>{{ lang.text }}</span>
+        <!-- Render "/" if it is not the last language in the array -->
         <span v-if="key != languages.length - 1"> / </span>
       </label>
     </div>
@@ -42,12 +52,12 @@ export default class I18nLangSwitcher extends Vue {
     default: [
       {
         code: "de",
-        link: "#",
+        link: null,
         text: "DE"
       },
       {
         code: "en",
-        link: "#",
+        link: null,
         text: "EN"
       }
     ]
