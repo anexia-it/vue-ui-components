@@ -1,11 +1,27 @@
 <template>
   <div v-if="i18n">
     <div class="anx-language-switcher">
-      <anx-link v-if="locale === 'en'" @click="setLocale('de')">DE</anx-link>
-      <span v-else>DE</span>
-      <span> / </span>
-      <anx-link v-if="locale === 'de'" @click="setLocale('en')">EN</anx-link>
-      <span v-else>EN</span>
+      <label v-for="(lang, key) in languages" :key="lang.code">
+        <!-- Render the link for changing the langauge -->
+        <anx-link
+          v-if="locale !== lang.code && lang.link !== null"
+          @click="setLocale(lang.code)"
+          :href="lang.link"
+        >
+          {{ lang.text }}
+        </anx-link>
+        <!-- Render link without url (if language is changed via JavaScript) -->
+        <anx-link
+          v-else-if="locale !== lang.code && lang.link === null"
+          @click="setLocale(lang.code)"
+        >
+          {{ lang.text }}
+        </anx-link>
+        <!-- Render span if the language is currently active -->
+        <span v-else>{{ lang.text }}</span>
+        <!-- Render "/" if it is not the last language in the array -->
+        <span v-if="key != languages.length - 1"> / </span>
+      </label>
     </div>
   </div>
   <div v-else>
@@ -26,6 +42,27 @@ import VueI18n from "vue-i18n";
 export default class I18nLangSwitcher extends Vue {
   /** The i18n instance from the root vue project */
   @Prop({ default: null }) i18n!: VueI18n | null;
+
+  /**
+   * With this property, the different languages that
+   * will be selectable in the language switcher can
+   * be set
+   */
+  @Prop({
+    default: [
+      {
+        code: "de",
+        link: null,
+        text: "DE"
+      },
+      {
+        code: "en",
+        link: null,
+        text: "EN"
+      }
+    ]
+  })
+  languages!: Array<{}>;
 
   /** Emit the changes languages as @localeChange event */
   @Emit("localeChange")

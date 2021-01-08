@@ -25,6 +25,13 @@
                 :class="{ 'header-lang-switcher-top-nav': true, show: !menus }"
               >
                 <AnxLanguageSwitcher
+                  v-if="i18nOptions !== null"
+                  :i18n="i18n"
+                  :languages="i18nOptions"
+                  @localeChange="localeChange($event)"
+                />
+                <AnxLanguageSwitcher
+                  v-else
                   :i18n="i18n"
                   @localeChange="localeChange($event)"
                 />
@@ -51,6 +58,13 @@
             >
               <div v-if="menus">
                 <AnxLanguageSwitcher
+                  v-if="i18nOptions !== null"
+                  :i18n="i18n"
+                  :languages="i18nOptions"
+                  @localeChange="localeChange($event)"
+                />
+                <AnxLanguageSwitcher
+                  v-else
                   :i18n="i18n"
                   @localeChange="localeChange($event)"
                 />
@@ -80,6 +94,8 @@ export default class AnxHeader extends Vue {
 
   /** The i18n instance from the root vue project */
   @Prop({ default: null }) i18n!: VueI18n | null;
+  /** The options that will be passed to the anx-language-switcher */
+  @Prop({ default: null }) i18nOptions!: Array<{}> | null;
   /** The icon for the header */
   @Prop({ default: "anexia" }) icon!: string;
   /** The icon size for the header */
