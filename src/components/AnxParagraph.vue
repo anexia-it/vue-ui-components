@@ -2,6 +2,7 @@
   <component
     v-if="title === null"
     :is="element"
+    :style="marginBottom !== null ? 'margin-bottom: ' + marginBottom : ''"
     :class="
       `anx-paragraph anx-paragraph-${size} ` +
         (hint !== null ? 'hint ' : '') +
@@ -20,13 +21,15 @@
   <div v-else :class="{ 'inversed-colors': inverse !== null }">
     <anx-title
       :size="size"
-      :class="`anx-paragraph-title ` + (noline !== null ? 'noline ' : '')"
+      class="anx-paragraph-title"
       :no-margin="noMarginTitle"
+      :noline="noline"
     >
       {{ title }}
     </anx-title>
     <component
       :is="element"
+      :style="marginBottom !== null ? 'margin-bottom: ' + marginBottom : ''"
       :class="
         `anx-paragraph anx-paragraph-${size} ` + (hint !== null ? 'hint ' : '')
       "
@@ -66,6 +69,9 @@ export default class AnxParagraph extends Vue {
 
   /** This is the element that will be inserted for anx-paragraph */
   @Prop({ default: "p" }) element!: string;
+
+  /** Margin bottom for the paragraph */
+  @Prop({ default: null }) marginBottom!: string | null;
 }
 </script>
 
@@ -76,6 +82,7 @@ export default class AnxParagraph extends Vue {
   font-size: 16px;
   line-height: 1.5em;
   overflow-wrap: anywhere;
+  margin-bottom: $anx-paragraph-spacing;
 
   p {
     margin: 0;
@@ -83,18 +90,6 @@ export default class AnxParagraph extends Vue {
 
   span {
     overflow-wrap: anywhere;
-  }
-
-  &.anx-paragraph-h1 {
-    margin-bottom: 40px;
-  }
-
-  &.anx-paragraph-h2 {
-    margin-bottom: 30px;
-  }
-
-  &.anx-paragraph-h3 {
-    margin-bottom: 20px;
   }
 
   .anx-paragraph-title {

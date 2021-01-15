@@ -5,6 +5,7 @@
     :width="width"
     :height="height"
     :margin="margin"
+    :title="title"
   ></component>
 </template>
 
@@ -24,6 +25,9 @@ export default class AnxIcon extends Vue {
 
   /** The margin of the icon */
   @Prop({ default: null }) margin!: string | null;
+
+  /** This is the text that will be displayed when the user hover over the icon */
+  @Prop({ default: null }) title!: string | null;
 
   get iconName() {
     if (this.icon.indexOf("anx-icon") === 0) return this.icon;

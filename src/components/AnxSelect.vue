@@ -1,29 +1,18 @@
 <template>
-  <!-- if validation=true then this will be rendered, anx-select + validation-provider -->
-  <!-- 
-    //TODO: Refactor!
-    //TODO: See AnxInput.vue
-    //TODO: The v-if condition is not necessary. The ValidationProvider can be rendered as div with the needed classes and styles.
-    //TODO: This minimizes the lines of code and makes the component easier to maintain.
-  -->
   <ValidationProvider
-    v-if="validation !== null"
     :name="label"
-    rules="excluded:null"
+    :rules="cValidationRules"
     v-slot="{ errors }"
+    tag="div"
   >
     <div
+      @click="show = !show"
       class="anx-select"
       :class="{ is_invalid: error.length > 0 || errors.length > 0 }"
       :style="cssProps"
     >
-      <label :for="id + '1'"> {{ label }}</label>
-      <select
-        class="select-original"
-        :id="id + '1'"
-        :name="id"
-        v-model="selected"
-      >
+      <label :for="id" @click.prevent> {{ label }}</label>
+      <select :id="id" :name="id" v-model="selected">
         <option
           v-for="option in options"
           :key="option.value"
@@ -32,7 +21,7 @@
           {{ option.text }}</option
         >
       </select>
-      <div class="anx-select-div" @click="show = !show">
+      <div class="anx-select-div">
         {{ selectedText }}
       </div>
       <ul class="anx-select-options" :class="{ show: show }">
@@ -41,7 +30,7 @@
           :key="option.value"
           :rel="option.value"
           :class="{ active: selected === option.value }"
-          @click="select(option)"
+          @click.stop="select(option)"
         >
           {{ option.text }}
         </li>
@@ -52,38 +41,6 @@
       <span v-else class="error">{{ errors[0] }}</span>
     </div>
   </ValidationProvider>
-  <!-- if validation=false then this will be rendered,s simple anx-select -->
-  <div v-else class="anx-select" :style="cssProps">
-    <label :for="id + '1'"> {{ label }}</label>
-    <select
-      class="select-original"
-      :id="id + '1'"
-      :name="id"
-      v-model="selected"
-    >
-      <option
-        v-for="option in options"
-        :key="option.value"
-        :value="option.value"
-      >
-        {{ option.text }}</option
-      >
-    </select>
-    <div class="anx-select-div" @click="show = !show">
-      {{ selectedText }}
-    </div>
-    <ul class="anx-select-options" :class="{ show: show }">
-      <li
-        v-for="option in options"
-        :key="option.value"
-        :rel="option.value"
-        :class="{ active: selected === option.value }"
-        @click="select(option)"
-      >
-        {{ option.text }}
-      </li>
-    </ul>
-  </div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
@@ -126,6 +83,21 @@ export default class AnxSelect extends Vue {
   @Prop({ default: "100%" }) width!: string;
   /**validation: When this is set to true, there will be a validation-provider */
   @Prop({ default: null }) validation!: boolean | null;
+  /** The rules for the validation */
+  @Prop({ default: null }) validationRules!: string | null;
+
+  /**
+   * Check if a validation rule is provided and return this validation rule
+   * If validation parameter is provided, return the default validation rule
+   * Otherwise return an empty string
+   */
+  private get cValidationRules() {
+    if (this.validationRules !== null) return this.validationRules;
+
+    if (this.validation !== null) return "excluded:null";
+
+    return "";
+  }
 
   private selected = this.options[this.selectedIndex].value;
   private selectedText = this.options[this.selectedIndex].text;
@@ -154,9 +126,13 @@ export default class AnxSelect extends Vue {
    * Verfiy the selected value and generate the error-message for the custom select.
    */
   private async verify(value: string) {
-    const { errors } = await this.$validator.verify(value, "excluded:null", {
-      name: this.label
-    });
+    const { errors } = await this.$validator.verify(
+      value,
+      this.cValidationRules,
+      {
+        name: this.label
+      }
+    );
     this.error = errors;
   }
 
@@ -221,11 +197,120 @@ export default class AnxSelect extends Vue {
   position: relative;
   width: var(--select-width);
   color: $anx-lightest-grey-dark;
-  height: 25px;
+  min-height: 25px;
+  height: auto;
   margin-bottom: $form-components-spacing;
   margin-top: 23px; /*real margin 53px, because all form-components has 30px margin-bottom*/
-
   font-size: 16px;
+  border-bottom: 1px solid $anx-second-grey-light;
+
+  label {
+    white-space: nowrap;
+    width: auto;
+    cursor: pointer;
+  }
+
+  select {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .anx-select-div {
+    float: right;
+    color: $anx-primary-green;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: -2px;
+    left: 0;
+    background-color: transparent;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+    text-align: right;
+    padding: 0 18px;
+
+    &:after {
+      background-position: 0 0;
+      background-image: url(../assets/icons/arrow-green-bottom.svg);
+      width: 12px;
+      height: 11px;
+      content: "";
+      background-repeat: no-repeat;
+      position: absolute;
+      right: 0;
+      top: 4px;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .anx-select-options {
+    display: none;
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0 0 0 0;
+    padding: 0;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid $anx-second-grey-light;
+    border-top: none;
+    width: var(--select-width);
+
+    li {
+      text-align: right;
+      padding: 4px 18px 0px 18px;
+      margin: 0;
+      -moz-transition: all 0.15s ease-in;
+      -o-transition: all 0.15s ease-in;
+      -webkit-transition: all 0.15s ease-in;
+      transition: all 0.15s ease-in;
+      position: relative;
+      min-height: 25px;
+      height: auto;
+
+      &:hover {
+        color: #fff;
+        background: $anx-primary-green;
+      }
+
+      &.active {
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          /* IE10+ CSS styles go here */
+          color: $anx-primary-green;
+
+          &:before {
+            display: none;
+          }
+        }
+        &:before {
+          content: "";
+          width: 16px;
+          height: 16px;
+          min-width: 16px;
+          background-image: url(../assets/icons/check-green.svg);
+          background-repeat: no-repeat;
+          position: absolute;
+          top: 4px;
+          margin-left: -20px;
+          background-position: 50%;
+        }
+
+        &:hover {
+          &:before {
+            background-image: url(../assets/icons/check-white.svg) !important;
+          }
+        }
+      }
+    }
+  }
 
   &.is_invalid {
     margin-bottom: 0px;
@@ -242,105 +327,8 @@ export default class AnxSelect extends Vue {
   }
 }
 
-.anx-select .select-original {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.anx-select .anx-select-div {
-  color: $anx-primary-green;
-  border-bottom: 1px solid $anx-second-grey-light;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: -2px;
-  left: 0;
-  background-color: transparent;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-  text-align: right;
-  padding: 0 18px;
-  width: var(--select-width);
-}
-.anx-select .anx-select-div:after {
-  background-position: 0 0;
-  background-image: url(../assets/icons/arrow-green-bottom.svg);
-  width: 12px;
-  height: 11px;
-  content: "";
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0;
-  top: 4px;
-}
-.anx-select .anx-select-div:hover {
-  background-color: transparent;
-}
-.anx-select .anx-select-options {
-  display: none;
-  position: absolute;
-  top: 108%;
-  right: 0;
-  left: 0;
-  z-index: 999;
-  margin: 0 0 0 0;
-  padding: 0;
-  list-style: none;
-  background-color: #fff;
-  border: 1px solid $anx-second-grey-light;
-  border-top: none;
-  width: var(--select-width);
-}
-.anx-select .anx-select-options li {
-  text-align: right;
-  padding-right: 18px;
-  padding-top: 4px;
-  margin: 0;
-  -moz-transition: all 0.15s ease-in;
-  -o-transition: all 0.15s ease-in;
-  -webkit-transition: all 0.15s ease-in;
-  transition: all 0.15s ease-in;
-  position: relative;
-  height: 25px;
-}
-.anx-select .anx-select-options li.active:before {
-  content: "";
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  background-image: url(../assets/icons/check-green.svg);
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 4px;
-  margin-left: -20px;
-  background-position: 50%;
-}
-
-.anx-select .anx-select-options li.active:hover:before {
-  background-image: url(../assets/icons/check-white.svg) !important;
-}
-
-.anx-select .anx-select-options li.active {
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    /* IE10+ CSS styles go here */
-    color: $anx-primary-green;
-
-    &:before {
-      display: none;
-    }
-  }
-}
-.anx-select .anx-select-options li:hover {
-  color: #fff;
-  background: $anx-primary-green;
-}
-
 .anx-select-error {
   margin-bottom: $form-components-spacing;
-  margin-top: 5px;
 
   span {
     font-size: 12px;

@@ -6,7 +6,6 @@
 import Vue from "vue";
 
 import {
-  AnxIcon110LKWTransport,
   AnxIcon24h,
   AnxIcon3d,
   AnxIconAiKuenstlicheintelligenz,
@@ -77,6 +76,7 @@ import {
   AnxIconLaden,
   AnxIconLastverteilung,
   AnxIconLike,
+  AnxIconLKWTransport,
   AnxIconLoeschen,
   AnxIconMailKontakt,
   AnxIconMassgeschneiderteIndividuelleLoesungen,
@@ -149,6 +149,7 @@ import {
   AnxIconVollbildVerschieben,
   AnxIconVr,
   AnxIconWachstumUmsatz,
+  AnxIconWarningSmall,
   AnxIconWarning,
   AnxIconWebdesign,
   AnxIconWebentwicklung,
@@ -165,7 +166,6 @@ import {
 } from "./icons";
 
 export const AnxIconsNames = [
-  "AnxIcon110LKWTransport",
   "AnxIcon24h",
   "AnxIcon3d",
   "AnxIconAiKuenstlicheintelligenz",
@@ -236,6 +236,7 @@ export const AnxIconsNames = [
   "AnxIconLaden",
   "AnxIconLastverteilung",
   "AnxIconLike",
+  "AnxIconLKWTransport",
   "AnxIconLoeschen",
   "AnxIconMailKontakt",
   "AnxIconMassgeschneiderteIndividuelleLoesungen",
@@ -308,6 +309,7 @@ export const AnxIconsNames = [
   "AnxIconVollbildVerschieben",
   "AnxIconVr",
   "AnxIconWachstumUmsatz",
+  "AnxIconWarningSmall",
   "AnxIconWarning",
   "AnxIconWebdesign",
   "AnxIconWebentwicklung",
@@ -325,7 +327,6 @@ export const AnxIconsNames = [
 
 export const AnxIconsPlugin = {
   install: function() {
-    Vue.component("AnxIcon110LKWTransport", AnxIcon110LKWTransport);
     Vue.component("AnxIcon24h", AnxIcon24h);
     Vue.component("AnxIcon3d", AnxIcon3d);
     Vue.component(
@@ -414,6 +415,7 @@ export const AnxIconsPlugin = {
     Vue.component("AnxIconLaden", AnxIconLaden);
     Vue.component("AnxIconLastverteilung", AnxIconLastverteilung);
     Vue.component("AnxIconLike", AnxIconLike);
+    Vue.component("AnxIconLKWTransport", AnxIconLKWTransport);
     Vue.component("AnxIconLoeschen", AnxIconLoeschen);
     Vue.component("AnxIconMailKontakt", AnxIconMailKontakt);
     Vue.component(
@@ -513,6 +515,7 @@ export const AnxIconsPlugin = {
     Vue.component("AnxIconVollbildVerschieben", AnxIconVollbildVerschieben);
     Vue.component("AnxIconVr", AnxIconVr);
     Vue.component("AnxIconWachstumUmsatz", AnxIconWachstumUmsatz);
+    Vue.component("AnxIconWarningSmall", AnxIconWarningSmall);
     Vue.component("AnxIconWarning", AnxIconWarning);
     Vue.component("AnxIconWebdesign", AnxIconWebdesign);
     Vue.component("AnxIconWebentwicklung", AnxIconWebentwicklung);

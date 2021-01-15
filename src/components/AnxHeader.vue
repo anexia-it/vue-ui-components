@@ -5,14 +5,20 @@
         <div class="col-md-12">
           <div class="header-container d-flex">
             <div class="header-image">
-              <slot name="icon">
-                <anx-icon
-                  alt="anx-header-logo"
-                  :icon="icon"
-                  :height="iconSize"
-                  :width="iconSize"
-                />
-              </slot>
+              <anx-link
+                :href="iconUrl"
+                no-style
+                :disabled="iconUrl == null ? true : null"
+              >
+                <slot name="icon">
+                  <anx-icon
+                    alt="anx-header-logo"
+                    :icon="icon"
+                    :height="iconSize"
+                    :width="iconSize"
+                  />
+                </slot>
+              </anx-link>
             </div>
             <div class="header-language-nav" v-if="i18n">
               <slot name="header-top-right">
@@ -23,6 +29,13 @@
                   }"
                 >
                   <AnxLanguageSwitcher
+                    v-if="i18nOptions !== null"
+                    :i18n="i18n"
+                    :languages="i18nOptions"
+                    @localeChange="localeChange($event)"
+                  />
+                  <AnxLanguageSwitcher
+                    v-else
                     :i18n="i18n"
                     @localeChange="localeChange($event)"
                   />
@@ -50,6 +63,13 @@
             >
               <div v-if="menus">
                 <AnxLanguageSwitcher
+                  v-if="i18nOptions !== null"
+                  :i18n="i18n"
+                  :languages="i18nOptions"
+                  @localeChange="localeChange($event)"
+                />
+                <AnxLanguageSwitcher
+                  v-else
                   :i18n="i18n"
                   @localeChange="localeChange($event)"
                 />
@@ -79,6 +99,8 @@ export default class AnxHeader extends Vue {
 
   /** The i18n instance from the root vue project */
   @Prop({ default: null }) i18n!: VueI18n | null;
+  /** The options that will be passed to the anx-language-switcher */
+  @Prop({ default: null }) i18nOptions!: Array<{}> | null;
   /** The icon for the header */
   @Prop({ default: "anexia" }) icon!: string;
   /** The icon size for the header */
@@ -90,6 +112,8 @@ export default class AnxHeader extends Vue {
   }> | null;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
+  /** The url for the click on the icon (set to null to disable) */
+  @Prop({ default: "/" }) iconUrl!: string | null;
 
   /** Emit the @localeChange event when the locale is changed via the AnxLanguageSwitcher */
   @Emit("localeChange")

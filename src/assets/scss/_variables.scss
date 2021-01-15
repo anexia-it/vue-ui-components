@@ -36,11 +36,19 @@
   $anx-error-light: #fef7f7;
   $anx-primary-green-light: #FBFDF8;
 
-  $screen-xs: 768px;
+  $screen-xs: 568px; 
+  $screen-sm: 768px;
   $screen-md: 992px;
   $screen-lg: 1200px;
 
+  $anx-content-spacing: 40px;
   $form-components-spacing: 30px;
+  $anx-paragraph-spacing: 40px;
+  $anx-title-spacing: 20px;
   
   $anx-font-family: "Meta", Arial, Helvetica, sans-serif;
   
+  :export {
+    defaultButtonColor: $anx-primary-green;
+    titleSpacing: $anx-title-spacing;
+  }
