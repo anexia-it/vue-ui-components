@@ -216,11 +216,24 @@
           :icon="icon"
           width="50px"
           margin="20px"
+          :title="icon"
         ></anx-icon>
         <br />
         <anx-icon width="30px" margin="20px" />
         <anx-icon-alexa width="50px" margin="20px" />
         <anx-icon-3d width="80px" margin="20px" />
+        <br />
+        Every <i>&lt;anx-icon&gt;</i> has a title inside the
+        <i>&lt;svg&gt;</i> element. This title will be displayed when hovering
+        the <i>&lt;anx-icon&gt;</i>. It can be set dynamically by using the
+        <strong>title</strong> property.<br />
+        Hover over the following icon to see the result:<br /><br />
+        <anx-icon
+          icon="anexia-stamp"
+          height="100px"
+          width="100px"
+          title="This is the stamp of our company!"
+        ></anx-icon>
       </anx-content>
 
       <anx-content title="Tables" size="h2">
