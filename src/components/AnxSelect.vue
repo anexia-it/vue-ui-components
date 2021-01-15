@@ -11,8 +11,8 @@
       :class="{ is_invalid: error.length > 0 || errors.length > 0 }"
       :style="cssProps"
     >
-      <label :for="id + '1'" @click.prevent> {{ label }}</label>
-      <select :id="id + '1'" :name="id" v-model="selected">
+      <label :for="id" @click.prevent> {{ label }}</label>
+      <select :id="id" :name="id" v-model="selected">
         <option
           v-for="option in options"
           :key="option.value"
