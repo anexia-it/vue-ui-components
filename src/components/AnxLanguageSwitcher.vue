@@ -49,18 +49,20 @@ export default class I18nLangSwitcher extends Vue {
    * be set
    */
   @Prop({
-    default: [
-      {
-        code: "de",
-        link: null,
-        text: "DE"
-      },
-      {
-        code: "en",
-        link: null,
-        text: "EN"
-      }
-    ]
+    default: () => {
+      return [
+        {
+          code: "de",
+          link: null,
+          text: "DE"
+        },
+        {
+          code: "en",
+          link: null,
+          text: "EN"
+        }
+      ];
+    }
   })
   languages!: Array<{}>;
 
