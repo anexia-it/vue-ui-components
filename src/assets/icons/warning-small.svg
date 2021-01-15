@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16">
+    <defs>
+        <style>
+        .cls-1, .cls-2 {
+            fill:none;
+            stroke:#969696;
+            stroke-miterlimit:10;
+            stroke-width:1.5px;
+        }
+        .cls-1 {
+            stroke-linecap:square;
+        }
+        
+        .cls-2 {
+            stroke-linecap:round;
+        }
+        .cls-3 {
+            fill:#969696;
+        }
+        </style>
+    </defs>
+    <title>Warning-Small</title>
+    <path class="cls-1" d="M8.42.84.81,15.06a.09.09,0,0,0,.08.13H16.11a.09.09,0,0,0,.08-.13L8.58.84A.09.09,0,0,0,8.42.84Z"/>
+    <line class="cls-2" x1="8.5" y1="6.25" x2="8.5" y2="10.3"/>
+    <circle class="cls-3" cx="8.5" cy="12.5" r="0.87"/>
+</svg>

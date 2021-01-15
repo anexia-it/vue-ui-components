@@ -5,8 +5,6 @@
 
 import Vue from "vue";
 
-export declare class AnxIcon110LKWTransport extends Vue {}
-
 export declare class AnxIcon24h extends Vue {}
 
 export declare class AnxIcon3d extends Vue {}
@@ -146,6 +144,8 @@ export declare class AnxIconLaden extends Vue {}
 export declare class AnxIconLastverteilung extends Vue {}
 
 export declare class AnxIconLike extends Vue {}
+
+export declare class AnxIconLKWTransport extends Vue {}
 
 export declare class AnxIconLoeschen extends Vue {}
 
@@ -290,6 +290,8 @@ export declare class AnxIconVollbildVerschieben extends Vue {}
 export declare class AnxIconVr extends Vue {}
 
 export declare class AnxIconWachstumUmsatz extends Vue {}
+
+export declare class AnxIconWarningSmall extends Vue {}
 
 export declare class AnxIconWarning extends Vue {}
 
