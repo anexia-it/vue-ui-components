@@ -107,6 +107,9 @@ import { AbstractModel } from "../lib/models/AbstractModel";
 export default class AnxCrudTable extends Vue {
   @Prop({ default: null }) modelClass!: typeof AbstractModel | null;
 
+  /** Authorization header for API requests */
+  @Prop({ default: "" }) authorization!: string;
+
   private instances: AbstractModel[] = [];
   private selectedItem: AbstractModel | null = null;
   private createInstance: AbstractModel | null = null;
@@ -144,12 +147,12 @@ export default class AnxCrudTable extends Vue {
     if (!this.modelClass) {
       return;
     }
-    this.instances = await this.modelClass.getAll();
+    this.instances = await this.modelClass.getAll({ authorization: this.authorization });
   }
 
   private async deleteSelectedItem() {
     if (this.selectedItem) {
-      await this.selectedItem.delete();
+      await this.selectedItem.delete({ authorization: this.authorization });
       await this.fetch();
       this.showDeleteModal = false;
     } else {
@@ -159,7 +162,7 @@ export default class AnxCrudTable extends Vue {
 
   private async editSelectedItem() {
     if (this.selectedItem) {
-      await this.selectedItem.update();
+      await this.selectedItem.update({ authorization: this.authorization });
       await this.fetch();
       this.showEditModal = false;
     } else {
@@ -171,7 +174,7 @@ export default class AnxCrudTable extends Vue {
     if (!this.createInstance) {
       return;
     }
-    await this.createInstance.save();
+    await this.createInstance.save({ authorization: this.authorization });
     await this.fetch();
     this.showCreateModal = false;
   }
