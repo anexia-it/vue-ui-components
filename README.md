@@ -178,6 +178,50 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Common errors and troubleshooting
 
+### Wrong API endpoint when using AbstractRestController in production
+
+Our AbstractRestController fetches data via the API using the name of the model. E.g. if your model is called 'User', then the AbstractRestController will send a GET request to /api/user/ to fetch the users. 
+In development this works fine. But if you build the project for production, the whole code is minified. The minification causes a renaming of classes. This means, that the 'User' class will be renamed to 'n' to save some additional characters. Due to this the AbstractRestController will then try to fetch data from '/api/n', but this endpoint does not exist.
+You have to tell your minification plugin (in most cases terser) that it must not rename classes.
+
+#### Vue (Terser preserve class rename)
+
+In ```vue.config.js``` write:
+
+```javascript
+module.exports = {
+  // *Some other content here*
+  chainWebpack: config => {
+    config.optimization
+      .minimizer('terser')
+      .tap(args => {
+        const { terserOptions } = args[0]
+        terserOptions.keep_classnames = true
+        terserOptions.keep_fnames = true
+        return args
+      })
+    }
+}
+```
+
+#### Nuxt (Terser preserve class rename)
+
+In ```nuxt.config.js``` write:
+
+```javascript
+export default {
+  // *Some other content here*
+  build: {
+    terser: {
+      terserOptions: {
+        keep_classnames: true,
+        keep_fnames: true
+      }
+    },
+  }
+}
+```
+
 ### IE 9+ support for custom properties
 Add this to the project public/index.html to make the custom properties work in ie.
 You must do it for every project which use this package.
