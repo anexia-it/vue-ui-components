@@ -4,6 +4,7 @@ import AnxCard from "./AnxCard.vue";
 import AnxCheckbox from "./AnxCheckbox.vue";
 import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
+import AnxCrudTable from "./AnxCrudTable.vue";
 import AnxFooter from "./AnxFooter.vue";
 import AnxForm from "./AnxForm.vue";
 import AnxFormContainer from "./AnxFormContainer.vue";
@@ -14,6 +15,7 @@ import AnxIcon from "./AnxIcon.vue";
 import AnxInput from "./AnxInput.vue";
 import AnxLink from "./AnxLink.vue";
 import AnxList from "./AnxList.vue";
+import AnxLogin from "./AnxLogin.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxParagraph from "./AnxParagraph.vue";
@@ -33,6 +35,7 @@ export default {
   AnxCheckbox,
   AnxContainer,
   AnxContent,
+  AnxCrudTable,
   AnxFooter,
   AnxForm,
   AnxFormContainer,
@@ -44,6 +47,7 @@ export default {
   AnxLanguageSwitcher,
   AnxLink,
   AnxList,
+  AnxLogin,
   AnxModal,
   AnxParagraph,
   AnxReadonly,

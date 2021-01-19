@@ -150,6 +150,7 @@ export default class AnxTable extends Vue {
   text-align: left;
   width: 100%;
   border: none;
+  background-color: $anx-primary-white;
 
   thead {
     background-color: $anx-table-header-background;
