@@ -147,7 +147,9 @@ export default class AnxCrudTable extends Vue {
     if (!this.modelClass) {
       return;
     }
-    this.instances = await this.modelClass.getAll({ authorization: this.authorization });
+    this.instances = await this.modelClass.getAll({
+      authorization: this.authorization
+    });
   }
 
   private async deleteSelectedItem() {
