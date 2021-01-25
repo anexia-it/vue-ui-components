@@ -3,7 +3,6 @@
     <anx-login
       :logo="require('../assets/img/anexia-logo.svg')"
       customer-logo="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.jpg"
-      :submit-button="{ width: '150px' }"
       :footer-text="[
         'Log-in to your ANX application',
         'Lorem Ipsum Platzhalter Text',

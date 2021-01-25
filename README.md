@@ -12,6 +12,7 @@
   - [Nuxt](#nuxt)
 - [Usage](#usage) :white_check_mark:
 - [Troubleshooting](#common-errors-and-troubleshooting) :interrobang:
+- [IE support](#ie-support) :poop:
 
 -----------
 
@@ -177,6 +178,50 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Common errors and troubleshooting
 
+### Wrong API endpoint when using AbstractRestController in production
+
+Our AbstractRestController fetches data via the API using the name of the model. E.g. if your model is called 'User', then the AbstractRestController will send a GET request to /api/user/ to fetch the users. 
+In development this works fine. But if you build the project for production, the whole code is minified. The minification causes a renaming of classes. This means, that the 'User' class will be renamed to 'n' to save some additional characters. Due to this the AbstractRestController will then try to fetch data from '/api/n', but this endpoint does not exist.
+You have to tell your minification plugin (in most cases terser) that it must not rename classes.
+
+#### Vue (Terser preserve class rename)
+
+In ```vue.config.js``` write:
+
+```javascript
+module.exports = {
+  // *Some other content here*
+  chainWebpack: config => {
+    config.optimization
+      .minimizer('terser')
+      .tap(args => {
+        const { terserOptions } = args[0]
+        terserOptions.keep_classnames = true
+        terserOptions.keep_fnames = true
+        return args
+      })
+    }
+}
+```
+
+#### Nuxt (Terser preserve class rename)
+
+In ```nuxt.config.js``` write:
+
+```javascript
+export default {
+  // *Some other content here*
+  build: {
+    terser: {
+      terserOptions: {
+        keep_classnames: true,
+        keep_fnames: true
+      }
+    },
+  }
+}
+```
+
 ### IE 9+ support for custom properties
 Add this to the project public/index.html to make the custom properties work in ie.
 You must do it for every project which use this package.
@@ -212,6 +257,34 @@ To fix this error you simply have to follow the instructions in the error messag
     "experimentalDecorators": true,
     ...
   },
+  ...
+}
+```
+
+## IE support
+
+Our UI tool uses ES6 technologies. Modern browsers like Chrome, Firefox, ... are able to execute ES6 technologies. But IE is not able to execute it.
+Basically, IE doesn't understand the code you are writing in your project (TypeScript, ES6+, ...). So in your project you would therefore use something like Babel to transpile your code to ES5 (so that IE can execute it). I assume that this is already enabled in your project.
+But when including our UI tool, the code inside the UI tool won't be transpiled, because the node_modules folder is excluded from transpiling. Unfortunately, our AnxIcon logic uses ES6 that is not transpiled to ES5. This can cause a syntax error like this in IE:
+
+```
+SCRIPT1002: Syntaxfehler
+d30e718.js (2,442345)
+```
+
+In this case, it can happen that your whole application won't work in IE, because some files of our UI tool are not transpiled to ES5.
+
+To avoid this, you have to tell your transpiler to transpile our project in the node_modules folder. Below are some explainations for some frequent frameworks.
+
+### Vue
+
+Add this to your vue.config.js:
+
+```javascript
+module.exports = {
+  transpileDependencies: [
+    'ui'
+  ],
   ...
 }
 ```
