@@ -9,8 +9,6 @@ export declare class AnxIcon24h extends Vue {}
 
 export declare class AnxIcon3d extends Vue {}
 
-export declare class AnxIconLKWTransport extends Vue {}
-
 export declare class AnxIconAiKuenstlicheintelligenz extends Vue {}
 
 export declare class AnxIconAlexa extends Vue {}
@@ -146,6 +144,8 @@ export declare class AnxIconLaden extends Vue {}
 export declare class AnxIconLastverteilung extends Vue {}
 
 export declare class AnxIconLike extends Vue {}
+
+export declare class AnxIconLKWTransport extends Vue {}
 
 export declare class AnxIconLoeschen extends Vue {}
 
