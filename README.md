@@ -276,6 +276,8 @@ In this case, it can happen that your whole application won't work in IE, becaus
 
 To avoid this, you have to tell your transpiler to transpile our project in the node_modules folder. Below are some explainations for some frequent frameworks.
 
+We are also using a tool called 'node-html-parser' for generating icon components. This tool is required by our project and also has to be transpiled.
+
 ### Vue
 
 Add this to your vue.config.js:
@@ -283,7 +285,7 @@ Add this to your vue.config.js:
 ```javascript
 module.exports = {
   transpileDependencies: [
-    'ui'
+    'ui', 'node-html-parser'
   ],
   ...
 }
