@@ -53,7 +53,7 @@
                 :href="`${menu.link}`"
                 class="anx-link-header"
                 :disabled="isLinkActive(menu) ? null : true"
-                :external="menu.external ? true : false"
+                :external="menu.external ? true : null"
               >
                 {{ menu.menu }}
               </anx-link>
