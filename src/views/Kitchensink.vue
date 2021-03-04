@@ -406,7 +406,7 @@
             confirm-button-text="Save"
             v-if="exampleCustomModal"
             title="Confirmation"
-            @close="exampleCustomModal = false"
+            @close="closeCustomModal"
             @confirm="exampleCustomModal = false"
           >
             This is an example for a modal with a custom footer and confirm and
@@ -415,14 +415,27 @@
             <strong>confirm</strong> and
             <strong>has-close-button</strong> property from the modal and
             configure your own footer with your own buttons using the
-            <strong>modal-footer</strong> slot.
+            <strong>modal-footer</strong> slot.<br /><br />
+            Click the upload button to open a smaller model inside the original
+            modal.
             <template v-slot:modal-footer>
               <anx-button
                 text="Upload"
-                @click="exampleCustomModal = true"
+                @click="exampleCustomModalSmall = true"
                 style="margin-left: 30px;"
               />
             </template>
+          </anx-modal>
+
+          <anx-modal
+            v-if="exampleCustomModalSmall"
+            title="Success"
+            size="s"
+            has-close-button
+            @close="exampleCustomModalSmall = false"
+          >
+            The content has successfully been uploaded!<br /><br />(Note: The
+            logic for closing the modal underlaying modal is different!)
           </anx-modal>
         </anx-paragraph>
 
@@ -977,7 +990,15 @@ export default class Kitchensink extends Vue {
   private exampleModal = false;
   private exampleModalCloseButtonAlign = false;
   private exampleCustomModal = false;
+  private exampleCustomModalSmall = false;
   private exampleConfirmationModal = false;
+
+  /** Only close the underlaying modal if the top modal is not shown */
+  private closeCustomModal() {
+    if (!this.exampleCustomModalSmall) {
+      this.exampleCustomModal = false;
+    }
+  }
 
   /** Display form Modal */
   private formModal = false;

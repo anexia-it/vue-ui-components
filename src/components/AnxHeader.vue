@@ -53,7 +53,7 @@
                 :href="`${menu.link}`"
                 class="anx-link-header"
                 :disabled="isLinkActive(menu) ? null : true"
-                :external="menu.external ? true : false"
+                :external="menu.external ? true : null"
               >
                 {{ menu.menu }}
               </anx-link>
@@ -128,8 +128,13 @@ export default class AnxHeader extends Vue {
     };
   }
 
-  /** Checks if the specified link matches the window link */
-  private isLinkActive(menu: {menu: string, link: string, external: boolean, activeRegex: RegExp}): boolean {
+  /** Checks if the specified link should be active in the header (active means clickable) */
+  private isLinkActive(menu: {
+    menu: string;
+    link: string;
+    external: boolean;
+    activeRegex: RegExp;
+  }): boolean {
     const link = menu.link;
 
     /** Try to get the current window url via window or $route ($route is more appropriate) */
@@ -143,18 +148,20 @@ export default class AnxHeader extends Vue {
     const url = new this.Url(link);
     const windowUrl = new this.Url(currentUrl);
 
-    // URL must not always be an exact match to be highlighted, you can also provide a regex
-    let matches = false
-    matches = url.href !== windowUrl.href;
-    if (!matches) {
-      matches = url.href.match(menu.activeRegex) ? true : false
+    /** URL must not always be an exact match to be highlighted, you can also provide a regex */
+    let matches = false;
+    matches = url.href === windowUrl.href;
+    if (!matches && menu.activeRegex) {
+      matches = windowUrl.href.match(menu.activeRegex) !== null ? true : false;
     }
-    return matches;
+
+    /** Link is only active, if it doesn't match. Otherwise it is deactivated (not clickable) */
+    return !matches;
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
 .header-container {
