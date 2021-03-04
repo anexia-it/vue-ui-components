@@ -161,7 +161,7 @@ export default class AnxHeader extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
 .header-container {
