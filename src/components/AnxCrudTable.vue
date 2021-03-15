@@ -73,7 +73,9 @@
       @close="showEditModal = false"
     >
       <span v-for="(instanceProp, i) in selectedItem" :key="i">
-        <anx-input :label="i" v-model="selectedItem[i]" />
+        <div v-if="i !== 'id'">
+          <anx-input :label="i" v-model="selectedItem[i]" />
+        </div>
       </span>
       <template slot="modal-footer">
         <span class="button-space"></span>
