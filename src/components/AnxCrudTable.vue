@@ -18,11 +18,11 @@
     >
       <span v-for="(instanceProp, i) in createInstance" :key="i">
         <div v-if="i !== 'id'">
-          <br /><br />
-          {{ i }}: <input type="text" v-model="createInstance[i]" />
+          <anx-input :label="i" v-model="createInstance[i]" />
         </div>
       </span>
       <template slot="modal-footer">
+        <span class="button-space"></span>
         <anx-button @click="createItem">Save </anx-button>
       </template>
     </anx-modal>
@@ -73,10 +73,10 @@
       @close="showEditModal = false"
     >
       <span v-for="(instanceProp, i) in selectedItem" :key="i">
-        <br /><br />
-        {{ i }}: <input type="text" v-model="selectedItem[i]" />
+        <anx-input :label="i" v-model="selectedItem[i]" />
       </span>
       <template slot="modal-footer">
+        <span class="button-space"></span>
         <anx-button @click="editSelectedItem">Save</anx-button>
       </template>
     </anx-modal>
@@ -92,6 +92,7 @@ import AnxTableCol from "./AnxTableCol.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxModal from "./AnxModal.vue";
 import AnxButton from "./AnxButton.vue";
+import AnxInput from "./AnxInput.vue";
 import { AbstractModel } from "../lib/models/AbstractModel";
 
 @Component({
@@ -101,7 +102,8 @@ import { AbstractModel } from "../lib/models/AbstractModel";
     AnxTableCol,
     AnxIcon,
     AnxModal,
-    AnxButton
+    AnxButton,
+    AnxInput
   }
 })
 export default class AnxCrudTable extends Vue {
@@ -182,3 +184,9 @@ export default class AnxCrudTable extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.button-space {
+  width: 20px;
+}
+</style>
