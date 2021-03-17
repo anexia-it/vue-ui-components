@@ -1,10 +1,10 @@
 <template>
-  <div class="header" :style="cssProps">
+  <div class="header anx-header" :style="cssProps">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="header-container d-flex">
-            <div class="header-image">
+            <div class="header-image anx-header-image">
               <anx-link
                 :href="iconUrl"
                 no-style
@@ -161,6 +161,7 @@ export default class AnxHeader extends Vue {
 }
 </script>
 
+<!-- Scoped css only for this component -->
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
@@ -170,10 +171,6 @@ export default class AnxHeader extends Vue {
   .header-image {
     font-size: 0px;
     height: 45px;
-
-    img {
-      height: 45px;
-    }
   }
 
   .header-language-nav {
@@ -243,6 +240,19 @@ export default class AnxHeader extends Vue {
         float: left;
         margin-bottom: 20px;
       }
+    }
+  }
+}
+</style>
+
+<!-- Style for injected header image -->
+<style lang="scss">
+@import "../assets/scss/_variables.scss";
+
+.anx-header {
+  .anx-header-image {
+    img {
+      height: 45px;
     }
   }
 }
