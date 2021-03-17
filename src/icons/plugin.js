@@ -8,7 +8,6 @@ import Vue from "vue";
 import {
   AnxIcon24h,
   AnxIcon3d,
-  AnxIconLKWTransport,
   AnxIconAiKuenstlicheintelligenz,
   AnxIconAlexa,
   AnxIconAnderesWeiteresTeil,
@@ -77,6 +76,7 @@ import {
   AnxIconLaden,
   AnxIconLastverteilung,
   AnxIconLike,
+  AnxIconLKWTransport,
   AnxIconLoeschen,
   AnxIconMailKontakt,
   AnxIconMassgeschneiderteIndividuelleLoesungen,
@@ -168,7 +168,6 @@ import {
 export const AnxIconsNames = [
   "AnxIcon24h",
   "AnxIcon3d",
-  "AnxIconLKWTransport",
   "AnxIconAiKuenstlicheintelligenz",
   "AnxIconAlexa",
   "AnxIconAnderesWeiteresTeil",
@@ -237,6 +236,7 @@ export const AnxIconsNames = [
   "AnxIconLaden",
   "AnxIconLastverteilung",
   "AnxIconLike",
+  "AnxIconLKWTransport",
   "AnxIconLoeschen",
   "AnxIconMailKontakt",
   "AnxIconMassgeschneiderteIndividuelleLoesungen",
@@ -329,7 +329,6 @@ export const AnxIconsPlugin = {
   install: function() {
     Vue.component("AnxIcon24h", AnxIcon24h);
     Vue.component("AnxIcon3d", AnxIcon3d);
-    Vue.component("AnxIconLKWTransport", AnxIconLKWTransport);
     Vue.component(
       "AnxIconAiKuenstlicheintelligenz",
       AnxIconAiKuenstlicheintelligenz
@@ -416,6 +415,7 @@ export const AnxIconsPlugin = {
     Vue.component("AnxIconLaden", AnxIconLaden);
     Vue.component("AnxIconLastverteilung", AnxIconLastverteilung);
     Vue.component("AnxIconLike", AnxIconLike);
+    Vue.component("AnxIconLKWTransport", AnxIconLKWTransport);
     Vue.component("AnxIconLoeschen", AnxIconLoeschen);
     Vue.component("AnxIconMailKontakt", AnxIconMailKontakt);
     Vue.component(
