@@ -7,6 +7,7 @@
             <div class="header-image anx-header-image">
               <anx-link
                 :href="iconUrl"
+                :route-name="iconUrlRouteName"
                 no-style
                 :disabled="iconUrl == null ? true : null"
               >
@@ -115,6 +116,12 @@ export default class AnxHeader extends Vue {
   @Prop({ default: "530px" }) width!: string;
   /** The url for the click on the icon (set to null to disable) */
   @Prop({ default: "/" }) iconUrl!: string | null;
+  /**
+   * This property can be passed instead of the iconUrl
+   * The router will push to the passed route name
+   * Only works in combination with Vue-Router (will be ignored otherwise)
+   */
+  @Prop({ default: null }) iconUrlRouteName!: string | null;
 
   /** Emit the @localeChange event when the locale is changed via the AnxLanguageSwitcher */
   @Emit("localeChange")

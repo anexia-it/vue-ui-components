@@ -123,6 +123,10 @@
           regular HTML link. You just have to provide the
           <strong>href</strong> property an the link will lead the user to this
           direction on click.<br /><br />
+          If you are using the Vue Router and you have <i>named routes</i>, you
+          can also pass the name of the route with the
+          <strong>route-name</strong> property. This will override the
+          <strong>href</strong> parameter.<br /><br />
 
           <anx-link href="https://anexia.com">Anexia website</anx-link>
           <br /><br />
