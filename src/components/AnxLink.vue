@@ -34,12 +34,16 @@ export default class AnxLink extends Vue {
   @Prop({ default: "default" }) disabledStyle!: string;
   /** The link */
   @Prop({ default: "" }) href!: string;
+  /** If the route name is defined, the href parameter will be ignored and Vue-Router will push to the named route */
+  @Prop({ default: null }) routeName!: string | null;
   /** Declare the url as external. Vue Router won't be used */
   @Prop({ default: null }) external!: boolean | null;
   /** Open the link in a new tab */
   @Prop({ default: null }) newTab!: boolean | null;
-  /** Disable any style for the anx-link (can be used if the component, the anx-link
-   ** is wrapped around already has its own design; e.g. image) */
+  /**
+   * Disable any style for the anx-link (can be used if the component, the anx-link
+   * is wrapped around already has its own design; e.g. image)
+   */
   @Prop({ default: null }) noStyle!: boolean | null;
 
   /** Emit the click event */
@@ -50,8 +54,22 @@ export default class AnxLink extends Vue {
       /** Prevent the default event for link */
       event.preventDefault();
 
-      /** Only push to the new route if the link is different from the current location */
-      if (this.isDifferentUrl) {
+      /** If a route name is defined, use it instead of the href */
+      if (this.routeName && this.$route) {
+        /** Only push if the route is different */
+        if (this.$route.name !== this.routeName) {
+          if (this.newTab) {
+            /** Logic to open link in new tab by route name */
+            const routeData = this.$router.resolve({
+              name: "routeName"
+            });
+            window.open(routeData.href, "_blank");
+          } else {
+            this.$router.push({ name: this.routeName });
+          }
+        }
+      } else if (this.isDifferentUrl) {
+        /** Only push to the new route if the link is different from the current location */
         /** Check if the url should be opened in a new tab */
         if (this.newTab !== null) {
           /** First resolve the url with router and then resolve the url with url-parser */
