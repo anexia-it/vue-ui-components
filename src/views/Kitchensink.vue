@@ -686,12 +686,32 @@
           </anx-paragraph>
 
           <anx-textarea width="100%" v-model="text1" />
+
+          <anx-paragraph size="h3">
+            You can simply use the <strong>v-model</strong> property of the
+            <i>&lt;anx-textarea&gt;</i> to bind a variable to the input field.
+            This will implement two-way data binding for the
+            <i>&lt;anx-textarea&gt;</i>. Try the functionality by pressing the
+            button below and set a random text for the input field.
+          </anx-paragraph>
+
+          <anx-button
+            type="button"
+            width="100%"
+            @click="text1 = randomString(10)"
+          >
+            Random text
+          </anx-button>
+
+          <br /><br /><br />
+
           <anx-paragraph size="h3">
             This <i>&lt;anx-textarea&gt;</i> has a validation with the default
             rule required. The rule can be changed using the
-            <strong>rules</strong> property.
+            <strong>rules</strong> property. If no rules are defined, there
+            won't be a validation.
           </anx-paragraph>
-          <anx-textarea width="100%" validation="true" v-model="text2" />
+          <anx-textarea width="100%" :validation="true" v-model="text2" />
 
           <anx-paragraph size="h3" title="anx-form-container">
             The default spacing between the input components is declared by the
@@ -1010,6 +1030,19 @@ export default class Kitchensink extends Vue {
   /** Show an alert when the form has been submitted */
   private submitForm() {
     this.formModal = true;
+  }
+
+  /** Generate a random string */
+  private randomString(length: number): string {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return result;
   }
 }
 </script>
