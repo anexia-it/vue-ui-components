@@ -83,7 +83,6 @@ export default class AnxTextarea extends Vue {
    */
   @Watch("value")
   valueChanged() {
-    console.log("value changed");
     this.updateInputField = this.value !== null ? this.value : "";
     this.isFilled();
   }
