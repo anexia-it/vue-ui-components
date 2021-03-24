@@ -11,6 +11,7 @@
       inline: inline !== null ? true : false
     }"
     :style="cssProps"
+    ref="observer"
   >
     <input
       :id="id"
@@ -57,7 +58,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
-import { ValidationProvider } from "vee-validate";
+import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
 
 @Component({
   components: {
@@ -150,7 +151,12 @@ export default class AnxInput extends Vue {
   /**When the User click in and out of the field, the state active will be set and
    * the state filled will be checked.
    */
-  protected inputBlur() {
+  protected async inputBlur() {
+    /** Do validation on focus lost */
+    if (this.rules !== null) {
+      await (this.$refs.observer as ValidationObserverInstance).validate();
+    }
+
     if (this.readonly === null) {
       this.active = !this.active;
       this.isFilled();
