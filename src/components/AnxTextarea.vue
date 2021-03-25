@@ -87,6 +87,12 @@ export default class AnxTextarea extends Vue {
     this.isFilled();
   }
 
+  /** Do a validation if the component is updated */
+  private updated() {
+    /** Only validate, if the value is set */
+    if (this.value && this.value !== "") this.validate();
+  }
+
   /**
    * This function is needed, because the validation property is obsolete, but is used in some applications.
    * Backward compatibility is implemented by this function.
@@ -113,12 +119,17 @@ export default class AnxTextarea extends Vue {
    */
   protected async inputBlur() {
     /** Trigger a validation manually, when focus is lost */
-    if (this.validationRules !== null) {
-      await (this.$refs.observer as ValidationObserverInstance).validate();
-    }
+    this.validate();
 
     this.active = !this.active;
     this.isFilled();
+  }
+
+  /** Validate the input with the defined rules */
+  public async validate() {
+    if (this.validationRules !== null) {
+      await (this.$refs.observer as ValidationObserverInstance).validate();
+    }
   }
 
   /**
