@@ -133,6 +133,12 @@ export default class AnxInput extends Vue {
     this.isFilled();
   }
 
+  /** Do a validation if the component is updated */
+  private updated() {
+    /** Only validate, if the value is set */
+    if (this.value && this.value !== "") this.validate();
+  }
+
   get cssProps() {
     return {
       "--input-width": this.width
@@ -151,15 +157,20 @@ export default class AnxInput extends Vue {
   /**When the User click in and out of the field, the state active will be set and
    * the state filled will be checked.
    */
-  protected async inputBlur() {
+  protected inputBlur() {
     /** Do validation on focus lost */
-    if (this.rules !== null) {
-      await (this.$refs.observer as ValidationObserverInstance).validate();
-    }
+    this.validate();
 
     if (this.readonly === null) {
       this.active = !this.active;
       this.isFilled();
+    }
+  }
+
+  /** Validate the input with the defined rules */
+  private async validate() {
+    if (this.rules !== null) {
+      await (this.$refs.observer as ValidationObserverInstance).validate();
     }
   }
 
