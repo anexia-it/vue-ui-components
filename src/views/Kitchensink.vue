@@ -587,9 +587,12 @@
             assistive-text="Enter your local ip address"
             v-model="ip"
             rules="required|ip"
+            data-vv-as="ip address"
           />
 
           <anx-paragraph size="h3">
+            For localization use the
+            <strong>data-vv-as</strong> parameter.<br /><br />
             <i>&lt;anx-input&gt;</i> without validation but with animation.
           </anx-paragraph>
           <anx-input
