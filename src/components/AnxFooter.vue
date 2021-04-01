@@ -127,8 +127,6 @@ export default class AnxFooter extends Vue {
 
 .anx-footer-container.bottom {
   width: 100%;
-  position: absolute;
-  bottom: 0;
   justify-content: center;
   align-items: center;
   display: flex;
