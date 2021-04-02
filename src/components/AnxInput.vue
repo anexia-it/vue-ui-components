@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider
     v-slot="{ errors, valid }"
-    :name="name"
+    :name="dataVvAs === null ? name : dataVvAs"
     :rules="rules"
     tag="div"
     class="anx-input"
@@ -16,7 +16,6 @@
     <input
       :id="id"
       v-model="updateInputField"
-      :data-vv-as="name"
       :type="type"
       :name="name"
       hide-details="true"
@@ -71,6 +70,8 @@ export default class AnxInput extends Vue {
    * name: is the name of the input-field
    */
   @Prop({ default: "anx-input" }) name!: string;
+  /** This will be shown as field name in error messages. Can be used for localization */
+  @Prop({ default: null }) dataVvAs!: string | null;
   /**id: the id of the input field */
   @Prop({ default: "input-text-field" }) id!: string;
   /**label: the label-text of the input field */
