@@ -54,6 +54,16 @@ export default class AnxForm extends Vue {
       this.submit();
     }
   }
+
+  /** Checks if the form is valid and does validation */
+  public async isValid() {
+    const validator = (this.$refs[this.name] as unknown) as Validator;
+    if (await validator.validate()) {
+      return true;
+    }
+
+    return false;
+  }
 }
 </script>
 

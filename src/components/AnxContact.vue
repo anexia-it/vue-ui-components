@@ -4,7 +4,7 @@
       <anx-paragraph v-if="this.$slots.default">
         <slot />
       </anx-paragraph>
-      <anx-form @submit="submit">
+      <anx-form ref="contactForm" @submit="submit">
         <div class="input-inline">
           <anx-input
             v-model="request.firstName"
@@ -65,6 +65,7 @@
         <!-- invisible google recaptcha -->
         <vue-recaptcha
           v-if="useRecaptcha && invisibleCaptcha"
+          ref="invisibleCaptcha"
           :sitekey="recaptchaSitekey"
           :loadRecaptchaScript="true"
           @verify="verifyCaptcha"
@@ -79,6 +80,7 @@
         <!-- submit button -->
         <anx-button
           v-if="!useRecaptcha || !invisibleCaptcha"
+          id="anx-contact-form-send-button"
           width="100%"
           :disabled="!isButtonEnabled"
         >
@@ -241,9 +243,24 @@ export default class AnxContact extends Vue {
   }
 
   /** Is called if the captcha has been verified. The captcha token is passed */
-  private verifyCaptcha(res: string) {
+  private async verifyCaptcha(res: string) {
     if (res) {
       this.request.captchaToken = res;
+    }
+
+    // If the capctha is invisible, the form should also be submitted
+    if (this.invisibleCaptcha) {
+      // Check if the form is valid
+      const valid = await ((this.$refs
+        .contactForm as unknown) as AnxForm).isValid();
+
+      if (valid) {
+        // Submit if valid
+        this.submit();
+      } else {
+        // Reset the captcha if invalid
+        ((this.$refs.invisibleCaptcha as unknown) as VueRecaptcha).reset();
+      }
     }
   }
 
