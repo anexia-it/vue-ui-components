@@ -24,13 +24,34 @@
             @input="setItem('invisibleCapctha', $event ? '1' : '0', true)"
           />
         </anx-paragraph>
+
+        <anx-paragraph title="Usage information">
+          The contact form does not automatically send the request to the LLS.
+          This is not possible, because if we are sending the request from the
+          frontend, the google recaptcha will not be validated and could easily
+          be <strong>bypassed</strong>. So if the form has been filled and is
+          valid, the <i>anx-contact</i> component will emit the
+          <strong>@submit</strong> event. The request is passed as property and
+          should be handled by you.<br /><br />
+          The request already includes the recaptcha. The whole request should
+          be sent to your backend. In your backend, the recaptcha should be
+          verified. Then the request to the LLS should be sent in your backend.
+          <br /><br />
+          Don't forget to add the tracking script to your vue project. This is
+          needed in order to receive a WTS session id. The contact form
+          component
+          <strong>does not include the tracking script</strong>!
+        </anx-paragraph>
       </anx-content>
 
       <!-- See here for example on how to use anx-contact. Don't set demo mode in production! -->
       <anx-contact
         :recaptcha-sitekey="recaptchaSitekey"
-        :demo-mode="true"
         :invisible-captcha="invisibleCaptcha"
+        :error="error"
+        :show-email="true"
+        :show-phone="true"
+        @submit="submitted"
       >
         This is an example for the <strong>anx-contact</strong> component. You
         can modify several properties of this component. See
@@ -85,6 +106,7 @@ import AnxHeader from "@/components/AnxHeader.vue";
 export default class Contact extends Vue {
   recaptchaSitekey = "6LeOdakaAAAAAJfWBk1IqPphdzCJ8kqm_j97tD79"; // TODO: remove this private token and create one for anexia
   invisibleCaptcha = true;
+  error = "";
 
   public items: Array<object> = [
     { menu: "Kitchensink", link: "/kitchensink" },
@@ -111,6 +133,19 @@ export default class Contact extends Vue {
 
     if (reload) {
       this.reloadPage();
+    }
+  }
+
+  /** Contact form has been submitted */
+  private submitted(request: {}) {
+    console.log(request); // This is the request from the anx-contact component
+
+    // You should now send this to you backend and validate the recaptcha token
+
+    // We assume that there is an error and show an alert
+    const serverResponse = { success: false };
+    if (serverResponse.success === false) {
+      this.error = "Something went wrong!";
     }
   }
 }
