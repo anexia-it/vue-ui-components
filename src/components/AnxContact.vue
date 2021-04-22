@@ -8,16 +8,16 @@
         <div class="input-inline">
           <anx-input
             v-model="request.firstName"
-            name="first name"
+            :name="firstName.name"
             rules="required"
-            label="First Name"
+            :label="firstName.label ? firstName.label : firstName.name"
             width="45%"
           />
           <anx-input
             v-model="request.lastName"
-            name="last name"
+            :name="lastName.name"
             rules="required"
-            label="Last Name"
+            :label="lastName.label ? lastName.label : lastName.name"
             width="45%"
             class="right"
           />
@@ -25,22 +25,22 @@
         <anx-input
           v-if="showEmail"
           v-model="request.email"
-          name="email"
+          :name="email.name"
           rules="required|email"
-          label="Email"
+          :label="email.label ? email.label : email.name"
         />
         <anx-input
           v-if="showPhone"
           v-model="request.phone"
-          name="phone"
+          :name="phone.name"
           rules="required"
-          label="Phone"
+          :label="phone.label ? phone.label : phone.name"
         />
 
         <anx-textarea
           v-model="request.message"
-          name="message"
-          label="Message"
+          :name="message.name"
+          :label="message.label ? message.label : message.name"
         />
 
         <!-- google recaptcha component -->
@@ -72,7 +72,7 @@
           @expired="expiredCaptcha"
         >
           <anx-button width="100%">
-            Send
+            {{ sendButton.text }}
           </anx-button>
         </vue-recaptcha>
 
@@ -82,7 +82,7 @@
           width="100%"
           :disabled="!isButtonEnabled"
         >
-          Send
+          {{ sendButton.text }}
         </anx-button>
       </anx-form>
     </anx-content>
@@ -121,6 +121,59 @@ export default class AnxContact extends Vue {
 
   /** The title to be displayed on top */
   @Prop({ default: "Contact" }) title!: string;
+
+  /** Property for the first name field */
+  @Prop({
+    default: {
+      name: "first name",
+      label: "First name"
+    }
+  })
+  firstName!: {};
+
+  /** Property for the last name field */
+  @Prop({
+    default: {
+      name: "last name",
+      label: "Last name"
+    }
+  })
+  lastName!: {};
+
+  /** Property for the email field */
+  @Prop({
+    default: {
+      name: "email",
+      label: "Email"
+    }
+  })
+  email!: {};
+
+  /** Property for the phone field */
+  @Prop({
+    default: {
+      name: "phone",
+      label: "Phone"
+    }
+  })
+  phone!: {};
+
+  /** Property for the message field */
+  @Prop({
+    default: {
+      name: "message",
+      label: "Message"
+    }
+  })
+  message!: {};
+
+  /** Property for the send button */
+  @Prop({
+    default: {
+      text: "Send"
+    }
+  })
+  sendButton!: {};
 
   /** Display a field to enter the phone */
   @Prop({ default: false }) showPhone!: boolean;
