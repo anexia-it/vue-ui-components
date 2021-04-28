@@ -1,11 +1,12 @@
 <template>
   <div>
+    <h1 v-if="modelClass">{{ modelClass.name }}</h1>
     <anx-button
       @click="
         createInstance = new modelClass();
         showCreateModal = true;
       "
-      >Create
+      >Create new
     </anx-button>
     <br />
     <br />
@@ -28,13 +29,19 @@
     </anx-modal>
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
-        <anx-table-row v-for="(instance, i) in instances" :key="i">
-          <anx-table-col v-for="(instanceProp, j) in instance" :key="j">
+        <anx-table-row v-for="(instance, i) in sortedInstances" :key="i">
+          <anx-table-col
+            v-for="(instanceProp, j) in instance"
+            :key="j"
+            align="center"
+          >
             {{ instanceProp }}
           </anx-table-col>
-          <anx-table-col align="center">
+          <anx-table-col class="actions" align="center">
             <anx-icon
+              v-if="editable"
               icon="einstellungen-verwaltung"
+              class="action"
               width="40px"
               @click.native="
                 showEditModal = true;
@@ -42,7 +49,9 @@
               "
             />
             <anx-icon
+              v-if="deletable"
               icon="loeschen"
+              class="action"
               width="40px"
               @click.native="
                 showDeleteModal = true;
@@ -111,20 +120,46 @@ import { AbstractModel } from "../lib/models/AbstractModel";
 export default class AnxCrudTable extends Vue {
   @Prop({ default: null }) modelClass!: typeof AbstractModel | null;
 
+  /** Show delete action */
+  @Prop({ default: true }) deletable!: boolean;
+
+  /** Show edit action */
+  @Prop({ default: true }) editable!: boolean;
+
   /** Authorization header for API requests */
   @Prop({ default: "" }) authorization!: string;
 
-  private instances: AbstractModel[] = [];
-  private selectedItem: AbstractModel | null = null;
-  private createInstance: AbstractModel | null = null;
+  /** Default column sorting */
+  @Prop({ default: { name: 0, order: "ASC" } }) sort!: {
+    name: number;
+    order: string;
+  };
 
-  private showDeleteModal = false;
-  private showEditModal = false;
-  private showCreateModal = false;
+  instances: AbstractModel[] = [];
+  selectedItem: AbstractModel | null = null;
+  createInstance: AbstractModel | null = null;
 
-  private mounted() {
+  showDeleteModal = false;
+  showEditModal = false;
+  showCreateModal = false;
+  internalSort: {
+    name: number;
+    order: string;
+  } = { name: 0, order: "ASC" };
+
+  mounted() {
     if (this.modelClass) {
       this.fetch();
+    }
+    if (this.sort) {
+      this.internalSort = this.sort;
+    }
+  }
+
+  @Watch("sort")
+  onSortChanged() {
+    if (this.sort) {
+      this.internalSort = this.sort;
     }
   }
 
@@ -132,22 +167,67 @@ export default class AnxCrudTable extends Vue {
   onModelClassChange() {
     this.fetch();
   }
+
+  get sortedInstances() {
+    if (
+      !this.internalSort ||
+      !this.internalSort.name ||
+      !this.internalSort.order
+    ) {
+      return this.instances;
+    }
+    const sort = this.instances.sort((a, b) => {
+      if (this.internalSort?.order === "ASC") {
+        return (
+          (a as any)[this.internalSort.name] -
+          (b as any)[this.internalSort.name]
+        );
+      } else {
+        return (
+          (b as any)[this.internalSort.name] -
+          (a as any)[this.internalSort.name]
+        );
+      }
+    });
+    console.log(sort[0]);
+    return sort;
+  }
+
+  /**
+   * Only show actions tab when there are any actions, you need to add upcoming actions here too
+   */
+  get hasActions() {
+    return this.editable || this.deletable;
+  }
+
   get tableColumns() {
     if (this.instances.length) {
-      const instanceProps = Object.keys(this.instances[0]).map((v: string) => {
+      const instanceProps: {
+        name: string;
+        index?: string;
+        width?: string | null;
+        align?: string | null;
+      }[] = Object.keys(this.instances[0]).map((v: string) => {
         return {
           name: v
         };
       });
-      instanceProps.push({
-        name: "Actions"
-      });
+      if (instanceProps[0].name === "id") {
+        instanceProps[0].width = "60px";
+        instanceProps[0].align = "center";
+      }
+
+      if (this.hasActions) {
+        instanceProps.push({
+          name: "Actions"
+        });
+      }
       return instanceProps;
     }
     return [];
   }
 
-  private async fetch() {
+  async fetch() {
     if (!this.modelClass) {
       return;
     }
@@ -156,7 +236,7 @@ export default class AnxCrudTable extends Vue {
     });
   }
 
-  private async deleteSelectedItem() {
+  async deleteSelectedItem() {
     if (this.selectedItem) {
       await this.selectedItem.delete({ authorization: this.authorization });
       await this.fetch();
@@ -166,7 +246,7 @@ export default class AnxCrudTable extends Vue {
     }
   }
 
-  private async editSelectedItem() {
+  async editSelectedItem() {
     if (this.selectedItem) {
       await this.selectedItem.update({ authorization: this.authorization });
       await this.fetch();
@@ -176,7 +256,7 @@ export default class AnxCrudTable extends Vue {
     }
   }
 
-  private async createItem() {
+  async createItem() {
     if (!this.createInstance) {
       return;
     }
@@ -190,5 +270,10 @@ export default class AnxCrudTable extends Vue {
 <style lang="scss" scoped>
 .button-space {
   width: 20px;
+}
+.actions {
+  .action {
+    padding: 5px;
+  }
 }
 </style>

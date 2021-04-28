@@ -1,7 +1,10 @@
 <template>
-  <anx-container>
+  <anx-container width="1000px">
     <anx-content>
-      <anx-crud-table :modelClass="modelClass"></anx-crud-table>
+      <anx-crud-table
+        :modelClass="modelClass"
+        :sort="{ name: 'id', order: 'DESC' }"
+      ></anx-crud-table>
     </anx-content>
   </anx-container>
 </template>
