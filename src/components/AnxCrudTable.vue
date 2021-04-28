@@ -274,6 +274,7 @@ export default class AnxCrudTable extends Vue {
 .actions {
   .action {
     padding: 5px;
+    cursor: pointer;
   }
 }
 </style>
