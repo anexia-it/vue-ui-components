@@ -46,6 +46,7 @@
               @click.native="
                 showEditModal = true;
                 selectedItem = instance;
+                $emit('editActionClicked');
               "
             />
             <anx-icon
@@ -74,23 +75,25 @@
       Do you really want to delete?
     </anx-modal>
 
-    <anx-modal
-      title="Edit"
-      v-if="showEditModal"
-      has-close-button
-      close-button-align="right"
-      @close="showEditModal = false"
-    >
-      <span v-for="(instanceProp, i) in selectedItem" :key="i">
-        <div v-if="i !== 'id'">
-          <anx-input :label="i" v-model="selectedItem[i]" />
-        </div>
-      </span>
-      <template slot="modal-footer">
-        <span class="button-space"></span>
-        <anx-button @click="editSelectedItem">Save</anx-button>
-      </template>
-    </anx-modal>
+    <slot name="editModal">
+      <anx-modal
+        title="Edit"
+        v-if="showEditModal"
+        has-close-button
+        close-button-align="right"
+        @close="showEditModal = false"
+      >
+        <span v-for="(instanceProp, i) in selectedItem" :key="i">
+          <div v-if="i !== 'id'">
+            <anx-input :label="i" v-model="selectedItem[i]" />
+          </div>
+        </span>
+        <template slot="modal-footer">
+          <span class="button-space"></span>
+          <anx-button @click="editSelectedItem">Save</anx-button>
+        </template>
+      </anx-modal>
+    </slot>
   </div>
 </template>
 

@@ -1,10 +1,13 @@
 <template>
   <anx-container width="1000px">
     <anx-content>
+      <h1>Standard CRUD table with ID DESC sorting</h1>
       <anx-crud-table
         :modelClass="modelClass"
         :sort="{ name: 'id', order: 'DESC' }"
-      ></anx-crud-table>
+        @editActionClicked="showEditModal = true"
+      >
+      </anx-crud-table>
     </anx-content>
   </anx-container>
 </template>
@@ -15,6 +18,7 @@ import { Component, Vue } from "vue-property-decorator";
 import AnxContent from "@/components/AnxContent.vue";
 import AnxContainer from "@/components/AnxContainer.vue";
 import AnxCrudTable from "@/components/AnxCrudTable.vue";
+import AnxModal from "@/components/AnxModal.vue";
 import { AbstractModel } from "@/lib/models/AbstractModel";
 import { Posts } from "@/lib/models/test/Posts";
 
@@ -22,13 +26,16 @@ import { Posts } from "@/lib/models/test/Posts";
   components: {
     AnxCrudTable,
     AnxContainer,
-    AnxContent
+    AnxContent,
+    AnxModal
   }
 })
 export default class Crud extends Vue {
-  private modelClass: { new (): AbstractModel } | null = null;
+  modelClass: { new (): AbstractModel } | null = null;
 
-  private mounted() {
+  showEditModal = false;
+
+  mounted() {
     this.modelClass = Posts;
   }
 }
