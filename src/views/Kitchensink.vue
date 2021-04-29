@@ -880,7 +880,8 @@ export default class Kitchensink extends Vue {
   public items: Array<object> = [
     { menu: "Kitchensink", link: "/kitchensink" },
     { menu: "Login", link: "/login" },
-    { menu: "Crud", link: "/crud" }
+    { menu: "Crud", link: "/crud" },
+    { menu: "Contact", link: "/contact" }
   ];
 
   ip = "";

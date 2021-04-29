@@ -2,6 +2,7 @@ import AnxAlert from "./AnxAlert.vue";
 import AnxButton from "./AnxButton.vue";
 import AnxCard from "./AnxCard.vue";
 import AnxCheckbox from "./AnxCheckbox.vue";
+import AnxContact from "./AnxContact.vue";
 import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
 import AnxCrudTable from "./AnxCrudTable.vue";
@@ -33,6 +34,7 @@ export default {
   AnxButton,
   AnxCard,
   AnxCheckbox,
+  AnxContact,
   AnxContainer,
   AnxContent,
   AnxCrudTable,
