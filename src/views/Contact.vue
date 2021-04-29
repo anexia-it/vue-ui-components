@@ -104,7 +104,7 @@ import AnxHeader from "@/components/AnxHeader.vue";
   }
 })
 export default class Contact extends Vue {
-  recaptchaSitekey = "6LeOdakaAAAAAJfWBk1IqPphdzCJ8kqm_j97tD79"; // TODO: remove this private token and create one for anexia
+  recaptchaSitekey = "6Ld9pr4aAAAAAMenlr2xionxPM1sHQ-OgFaa2n2V";
   invisibleCaptcha = true;
   error = "";
 
