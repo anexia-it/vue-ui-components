@@ -11,6 +11,7 @@
       :login-error="loginError"
       @login="login"
       remember-me="Remember me"
+      :remember-me-default="true"
     />
 
     <anx-modal

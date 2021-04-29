@@ -178,13 +178,15 @@ export default class AnxLogin extends Vue {
   /** The size of the icon of the footer */
   @Prop({ default: "60px" }) footerIconSize!: string;
 
-  /** Option to display a remember me button (The string that is provided, will be displayed as text) */
+  /** Option to display a remember me button (The string that is provided, will be displayed as text. If no text is provided, the text is "Remember me") */
   @Prop({ default: null }) rememberMe!: string | null;
+  /** The default value for the remember me checkbox */
+  @Prop({ default: false }) rememberMeDefault!: boolean;
 
   /** The variables for username and password */
   private username = "";
   private password = "";
-  private rememberMeCheckbox = false;
+  private rememberMeCheckbox = this.rememberMeDefault;
 
   /** Shows the error message if this is true */
   private hasLoginError = false;
