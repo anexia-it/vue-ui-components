@@ -59,6 +59,11 @@
         <!-- Alert for error messages -->
         <anx-alert v-model="showError_">{{ error }}</anx-alert>
 
+        <!-- Alert for success messages -->
+        <anx-alert v-model="showSuccess_" type="success">
+          {{ success }}
+        </anx-alert>
+
         <!-- Internal recaptcha error -->
         <anx-alert v-model="internalRecaptchaError">Recaptcha error</anx-alert>
 
@@ -189,6 +194,9 @@ export default class AnxContact extends Vue {
   })
   sendButton!: {};
 
+  /** Defines whether to contact form is enabled or not (can press send button) */
+  @Prop({ default: true }) enabled!: boolean;
+
   /** Display a field to enter the phone */
   @Prop({ default: false }) showPhone!: boolean;
 
@@ -198,10 +206,19 @@ export default class AnxContact extends Vue {
   /** The error to display. Will automatically be displayed if it changes or the showError() method is called */
   @Prop({ default: null }) error!: string;
 
+  /** The success message to display. Will automatically be displayed if it changes or the showSuccess() method is called */
+  @Prop({ default: null }) success!: string;
+
   /** Display the alert if the error message has changed */
   @Watch("error")
   onErrorChanged() {
     this.showError();
+  }
+
+  /** Display the alert if the success message has changed */
+  @Watch("success")
+  onSuccessChanged() {
+    this.showSuccess();
   }
 
   /** This is returned on submit via @sumbit event */
@@ -224,12 +241,20 @@ export default class AnxContact extends Vue {
   /** Show the error alert */
   private showError_ = false;
 
+  /** Show the success alert */
+  private showSuccess_ = false;
+
   /** Is true if the recaptcha has an error (alert will be shown) */
   private internalRecaptchaError = false;
 
   /** Show the error */
   public showError() {
     this.showError_ = true;
+  }
+
+  /** Show the success */
+  public showSuccess() {
+    this.showSuccess_ = true;
   }
 
   /** Checks if the recaptcha should be used */
@@ -239,7 +264,7 @@ export default class AnxContact extends Vue {
 
   /** Returns if the button should be enabled or not */
   private get isButtonEnabled(): boolean {
-    return this.request.captchaToken ? true : false;
+    return this.request.captchaToken && this.enabled ? true : false;
   }
 
   /** Is called if the captcha has been verified. The captcha token is passed */

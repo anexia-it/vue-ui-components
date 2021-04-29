@@ -49,6 +49,8 @@
         :recaptcha-sitekey="recaptchaSitekey"
         :invisible-captcha="invisibleCaptcha"
         :error="error"
+        :success="success"
+        :enabled="contactEnabled"
         :show-email="true"
         :show-phone="true"
         @submit="submitted"
@@ -107,6 +109,8 @@ export default class Contact extends Vue {
   recaptchaSitekey = "6Ld9pr4aAAAAAMenlr2xionxPM1sHQ-OgFaa2n2V";
   invisibleCaptcha = true;
   error = "";
+  success = "";
+  contactEnabled = true;
 
   public items: Array<object> = [
     { menu: "Kitchensink", link: "/kitchensink" },
@@ -143,9 +147,13 @@ export default class Contact extends Vue {
     // You should now send this to you backend and validate the recaptcha token
 
     // We assume that there is an error and show an alert
-    const serverResponse = { success: false };
+    const serverResponse = { success: true };
     if (serverResponse.success === false) {
       this.error = "Something went wrong!";
+    } else {
+      this.success =
+        "We have received your request and will conact you as soon as possible";
+      this.contactEnabled = false;
     }
   }
 }
