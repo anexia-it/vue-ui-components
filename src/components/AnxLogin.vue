@@ -41,6 +41,16 @@
           />
         </slot>
 
+        <slot name="remember-me-input">
+          <anx-checkbox
+            v-if="rememberMe !== null"
+            v-model="rememberMeCheckbox"
+            name="remember-me-checkbox"
+          >
+            {{ rememberMeText }}
+          </anx-checkbox>
+        </slot>
+
         <span class="error" v-if="hasLoginError">
           <slot name="error">
             <anx-alert v-model="hasLoginError" type="error">
@@ -92,6 +102,7 @@
 import { Vue, Component, Prop, Emit, Watch } from "vue-property-decorator";
 import AnxAlert from "./AnxAlert.vue";
 import AnxButton from "./AnxButton.vue";
+import AnxCheckbox from "./AnxCheckbox.vue";
 import AnxContainer from "./AnxContainer.vue";
 import AnxContent from "./AnxContent.vue";
 import AnxForm from "./AnxForm.vue";
@@ -103,6 +114,7 @@ import AnxInput from "./AnxInput.vue";
   components: {
     AnxAlert,
     AnxButton,
+    AnxCheckbox,
     AnxContainer,
     AnxContent,
     AnxForm,
@@ -166,9 +178,15 @@ export default class AnxLogin extends Vue {
   /** The size of the icon of the footer */
   @Prop({ default: "60px" }) footerIconSize!: string;
 
+  /** Option to display a remember me button (The string that is provided, will be displayed as text. If no text is provided, the text is "Remember me") */
+  @Prop({ default: null }) rememberMe!: string | null;
+  /** The default value for the remember me checkbox */
+  @Prop({ default: false }) rememberMeDefault!: boolean;
+
   /** The variables for username and password */
   private username = "";
   private password = "";
+  private rememberMeCheckbox = this.rememberMeDefault;
 
   /** Shows the error message if this is true */
   private hasLoginError = false;
@@ -188,8 +206,18 @@ export default class AnxLogin extends Vue {
   login() {
     return {
       username: this.username,
-      password: this.password
+      password: this.password,
+      rememberMe: this.rememberMeCheckbox
     };
+  }
+
+  /** Check if the remember me text is set, otherwise return default text */
+  private get rememberMeText(): string {
+    if (this.rememberMe && this.rememberMe.length > 0) {
+      return this.rememberMe;
+    }
+
+    return "Remember me";
   }
 }
 </script>

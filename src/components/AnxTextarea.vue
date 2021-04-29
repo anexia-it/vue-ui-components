@@ -1,7 +1,7 @@
 <template>
   <ValidationProvider
     v-slot="{ errors }"
-    :name="name"
+    :name="dataVvAs === null ? name : dataVvAs"
     :rules="validationRules"
     :style="cssProps"
     class="anx-textarea"
@@ -40,6 +40,8 @@ export default class AnxTextarea extends Vue {
   @Prop({ default: "anx-textarea" }) id!: string;
   /** The name of the component */
   @Prop({ default: "anx-textarea" }) name!: string;
+  /** This will be shown as field name in error messages. Can be used for localization */
+  @Prop({ default: null }) dataVvAs!: string | null;
   /**label: the label text for the textarea */
   @Prop({ default: "Additional Text" }) label!: string;
   /**rows: the number of rows for the textarea */
