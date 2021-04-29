@@ -10,6 +10,7 @@
       ]"
       :login-error="loginError"
       @login="login"
+      remember-me="Remember me"
     />
 
     <anx-modal
@@ -21,6 +22,8 @@
       <anx-paragraph>
         <strong>Username: </strong> {{ username }}<br />
         <strong>Password: </strong> {{ password }}<br />
+        <strong>Remember Me: </strong>
+        {{ rememberMe ? "Checked" : "Not checked" }}<br />
 
         <br /><span>Is the data correct?</span><br />
 
@@ -55,14 +58,20 @@ export default class Login extends Vue {
   /** The user credentials */
   private username!: string;
   private password!: string;
+  private rememberMe!: boolean;
 
   /** This is the error that will be displayed when login fails */
   private loginError = "";
 
   /** This function will be called when the login event is emitted */
-  private login(data: { username: string; password: string }) {
+  private login(data: {
+    username: string;
+    password: string;
+    rememberMe: boolean;
+  }) {
     this.username = data.username;
     this.password = data.password;
+    this.rememberMe = data.rememberMe;
     this.modal = true;
   }
 

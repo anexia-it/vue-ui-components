@@ -16,7 +16,11 @@
           :class="errors && errors.length > 0 ? 'is-invalid' : ''"
           @change="$emit('input', valueModel)"
         />
-        <div class="text">{{ name }}</div>
+        <div class="text">
+          <slot>
+            {{ name }}
+          </slot>
+        </div>
       </label>
       <span class="error">{{ errors[0] }}</span>
     </div>
@@ -33,7 +37,9 @@
       />
       <div class="text">
         <span>
-          {{ name }}
+          <slot>
+            {{ name }}
+          </slot>
         </span>
       </div>
     </label>
