@@ -29,7 +29,10 @@
     </anx-modal>
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
-        <anx-table-row v-for="(instance, i) in sortedInstances" :key="i">
+        <anx-table-row
+          v-for="(instance, i) in paginatedSortedInstances"
+          :key="i"
+        >
           <anx-table-col
             v-for="(instanceProp, j) in instance"
             :key="j"
@@ -63,6 +66,39 @@
         </anx-table-row>
       </template>
     </anx-table>
+
+    <div v-if="isPaginated" class="pagination">
+      <div class="page-switch">
+        <span class="page-switch-link fast-forward" @click="page = 0"
+          >&laquo;</span
+        >
+        <span
+          class="page-switch-link"
+          @click="
+            () => {
+              if (page > 0) page--;
+            }
+          "
+          >&lt;</span
+        >
+        Page {{ page + 1 }} of {{ sortedInstances.length / maxItems }}
+        <span
+          class="page-switch-link"
+          @click="
+            () => {
+              if (page < sortedInstances.length / maxItems - 1) page++;
+            }
+          "
+          >&gt;</span
+        >
+        <span
+          class="page-switch-link fast-forward"
+          @click="page = sortedInstances.length / maxItems - 1"
+          >&raquo;</span
+        >
+      </div>
+    </div>
+
     <anx-modal
       title="Confirm delete"
       v-if="showDeleteModal"
@@ -138,6 +174,9 @@ export default class AnxCrudTable extends Vue {
     order: string;
   };
 
+  /** Define maximum number of items shown, if number of items exceeds this, pagination will be added */
+  @Prop({ default: -1 }) maxItems!: number;
+
   instances: AbstractModel[] = [];
   selectedItem: AbstractModel | null = null;
   createInstance: AbstractModel | null = null;
@@ -149,6 +188,7 @@ export default class AnxCrudTable extends Vue {
     name: number;
     order: string;
   } = { name: 0, order: "ASC" };
+  page = 0;
 
   mounted() {
     if (this.modelClass) {
@@ -171,6 +211,20 @@ export default class AnxCrudTable extends Vue {
     this.fetch();
   }
 
+  get paginatedSortedInstances() {
+    if (!this.isPaginated) {
+      return this.sortedInstances;
+    }
+    return this.sortedInstances.slice(
+      this.page * this.maxItems,
+      (this.page + 1) * this.maxItems
+    );
+  }
+
+  get isPaginated() {
+    return this.maxItems > 0;
+  }
+
   get sortedInstances() {
     if (
       !this.internalSort ||
@@ -180,7 +234,12 @@ export default class AnxCrudTable extends Vue {
       return this.instances;
     }
     const sort = this.instances.sort((a, b) => {
-      if (this.internalSort?.order === "ASC") {
+      /*eslint-disable */ 
+      /**
+       * We need to access the object dynamically here but 
+       * we don't know the properties of it since the modelClass is injected on runtime
+       */ 
+      if (this.internalSort.order === "ASC") {
         return (
           (a as any)[this.internalSort.name] -
           (b as any)[this.internalSort.name]
@@ -191,8 +250,8 @@ export default class AnxCrudTable extends Vue {
           (a as any)[this.internalSort.name]
         );
       }
+      /*eslint-enable */
     });
-    console.log(sort[0]);
     return sort;
   }
 
@@ -278,6 +337,24 @@ export default class AnxCrudTable extends Vue {
   .action {
     padding: 5px;
     cursor: pointer;
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  .page-switch {
+    margin-left: auto;
+
+    .page-switch-link {
+      cursor: pointer;
+      font-size: 20px;
+      padding: 0 5px;
+      color: #77bc1f;
+    }
+    .fast-forward {
+      font-size: 25px;
+    }
   }
 }
 </style>
