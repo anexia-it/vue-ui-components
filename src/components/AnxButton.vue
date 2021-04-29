@@ -35,12 +35,18 @@ export default class AnxButton extends Vue {
   @Prop({ default: "click" }) eventName!: string;
   /** Set the color of the button (property will be directly passed into css, so use e.g. HEX code) */
   @Prop({ default: null }) color!: string | null;
+  /** This is the color for a disabled button */
+  @Prop({ default: null }) disabledColor!: string | null;
 
   get cssProps() {
     return {
       "--button-width": this.width !== null ? this.width : "auto",
       "--button-color":
-        this.color !== null ? this.color : design.defaultButtonColor
+        this.color !== null ? this.color : design.defaultButtonColor,
+      "--button-color-disabled":
+        this.disabledColor !== null
+          ? this.disabledColor
+          : design.defaultButtonColorDisabled
     };
   }
 }
@@ -82,9 +88,13 @@ button {
   transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
   text-align: center;
   background-color: var(--button-color);
+  border: 1px solid var(--button-color);
+  &:disabled {
+    background-color: var(--button-color-disabled) !important;
+    border: 1px solid var(--button-color-disabled) !important;
+  }
   padding-left: 2em;
   padding-right: 2em;
-  border: 1px solid var(--button-color);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
