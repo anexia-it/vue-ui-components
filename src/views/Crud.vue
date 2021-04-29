@@ -5,6 +5,7 @@
       <anx-crud-table
         :modelClass="modelClass"
         :sort="{ name: 'id', order: 'DESC' }"
+        :hideColumns="['userId']"
         :maxItems="5"
       >
       </anx-crud-table>

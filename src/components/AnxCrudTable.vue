@@ -30,7 +30,7 @@
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
         <anx-table-row
-          v-for="(instance, i) in paginatedSortedInstances"
+          v-for="(instance, i) in paginatedSortedFilteredInstances"
           :key="i"
         >
           <anx-table-col
@@ -81,7 +81,8 @@
           "
           >&lt;</span
         >
-        Page {{ page + 1 }} of {{ sortedInstances.length / maxItems }}
+        Page {{ Math.ceil(page) + 1 }} of
+        {{ Math.ceil(sortedInstances.length / maxItems) }}
         <span
           class="page-switch-link"
           @click="
@@ -174,6 +175,9 @@ export default class AnxCrudTable extends Vue {
     order: string;
   };
 
+  /** Array of columns which should be hidden for the user */
+  @Prop({ default: () => [] }) hideColumns!: string[];
+
   /** Define maximum number of items shown, if number of items exceeds this, pagination will be added */
   @Prop({ default: -1 }) maxItems!: number;
 
@@ -209,6 +213,23 @@ export default class AnxCrudTable extends Vue {
   @Watch("modelClass")
   onModelClassChange() {
     this.fetch();
+  }
+
+  get paginatedSortedFilteredInstances() {
+    const instances = this.paginatedSortedInstances;
+    this.hideColumns.forEach(column => {
+      instances.map(instance => {
+        if (Object.prototype.hasOwnProperty.call(instance, column)) {
+          // eslint-disable-next-line
+          delete (instance as any)[column];
+        } else {
+          console.warn(
+            "Tried to hide a non existend column! Are you sure you set hideColumn correct for the CRUD table?"
+          );
+        }
+      });
+    });
+    return instances;
   }
 
   get paginatedSortedInstances() {
@@ -264,7 +285,7 @@ export default class AnxCrudTable extends Vue {
 
   get tableColumns() {
     if (this.instances.length) {
-      const instanceProps: {
+      let instanceProps: {
         name: string;
         index?: string;
         width?: string | null;
@@ -273,6 +294,12 @@ export default class AnxCrudTable extends Vue {
         return {
           name: v
         };
+      });
+      instanceProps = instanceProps.filter(instanceProp => {
+        if (this.hideColumns.includes(instanceProp.name)) {
+          return false;
+        }
+        return true;
       });
       if (instanceProps[0].name === "id") {
         instanceProps[0].width = "60px";
