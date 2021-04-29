@@ -81,7 +81,8 @@
           "
           >&lt;</span
         >
-        Page {{ page + 1 }} of {{ sortedInstances.length / maxItems }}
+        Page {{ Math.ceil(page) + 1 }} of
+        {{ Math.ceil(sortedInstances.length / maxItems) }}
         <span
           class="page-switch-link"
           @click="
