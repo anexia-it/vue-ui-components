@@ -233,7 +233,7 @@ export default class AnxContact extends Vue {
   }
 
   /** Checks if the recaptcha should be used */
-  private useRecaptcha() {
+  private get useRecaptcha() {
     return this.recaptchaSitekey === null ? false : true;
   }
 
