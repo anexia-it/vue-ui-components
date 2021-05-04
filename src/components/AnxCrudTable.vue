@@ -5,28 +5,31 @@
       @click="
         createInstance = new modelClass();
         showCreateModal = true;
+        $emit('createActionClicked');
       "
       >Create new
     </anx-button>
     <br />
     <br />
-    <anx-modal
-      title="Create"
-      v-if="showCreateModal"
-      has-close-button
-      close-button-align="right"
-      @close="showCreateModal = false"
-    >
-      <span v-for="(instanceProp, i) in createInstance" :key="i">
-        <div v-if="i !== 'id'">
-          <anx-input :label="i" v-model="createInstance[i]" />
-        </div>
-      </span>
-      <template slot="modal-footer">
-        <span class="button-space"></span>
-        <anx-button @click="createItem">Save </anx-button>
-      </template>
-    </anx-modal>
+    <slot name="createModal">
+      <anx-modal
+        title="Create"
+        v-if="showCreateModal"
+        has-close-button
+        close-button-align="right"
+        @close="showCreateModal = false"
+      >
+        <span v-for="(instanceProp, i) in createInstance" :key="i">
+          <div v-if="i !== 'id'">
+            <anx-input :label="i" v-model="createInstance[i]" />
+          </div>
+        </span>
+        <template slot="modal-footer">
+          <span class="button-space"></span>
+          <anx-button @click="createItem">Save </anx-button>
+        </template>
+      </anx-modal>
+    </slot>
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
         <anx-table-row
