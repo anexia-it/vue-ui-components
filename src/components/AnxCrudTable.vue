@@ -222,8 +222,8 @@ export default class AnxCrudTable extends Vue {
   get paginatedSortedFilteredInstancesNonSoftDeleted() {
     return this.paginatedSortedFilteredInstances.filter(instance => {
       if (
-        Object.prototype.hasOwnProperty.call(instance, "softDeleted") &&
-        (instance as any).softDeleted // eslint-disable-line
+        Object.prototype.hasOwnProperty.call(instance, "deleted") &&
+        (instance as any).deleted // eslint-disable-line
       ) {
         return false;
       }
