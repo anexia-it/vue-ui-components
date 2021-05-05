@@ -33,7 +33,8 @@
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
         <anx-table-row
-          v-for="(instance, i) in paginatedSortedFilteredInstances"
+          v-for="(instance,
+          i) in paginatedSortedFilteredInstancesNonSoftDeleted"
           :key="i"
         >
           <anx-table-col
@@ -216,6 +217,18 @@ export default class AnxCrudTable extends Vue {
   @Watch("modelClass")
   onModelClassChange() {
     this.fetch();
+  }
+
+  get paginatedSortedFilteredInstancesNonSoftDeleted() {
+    return this.paginatedSortedFilteredInstances.filter(instance => {
+      if (
+        Object.prototype.hasOwnProperty.call(instance, "softDeleted") &&
+        (instance as any).softDeleted // eslint-disable-line
+      ) {
+        return false;
+      }
+      return true;
+    });
   }
 
   get paginatedSortedFilteredInstances() {
