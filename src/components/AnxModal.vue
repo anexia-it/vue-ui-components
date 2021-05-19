@@ -81,6 +81,9 @@ export default class AnxModal extends Vue {
   /** The size of the model [s, m, l, xl, xxl] */
   @Prop({ default: "m" }) size!: string;
 
+  /** This is the number of currently opened modals */
+  private static numberModalsOpened = 0;
+
   /** Add event listeners for click event on mount */
   private mounted() {
     /** The timeout is needed, otherwise the click on the button to show the modal would trigger a click event and close the modal */
@@ -93,16 +96,41 @@ export default class AnxModal extends Vue {
       /** Close the modal if the users clicked outside of the model */
       document.body.addEventListener("click", this.clickedOutsideModal);
     }, 50);
+
+    /** Increase the number of opened modals */
+    AnxModal.numberModalsOpened++;
+
+    this.updateStyles();
   }
 
-  /** Remove the click event listeners before destroy */
+  /** Remove the click event listeners before destroy and decrease the number of opened modals */
   private beforeDestroy() {
     document.body.removeEventListener("click", this.clickedOutsideModal);
+
+    if (AnxModal.numberModalsOpened > 0) AnxModal.numberModalsOpened--;
+
+    this.updateStyles();
   }
 
   /** Handle a click outside the modal */
   private clickedOutsideModal() {
     this.$emit("close");
+  }
+
+  /**
+   * If a modal is opened, the styles of the body have to be updated
+   * so that the background does not scroll
+   */
+  private updateStyles() {
+    const body = document.body;
+
+    // Check if there are any modals opened and add or remove the class for scrolling to the body
+    if (AnxModal.numberModalsOpened > 0) {
+      body.classList.add("anx-modal-is-open");
+    } else {
+      body.classList.remove("anx-modal-is-open");
+    }
+    return;
   }
 }
 </script>
@@ -341,5 +369,12 @@ export default class AnxModal extends Vue {
 }
 .space {
   width: 30px;
+}
+</style>
+
+<!-- This style has to be non-scoped, because it will be applied to the body -->
+<style lang="scss">
+.anx-modal-is-open {
+  overflow: hidden;
 }
 </style>
