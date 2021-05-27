@@ -125,6 +125,8 @@ export default class AnxSelect extends Vue {
     if (val && this.validation !== null) {
       await this.verify(val);
     }
+
+    window.setTimeout(this.handleResize, 1);
   }
 
   /**
@@ -158,7 +160,7 @@ export default class AnxSelect extends Vue {
 
   /** Adapt the multiline select to the design */
   public handleResize() {
-    this.dynamicHeight = this.$refs.anxSelect.clientHeight > 30;
+    this.dynamicHeight = this.$refs.anxSelect.clientHeight >= 38;
   }
 
   /** Close the select dialoag when the users clicks outside of the anx-select */
