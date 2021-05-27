@@ -126,7 +126,7 @@ export default class AnxSelect extends Vue {
       await this.verify(val);
     }
 
-    window.setTimeout(this.handleResize, 1);
+    window.setTimeout(this.handleResize, 100);
   }
 
   /**
@@ -150,7 +150,7 @@ export default class AnxSelect extends Vue {
     this.error = [];
 
     this.closeOnClickOutsideElement();
-    this.handleResize();
+    window.setTimeout(this.handleResize, 100);
   }
 
   // Interface for ref
