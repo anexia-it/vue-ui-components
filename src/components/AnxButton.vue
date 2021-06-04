@@ -20,11 +20,15 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import design from "../assets/scss/_variables.scss";
 
+/**
+ * The *anx-button* is based on a standard HTML button.
+ * It can be used like a normal button, but has some convenient features.
+ */
 @Component({})
 export default class AnxButton extends Vue {
-  /** This is the type of the button */
+  /** This is the type of the button (will be set as html *type* property) */
   @Prop({ default: "submit" }) btnType!: string;
-  /** The type of the button (default, outline) */
+  /** Changes the button layout to outline */
   @Prop({ default: null }) outline!: boolean | null;
   /** This is the text of the button. This can also be set using the slot */
   @Prop({ default: "button" }) text!: string;
@@ -39,6 +43,7 @@ export default class AnxButton extends Vue {
   /** This is the color for a disabled button */
   @Prop({ default: null }) disabledColor!: string | null;
 
+  /** @ignore */
   get cssProps() {
     return {
       "--button-width": this.width !== null ? this.width : "auto",
