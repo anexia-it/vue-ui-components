@@ -3,6 +3,7 @@
     <div class="anx-card-content d-flex">
       <anx-icon class="anx-card-icon" :icon="icon" />
       <anx-paragraph :title="title" size="h3">
+        <!-- @slot The text to be displayed in the card -->
         <slot />
         <br v-if="linkText" />
         <anx-link v-if="linkText" :href="link"> {{ linkText }}</anx-link>
@@ -17,6 +18,10 @@ import AnxLink from "./AnxLink.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxParagraph from "./AnxParagraph.vue";
 
+/**
+ * The *anx-card* is a special layout used on websites of Anexia.
+ * It contains an icon, a header, a link and some text.
+ */
 @Component({
   components: {
     AnxLink,
@@ -34,7 +39,10 @@ export default class Card extends Vue {
   /** This is the link for the card */
   @Prop({ default: "#" }) link!: string;
 
-  /** The image of the card */
+  /**
+   * This is the image of the card.
+   * A *anx-icon* component is used to parse the string.
+   */
   @Prop({ default: null }) icon!: string | null;
 }
 </script>
