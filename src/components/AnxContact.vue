@@ -132,68 +132,56 @@ export default class AnxContact extends Vue {
 
   /** Property for the first name field */
   @Prop({
-    default: () => {
-      return {
-        name: "first name",
-        label: "First name"
-      };
+    default: {
+      name: "first name",
+      label: "First name"
     }
   })
-  firstName!: {};
+  firstName!: { name: string; label: string };
 
   /** Property for the last name field */
   @Prop({
-    default: () => {
-      return {
-        name: "last name",
-        label: "Last name"
-      };
+    default: {
+      name: "last name",
+      label: "Last name"
     }
   })
-  lastName!: {};
+  lastName!: { name: string; label: string };
 
   /** Property for the email field */
   @Prop({
-    default: () => {
-      return {
-        name: "email",
-        label: "Email"
-      };
+    default: {
+      name: "email",
+      label: "Email"
     }
   })
-  email!: {};
+  email!: { name: string; label: string };
 
   /** Property for the phone field */
   @Prop({
-    default: () => {
-      return {
-        name: "phone",
-        label: "Phone"
-      };
+    default: {
+      name: "phone",
+      label: "Phone"
     }
   })
-  phone!: {};
+  phone!: { name: string; label: string };
 
   /** Property for the message field */
   @Prop({
-    default: () => {
-      return {
-        name: "message",
-        label: "Message"
-      };
+    default: {
+      name: "message",
+      label: "Message"
     }
   })
-  message!: {};
+  message!: { name: string; label: string };
 
   /** Property for the send button */
   @Prop({
-    default: () => {
-      return {
-        text: "Send"
-      };
+    default: {
+      text: "Send"
     }
   })
-  sendButton!: {};
+  sendButton!: { text: string };
 
   /** Defines whether to contact form is enabled or not (can press send button) */
   @Prop({ default: true }) enabled!: boolean;

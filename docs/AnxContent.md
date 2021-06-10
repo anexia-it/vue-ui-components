@@ -41,5 +41,3 @@ In the hierarchy, the *anx-content* comes after *anx-container*. The *anx-conten
     <anx-footer />
 </anx-global>
 ```
-
-```
