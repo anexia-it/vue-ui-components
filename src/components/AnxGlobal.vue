@@ -21,6 +21,12 @@ export default class AnxGlobal extends Vue {}
 @import "../assets/scss/bootstrap-grid.scss";
 @import "../assets/scss/global.scss";
 
+html {
+  body {
+    margin: 0px;
+  }
+}
+
 .anx-global {
   margin: 0px !important;
   background-color: $anx-dark-blue;
