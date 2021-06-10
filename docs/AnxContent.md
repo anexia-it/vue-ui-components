@@ -38,6 +38,6 @@ In the hierarchy, the *anx-content* comes after *anx-container*. The *anx-conten
         </anx-content>
     </anx-container>
 
-    <anx-footer />
+    <anx-footer :icon="null" />
 </anx-global>
 ```

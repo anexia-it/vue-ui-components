@@ -9,7 +9,6 @@ The request also has a WTS session id. It will be automatically set if a trackin
 let error = "Test";
 let success;
 let enabled = true;
-console.log(this)
 
 const submitted = function(request) {
     // You should now send this to your backend and validate the recaptcha token (request contains the information)
@@ -17,10 +16,8 @@ const submitted = function(request) {
     // Depending on you response, an error or success message should be showed
     const serverResponse = { success: Math.random() < 0.5}; // Just for demonstration!
     if (serverResponse.success === false) {
-        console.log("error");
         error = "Something went wrong!";
     } else {
-        console.log("success")
         success =
         "We have received your request and will conact you as soon as possible";
         enabled = false;

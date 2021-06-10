@@ -17,6 +17,6 @@ In the hierarchy, the *anx-container* comes after *anx-global*. The *anx-contain
         </anx-content>
     </anx-container>
 
-    <anx-footer />
+    <anx-footer :icon="null"/>
 </anx-global>
 ```

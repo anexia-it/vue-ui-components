@@ -13,6 +13,7 @@
               <div class="anx-footer-desktop">
                 <slot name="icon">
                   <anx-icon
+                    v-if="icon != null"
                     class="anx-footer-logo"
                     alt="anx-footer-logo"
                     :icon="icon"
@@ -41,6 +42,7 @@
               <!-- @slot use this slot to manipulate the icon in the footer -->
               <slot name="icon">
                 <anx-icon
+                  v-if="icon != null"
                   class="anx-footer-logo"
                   alt="anx-footer-logo"
                   :icon="icon"
@@ -67,8 +69,8 @@ export default class AnxFooter extends Vue {
   /** The links for the footer */
   @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
 
-  /** The icon for the footer. If you want to use images, use the named slot "icon" */
-  @Prop({ default: "anexia" }) icon!: string;
+  /** The icon for the footer. If you want to use images, use the named slot "icon". When providing *null*, no icon is rendered */
+  @Prop({ default: "anexia" }) icon!: string | null;
 
   /**Specify the width of the Footer. Due to the padding, the provided width is not the actual width (530px => 500px real width)*/
   @Prop({ default: "530px" }) width!: string;
