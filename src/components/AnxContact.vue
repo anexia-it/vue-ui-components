@@ -2,6 +2,7 @@
   <div class="anx-contact">
     <anx-content :title="title">
       <anx-paragraph v-if="this.$slots.default">
+        <!-- @slot Use this slot to provide a description for the login form -->
         <slot />
       </anx-paragraph>
       <anx-form ref="contactForm" @submit="submit">
@@ -302,6 +303,11 @@ export default class AnxContact extends Vue {
 
   /** Emit the submit event and add the request data */
   private submit() {
+    /**
+     * triggered on contact form submit
+     * @event submit
+     * @property {object} request - The request containing the data the user entered
+     */
     this.$emit("submit", this.request);
   }
 }
