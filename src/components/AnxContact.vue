@@ -132,53 +132,65 @@ export default class AnxContact extends Vue {
 
   /** Property for the first name field */
   @Prop({
-    default: {
-      name: "first name",
-      label: "First name"
+    default: () => {
+      return {
+        name: "first name",
+        label: "First name"
+      };
     }
   })
   firstName!: { name: string; label: string };
 
   /** Property for the last name field */
   @Prop({
-    default: {
-      name: "last name",
-      label: "Last name"
+    default: () => {
+      return {
+        name: "last name",
+        label: "Last name"
+      };
     }
   })
   lastName!: { name: string; label: string };
 
   /** Property for the email field */
   @Prop({
-    default: {
-      name: "email",
-      label: "Email"
+    default: () => {
+      return {
+        name: "email",
+        label: "Email"
+      };
     }
   })
   email!: { name: string; label: string };
 
   /** Property for the phone field */
   @Prop({
-    default: {
-      name: "phone",
-      label: "Phone"
+    default: () => {
+      return {
+        name: "phone",
+        label: "Phone"
+      };
     }
   })
   phone!: { name: string; label: string };
 
   /** Property for the message field */
   @Prop({
-    default: {
-      name: "message",
-      label: "Message"
+    default: () => {
+      return {
+        name: "message",
+        label: "Message"
+      };
     }
   })
   message!: { name: string; label: string };
 
   /** Property for the send button */
   @Prop({
-    default: {
-      text: "Send"
+    default: () => {
+      return {
+        text: "Send"
+      };
     }
   })
   sendButton!: { text: string };
