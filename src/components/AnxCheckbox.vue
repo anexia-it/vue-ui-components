@@ -8,6 +8,10 @@
   >
     <div class="anx-checkbox">
       <label :for="name">
+        <!-- triggered on input (tick)
+        @event input
+        @property {bool} value - The state of the checkbox
+        -->
         <input
           :id="name"
           :name="name"
@@ -17,6 +21,7 @@
           @change="$emit('input', valueModel)"
         />
         <div class="text">
+          <!-- @slot You can use this slot to change the label for the anx-checkbox -->
           <slot>
             {{ name }}
           </slot>
@@ -50,13 +55,18 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationProvider } from "vee-validate";
 
+/**
+ * The *anx-checkbox* renders a simple checkbox.
+ * It works like a default HTML checkbox, but has some features implemented.
+ * The layout of the checkbox also differs from a default checkbox.
+ */
 @Component({
   components: {
     ValidationProvider
   }
 })
 export default class AnxCheckbox extends Vue {
-  /** This is the name of the input with type checkbox and the label text */
+  /** This is the name of the input with type checkbox. This will be used as id and also as label for the checkbox */
   @Prop() name!: string;
   /** If the validation property is set, a ValidationProvider with "required" validation will be added */
   @Prop({ default: null }) validation!: boolean | null;
