@@ -43,7 +43,7 @@ AnxIconsNames.forEach(name => {
     width="50px"
     margin="20px"
     :title="icon"
->
+/>
 ```
 
 <details open>
