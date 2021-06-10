@@ -1,7 +1,13 @@
 <template>
   <div class="anx-card">
     <div class="anx-card-content d-flex">
-      <anx-icon class="anx-card-icon" :icon="icon" />
+      <anx-icon v-if="icon != null" class="anx-card-icon" :icon="icon" />
+      <img
+        v-else-if="image != null"
+        class="anx-card-icon"
+        :src="image"
+        alt="Card icon"
+      />
       <anx-paragraph :title="title" size="h3">
         <!-- @slot The text to be displayed in the card -->
         <slot />
@@ -40,10 +46,16 @@ export default class Card extends Vue {
   @Prop({ default: "#" }) link!: string;
 
   /**
-   * This is the image of the card.
+   * This is the icon of the card.
    * A *anx-icon* component is used to parse the string.
    */
   @Prop({ default: null }) icon!: string | null;
+
+  /**
+   * If no icon is provided, an image will be rendered as fallback.
+   * The image property shoudl contain a link to the image resource.
+   */
+  @Prop({ default: null }) image!: string | null;
 }
 </script>
 
