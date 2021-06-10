@@ -14,7 +14,7 @@ You can decide if you want to render an icon (from anx-icons) or an image (with 
     </anx-card>
 
     <anx-card
-      image="https://picsum.photos/80/80"
+      icon="like"
       title="And another card"
       link="#"
       link-text="more >"
