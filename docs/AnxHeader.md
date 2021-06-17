@@ -30,3 +30,24 @@ let menus = [
     </anx-header>
 </anx-global>
 ```
+
+If you provide an $i18n instance to the *anx-header*, a *[anx-language-switcher](#anxlanguageswitcher)* will automatically be rendered. The language will automatically be changed. In addition to this, you can react to the locale change by using the **@localeChange** event. The example beloe shows a header with a language switcher integrated.
+
+```vue
+import VueI18n from "vue-i18n";
+
+// For this case an example i18n instance is created
+const i18n = new VueI18n({
+  locale: "en"
+});
+
+// Will be called when the locale is changed
+const localeChange = function(locale) {
+  alert("Locale changed to " + locale)
+}
+
+<anx-global>
+  <anx-header :i18n="i18n" @localeChange="localeChange($event)"/>
+</anx-global>
+```
+

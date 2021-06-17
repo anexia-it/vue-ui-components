@@ -13,7 +13,7 @@ The example below shows how to use the icon.
 <anx-icon-storage-backup width="50px" height="50px" />
 ```
 
-The title of the *anx-icon* will be displayed when you hover over the icon. The exmaple below show, how to change it.
+The title of the *anx-icon* will be displayed when you hover over the icon. The exmaple below shows, how to change it.
 
 ```html
 <anx-icon
