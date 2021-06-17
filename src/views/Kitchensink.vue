@@ -307,7 +307,7 @@
           <strong>$columnname$rowIndex</strong>. E.g. age0 for first row and the
           column with the ages. Inside this slot you can add whatever you want
           (images, inline html, ...).<br /><br />The images can be changed
-          dynamically. This is demonstrated with an intervall of four seocnds.
+          dynamically. This is demonstrated with an intervall of four seconds.
         </anx-paragraph>
 
         <anx-table

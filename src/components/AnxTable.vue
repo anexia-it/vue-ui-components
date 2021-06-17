@@ -58,6 +58,9 @@ import AnxTableContainer from "./AnxTableContainer.vue";
 import AnxTableRow from "./AnxTableRow.vue";
 import AnxTableCol from "./AnxTableCol.vue";
 
+/**
+ * A powerfull table with many design features
+ */
 @Component({
   components: {
     AnxTableContainer,
@@ -69,7 +72,7 @@ export default class AnxTable extends Vue {
   /** Whether the table should be scrollable or not */
   @Prop({ default: null }) scrollable!: boolean | null;
 
-  /** Wheter the table is stripped or not */
+  /** Whether the table is stripped or not */
   @Prop({ default: null }) stripped!: boolean | null;
 
   /** Wheter the tables outline is bordered or not */
@@ -180,6 +183,18 @@ export default class AnxTable extends Vue {
 
   &.anx-table-scrollable {
     overflow-y: auto;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-right {
+    text-align: right;
   }
 }
 
