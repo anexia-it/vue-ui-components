@@ -1,5 +1,6 @@
 <template>
   <div class="anx-global">
+    <!-- @slot this is for your content -->
     <slot />
   </div>
 </template>
