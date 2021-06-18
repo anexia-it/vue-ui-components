@@ -5,7 +5,6 @@ module.exports = {
   components: "src/components/**/[A-Z]*.vue",
   usageMode: "expand",
   styleguideDir: "dist",
-  skipComponentsWithoutExample: true,
   copyCodeButton: true,
   require: [path.join(__dirname, "styleguide/global.requires.js")],
   renderRootJsx: path.join(__dirname, "styleguide/styleguide.root.js"),
