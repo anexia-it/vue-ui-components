@@ -16,6 +16,7 @@
                     v-if="icon != null"
                     class="anx-footer-logo"
                     alt="anx-footer-logo"
+                    height="40px"
                     :icon="icon"
                   />
                 </slot>
@@ -45,6 +46,7 @@
                   v-if="icon != null"
                   class="anx-footer-logo"
                   alt="anx-footer-logo"
+                  height="40px"
                   :icon="icon"
                 />
               </slot>
@@ -162,6 +164,7 @@ export default class AnxFooter extends Vue {
 
 .anx-footer-logo {
   width: 64px;
+  max-height: 40px;
 
   @media screen and (max-width: 500px),
     (-ms-high-contrast: none),
