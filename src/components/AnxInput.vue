@@ -13,6 +13,10 @@
     :style="cssProps"
     ref="observer"
   >
+    <!--
+      This will be emitted on user input
+      @event input
+    -->
     <input
       :id="id"
       v-model="updateInputField"
