@@ -3,6 +3,11 @@ const path = require("path");
 
 module.exports = {
   components: "src/components/**/[A-Z]*.vue",
+  ignore: [
+    "src/components/AnxTableCol.vue",
+    "src/components/AnxTableContainer.vue",
+    "src/components/AnxTableRow.vue"
+  ],
   usageMode: "expand",
   styleguideDir: "dist",
   copyCodeButton: true,
