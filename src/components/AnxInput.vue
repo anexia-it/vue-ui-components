@@ -48,6 +48,7 @@
     </div>
 
     <div v-if="inline !== null" class="inline-content-right">
+      <!-- @slot This slot is used for displaying content on the right side of the input -->
       <slot>
         <!-- The content in here will be displayed on the right (to use inline elements) -->
       </slot>
@@ -59,6 +60,9 @@ import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
 import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
 
+/**
+ * This component is a advanced version of the simple HTML input tag. This component is used for user input via a textbox.
+ */
 @Component({
   components: {
     ValidationProvider
