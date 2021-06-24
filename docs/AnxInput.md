@@ -36,7 +36,6 @@ You can use the slot of the *anx-input* to display some content on the right sid
     <anx-input
         name="mail"
         label="Mail"
-        v-model="mail"
         rules="email"
         width="310px"
         inline
