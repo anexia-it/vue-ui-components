@@ -58,3 +58,13 @@ The *anx-input* also offers validation. You just have to pass the validation rul
 <anx-input name="email" label="Email" rules="required|email" />
 <anx-input name="password" label="Password" rules="required|min:6|max:12" type="password" />
 ```
+
+When a user enters input, the **@input** event will be emitted. The example below show how to react on user input.
+
+```vue
+const userInput = function(input) {
+    alert(input)
+}
+
+<anx-input @input="userInput" label="Alert" assistive-text="When you enter some text, an alert will be shown" />
+```
