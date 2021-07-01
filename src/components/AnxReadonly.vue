@@ -30,13 +30,18 @@ export default class AnxReadonly extends Vue {
     /** Init the copy event if necessary */
     if (this.copyOnClick !== null) {
       this.$el.addEventListener("click", () => {
-        this.copy(this.$el as HTMLElement);
+        this.copy(this.$el.childNodes[0] as HTMLElement);
       });
     }
   }
 
   /** Select and copy the text of the area */
-  private copy(elem: HTMLElement) {
+  public copy(elem: HTMLElement | null = null) {
+    if (!elem) {
+      elem = this.$el.childNodes[0] as HTMLElement;
+    }
+
+    // Select the text
     const range = document.createRange();
     range.selectNode(elem);
 
@@ -46,7 +51,15 @@ export default class AnxReadonly extends Vue {
       selection.addRange(range);
     }
 
-    document.execCommand("copy");
+    // Try to copy the selected text
+    try {
+      document.execCommand("copy");
+    } catch (e) {
+      // Browser is unable to execute copy command
+      return false;
+    }
+
+    return true;
   }
 }
 </script>

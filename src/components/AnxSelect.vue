@@ -7,9 +7,13 @@
   >
     <div
       @click="show = !show"
-      class="anx-select"
-      :class="{ is_invalid: error.length > 0 || errors.length > 0 }"
+      :class="{
+        'anx-select': true,
+        'dynamic-height': dynamicHeight,
+        is_invalid: error.length > 0 || errors.length > 0
+      }"
       :style="cssProps"
+      ref="anxSelect"
     >
       <label :for="id" @click.prevent> {{ label }}</label>
       <select :id="id" :name="id" v-model="selected">
@@ -97,6 +101,7 @@ export default class AnxSelect extends Vue {
   private selectedText = this.options[this.selectedIndex].text;
   private show = false;
   private error: string[] = [];
+  private dynamicHeight = false;
 
   get cssProps() {
     return {
@@ -114,6 +119,8 @@ export default class AnxSelect extends Vue {
     if (val && this.validation !== null) {
       await this.verify(val);
     }
+
+    window.setTimeout(this.handleResize, 100);
   }
 
   /**
@@ -137,6 +144,17 @@ export default class AnxSelect extends Vue {
     this.error = [];
 
     this.closeOnClickOutsideElement();
+    window.setTimeout(this.handleResize, 100);
+  }
+
+  // Interface for ref
+  $refs!: {
+    anxSelect: HTMLFormElement;
+  };
+
+  /** Adapt the multiline select to the design */
+  public handleResize() {
+    this.dynamicHeight = this.$refs.anxSelect.clientHeight >= 38;
   }
 
   /** Close the select dialoag when the users clicks outside of the anx-select */
@@ -199,6 +217,12 @@ export default class AnxSelect extends Vue {
   margin-top: 23px; /*real margin 53px, because all form-components has 30px margin-bottom*/
   font-size: 16px;
   border-bottom: 1px solid $anx-second-grey-light;
+
+  &.dynamic-height {
+    .anx-select-div {
+      margin-top: 15px;
+    }
+  }
 
   label {
     white-space: nowrap;

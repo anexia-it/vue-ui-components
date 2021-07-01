@@ -90,6 +90,14 @@ export default class AnxTextarea extends Vue {
     this.isFilled();
   }
 
+  /**
+   * When the component is mounted, we have to check if there is already some text in the value property
+   */
+  private mounted() {
+    this.updateInputField = this.value !== null ? this.value : "";
+    this.isFilled();
+  }
+
   /** Do a validation if the component is updated */
   private updated() {
     /** Only validate, if the value is set */
