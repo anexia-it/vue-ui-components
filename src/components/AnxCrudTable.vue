@@ -255,6 +255,7 @@ export default class AnxCrudTable extends Vue {
           // eslint-disable-next-line
           delete (instance as any)[column];
         } else {
+          // eslint-disable-next-line
           console.warn(
             "Tried to hide a non existend column! Are you sure you set hideColumn correct for the CRUD table?"
           );
