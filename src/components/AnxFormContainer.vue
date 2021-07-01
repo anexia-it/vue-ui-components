@@ -1,5 +1,6 @@
 <template>
   <div class="anx-form-container">
+    <!-- @slot use this for your input components that should be grouped together -->
     <slot />
   </div>
 </template>

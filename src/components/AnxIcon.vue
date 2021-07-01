@@ -12,6 +12,9 @@
 <script lang="ts">
 import { Vue, Prop, Component } from "vue-property-decorator";
 
+/**
+ * The *anx-icon* component is used in combination with the **AnxIconsPlugin** to render icons.
+ */
 @Component({})
 export default class AnxIcon extends Vue {
   /** The name of the icon (With this property, different icons can be loaded) */

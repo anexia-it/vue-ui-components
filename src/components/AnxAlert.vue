@@ -11,6 +11,7 @@
   >
     <div class="message">
       <span>
+        <!-- @slot This is used for the displayed message -->
         <slot />
       </span>
     </div>
@@ -21,21 +22,31 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from "vue-property-decorator";
 
+/**
+ * The *anx-alert* is used to delivery important messages to the user.
+ * Currently the two types **error** and **success** are supported.
+ */
 @Component({})
 export default class AnxAlert extends Vue {
-  /** This is the id of the alert */
+  /** This is the name of the alert and will be used as id too */
   @Prop({ default: "anx-alert" }) name!: string;
 
-  /** The state of the alert (equals to show) */
+  /**
+   * This is the state of the alert is is usually passed via *v-model*
+   * @model
+   */
   @Prop({ default: false }) value!: boolean;
 
-  /** Define if animations like fade-in and fade-out should be used */
+  /** Defines if animations like fade-in and fade-out should be used */
   @Prop({ default: true }) animations!: boolean;
 
-  /** This is the type of the error. Possible is error, success */
+  /**
+   * This is the type of the alert
+   * @values error, success
+   */
   @Prop({ default: "error" }) type!: string;
 
-  /** If this option is set, the alert will be auto closed */
+  /** If this option is set, the alert will be closed automatically after the timeout */
   @Prop({ default: null }) autoClose!: boolean | null;
 
   /** This is the timeout for the auto close logic */

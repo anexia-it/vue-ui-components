@@ -50,42 +50,36 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationProvider } from "vee-validate";
 
+/**
+ * This component is an advanced version of the HTML select tag that matches our style guidelines
+ */
 @Component({
   components: {
     ValidationProvider
   }
 })
 export default class AnxSelect extends Vue {
-  /** With this property, a anx-select can be set */
-  /**Props:
-   * id: the id and name of the anx-select, important when there are more then one*/
-  @Prop({ default: "anx-select-choice" }) id!: string;
-  /**label: the text for the label, is also the name for the field in the error-message
-   */
-  @Prop({ default: "Auswahl treffen" }) label!: string;
+  /** This is the id of the select field */
+  @Prop({ default: "anx-select" }) id!: string;
+  /** This is the label that will be displayed as description for the select input field */
+  @Prop({ default: "" }) label!: string;
+  /** This is the index that should be selected */
   @Prop({ default: 0 }) selectedIndex!: number;
-  /**options: this are the options for the select.
-   * This is a Array<{ value: string; text: string }>
-   * value: the value of the options and the value who will be passed to the parent
-   * text: the text who will be show in the application as label/text
-   * You can add a default/optional placeholder like "please choose one option" via {value: "null", text: "please choose one option"}
+  /**
+   * This are the options for the select input field.
+   * The properry should be an array of objcets with the following two properties: <br>
+   * **value**: the value of the options and the value who will be passed to the parent<br>
+   * **text**: the text who will be show in the application as label/text<br>
+   * You can add a default/optional placeholder like "please choose one option" with {value: null, text: "please choose one option"}
    * The value for a placeholder must be "null" (important for the validation)
    */
-  @Prop({
-    default: function() {
-      return [
-        { value: "null", text: "Auswahl treffen" },
-        { value: "Auswahl 1", text: "Auswahl 1" },
-        { value: "Auswahl 2", text: "Auswahl 2" },
-        { value: "Auswahl 3", text: "Auswahl 3" },
-        { value: "Auswahl 4", text: "Auswahl 4" }
-      ];
-    }
-  })
-  options!: Array<{ value: string; text: string }>;
-  /**width: the width for the eternaly anx-select */
+  @Prop({ required: true }) options!: Array<{ value: string; text: string }>;
+  /** The width for the select field */
   @Prop({ default: "100%" }) width!: string;
-  /**validation: When this is set to true, there will be a validation-provider */
+  /**
+   * If this property is set, a default required validation will be applied
+   * @deprecated Use **validationRules** instead to define the rules directly
+   */
   @Prop({ default: null }) validation!: boolean | null;
   /** The rules for the validation */
   @Prop({ default: null }) validationRules!: string | null;
@@ -196,6 +190,8 @@ export default class AnxSelect extends Vue {
     this.selected = option.value;
     this.selectedText = option.text;
     this.show = false;
+
+    /** This emits the input event with the selected user input */
     this.$emit("input", this.selected);
   }
 }

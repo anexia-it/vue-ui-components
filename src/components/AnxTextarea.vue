@@ -27,34 +27,35 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
 
+/**
+ * This component is an advanced input textarea
+ */
 @Component({
   components: {
     ValidationProvider
   }
 })
 export default class AnxTextarea extends Vue {
-  /** With this property, a textarea can be set */
-  /**Props
-   * id: the id and the name of the textarea
-   */
+  /** This is the name of the textarea */
   @Prop({ default: "anx-textarea" }) id!: string;
-  /** The name of the component */
+  /** This is the name of the textarea */
   @Prop({ default: "anx-textarea" }) name!: string;
   /** This will be shown as field name in error messages. Can be used for localization */
   @Prop({ default: null }) dataVvAs!: string | null;
-  /**label: the label text for the textarea */
+  /** This is the label of the textarea that will be displayed */
   @Prop({ default: "Additional Text" }) label!: string;
-  /**rows: the number of rows for the textarea */
+  /** This is the number of rows the textarea should have */
   @Prop({ default: "4" }) rows!: string;
-  /**disabled: set the diasbled attribute of the textarea.
-   * When the textarea should be diabled you must set it in most cases with this prop
-   */
+  /** With this property you can set the textarea to disabled */
   @Prop({ default: null }) disabled!: boolean | null;
-  /**width: the width of the textarea */
+  /** This is the width of the textarea */
   @Prop({ default: "100%" }) width!: string;
-  /**validation: is it set (true) then there will be validation-provider */
-  @Prop({ default: null }) validation!: boolean | null; // This property is obsolete, don't use it
-  /**rules: the rules for the validation. default is required */
+  /**
+   * If this property is set to true, a standard *required* validation will be applied on the textarea
+   * @deprecated Use the *rules* property instead to define rules
+   */
+  @Prop({ default: null }) validation!: boolean | null;
+  /** These are the rules for validation. See [VeeValidate Rules](https://vee-validate.logaretm.com/v2/guide/rules.html). */
   @Prop({ default: null }) rules!: string;
   /** This is the value passed automatically via v-model */
   @Prop({ default: "" }) value!: string;
