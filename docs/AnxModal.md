@@ -16,7 +16,7 @@ let showModal = false;
 
 ```
 
-Note that the modal will also be closed when a user clicks outside of the modal.
+__Note:__ The modal will also be closed when a user clicks outside of the modal.
 
 You can also use the built-in confirmation. You just have to set the **confirm** property. The example below show a simple confirmation modal.
 

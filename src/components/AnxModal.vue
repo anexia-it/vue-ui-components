@@ -1,6 +1,6 @@
 <template>
-  <div id="modal" :class="`modal anx-modal anx-modal-size-${size}`">
-    <div :class="'modal-dialog modal-dialog-scrollable'">
+  <div :id="_id" :class="`modal anx-modal anx-modal-size-${size}`">
+    <div :id="`${_id}-dialog`" :class="'modal-dialog modal-dialog-scrollable'">
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
           <button
@@ -100,6 +100,9 @@ export default class AnxModal extends Vue {
   /** If the confirm option is true, this is the text for the confirm button */
   @Prop({ default: "Confirm" }) confirmButtonText!: string;
 
+  /** The id for the modal, will be set to a unique value when null */
+  @Prop({ default: null }) id!: string | null;
+
   @Prop({ default: null }) value!: boolean | null;
 
   /**
@@ -111,6 +114,9 @@ export default class AnxModal extends Vue {
 
   /** This is the number of currently opened modals */
   private static numberModalsOpened = 0;
+
+  /** This is the layer of our modal (neccessary for displaying modals inside of modals) */
+  private modalLayer = 0;
 
   /** Add event listeners for click event on mount */
   private mounted() {
@@ -125,10 +131,19 @@ export default class AnxModal extends Vue {
       document.body.addEventListener("click", this.clickedOutsideModal);
     }, 50);
 
-    /** Increase the number of opened modals */
-    AnxModal.numberModalsOpened++;
+    /** Increase the number of opened modals and store the current layer of our modal*/
+    this.modalLayer = ++AnxModal.numberModalsOpened;
 
     this.updateStyles();
+  }
+
+  /** Check if the id is set otherwise create a unique id */
+  private get _id() {
+    if (this.id !== null) {
+      return this.id;
+    }
+
+    return "anx-modal-" + AnxModal.numberModalsOpened;
   }
 
   /** Remove the click event listeners before destroy and decrease the number of opened modals */
@@ -142,7 +157,10 @@ export default class AnxModal extends Vue {
 
   /** Handle a click outside the modal */
   private clickedOutsideModal() {
-    this.$emit("close");
+    /** Only close the modal if the current modal is in front */
+    if (this.modalLayer == AnxModal.numberModalsOpened) {
+      this.$emit("close");
+    }
   }
 
   /**
