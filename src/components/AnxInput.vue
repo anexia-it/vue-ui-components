@@ -13,6 +13,10 @@
     :style="cssProps"
     ref="observer"
   >
+    <!--
+      This will be emitted on user input
+      @event input
+    -->
     <input
       :id="id"
       v-model="updateInputField"
@@ -48,6 +52,7 @@
     </div>
 
     <div v-if="inline !== null" class="inline-content-right">
+      <!-- @slot This slot is used for displaying content on the right side of the input -->
       <slot>
         <!-- The content in here will be displayed on the right (to use inline elements) -->
       </slot>
@@ -59,48 +64,46 @@ import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
 import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
 
+/**
+ * This component is a advanced version of the simple HTML input tag. This component is used for user input via a textbox.
+ */
 @Component({
   components: {
     ValidationProvider
   }
 })
 export default class AnxInput extends Vue {
-  /**With this property, a anx-input can be set and designed */
-  /**Props
-   * name: is the name of the input-field
-   */
+  /** This is the name of the input field */
   @Prop({ default: "anx-input" }) name!: string;
   /** This will be shown as field name in error messages. Can be used for localization */
   @Prop({ default: null }) dataVvAs!: string | null;
-  /**id: the id of the input field */
+  /** This is the id of the input field */
   @Prop({ default: "input-text-field" }) id!: string;
-  /**label: the label-text of the input field */
+  /** This is the label of the input field that will be displayed */
   @Prop() label!: string;
-  /** type: type of the input-field for example: text, password */
+  /** This property will be directly translated to HTML input type of the input field */
   @Prop({ default: "text" }) type!: string;
-  /** rules: needed for validation
-   * this are the rules, which will be used for teh input validation
-   */
+  /** These are the rules for validation. See [VeeValidate Rules](https://vee-validate.logaretm.com/v2/guide/rules.html). */
   @Prop({ default: null }) rules!: string | null;
-  /**width: the width of the input-field */
+  /** The width of the input field */
   @Prop({ default: "100%" }) width!: string;
-  /**assistiveText: the hint-text under the input-field
-   * it will only be showed, when there are no errors (validation)
+  /**
+   * This is the assisitive text that will be displayed underneath
+   * the input field. Will only be shown, if there are no errors.
    */
   @Prop({ default: null }) assistiveText!: string | null;
-  /**readonly: the readonly attribute for the input-field.
-   * Is this prop is set there will be now validation and you
-   * can't change the value. But the animation will be execute, when the
-   * value is set.
+  /**
+   * If this property is set there will be no validation and you
+   * can't change the value. The style and the behaviour of the
+   * input will remain the same. The value can still be changed
+   * programmatically via the v-model.
    */
   @Prop({ default: null }) readonly!: boolean | null;
-  /**vallue: only needed if readonly
-   * is the value who will be show as input
-   */
+  /** this is the value that can be used via **v-model** */
   @Prop({ default: "" }) value!: string;
   /** Display the input field inline */
   @Prop({ default: null }) inline!: boolean | null;
-  /** Autocomplete attribute */
+  /** HTML autocomplete attribute */
   @Prop({ default: "" }) autocomplete!: string;
 
   private active = false;

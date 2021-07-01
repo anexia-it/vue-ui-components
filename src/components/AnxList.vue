@@ -9,7 +9,8 @@
     :style="{ listStyleType, marginBottom, marginTop }"
   >
     <li v-for="(item, i) in items" :key="`${i}-${item}`">
-      <slot name="icon">
+      <!-- @slot There are named slots **item${i}** and **icon${i}**. Those can be used to access the i-th item or icon. -->
+      <slot :name="`icon${i}`">
         <anx-icon v-if="icon" class="anx-icon-list" :icon="icon" />
       </slot>
       <slot :name="`item${i}`">
@@ -23,6 +24,9 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxIcon from "./AnxIcon.vue";
 
+/**
+ * This component renders a list based on the items provided
+ */
 @Component({
   components: {
     AnxIcon

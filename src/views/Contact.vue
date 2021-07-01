@@ -144,7 +144,7 @@ export default class Contact extends Vue {
   private submitted(request: {}) {
     console.log(request); // This is the request from the anx-contact component
 
-    // You should now send this to you backend and validate the recaptcha token
+    // You should now send this to your backend and validate the recaptcha token
 
     // We assume that there is an error and show an alert
     const serverResponse = { success: true };

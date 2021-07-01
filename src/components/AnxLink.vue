@@ -6,6 +6,7 @@
     :href="href"
     :target="newTab !== null ? '_blank' : '_self'"
   >
+    <!-- @slot Use this slot for the link text -->
     <slot />
   </a>
   <span
@@ -23,6 +24,9 @@
 <script lang="ts">
 import { Vue, Component, Emit, Prop } from "vue-property-decorator";
 
+/**
+ * A simple link with VueRouter integrated
+ */
 @Component({})
 export default class AnxLink extends Vue {
   /** Require the url module (import can't be used because it does not have @types) */

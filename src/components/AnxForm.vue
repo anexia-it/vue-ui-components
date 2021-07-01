@@ -1,6 +1,7 @@
 <template>
   <ValidationObserver :ref="name" v-slot="{ invalid }">
     <form :id="name" class="anx-form" @submit.prevent="checkValidation">
+      <!-- @slot put your input components inside here -->
       <slot />
       <div class="submit-button-wrapper" v-if="submitButton !== null">
         <anx-button
@@ -20,6 +21,9 @@ import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import { ValidationObserver, Validator } from "vee-validate";
 import AnxButton from "./AnxButton.vue";
 
+/**
+ * A simple form used for collecting user input
+ */
 @Component({
   components: {
     AnxButton,

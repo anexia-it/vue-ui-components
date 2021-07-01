@@ -13,8 +13,10 @@
               <div class="anx-footer-desktop">
                 <slot name="icon">
                   <anx-icon
+                    v-if="icon != null"
                     class="anx-footer-logo"
                     alt="anx-footer-logo"
+                    height="40px"
                     :icon="icon"
                   />
                 </slot>
@@ -22,21 +24,29 @@
 
               <div class="anx-footer-right">
                 <div class="anx-footer-text">
-                  <div class="anx-footer-text copyright">
-                    2006 - {{ new Date().getFullYear() }} Anexia
-                    Internetdienstleistungs GmbH
-                  </div>
-                  <a v-for="(link, i) in links" :key="i" :href="link.link">
-                    {{ link.text }}
-                  </a>
+                  <!-- @slot use this slot to overwrite the default text for the footer -->
+                  <slot>
+                    <div class="anx-footer-text copyright">
+                      <span v-if="showCopyrightDate">
+                        {{ copyrightDateFrom }} - {{ new Date().getFullYear() }}
+                      </span>
+                      {{ companyName }}
+                    </div>
+                    <a v-for="(link, i) in links" :key="i" :href="link.link">
+                      {{ link.text }}
+                    </a>
+                  </slot>
                 </div>
               </div>
             </div>
             <div class="anx-footer-mobile">
+              <!-- @slot use this slot to manipulate the icon in the footer -->
               <slot name="icon">
                 <anx-icon
+                  v-if="icon != null"
                   class="anx-footer-logo"
                   alt="anx-footer-logo"
+                  height="40px"
                   :icon="icon"
                 />
               </slot>
@@ -53,19 +63,32 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxIcon from "./AnxIcon.vue";
 import AnxHrLine from "./AnxHrLine.vue";
 
+/**
+ * The *anx-footer* is a simple footer that is displayed on the bottom of the page
+ */
 @Component({ components: { AnxIcon, AnxHrLine } })
 export default class AnxFooter extends Vue {
   /** The links for the footer */
   @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
-  /** The icon for the footer. If you want to use images, use the named slot "icon" */
 
-  @Prop({ default: "anexia" }) icon!: string;
+  /** The icon for the footer. If you want to use images, use the named slot "icon". When providing *null*, no icon is rendered */
+  @Prop({ default: "anexia" }) icon!: string | null;
 
-  /**Specify the width of the Footer 530px => 500px real width (15px padding for mobile)*/
+  /**Specify the width of the Footer. Due to the padding, the provided width is not the actual width (530px => 500px real width)*/
   @Prop({ default: "530px" }) width!: string;
 
-  /** This is the margin top for the footer (default is 0px) */
+  /** This is the margin top for the footer */
   @Prop({ default: "0px" }) marginTop!: string;
+
+  /** This is the name of the company that will be displayed in the footer */
+  @Prop({ default: "Anexia Internetdienstleistungs GmbH" })
+  companyName!: string;
+
+  /** Show a copyright note in the footer */
+  @Prop({ default: true }) showCopyrightDate!: boolean;
+
+  /** The founding date for the copyright note */
+  @Prop({ default: 2006 }) copyrightDateFrom!: number;
 
   get cssProps() {
     return {
@@ -132,8 +155,16 @@ export default class AnxFooter extends Vue {
   display: flex;
 }
 
+.anx-footer-mobile,
+.anx-footer-desktop {
+  img {
+    width: 64px;
+  }
+}
+
 .anx-footer-logo {
   width: 64px;
+  max-height: 40px;
 
   @media screen and (max-width: 500px),
     (-ms-high-contrast: none),

@@ -34,6 +34,9 @@ import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import AnxLink from "./AnxLink.vue";
 import VueI18n from "vue-i18n";
 
+/**
+ * This component is a simple implementation of a language switcher in combination with Vue-I18n
+ */
 @Component({
   components: {
     AnxLink

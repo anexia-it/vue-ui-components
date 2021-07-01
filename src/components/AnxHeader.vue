@@ -11,6 +11,7 @@
                 no-style
                 :disabled="iconUrl == null ? true : null"
               >
+                <!-- @slot use this slot to implement a custom logo -->
                 <slot name="icon">
                   <anx-icon
                     alt="anx-header-logo"
@@ -22,6 +23,7 @@
               </anx-link>
             </div>
             <div class="header-language-nav" v-if="i18n">
+              <!-- @slot use this slot to override $i18n language switcher -->
               <slot name="header-top-right">
                 <div
                   :class="{
@@ -92,6 +94,9 @@ import AnxLink from "./AnxLink.vue";
 import AnxLanguageSwitcher from "./AnxLanguageSwitcher.vue";
 import VueI18n from "vue-i18n";
 
+/**
+ * The *anx-header* is a simple header that is displayed on the top of the page
+ */
 @Component({
   components: { AnxHrLine, AnxLanguageSwitcher, AnxIcon, AnxLink }
 })
@@ -111,6 +116,8 @@ export default class AnxHeader extends Vue {
   @Prop({ default: null }) menus!: Array<{
     menu: string;
     link: string;
+    external: boolean | null;
+    activeRegex: string | null;
   }> | null;
   /**Specify the width of the Header 530px => 500px real width (15px padding for mobile)*/
   @Prop({ default: "530px" }) width!: string;
@@ -123,7 +130,7 @@ export default class AnxHeader extends Vue {
    */
   @Prop({ default: null }) iconUrlRouteName!: string | null;
 
-  /** Emit the @localeChange event when the locale is changed via the AnxLanguageSwitcher */
+  /** this event is emitted when the locale is changed via the language switcher */
   @Emit("localeChange")
   localeChange(locale: string) {
     return locale;

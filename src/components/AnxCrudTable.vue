@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1 v-if="modelClass">{{ modelClass.name }}</h1>
+    <!--
+      Will be emitted when the create action has been clicked for an entry in the table
+
+      @event createActionClicked
+    -->
     <anx-button
       @click="
         createInstance = new modelClass();
@@ -11,6 +16,8 @@
     </anx-button>
     <br />
     <br />
+
+    <!-- @slot This can be used for modifing the create modal -->
     <slot name="createModal">
       <anx-modal
         title="Create"
@@ -45,6 +52,11 @@
             {{ instanceProp }}
           </anx-table-col>
           <anx-table-col class="actions" align="center">
+            <!--
+              Will be emitted when the update action has been clicked for an entry in the table
+
+              @event editActionClicked
+            -->
             <anx-icon
               v-if="editable"
               icon="einstellungen-verwaltung"
@@ -116,6 +128,7 @@
       Do you really want to delete?
     </anx-modal>
 
+    <!-- @slot This can be used for modifing the edit modal -->
     <slot name="editModal">
       <anx-modal
         title="Edit"
@@ -150,6 +163,9 @@ import AnxButton from "./AnxButton.vue";
 import AnxInput from "./AnxInput.vue";
 import { AbstractModel } from "../lib/models/AbstractModel";
 
+/**
+ * This component is based on the *anx-table* and fully automatically renders a CRUD table with your data.
+ */
 @Component({
   components: {
     AnxTable,
@@ -239,6 +255,7 @@ export default class AnxCrudTable extends Vue {
           // eslint-disable-next-line
           delete (instance as any)[column];
         } else {
+          // eslint-disable-next-line
           console.warn(
             "Tried to hide a non existend column! Are you sure you set hideColumn correct for the CRUD table?"
           );

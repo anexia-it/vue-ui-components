@@ -1,6 +1,7 @@
 <template>
   <anx-container class="anx-login" :width="width">
     <anx-content class="anx-login-header" inverse>
+      <!-- @slot This slot is can optionally be used for the header -->
       <slot name="header">
         <img v-if="logo" :src="logo" />
       </slot>
@@ -9,12 +10,14 @@
       :class="'anx-login-body ' + (noFooter === null ? 'with-footer' : '')"
     >
       <div v-if="customerLogo" class="customer-logo">
+        <!-- @slot This slot is can optionally be used for the customer logo -->
         <slot name="customer-logo">
           <img :src="customerLogo" class="customer-logo" />
         </slot>
       </div>
 
       <anx-form class="anx-login-form" @submit="login">
+        <!-- @slot This slot is can optionally be used for the username input -->
         <slot name="username-input">
           <anx-input
             v-model="username"
@@ -29,6 +32,7 @@
         </slot>
 
         <slot name="password-input">
+          <!-- @slot This slot is can optionally be used for the password input -->
           <anx-input
             v-model="password"
             :name="passwordName"
@@ -41,6 +45,7 @@
           />
         </slot>
 
+        <!-- @slot This slot is can optionally be used for the remember me input -->
         <slot name="remember-me-input">
           <anx-checkbox
             v-if="rememberMe !== null"
@@ -52,6 +57,7 @@
         </slot>
 
         <span class="error" v-if="hasLoginError">
+          <!-- @slot This slot is can optionally be used for the error message -->
           <slot name="error">
             <anx-alert v-model="hasLoginError" type="error">
               {{ loginError }}
@@ -59,6 +65,7 @@
           </slot>
         </span>
 
+        <!-- @slot This slot is can optionally be used for the submit button -->
         <slot name="submit-button">
           <div :class="`button-container button-${submitButtonAlign}`">
             <anx-button
@@ -73,6 +80,7 @@
       </anx-form>
 
       <div v-if="noFooter === null" class="anx-login-footer">
+        <!-- @slot This slot is can optionally be used for the footer -->
         <slot name="footer">
           <anx-hr-line color="green" margin="20px" />
           <div class="footer-content">
@@ -83,6 +91,7 @@
             </div>
 
             <div class="stamp">
+              <!-- @slot This slot is can optionally be used for the footer icon (only available if the footer slot is unused) -->
               <slot name="footer-icon">
                 <anx-icon
                   :icon="footerIcon"
@@ -110,6 +119,9 @@ import AnxHrLine from "./AnxHrLine.vue";
 import AnxIcon from "./AnxIcon.vue";
 import AnxInput from "./AnxInput.vue";
 
+/**
+ * This component renders a highly adjustable login form that matches the style guidelines
+ */
 @Component({
   components: {
     AnxAlert,

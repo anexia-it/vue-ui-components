@@ -5,9 +5,15 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 
+/**
+ * This component is like a simple *\<hr\>* html tag with some features and predefined layout.
+ */
 @Component({})
 export default class AnxHrLine extends Vue {
-  /** The color of the hr line (grey, green, blue) */
+  /**
+   * The color of the hr line (the colors are predefined)
+   * @values grey, green, blue
+   */
   @Prop({ default: "grey" }) color!: string;
 
   /** The margin top and bottom */

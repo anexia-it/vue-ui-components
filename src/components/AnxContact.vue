@@ -2,6 +2,7 @@
   <div class="anx-contact">
     <anx-content :title="title">
       <anx-paragraph v-if="this.$slots.default">
+        <!-- @slot Use this slot to provide a description for the login form -->
         <slot />
       </anx-paragraph>
       <anx-form ref="contactForm" @submit="submit">
@@ -138,7 +139,7 @@ export default class AnxContact extends Vue {
       };
     }
   })
-  firstName!: {};
+  firstName!: { name: string; label: string };
 
   /** Property for the last name field */
   @Prop({
@@ -149,7 +150,7 @@ export default class AnxContact extends Vue {
       };
     }
   })
-  lastName!: {};
+  lastName!: { name: string; label: string };
 
   /** Property for the email field */
   @Prop({
@@ -160,7 +161,7 @@ export default class AnxContact extends Vue {
       };
     }
   })
-  email!: {};
+  email!: { name: string; label: string };
 
   /** Property for the phone field */
   @Prop({
@@ -171,7 +172,7 @@ export default class AnxContact extends Vue {
       };
     }
   })
-  phone!: {};
+  phone!: { name: string; label: string };
 
   /** Property for the message field */
   @Prop({
@@ -182,7 +183,7 @@ export default class AnxContact extends Vue {
       };
     }
   })
-  message!: {};
+  message!: { name: string; label: string };
 
   /** Property for the send button */
   @Prop({
@@ -192,7 +193,7 @@ export default class AnxContact extends Vue {
       };
     }
   })
-  sendButton!: {};
+  sendButton!: { text: string };
 
   /** Defines whether to contact form is enabled or not (can press send button) */
   @Prop({ default: true }) enabled!: boolean;
@@ -302,6 +303,11 @@ export default class AnxContact extends Vue {
 
   /** Emit the submit event and add the request data */
   private submit() {
+    /**
+     * triggered on contact form submit
+     * @event submit
+     * @property {object} request - The request containing the data the user entered
+     */
     this.$emit("submit", this.request);
   }
 }

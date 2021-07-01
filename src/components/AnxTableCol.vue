@@ -8,6 +8,9 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 
+/**
+ * A table colum for the *anx-table*
+ */
 @Component({})
 export default class AnxTableCol extends Vue {
   /** The content for the column */

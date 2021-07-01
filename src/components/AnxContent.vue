@@ -9,6 +9,7 @@
     <anx-title v-if="title !== null" :size="size" :noline="noline">
       {{ title }}
     </anx-title>
+    <!-- @slot use this for the actual content -->
     <slot />
   </div>
 </template>
@@ -26,7 +27,10 @@ export default class AnxContent extends Vue {
   /** The title for the content */
   @Prop({ default: null }) title!: string | null;
 
-  /** This is the size of the header (h1, h2, h3) */
+  /**
+   * This is the size of the header
+   * @values h1, h2, h3
+   */
   @Prop({ default: "h1" }) size!: string;
 
   /** If this property is set to true, the colors will be inversed (blue background and white font) */
