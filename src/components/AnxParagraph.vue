@@ -43,6 +43,9 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxTitle from "./AnxTitle.vue";
 
+/**
+ * The *anx-paragraph* is a computed version of the default HTML \<p\> tag that matches our styleguideline.
+ */
 @Component({
   components: {
     AnxTitle
