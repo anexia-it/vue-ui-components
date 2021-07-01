@@ -20,6 +20,7 @@
           </div>
         </div>
         <div class="modal-body  anx-modal-body">
+          <!-- @slot Use this slot for your content -->
           <slot />
         </div>
         <div
@@ -28,9 +29,21 @@
             `modal-footer anx-modal-footer footer-content-${closeButtonAlign}`
           "
         >
+          <!--
+            This event will be emitted when the users closes the modal
+
+            @event close
+          -->
           <anx-button :text="closeButtonText" @click="$emit('close')" outline />
           <div class="space"></div>
+          <!--
+            This event will be emitted when the confirms the modal
+            Note: This event will only be emitted in combination with the **confirm** property
+
+            @event confirm
+          -->
           <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
+          <!-- @slot Use this slot to add something to the footer -->
           <slot name="modal-footer" />
         </div>
         <div
@@ -54,6 +67,11 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxButton from "./AnxButton.vue";
+
+/**
+ * This component is used for generating dynamic modals.
+ * Modals are dialogs that can be used to display information for users.
+ */
 @Component({
   components: {
     AnxButton
@@ -69,7 +87,11 @@ export default class AnxModal extends Vue {
   /** This is the text for the close button */
   @Prop({ default: "Close" }) closeButtonText!: string;
 
-  /** This is the align for the close button [left, center, right]. Note: This will only work, if the modal is not confirmable */
+  /**
+   * This is the align for the close button. Note: This will only work, if the modal is not confirmable
+   *
+   * @values left, center, right
+   */
   @Prop({ default: "center" }) closeButtonAlign!: string;
 
   /** Show confirmation modal. A 'close' or a 'confirm' event will be emited, depending on the user input */
@@ -78,7 +100,13 @@ export default class AnxModal extends Vue {
   /** If the confirm option is true, this is the text for the confirm button */
   @Prop({ default: "Confirm" }) confirmButtonText!: string;
 
-  /** The size of the model [s, m, l, xl, xxl] */
+  @Prop({ default: null }) value!: boolean | null;
+
+  /**
+   * The size of the model
+   *
+   * @values s, m, l, xl, xxl
+   */
   @Prop({ default: "m" }) size!: string;
 
   /** This is the number of currently opened modals */
