@@ -1,6 +1,7 @@
 <template>
   <div :id="name" class="anx-readonly">
     <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
+      <!-- @slot Use this slot for your content -->
       <slot />
     </div>
   </div>
@@ -9,15 +10,19 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 
+/**
+ * This component can be used to display some text in read-only format.
+ * It has special styles and differs from a input field with readonly attribute.
+ */
 @Component({})
 export default class AnxReadonly extends Vue {
-  /** This is the id of the readonly */
+  /** This is the name of the readonly and will also be used as id */
   @Prop({ default: "anx-readonly" }) name!: string;
 
-  /** Should the text be selcted and copied to the clipboard on click? */
+  /** If this attribute is set, the text will be selected and copied when a user clicks on it */
   @Prop({ default: null }) copyOnClick!: boolean | null;
 
-  /** Should the text be bold? */
+  /** Display the text in bold */
   @Prop({ default: null }) bold!: boolean | null;
 
   /** Mount function */
