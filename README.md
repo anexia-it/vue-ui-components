@@ -1,18 +1,12 @@
-<p align="center">
-  <img src="./src/assets/icons/anexia.svg" width="150px">
-</p>
+# ANEXIA vue-ui-components
 
-# ANX UI-Tool
------------
+A Vue component library containing several components that match the ANEXIA style guidelines.
 
-**Author:** :blue_heart: Anexia Marketing :green_heart:
-
-- [Installation](#installation) :page_facing_up:
+- [Installation](#installation)
   - [Vue](#vue)
   - [Nuxt](#nuxt)
-- [Usage](#usage) :white_check_mark:
-- [Troubleshooting](#common-errors-and-troubleshooting) :interrobang:
-- [IE support](#ie-support) :poop:
+- [Usage](#usage) 
+- [Troubleshooting](#common-errors-and-troubleshooting)
 
 -----------
 
