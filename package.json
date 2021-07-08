@@ -7,8 +7,7 @@
   "scripts": {
     "serve": "npm run generate:icons && vue-cli-service serve",
     "build": "npm run build:bundle && npm run build:app",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build:app": "npm run generate:icons && vue-cli-service build",
     "build:bundle": "npm run generate:icons && vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts",
