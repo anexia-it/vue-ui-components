@@ -33,6 +33,7 @@
   "dependencies": {
     "bootstrap": "^4.5.0",
     "node-html-parser": "^2.0.2",
+    "null-loader": "^4.0.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "ts-node": "^9.0.0",
@@ -64,7 +65,7 @@
     "@vue/cli-service": "~4.4.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^1.0.3",
+    "@vue/test-utils": "^1.2.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^25.3.0",
     "babel-preset-env": "^1.7.0",
@@ -79,12 +80,27 @@
     "husky": "^4.3.0",
     "prettier": "^1.19.1",
     "simple-git": "^2.20.1",
+    "vue-jest": "^3.0.7",
     "vue-styleguidist": "^4.39.0",
     "webpack": "^4.43.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "if git-branch-is integration; then npm run build:bundle && npm run git:add-bundle; fi"
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      ".*\\.(js)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
     }
   },
   "style": "lib/ui.css"
