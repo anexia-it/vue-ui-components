@@ -44,7 +44,7 @@ import VueI18n from "vue-i18n";
 })
 export default class I18nLangSwitcher extends Vue {
   /** The i18n instance from the root vue project */
-  @Prop({ default: null }) i18n!: VueI18n | null;
+  @Prop({ required: true }) i18n!: VueI18n;
 
   /**
    * With this property, the different languages that
