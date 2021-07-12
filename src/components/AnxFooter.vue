@@ -32,9 +32,13 @@
                       </span>
                       {{ companyName }}
                     </div>
-                    <a v-for="(link, i) in links" :key="i" :href="link.link">
+                    <anx-link
+                      v-for="(link, i) in links"
+                      :key="i"
+                      :href="link.link"
+                    >
                       {{ link.text }}
-                    </a>
+                    </anx-link>
                   </slot>
                 </div>
               </div>
@@ -62,11 +66,12 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxIcon from "./AnxIcon.vue";
 import AnxHrLine from "./AnxHrLine.vue";
+import AnxLink from "./AnxLink.vue";
 
 /**
  * The *anx-footer* is a simple footer that is displayed on the bottom of the page
  */
-@Component({ components: { AnxIcon, AnxHrLine } })
+@Component({ components: { AnxIcon, AnxHrLine, AnxLink } })
 export default class AnxFooter extends Vue {
   /** The links for the footer */
   @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
