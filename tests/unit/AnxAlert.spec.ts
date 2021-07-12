@@ -1,4 +1,3 @@
-import { expect } from "chai";
 import { shallowMount } from "@vue/test-utils";
 import AnxAlert from "@/components/AnxAlert.vue";
 
@@ -13,7 +12,7 @@ describe("AnxAlert.vue", () => {
       propsData: { name }
     });
 
-    expect(wrapper.attributes("id")).to.include(name);
-    expect(wrapper.text()).to.include(message);
+    expect(wrapper.attributes("id")).toMatch(name);
+    expect(wrapper.text()).toMatch(message);
   });
 });
