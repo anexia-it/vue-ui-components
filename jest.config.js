@@ -14,7 +14,8 @@ const config = {
   testEnvironment: "jsdom",
   collectCoverage: true,
   collectCoverageFrom: ["**/components/*.{js,vue}", "!**/node_modules/**"],
-  coverageDirectory: "<rootDir>/tests/unit/cov-report"
+  coverageDirectory: "<rootDir>/tests/unit/cov-report",
+  reporters: ["default", "jest-junit"]
 };
 
 module.exports = config;
