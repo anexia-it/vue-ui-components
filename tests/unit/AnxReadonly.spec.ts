@@ -3,12 +3,13 @@ import AnxReadonly from "@/components/AnxReadonly.vue";
 
 // Mocking the createRange function
 global.document.createRange = () => ({
-  setStart: () => {},
-  setEnd: () => {},
-  //@ts-ignore
+  setStart: jest.fn,
+  setEnd: jest.fn,
+  // @ts-ignore
   commonAncestorContainer: {
     nodeName: "BODY",
     ownerDocument: document,
+    baseURI: ""
   },
   selectNode: jest.fn
 });
@@ -20,7 +21,7 @@ global.document.execCommand = jest.fn;
 // Mocking the getSelection function
 global.window.getSelection = () => ({
   // @ts-ignore
-  anchorNode: () => {},
+  anchorNode: jest.fn,
   removeAllRanges: jest.fn,
   addRange: jest.fn
 });
@@ -79,7 +80,7 @@ describe("AnxReadonly.vue", () => {
         copyOnClick: true
       }
     });
-    
+
     // @ts-ignore
     wrapper.vm.copy();
 
@@ -89,12 +90,12 @@ describe("AnxReadonly.vue", () => {
   it("does not copy if browser does not support copy", async () => {
     // This function will cause an error, because selectNode is not defined
     global.document.createRange = () => ({
-      setStart: () => {},
-      setEnd: () => {},
+      setStart: jest.fn,
+      setEnd: jest.fn,
       //@ts-ignore
       commonAncestorContainer: {
         nodeName: "BODY",
-        ownerDocument: document,
+        ownerDocument: document
       }
     });
 

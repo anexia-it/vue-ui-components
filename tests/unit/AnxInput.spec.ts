@@ -1,7 +1,7 @@
 import { NameSelector, shallowMount, mount } from "@vue/test-utils";
 import AnxInput from "@/components/AnxInput.vue";
 import { ValidationProvider } from "vee-validate";
-import Vue from 'vue';
+import Vue from "vue";
 
 describe("AnxInput.vue", () => {
   it("renders component", () => {
@@ -10,23 +10,46 @@ describe("AnxInput.vue", () => {
     expect(wrapper.get(".anx-input > input").exists()).toBe(true);
   });
 
-  it ("has correct properties", () => {
-    const assistiveText = "Some assistive text", autocomplete = "test",
-    dataVvAs = "field_name_i18n", id = "my_input_test", inline = null,
-    label = "This is some label", name = "input_name", readonly = null,
-    rules = null, type = "password", width = "100px";
+  it("has correct properties", () => {
+    const assistiveText = "Some assistive text",
+      autocomplete = "test",
+      dataVvAs = "field_name_i18n",
+      id = "my_input_test",
+      inline = null,
+      label = "This is some label",
+      name = "input_name",
+      readonly = null,
+      rules = null,
+      type = "password",
+      width = "100px";
     const wrapper = shallowMount(AnxInput, {
-      propsData: { assistiveText, autocomplete, dataVvAs, id, inline, label, name, readonly, rules, type, width }
+      propsData: {
+        assistiveText,
+        autocomplete,
+        dataVvAs,
+        id,
+        inline,
+        label,
+        name,
+        readonly,
+        rules,
+        type,
+        width
+      }
     });
 
-    const validationProviderComponent = wrapper.findComponent(ValidationProvider as NameSelector);
+    const validationProviderComponent = wrapper.findComponent(
+      ValidationProvider as NameSelector
+    );
     expect(validationProviderComponent.exists()).toBe(true);
-    expect(validationProviderComponent.attributes('name')).toBe(dataVvAs);
+    expect(validationProviderComponent.attributes("name")).toBe(dataVvAs);
 
-    expect(wrapper.get(".anx-input > input").attributes('id')).toMatch(id);
-    expect(wrapper.get(".anx-input > input").attributes('name')).toMatch(name);
-    expect(wrapper.get(".anx-input > input").attributes('autocomplete')).toMatch(autocomplete);
-    expect(wrapper.get(".anx-input > input").attributes('type')).toMatch(type);
+    expect(wrapper.get(".anx-input > input").attributes("id")).toMatch(id);
+    expect(wrapper.get(".anx-input > input").attributes("name")).toMatch(name);
+    expect(
+      wrapper.get(".anx-input > input").attributes("autocomplete")
+    ).toMatch(autocomplete);
+    expect(wrapper.get(".anx-input > input").attributes("type")).toMatch(type);
     expect(wrapper.get("label").text()).toMatch(label);
     expect(wrapper.get(".anx-input-hint").text()).toMatch(assistiveText);
   });
@@ -35,7 +58,7 @@ describe("AnxInput.vue", () => {
     const text = "Some input test text";
     const wrapper = shallowMount(AnxInput);
     const inputField = wrapper.get(".anx-input > input");
-    
+
     // @ts-ignore
     expect(inputField.element.value).toMatch("");
     expect(wrapper.get(".anx-input").classes("active")).toBe(false);
@@ -65,7 +88,7 @@ describe("AnxInput.vue", () => {
       propsData: { rules }
     });
     const inputField = wrapper.get(".anx-input > input");
-    
+
     // Should be valid without any user interaction
     expect(inputField.classes("is-invalid")).toBe(false);
 
@@ -74,7 +97,7 @@ describe("AnxInput.vue", () => {
     await inputField.trigger("change");
     await inputField.trigger("blur");
     await Vue.nextTick();
-    
+
     // Should be invalid with invalid user input
     expect(inputField.classes("is-invalid")).toBe(true);
 
@@ -83,7 +106,7 @@ describe("AnxInput.vue", () => {
     await inputField.trigger("change");
     await inputField.trigger("blur");
     await Vue.nextTick();
-    
+
     // Should be valid now
     expect(inputField.classes("is-invalid")).toBe(false);
   });

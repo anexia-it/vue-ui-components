@@ -6,7 +6,7 @@ import Vue from "vue";
 
 beforeAll(() => {
   Vue.use(VueI18n);
-})
+});
 
 describe("AnxLanguageSwitcher.vue", () => {
   it("renders component", () => {
@@ -29,12 +29,12 @@ describe("AnxLanguageSwitcher.vue", () => {
     const wrapper = mount(AnxLanguageSwitcher, {
       propsData: { i18n }
     });
-    
+
     // Locale is set to en and should be en without user interaction
     expect(i18n.locale).toMatch("en");
 
     // Change the locale to de
-    const links = wrapper.findAllComponents(AnxLink)
+    const links = wrapper.findAllComponents(AnxLink);
     let germanLink = links.at(0);
     for (let i = 1; i < links.length; i++) {
       if (links.at(i).text() == "DE") {
@@ -42,9 +42,9 @@ describe("AnxLanguageSwitcher.vue", () => {
         break;
       }
     }
-    await germanLink.trigger('click');
-    
-    expect(wrapper.emitted('localeChange')).toBeTruthy();
-    expect(i18n.locale).toMatch('de');
+    await germanLink.trigger("click");
+
+    expect(wrapper.emitted("localeChange")).toBeTruthy();
+    expect(i18n.locale).toMatch("de");
   });
 });

@@ -15,27 +15,27 @@ describe("AnxCard.vue", () => {
     const link = "https://anexia.com";
     const linkText = "test_link";
     const title = "This is a test title";
-    const icon = "anexia"
+    const icon = "anexia";
     const text = "This is a test text";
     const wrapper = shallowMount(AnxCard, {
-        slots: {
-            default: text
-        },
-        propsData: { link, linkText, title, icon }
+      slots: {
+        default: text
+      },
+      propsData: { link, linkText, title, icon }
     });
 
     const paragraphComponent = wrapper.findComponent(AnxParagraph);
     expect(paragraphComponent.exists()).toBe(true);
-    expect(paragraphComponent.attributes('title')).toMatch(title);
+    expect(paragraphComponent.attributes("title")).toMatch(title);
     expect(paragraphComponent.text()).toMatch(text);
 
     const linkComponent = wrapper.findComponent(AnxLink);
     expect(linkComponent.exists()).toBe(true);
-    expect(linkComponent.attributes('href')).toMatch(link);
+    expect(linkComponent.attributes("href")).toMatch(link);
     expect(linkComponent.text()).toMatch(linkText);
 
     const iconComponent = wrapper.findComponent(AnxIcon);
     expect(iconComponent.exists()).toBe(true);
-    expect(iconComponent.attributes('icon')).toMatch(icon);
-  })
+    expect(iconComponent.attributes("icon")).toMatch(icon);
+  });
 });

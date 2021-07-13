@@ -19,6 +19,6 @@ describe("AnxButton.vue", () => {
       propsData: { btnType }
     });
 
-    expect(wrapper.attributes('type')).toBe(btnType);
+    expect(wrapper.attributes("type")).toBe(btnType);
   });
 });

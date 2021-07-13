@@ -1,4 +1,4 @@
-import { shallowMount, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import AnxLink from "@/components/AnxLink.vue";
 
 describe("AnxLink.vue", () => {
@@ -9,7 +9,10 @@ describe("AnxLink.vue", () => {
   });
 
   it("has correct properties", () => {
-    const href = "#test", newTab = true, text = "Some link text", noStyle = true;
+    const href = "#test",
+      newTab = true,
+      text = "Some link text",
+      noStyle = true;
     const wrapper = shallowMount(AnxLink, {
       slots: {
         default: text

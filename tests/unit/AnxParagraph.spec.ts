@@ -11,7 +11,7 @@ describe("AnxParagraph.vue", () => {
 
   it("renders a different html tag", () => {
     const wrapper = shallowMount(AnxParagraph, {
-      propsData: { element: 'div' }
+      propsData: { element: "div" }
     });
 
     expect(wrapper.get("div.anx-paragraph").exists()).toBeTruthy();
@@ -45,5 +45,5 @@ describe("AnxParagraph.vue", () => {
 
     expect(wrapper.classes("hint")).toBeTruthy();
     expect(wrapper.classes("inversed-colors")).toBeTruthy();
-  })
+  });
 });

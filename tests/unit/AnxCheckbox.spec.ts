@@ -11,7 +11,7 @@ describe("AnxCheckbox.vue", () => {
       },
       propsData: { name }
     });
-    expect(wrapper.get('input').attributes("id")).toMatch(name);
+    expect(wrapper.get("input").attributes("id")).toMatch(name);
     expect(wrapper.text()).toMatch(text);
   });
 });

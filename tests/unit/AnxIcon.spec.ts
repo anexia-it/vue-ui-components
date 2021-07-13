@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
-import { AnxIconsPlugin } from "@/icons"
+import { AnxIconsPlugin } from "@/icons";
 import AnxIcon from "@/components/AnxIcon.vue";
-import Vue from 'vue';
+import Vue from "vue";
 
 beforeEach(() => {
   // For testing we have to install the AnxIconsPlugin manually
@@ -17,8 +17,10 @@ describe("AnxIcon.vue", () => {
   });
 
   it("has correct properties and renders different icon", () => {
-    const height = "10px", width = "20px";
-    const icon = "information", title = "This is a test title";
+    const height = "10px",
+      width = "20px";
+    const icon = "information",
+      title = "This is a test title";
     const margin = "25px";
     const wrapper = mount(AnxIcon, {
       propsData: { height, width, icon, margin, title }
@@ -26,9 +28,9 @@ describe("AnxIcon.vue", () => {
 
     const iconComponent = wrapper.get(".anx-icon-" + icon);
     expect(iconComponent.exists()).toBe(true);
-    expect(iconComponent.attributes('style')).toContain("width: " + width);
-    expect(iconComponent.attributes('style')).toContain("height: " + height);
-    expect(iconComponent.attributes('style')).toContain("margin: " + margin);
+    expect(iconComponent.attributes("style")).toContain("width: " + width);
+    expect(iconComponent.attributes("style")).toContain("height: " + height);
+    expect(iconComponent.attributes("style")).toContain("margin: " + margin);
     expect(iconComponent.text()).toContain(title);
   });
 });

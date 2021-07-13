@@ -6,7 +6,7 @@ module.exports = {
         target: "https://jsonplaceholder.typicode.com",
         ws: true,
         changeOrigin: true,
-        pathRewrite: (path, req) => {
+        pathRewrite: path => {
           return path.replace("api/", "");
         }
       }
@@ -31,7 +31,9 @@ module.exports = {
 
     config.optimization.minimizer("terser").tap(args => {
       const { terserOptions } = args[0];
+      // eslint-disable-next-line @typescript-eslint/camelcase
       terserOptions.keep_classnames = true;
+      // eslint-disable-next-line @typescript-eslint/camelcase
       terserOptions.keep_fnames = true;
       return args;
     });
