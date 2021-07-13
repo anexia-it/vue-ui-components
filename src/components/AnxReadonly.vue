@@ -1,5 +1,5 @@
 <template>
-  <div :id="name" class="anx-readonly">
+  <div :id="name" class="anx-readonly" @click="click">
     <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
       <!-- @slot Use this slot for your content -->
       <slot />
@@ -25,13 +25,10 @@ export default class AnxReadonly extends Vue {
   /** Display the text in bold */
   @Prop({ default: null }) bold!: boolean | null;
 
-  /** Mount function */
-  private mounted() {
-    /** Init the copy event if necessary */
+  /** Handle a click on the readonly */
+  private click() {
     if (this.copyOnClick !== null) {
-      this.$el.addEventListener("click", () => {
-        this.copy(this.$el.childNodes[0] as HTMLElement);
-      });
+      this.copy(this.$el.childNodes[0] as HTMLElement);
     }
   }
 
@@ -41,23 +38,30 @@ export default class AnxReadonly extends Vue {
       elem = this.$el.childNodes[0] as HTMLElement;
     }
 
-    // Select the text
-    const range = document.createRange();
-    range.selectNode(elem);
-
-    const selection = window.getSelection();
-    if (selection) {
-      selection.removeAllRanges();
-      selection.addRange(range);
-    }
-
-    // Try to copy the selected text
     try {
+      // Select the text
+      const range = document.createRange();
+      range.selectNode(elem);
+
+      const selection = window.getSelection();
+      if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+
+      // Try to copy the selected text
       document.execCommand("copy");
     } catch (e) {
       // Browser is unable to execute copy command
       return false;
     }
+
+    /**
+     * This event will be emitted after the content has successfully been copied to the clipboard
+     *
+     * @event copied
+     */
+    this.$emit("copied");
 
     return true;
   }
