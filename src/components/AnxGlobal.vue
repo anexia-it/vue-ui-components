@@ -1,19 +1,30 @@
 <template>
-  <div class="anx-global">
+  <div
+    :class="{
+      'anx-global': true,
+      'disable-fullscreen': disableFullscreen !== null
+    }"
+  >
     <!-- @slot this is for your content -->
     <slot />
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 
 /**
  * This component contains global styles for the ANX application
  * Every content has to be inside this component
  */
 @Component({})
-export default class AnxGlobal extends Vue {}
+export default class AnxGlobal extends Vue {
+  /**
+   * By default, the component has a height of 100vh to cover the whole screen.
+   * By setting this propoerty, this behaviour can be suppressed.
+   */
+  @Prop({ default: null }) disableFullscreen!: boolean | null;
+}
 </script>
 
 <style lang="scss">
@@ -35,6 +46,11 @@ html {
   font-size: 16px;
   font-variant-numeric: lining-nums;
   line-height: 1.2em;
+  min-height: 100vh;
+
+  &.disable-fullscreen {
+    min-height: unset;
+  }
 
   p {
     line-height: 1.5em;
