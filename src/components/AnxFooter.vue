@@ -163,7 +163,7 @@ export default class AnxFooter extends Vue {
 .anx-footer-mobile,
 .anx-footer-desktop {
   img {
-    width: 64px;
+    min-width: 64px;
   }
 }
 

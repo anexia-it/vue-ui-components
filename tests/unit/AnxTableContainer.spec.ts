@@ -21,6 +21,8 @@ describe("AnxTableContainer.vue", () => {
     });
 
     expect(wrapper.get("div.anx-table-container").exists()).toBeTruthy();
-    expect(wrapper.get("div.anx-table-container-scrollable").exists()).toBeTruthy();
+    expect(
+      wrapper.get("div.anx-table-container-scrollable").exists()
+    ).toBeTruthy();
   });
 });

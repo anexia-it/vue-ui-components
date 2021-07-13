@@ -3,7 +3,8 @@ import AnxFormContainer from "@/components/AnxFormContainer.vue";
 
 describe("AnxFormContainer.vue", () => {
   it("renders component", () => {
-    const content = "This is some content that would normally be filled with components";
+    const content =
+      "This is some content that would normally be filled with components";
     const wrapper = shallowMount(AnxFormContainer, {
       slots: {
         default: content

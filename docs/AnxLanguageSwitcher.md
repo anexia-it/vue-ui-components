@@ -10,7 +10,7 @@ const i18n = new VueI18n({
   locale: "en"
 });
 
-<anx-global>
+<anx-global disable-fullscreen>
     <anx-container>
         <anx-content inverse>
             <anx-language-switcher :i18n="i18n" />
@@ -44,7 +44,7 @@ const languages = [
     { code: "it", link: "#anxlanguageswitcher", text: "IT" }
 ]
 
-<anx-global>
+<anx-global disable-fullscreen>
     <anx-container>
         <anx-content inverse>
             <anx-language-switcher :i18n="i18n" :languages="languages"/>

@@ -1,9 +1,6 @@
 import { shallowMount, mount } from "@vue/test-utils";
 import AnxButton from "@/components/AnxButton.vue";
 import AnxModal from "@/components/AnxModal.vue";
-import AnxContainer from "@/components/AnxContainer.vue";
-import AnxParagraph from "@/components/AnxParagraph.vue";
-import Vue from "vue";
 
 describe("AnxModal.vue", () => {
   it("renders and destroys component correctly", () => {
@@ -14,10 +11,22 @@ describe("AnxModal.vue", () => {
   });
 
   it("has correct properties", () => {
-    const closeButtonAlign = "right", closeButtonText = "test close button", content = "this is some test content",
-    id = "my_test_modal", size = "xxl", hasCloseButton = true, title = "test title of modal";
+    const closeButtonAlign = "right",
+      closeButtonText = "test close button",
+      content = "this is some test content",
+      id = "my_test_modal",
+      size = "xxl",
+      hasCloseButton = true,
+      title = "test title of modal";
     const wrapper = shallowMount(AnxModal, {
-      propsData: { closeButtonAlign, closeButtonText, id, size, hasCloseButton, title },
+      propsData: {
+        closeButtonAlign,
+        closeButtonText,
+        id,
+        size,
+        hasCloseButton,
+        title
+      },
       slots: {
         default: content
       }
@@ -26,8 +35,12 @@ describe("AnxModal.vue", () => {
     expect(wrapper.text()).toMatch(content);
     expect(wrapper.get("div.modal-title").text()).toMatch(title);
     expect(wrapper.attributes("id")).toMatch(id);
-    expect(wrapper.get(".footer-content-" + closeButtonAlign).exists()).toBeTruthy();
-    expect(wrapper.get(".anx-modal.anx-modal-size-" + size).exists()).toBeTruthy();
+    expect(
+      wrapper.get(".footer-content-" + closeButtonAlign).exists()
+    ).toBeTruthy();
+    expect(
+      wrapper.get(".anx-modal.anx-modal-size-" + size).exists()
+    ).toBeTruthy();
 
     const closeButtonComponent = wrapper.findComponent(AnxButton);
     expect(closeButtonComponent.exists()).toBeTruthy();
@@ -35,7 +48,8 @@ describe("AnxModal.vue", () => {
   });
 
   it("renders without buttons", () => {
-    const hasCloseButton = null, content = "This is a test content";
+    const hasCloseButton = null,
+      content = "This is a test content";
     const wrapper = shallowMount(AnxModal, {
       slots: {
         default: content
@@ -48,7 +62,8 @@ describe("AnxModal.vue", () => {
   });
 
   it("emitts close event", async () => {
-    const hasCloseButton = true, content = "This is a test content";
+    const hasCloseButton = true,
+      content = "This is a test content";
     const wrapper = mount(AnxModal, {
       slots: {
         default: content
@@ -64,7 +79,9 @@ describe("AnxModal.vue", () => {
   });
 
   it("emitts close and confirm event", async () => {
-    const hasCloseButton = true, confirm = true, content = "This is a test content";
+    const hasCloseButton = true,
+      confirm = true,
+      content = "This is a test content";
     const wrapper = mount(AnxModal, {
       slots: {
         default: content
