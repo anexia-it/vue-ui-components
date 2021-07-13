@@ -20,16 +20,22 @@ module.exports = {
       enableInSFC: true
     }
   },
-  css: {
-    extract: true
-  },
   chainWebpack: config => {
+    if (process.env.NODE_ENV === "test") {
+      config.module.rule("scss").uses.clear();
+      config.module
+        .rule("scss")
+        .use("null-loader")
+        .loader("null-loader");
+    }
+
     config.optimization.minimizer("terser").tap(args => {
       const { terserOptions } = args[0];
       terserOptions.keep_classnames = true;
       terserOptions.keep_fnames = true;
       return args;
     });
+
     config.module
       .rule("eslint")
       .use("eslint-loader")

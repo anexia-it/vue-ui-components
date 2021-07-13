@@ -37,13 +37,18 @@
       {{ label }}
     </label>
     <div
-      v-if="errors.length > 0 || (assistiveText && assistiveText.length > 0)"
+      v-if="
+        (errors && errors.length > 0) ||
+          (assistiveText && assistiveText.length > 0)
+      "
       :class="{
         'anx-input-hint': true,
         inline: inline !== null ? true : false
       }"
     >
-      <span v-if="errors.length > 0" class="error">{{ errors[0] }}</span>
+      <span v-if="errors && errors.length > 0" class="error">{{
+        errors[0]
+      }}</span>
       <span
         v-else-if="assistiveText && assistiveText.length > 0"
         class="assistiv"
@@ -80,7 +85,7 @@ export default class AnxInput extends Vue {
   /** This is the id of the input field */
   @Prop({ default: "input-text-field" }) id!: string;
   /** This is the label of the input field that will be displayed */
-  @Prop() label!: string;
+  @Prop({ default: "Input" }) label!: string;
   /** This property will be directly translated to HTML input type of the input field */
   @Prop({ default: "text" }) type!: string;
   /** These are the rules for validation. See [VeeValidate Rules](https://vee-validate.logaretm.com/v2/guide/rules.html). */

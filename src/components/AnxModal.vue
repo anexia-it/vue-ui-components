@@ -1,5 +1,10 @@
 <template>
-  <div :id="_id" :class="`modal anx-modal anx-modal-size-${size}`">
+  <div
+    :id="_id"
+    :class="`modal anx-modal anx-modal-size-${size}`"
+    @click="checkForClosing"
+    ref="anxModalOutsideContainer"
+  >
     <div :id="`${_id}-dialog`" :class="'modal-dialog modal-dialog-scrollable'">
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
@@ -103,8 +108,6 @@ export default class AnxModal extends Vue {
   /** The id for the modal, will be set to a unique value when null */
   @Prop({ default: null }) id!: string | null;
 
-  @Prop({ default: null }) value!: boolean | null;
-
   /**
    * The size of the model
    *
@@ -120,17 +123,6 @@ export default class AnxModal extends Vue {
 
   /** Add event listeners for click event on mount */
   private mounted() {
-    /** The timeout is needed, otherwise the click on the button to show the modal would trigger a click event and close the modal */
-    window.setTimeout(() => {
-      /** Add event listener for clicking the modal dialog and stop event propagation */
-      this.$el.children[0].addEventListener("click", event => {
-        event.stopPropagation();
-      });
-
-      /** Close the modal if the users clicked outside of the model */
-      document.body.addEventListener("click", this.clickedOutsideModal);
-    }, 50);
-
     /** Increase the number of opened modals and store the current layer of our modal*/
     this.modalLayer = ++AnxModal.numberModalsOpened;
 
@@ -146,20 +138,21 @@ export default class AnxModal extends Vue {
     return "anx-modal-" + AnxModal.numberModalsOpened;
   }
 
-  /** Remove the click event listeners before destroy and decrease the number of opened modals */
+  /** Decrease the number of opened modals */
   private beforeDestroy() {
-    document.body.removeEventListener("click", this.clickedOutsideModal);
-
     if (AnxModal.numberModalsOpened > 0) AnxModal.numberModalsOpened--;
 
     this.updateStyles();
   }
 
-  /** Handle a click outside the modal */
-  private clickedOutsideModal() {
-    /** Only close the modal if the current modal is in front */
-    if (this.modalLayer == AnxModal.numberModalsOpened) {
-      this.$emit("close");
+  /** Check if the modal should be closed by the click */
+  private checkForClosing(e: MouseEvent) {
+    /** Check if the click was outside the modal */
+    if (e.target == this.$refs["anxModalOutsideContainer"]) {
+      /** Only close the modal if the current modal is in front */
+      if (this.modalLayer == AnxModal.numberModalsOpened) {
+        this.$emit("close");
+      }
     }
   }
 
