@@ -1,7 +1,7 @@
 The exmple below shows how to use the *anx-footer*.
 
 ```html
-<anx-global>
+<anx-global disable-fullscreen>
     <anx-header>
         <template v-slot:icon>
             <img

@@ -1,7 +1,7 @@
 You can simply use a *anx-icon* to display a icon in the header by setting the **icon** property. You can also override the *anx-icon* and set a custom icon in the header. The following header is the simplest form of the *anx-header*. In this case, an icon is set using the **icon** property.
 
 ```html
-<anx-global>
+<anx-global disable-fullscreen>
     <anx-header icon="start-up" />
 </anx-global>
 ```
@@ -19,7 +19,7 @@ let menus = [
 ];
 // Note: The last menu item is activated when any component is select except the #anxheader
 
-<anx-global>
+<anx-global disable-fullscreen>
     <anx-header :menus="menus">
       <template v-slot:icon>
         <img
@@ -46,7 +46,7 @@ const localeChange = function(locale) {
   alert("Locale changed to " + locale)
 }
 
-<anx-global>
+<anx-global disable-fullscreen>
   <anx-header :i18n="i18n" @localeChange="localeChange($event)"/>
 </anx-global>
 ```
