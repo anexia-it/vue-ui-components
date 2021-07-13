@@ -7,6 +7,8 @@ A Vue component library containing several components that match the ANEXIA styl
   - [Nuxt](#nuxt)
 - [Usage](#usage) 
 - [Troubleshooting](#common-errors-and-troubleshooting)
+- [License](#license)
+- [Contact](#contact)
 
 -----------
 
@@ -45,7 +47,7 @@ new Vue({
 **Note:**
 > When using Vue, you have to import 'ui/src'. When importing 'ui' you would import the bundled version of the ui tool. This can lead to failures and disadvantages when building your project (no tree-shaking)
 
-This automatically globally register all anx components in your application. You don't have to register any components manually.
+This automatically globally registers all anx components in your application. You don't have to register any components manually.
 
 If you don't want to import all the components, you can also register the required components manually.  
 Therefore, you can import the required components from the components folder in the UI tool. For example, you only want to use the _AnxAlert_ and _AnxButton_ component.
@@ -113,10 +115,33 @@ You can also check out Kitchensink.vue itself, to find some example coding imple
 
 ## Local setup and commands
 
-In order to view the kitchensink you have to set up the ui tool locally. The setup process is very easy. You just set it up like any other vue based project.
+To set up the project locally you have to install all packages by executing
 
 ```
 npm install
+```
+
+After this step you can either view our documentation, the kitchensink, build the app, etc ...
+
+### Documentation
+
+We have implemented a documentation using [Vue Styleguidist](https://vue-styleguidist.github.io/). You can setup a server locally and view the documentation with
+
+```
+npm run styleguide
+```
+
+or build the documentation with
+
+```
+npm run styleguide:build
+```
+
+### Kitchensink
+
+There is also a kitchensink with all components and demos. You can view the kitchensink by running the following command:
+
+```
 npm run serve
 ```
 
@@ -154,21 +179,13 @@ The library can easily be included into existing projects.
 
 ### Run your unit tests
 ```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
+npm run test
 ```
 
 ### Lints and fixes files
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Common errors and troubleshooting
 
@@ -285,7 +302,12 @@ module.exports = {
 }
 ```
 
-## Git
+## License
 
-Due to the bundle process of our project, we use a special git worklfow.
-Please see: [UI Git Workflow](https://ais.anexia-it.com/pages/viewpage.action?pageId=69967415).
+Distributed under the MIT License. See ```LICENSE``` for more information.
+
+## Contact
+
+Anexia Internetdienstleistungs GmbH  
+[https://anexia.com/en/company/contact](https://anexia.com/en/company/contact)  
+[marketing@anexia-it.com](mailto:marketing@anexia-it.com)
