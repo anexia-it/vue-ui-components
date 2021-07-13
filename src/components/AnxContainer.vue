@@ -1,5 +1,5 @@
 <template>
-  <div class="anx-container container" :style="cssProps">
+  <div class="anx-container container" :width="width" :style="cssProps">
     <!-- @slot use this slot for content inside the conatiner -->
     <slot />
   </div>

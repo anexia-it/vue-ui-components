@@ -190,7 +190,12 @@ export default class AnxCrudTable extends Vue {
   @Prop({ default: "" }) authorization!: string;
 
   /** Default column sorting */
-  @Prop({ default: { name: 0, order: "ASC" } }) sort!: {
+  @Prop({
+    default: () => {
+      return { name: 0, order: "ASC" };
+    }
+  })
+  sort!: {
     name: number;
     order: string;
   };
