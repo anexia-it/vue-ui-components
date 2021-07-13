@@ -20,7 +20,15 @@ describe("AnxFooter.vue", () => {
     const showCopyrightDate = true;
     const width = "100px";
     const wrapper = shallowMount(AnxFooter, {
-      propsData: { companyName, copyrightDateFrom, icon, links, marginTop, showCopyrightDate, width }
+      propsData: {
+        companyName,
+        copyrightDateFrom,
+        icon,
+        links,
+        marginTop,
+        showCopyrightDate,
+        width
+      }
     });
 
     const footerText = wrapper.get("div.anx-footer-text");
@@ -39,5 +47,5 @@ describe("AnxFooter.vue", () => {
     const hrLineComponent = wrapper.findComponent(AnxHrLine);
     expect(hrLineComponent.exists()).toBe(true);
     expect(hrLineComponent.attributes("margintop")).toMatch(marginTop);
-  })
+  });
 });

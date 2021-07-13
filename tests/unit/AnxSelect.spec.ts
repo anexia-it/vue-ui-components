@@ -3,7 +3,10 @@ import AnxSelect from "@/components/AnxSelect.vue";
 
 describe("AnxSelect.vue", () => {
   it("renders component", () => {
-    const options = [{value: 0, text: "0"}, {value: 1, text: "1"}, ]
+    const options = [
+      { value: 0, text: "0" },
+      { value: 1, text: "1" }
+    ];
     const wrapper = mount(AnxSelect, {
       propsData: { options }
     });

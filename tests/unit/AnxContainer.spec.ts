@@ -11,7 +11,7 @@ describe("AnxContainer.vue", () => {
       },
       propsData: { width }
     });
-    
+
     expect(wrapper.get(".anx-container").attributes("width")).toMatch(width);
     expect(wrapper.text()).toMatch(text);
   });

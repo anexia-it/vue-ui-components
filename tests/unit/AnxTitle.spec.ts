@@ -1,4 +1,4 @@
-import { shallowMount, mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import AnxTitle from "@/components/AnxTitle.vue";
 
 describe("AnxTitle.vue", () => {
@@ -9,15 +9,17 @@ describe("AnxTitle.vue", () => {
   });
 
   it("renders different sizes", () => {
-    const wrapper2 = shallowMount(AnxTitle, { propsData: { size: "h2" }});
+    const wrapper2 = shallowMount(AnxTitle, { propsData: { size: "h2" } });
     expect(wrapper2.get("h2.anx-title").exists()).toBeTruthy();
 
-    const wrapper3 = shallowMount(AnxTitle, { propsData: { size: "h3" }});
+    const wrapper3 = shallowMount(AnxTitle, { propsData: { size: "h3" } });
     expect(wrapper3.get("h3.anx-title").exists()).toBeTruthy();
   });
 
   it("has correct properties", () => {
-    const text = "Some test title", margin = "50px", noline = true;
+    const text = "Some test title",
+      margin = "50px",
+      noline = true;
     const wrapper = shallowMount(AnxTitle, {
       slots: {
         default: text
@@ -26,6 +28,6 @@ describe("AnxTitle.vue", () => {
     });
 
     expect(wrapper.text()).toMatch(text);
-    expect(wrapper.classes('no-line')).toBeTruthy();
+    expect(wrapper.classes("no-line")).toBeTruthy();
   });
 });
