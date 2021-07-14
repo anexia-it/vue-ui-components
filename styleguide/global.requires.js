@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { AnxIconsPlugin, AnxIconsNames } from "../src/icons";
+import { AnxIconsPlugin, AnxIconsNames } from "../src/plugins";
 import VueI18n from "vue-i18n";
 import Router from "./router.js";
 

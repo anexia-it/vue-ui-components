@@ -27,7 +27,7 @@ The title of the *anx-icon* will be displayed when you hover over the icon. The 
 Below is a list of all icons available. Hover over the icon to see its name. You can use the icons like described above.
 
 ```vue
-import { AnxIconsNames } from "@/icons";
+import { AnxIconsNames } from "@/plugins/icons";
 
 const icons = [];
 AnxIconsNames.forEach(name => {
@@ -49,6 +49,6 @@ AnxIconsNames.forEach(name => {
 <details open>
 <summary>*For developers:* Click here to show a description of how the *anx-icon*s work.</summary>
 <br>
-The serve/build npm script automatically triggers the *generate:icons* npm script. Now the /src/icons/helpers/generate-files.js is executed. This file automatically creates all the files located in /src/icons/ except for the index.js, index.d.ts and the files inside the helper folder.<br>
+The serve/build npm script automatically triggers the *generate:icons* npm script. Now the /src/plugins/icons/helpers/generate-files.js is executed. This file automatically creates all the files located in /src/plugins/icons/ except for the index.js, index.d.ts and the files inside the helper folder.<br>
 Now all icons are exported as Vue Components in the icons.js and icons.d.ts files. So, each icon is an individual vue component. All this components are automatically registered into your vue application if you include our UI tool (The **AnxIconsPlugin** is automatically registered). You don't have to import single icons if you want to use them.
 </details>

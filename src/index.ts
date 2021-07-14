@@ -1,6 +1,6 @@
 import _Vue from "vue";
 import Components from "./components";
-import { AnxIconsPlugin, AnxIconsNames } from "./icons";
+import { AnxIconsPlugin, AnxIconsNames, AnxToastPlugin } from "./plugins";
 
 const UIPlugin = {
   install(Vue: typeof _Vue): void {
@@ -11,6 +11,9 @@ const UIPlugin = {
 
     /** Register the AnxIconsPlugin (this registers all icons as components) */
     Vue.use(AnxIconsPlugin);
+    
+    /** Register the AnxToastPlugin */
+    Vue.use(AnxToastPlugin);
   }
 };
 
