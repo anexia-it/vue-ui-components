@@ -15,6 +15,7 @@
         },
         `anx-toast-${type}`
       ]"
+      :style="cssProps"
       @click="handleClick"
     >
       <!-- @slot use this slot to display a message -->
@@ -72,6 +73,18 @@ export default class AnxToast extends Vue {
   /** By default, the toast will be closed when a user clicks on it. By setting this property, the toast won't be closed when the user clicks on it */
   @Prop({ default: null }) disableCloseOnClick!: boolean | null;
 
+  /**
+   * This is the background color for the toast. (Will be directly passed into CSS)
+   * *Note*: This will ovverride the **type** property and default styling settings
+   */
+  @Prop({ default: null }) backgroundColor!: string | null;
+
+  /**
+   * This is the text color for the toast. (Will be directly passed into CSS)
+   * *Note*: This will ovverride the **type** property and default styling settings
+   */
+  @Prop({ default: null }) color!: string | null;
+
   /** Check for value changes and adapt the visibility of the toast */
   @Watch("value")
   onValueChanged() {
@@ -96,6 +109,10 @@ export default class AnxToast extends Vue {
   input(val: boolean, byUser?: boolean) {
     if (!val) this.dismiss(byUser ? byUser : false);
     return val;
+  }
+
+  mounted() {
+    console.log(this.cssProps);
   }
 
   /**
@@ -189,6 +206,21 @@ export default class AnxToast extends Vue {
     if (this.disableCloseOnClick === null) {
       this.input(false, true);
     }
+  }
+
+  /** This are some style that are directly injected as css into the component */
+  get cssProps() {
+    const style: { "background-color"?: string; color?: string } = {};
+
+    if (this.backgroundColor !== null) {
+      style["background-color"] = this.backgroundColor + " !important";
+    }
+
+    if (this.color !== null) {
+      style["color"] = this.color + " !important";
+    }
+
+    return style;
   }
 }
 </script>

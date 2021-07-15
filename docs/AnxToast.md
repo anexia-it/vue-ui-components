@@ -69,7 +69,9 @@ export default {
             this.$anxToast.show("This is a notification with additional options", {
                 autoCloseTimeout: 10000,
                 horizontalAlign: "right",
-                verticalAlign: "top"
+                verticalAlign: "top",
+                color: "white",
+                backgroundColor: "#003CA6"
             })
         }
     }
