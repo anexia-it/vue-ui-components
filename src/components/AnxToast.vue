@@ -10,7 +10,8 @@
           'anx-toast': true,
           show: visibility,
           'fade-in': fadeIn,
-          'fade-out': fadeOut
+          'fade-out': fadeOut,
+          closeable: closeable !== null
         },
         `anx-toast-${type}`
       ]"
@@ -19,6 +20,10 @@
       <slot>
         {{ message }}
       </slot>
+
+      <div v-if="closeable !== null" class="dismiss" @click="input(false)">
+        &times;
+      </div>
     </div>
   </div>
 </template>
@@ -63,6 +68,9 @@ export default class AnxToast extends Vue {
    * @values neutral, error, success
    */
   @Prop({ default: "neutral" }) type!: string;
+
+  /** If this property is set, a close button will be rendered that allow the user to close the toast */
+  @Prop({ default: null }) closeable!: boolean | null;
 
   /** This is the value for the toast that can be accessed via *v-model* */
   @Prop({ default: null }) value!: boolean | null;
@@ -225,6 +233,7 @@ export default class AnxToast extends Vue {
     padding: 15px;
     max-width: 500px;
     box-shadow: 0 0.25rem 0.75rem $anx-black-transparet;
+    position: relative;
 
     &.anx-toast-success {
       background-color: $anx-primary-green;
@@ -255,46 +264,59 @@ export default class AnxToast extends Vue {
       animation: fadeout 0.5s;
     }
 
+    &.closeable {
+      padding-right: 30px;
+      text-align: left;
+    }
+
+    .dismiss {
+      line-height: 12px;
+      font-size: 24px;
+      height: 12px;
+      width: 12px;
+      align-self: center;
+      margin: auto;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .dismiss:hover {
+      cursor: pointer;
+    }
+
     @-webkit-keyframes fadein {
       from {
-        bottom: 0;
         opacity: 0;
       }
       to {
-        bottom: 30px;
         opacity: 1;
       }
     }
 
     @keyframes fadein {
       from {
-        bottom: 0;
         opacity: 0;
       }
       to {
-        bottom: 30px;
         opacity: 1;
       }
     }
 
     @-webkit-keyframes fadeout {
       from {
-        bottom: 30px;
         opacity: 1;
       }
       to {
-        bottom: 0;
         opacity: 0;
       }
     }
 
     @keyframes fadeout {
       from {
-        bottom: 30px;
         opacity: 1;
       }
       to {
-        bottom: 0;
         opacity: 0;
       }
     }
