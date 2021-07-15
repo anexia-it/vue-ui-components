@@ -1,16 +1,22 @@
 <template>
   <div
-    :class="{
-      'anx-toast': true,
-      show: visibility,
-      'fade-in': fadeIn,
-      'fade-out': fadeOut
-    }"
+    :class="
+      `anx-toast-container anx-toast-${verticalAlign} anx-toast-${horizontalAlign}`
+    "
   >
-    <!-- @slot use this slot to display a message -->
-    <slot>
-      {{ message }}
-    </slot>
+    <div
+      :class="{
+        'anx-toast': true,
+        show: visibility,
+        'fade-in': fadeIn,
+        'fade-out': fadeOut
+      }"
+    >
+      <!-- @slot use this slot to display a message -->
+      <slot>
+        {{ message }}
+      </slot>
+    </div>
   </div>
 </template>
 
@@ -33,6 +39,20 @@ export default class AnxToast extends Vue {
 
   /** This is the message in the toast. This will be overwritten by the default slot if used */
   @Prop({ default: "" }) message!: string;
+
+  /**
+   * The vertical align of the toast
+   *
+   * @values top, bottom
+   */
+  @Prop({ default: "bottom" }) verticalAlign!: string;
+
+  /**
+   * The horizontal align of the toast
+   *
+   * @values left, center, right
+   */
+  @Prop({ default: "center" }) horizontalAlign!: string;
 
   /** This is the value for the toast that can be accessed via *v-model* */
   @Prop({ default: null }) value!: boolean | null;
@@ -136,7 +156,7 @@ export default class AnxToast extends Vue {
       this.timeouts.hideAnimation = window.setTimeout(() => {
         this.fadeOut = false;
         this.visibility = false;
-      }, 500);
+      }, 480);
     } else {
       this.visibility = false;
     }
@@ -154,77 +174,107 @@ export default class AnxToast extends Vue {
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
-.anx-toast {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
+.anx-toast-container {
   position: fixed;
-  z-index: 1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 17px;
+  width: calc(100vw - 30px);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  left: 15px;
 
-  &.show {
-    visibility: visible;
+  &.anx-toast-top {
+    top: 15px;
   }
 
-  &.fade-in {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s;
-    animation: fadein 0.5s;
+  &.anx-toast-bottom {
+    bottom: 15px;
   }
 
-  &.fade-out {
-    -webkit-animation: fadeout 0.5s;
-    animation: fadeout 0.5s;
+  &.anx-toast-left {
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
-  @-webkit-keyframes fadein {
-    from {
-      bottom: 0;
-      opacity: 0;
-    }
-    to {
-      bottom: 30px;
-      opacity: 1;
-    }
+  &.anx-toast-center {
+    justify-content: center;
+    align-items: center;
   }
 
-  @keyframes fadein {
-    from {
-      bottom: 0;
-      opacity: 0;
-    }
-    to {
-      bottom: 30px;
-      opacity: 1;
-    }
+  &.anx-toast-right {
+    justify-content: flex-end;
+    align-items: flex-end;
   }
 
-  @-webkit-keyframes fadeout {
-    from {
-      bottom: 30px;
-      opacity: 1;
-    }
-    to {
-      bottom: 0;
-      opacity: 0;
-    }
-  }
+  .anx-toast {
+    visibility: hidden;
+    display: block;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    z-index: 1;
+    font-size: 17px;
+    max-width: 500px;
 
-  @keyframes fadeout {
-    from {
-      bottom: 30px;
-      opacity: 1;
+    &.show {
+      visibility: visible;
     }
-    to {
-      bottom: 0;
-      opacity: 0;
+
+    &.fade-in {
+      visibility: visible;
+      -webkit-animation: fadein 0.5s;
+      animation: fadein 0.5s;
+    }
+
+    &.fade-out {
+      -webkit-animation: fadeout 0.5s;
+      animation: fadeout 0.5s;
+    }
+
+    @-webkit-keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadein {
+      from {
+        bottom: 0;
+        opacity: 0;
+      }
+      to {
+        bottom: 30px;
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeout {
+      from {
+        bottom: 30px;
+        opacity: 1;
+      }
+      to {
+        bottom: 0;
+        opacity: 0;
+      }
     }
   }
 }
