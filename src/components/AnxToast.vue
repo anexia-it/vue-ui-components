@@ -5,12 +5,15 @@
     "
   >
     <div
-      :class="{
-        'anx-toast': true,
-        show: visibility,
-        'fade-in': fadeIn,
-        'fade-out': fadeOut
-      }"
+      :class="[
+        {
+          'anx-toast': true,
+          show: visibility,
+          'fade-in': fadeIn,
+          'fade-out': fadeOut
+        },
+        `anx-toast-${type}`
+      ]"
     >
       <!-- @slot use this slot to display a message -->
       <slot>
@@ -53,6 +56,13 @@ export default class AnxToast extends Vue {
    * @values left, center, right
    */
   @Prop({ default: "center" }) horizontalAlign!: string;
+
+  /**
+   * This is the type of the toast (this only affetcs the design)
+   *
+   * @values neutral, error, success
+   */
+  @Prop({ default: "neutral" }) type!: string;
 
   /** This is the value for the toast that can be accessed via *v-model* */
   @Prop({ default: null }) value!: boolean | null;
@@ -181,6 +191,7 @@ export default class AnxToast extends Vue {
   margin-right: auto;
   display: flex;
   left: 15px;
+  z-index: 1000;
 
   &.anx-toast-top {
     top: 15px;
@@ -210,13 +221,24 @@ export default class AnxToast extends Vue {
     display: block;
     min-width: 250px;
     background-color: #333;
-    color: #fff;
     text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    z-index: 1;
-    font-size: 17px;
+    padding: 15px;
     max-width: 500px;
+    box-shadow: 0 0.25rem 0.75rem $anx-black-transparet;
+
+    &.anx-toast-success {
+      background-color: $anx-primary-green;
+      color: $anx-primary-white;
+    }
+
+    &.anx-toast-neutral {
+      background-color: $anx-primary-grey-light;
+    }
+
+    &.anx-toast-error {
+      background-color: $anx-error;
+      color: $anx-primary-white;
+    }
 
     &.show {
       visibility: visible;
