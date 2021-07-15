@@ -111,10 +111,6 @@ export default class AnxToast extends Vue {
     return val;
   }
 
-  mounted() {
-    console.log(this.cssProps);
-  }
-
   /**
    * Emit the dismiss event
    *

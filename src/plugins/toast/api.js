@@ -28,6 +28,8 @@ const Api = (Vue, globalOptions = {}) => {
       // Mount the component in the body
       const component = instance.$mount();
       document.body.appendChild(component.$el);
+
+      return component;
     },
     /**
      * Show a success toast
@@ -37,7 +39,7 @@ const Api = (Vue, globalOptions = {}) => {
      * @param {Object} options The options for the toast
      */
     success(message, options = {}) {
-      this.show(message, { ...options, type: "success" });
+      return this.show(message, { ...options, type: "success" });
     },
     /**
      * Show a error toast
@@ -47,7 +49,7 @@ const Api = (Vue, globalOptions = {}) => {
      * @param {Object} options The options for the toast
      */
     error(message, options = {}) {
-      this.show(message, { ...options, type: "error" });
+      return this.show(message, { ...options, type: "error" });
     }
   };
 };

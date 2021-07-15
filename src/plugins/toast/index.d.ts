@@ -1,10 +1,10 @@
-import { PluginObject } from "vue"
+import { PluginObject } from "vue";
 
 // Declaration
-declare module 'vue/types/vue' {
-    interface Vue {
-        $anxToast: Object
-    }
+declare module "vue/types/vue" {
+  interface Vue {
+    $anxToast: Record<string, any>;
+  }
 }
 
-export declare const AnxToastPlugin: PluginObject<{}>
+export declare const AnxToastPlugin: PluginObject<{}>;

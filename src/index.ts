@@ -11,7 +11,7 @@ const UIPlugin = {
 
     /** Register the AnxIconsPlugin (this registers all icons as components) */
     Vue.use(AnxIconsPlugin);
-    
+
     /** Register the AnxToastPlugin */
     Vue.use(AnxToastPlugin);
   }
