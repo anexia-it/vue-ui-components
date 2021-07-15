@@ -9,6 +9,7 @@ module.exports = {
     "src/components/AnxTableRow.vue"
   ],
   usageMode: "expand",
+  exampleMode: "expand",
   styleguideDir: "dist",
   copyCodeButton: true,
   require: [path.join(__dirname, "styleguide/global.requires.js")],
