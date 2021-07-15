@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="visibility"
+    v-if="visibility || fadeIn"
     :class="
       `anx-toast-container anx-toast-${verticalAlign} anx-toast-${horizontalAlign}`
     "
