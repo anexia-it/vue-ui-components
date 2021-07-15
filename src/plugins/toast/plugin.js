@@ -1,6 +1,9 @@
+import Api from "./api.js";
+
 export const AnxToastPlugin = {
   install: (Vue, options = {}) => {
-    // TODO: implement plugin
-    console.log("installing anx toast plugin");
+    const methods = Api(Vue, options);
+    Vue.prototype.$anxToast = methods;
+    Vue.$anxToast = methods;
   }
 };

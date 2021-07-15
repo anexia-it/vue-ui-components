@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="visibility"
     :class="
       `anx-toast-container anx-toast-${verticalAlign} anx-toast-${horizontalAlign}`
     "
@@ -21,7 +22,11 @@
         {{ message }}
       </slot>
 
-      <div v-if="closeable !== null" class="dismiss" @click="input(false)">
+      <div
+        v-if="closeable !== null"
+        class="dismiss"
+        @click="input(false, true)"
+      >
         &times;
       </div>
     </div>
