@@ -11,24 +11,16 @@
           'anx-toast': true,
           show: visibility,
           'fade-in': fadeIn,
-          'fade-out': fadeOut,
-          closeable: closeable !== null
+          'fade-out': fadeOut
         },
         `anx-toast-${type}`
       ]"
+      @click="handleClick"
     >
       <!-- @slot use this slot to display a message -->
       <slot>
         {{ message }}
       </slot>
-
-      <div
-        v-if="closeable !== null"
-        class="dismiss"
-        @click="input(false, true)"
-      >
-        &times;
-      </div>
     </div>
   </div>
 </template>
@@ -74,11 +66,11 @@ export default class AnxToast extends Vue {
    */
   @Prop({ default: "neutral" }) type!: string;
 
-  /** If this property is set, a close button will be rendered that allow the user to close the toast */
-  @Prop({ default: null }) closeable!: boolean | null;
-
   /** This is the value for the toast that can be accessed via *v-model* */
   @Prop({ default: null }) value!: boolean | null;
+
+  /** By default, the toast will be closed when a user clicks on it. By setting this property, the toast won't be closed when the user clicks on it */
+  @Prop({ default: null }) disableCloseOnClick!: boolean | null;
 
   /** Check for value changes and adapt the visibility of the toast */
   @Watch("value")
@@ -191,6 +183,13 @@ export default class AnxToast extends Vue {
       window.clearTimeout(timeout as number);
     }
   }
+
+  /** Handle the user click and check if the toast should be closed */
+  private handleClick() {
+    if (this.disableCloseOnClick === null) {
+      this.input(false, true);
+    }
+  }
 }
 </script>
 
@@ -241,6 +240,7 @@ export default class AnxToast extends Vue {
     max-width: 500px;
     box-shadow: 0 0.25rem 0.75rem $anx-black-transparet;
     position: relative;
+    cursor: pointer;
 
     &.anx-toast-success {
       background-color: $anx-primary-green;
@@ -269,27 +269,6 @@ export default class AnxToast extends Vue {
     &.fade-out {
       -webkit-animation: fadeout 0.5s;
       animation: fadeout 0.5s;
-    }
-
-    &.closeable {
-      padding-right: 30px;
-      text-align: left;
-    }
-
-    .dismiss {
-      line-height: 12px;
-      font-size: 24px;
-      height: 12px;
-      width: 12px;
-      align-self: center;
-      margin: auto;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
-
-    .dismiss:hover {
-      cursor: pointer;
     }
 
     @-webkit-keyframes fadein {
