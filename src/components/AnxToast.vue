@@ -199,11 +199,9 @@ export default class AnxToast extends Vue {
 
 .anx-toast-container {
   position: fixed;
-  width: calc(100vw - 30px);
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  left: 15px;
   z-index: 1000;
 
   &.anx-toast-top {
@@ -217,16 +215,20 @@ export default class AnxToast extends Vue {
   &.anx-toast-left {
     justify-content: flex-start;
     align-items: flex-start;
+    left: 15px;
   }
 
   &.anx-toast-center {
     justify-content: center;
     align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &.anx-toast-right {
     justify-content: flex-end;
     align-items: flex-end;
+    right: 15px;
   }
 
   .anx-toast {
