@@ -15,7 +15,9 @@ const config = {
   collectCoverage: true,
   collectCoverageFrom: ["**/components/*.{js,vue}", "!**/node_modules/**"],
   coverageDirectory: "<rootDir>/tests/unit/cov-report",
-  reporters: ["default", "jest-junit"]
+  reporters: ["default", "jest-junit"],
+  automock: false,
+  setupFiles: ["./tests/setup-jest.js"]
 };
 
 module.exports = config;

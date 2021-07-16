@@ -3,43 +3,54 @@
 The *anx-table* can be modified regarding its design. You have many options to adapt the design of the table. Below you can test what each property does. The *anx-table* is also very straight forward. You don't need much code to render a table with your data.
 
 ```vue
-// These are the options for the table
-const tableOptions = {
-    bordered: null,
-    borderless: null,
-    stripped: null,
-    hover: null,
-    noHeader: null
-};
+<template>
+    <div>
+        <anx-form>
+            <anx-form-container>
+                <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
+                <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
+                <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
+                <anx-checkbox v-model="tableOptions.hover" name="hover" />
+                <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
+            </anx-form-container>
+        </anx-form>
 
-// These are the items for the table
-const tableItems = [
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw" },
-    { age: 89, firstName: "Geneva", lastName: "Wilson" },
-    { age: 38, firstName: "Jami", lastName: "Carney" },
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw" }
-];
+        <anx-table
+            :items="tableItems"
+            :bordered="tableOptions.bordered === true ? true : null"
+            :borderless="tableOptions.borderless === true ? true : null"
+            :stripped="tableOptions.stripped === true ? true : null"
+            :hover="tableOptions.hover === true ? true : null"
+            :noHeader="tableOptions.noHeader === true ? true : null"
+        />
+    </div>
+</template>
 
-<anx-form>
-    <anx-form-container>
-        <anx-checkbox v-model="tableOptions.bordered" name="bordered" />
-        <anx-checkbox v-model="tableOptions.borderless" name="borderless" />
-        <anx-checkbox v-model="tableOptions.stripped" name="stripped" />
-        <anx-checkbox v-model="tableOptions.hover" name="hover" />
-        <anx-checkbox v-model="tableOptions.noHeader" name="no-header" />
-    </anx-form-container>
-</anx-form>
-
-<anx-table
-    :items="tableItems"
-    :bordered="tableOptions.bordered === true ? true : null"
-    :borderless="tableOptions.borderless === true ? true : null"
-    :stripped="tableOptions.stripped === true ? true : null"
-    :hover="tableOptions.hover === true ? true : null"
-    :noHeader="tableOptions.noHeader === true ? true : null"
-/>
+<script>
+export default {
+    data() {
+        return {
+            // These are the options for the table
+            tableOptions:{
+                bordered: null,
+                borderless: null,
+                stripped: null,
+                hover: null,
+                noHeader: null
+            },
+            // These are the items for the table
+            tableItems: [
+                { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
+                { age: 21, firstName: "Larsen", lastName: "Shaw" },
+                { age: 89, firstName: "Geneva", lastName: "Wilson" },
+                { age: 38, firstName: "Jami", lastName: "Carney" },
+                { age: 40, firstName: "Dickerson", lastName: "Macdonald" },
+                { age: 21, firstName: "Larsen", lastName: "Shaw" }
+            ]
+        }
+    }
+}
+</script>
 ```
 
 ### Passing data
@@ -51,35 +62,44 @@ You also have the possibility to edit the names and the style of each individual
 The following example shows how to set custom column headers and adapt the design of the header:
 
 ```vue
-// These are the items for the table (Note that the keys of each property don't match the colum names now!)
-const tableItems = [
-    { a: 40, b: "Dickerson", c: "Macdonald", d: "anexia" },
-    { a: 21, b: "Larsen", c: "Shaw", d: "anexia" },
-    { a: 89, b: "Geneva", c: "Wilson", d: "anexia" },
-    { a: 38, b: "Jami", c: "Carney", d: "anexia" },
-    { a: 40, b: "Dickerson", c: "Macdonald", d: "anexia" },
-    { a: 21, b: "Larsen", c: "Shaw", d: "anexia" }
-];
+<template>
+    <anx-table
+        :columns="columns"
+        :items="tableItems"
+        stripped
+        hover
+    />
+</template>
 
-// These are the options for the column ()
-const columns = [
-    {
-        name: "AGE", // The name to be displayed as header
-        index: "a", // The index of the data in the items property
-        width: "50px", // The width of the column
-        align: "center", // The align of the column header
-    },
-    { name: "FIRST NAME", index: "b", align: "center"},
-    { name: "LAST NAME", index: "c", align: "center"},
-    { name: "COMPANY", index: "d", width: "50px", align: "right"},
-]
-
-<anx-table
-    :columns="columns"
-    :items="tableItems"
-    stripped
-    hover
-/>
+<script>
+export default {
+    data() {
+        return {
+            // These are the items for the table (Note that the keys of each property don't match the colum names now!)
+            tableItems: [
+                { a: 40, b: "Dickerson", c: "Macdonald", d: "anexia" },
+                { a: 21, b: "Larsen", c: "Shaw", d: "anexia" },
+                { a: 89, b: "Geneva", c: "Wilson", d: "anexia" },
+                { a: 38, b: "Jami", c: "Carney", d: "anexia" },
+                { a: 40, b: "Dickerson", c: "Macdonald", d: "anexia" },
+                { a: 21, b: "Larsen", c: "Shaw", d: "anexia" }
+            ],
+            // These are the options for the column ()
+            columns: [
+                {
+                    name: "AGE", // The name to be displayed as header
+                    index: "a", // The index of the data in the items property
+                    width: "50px", // The width of the column
+                    align: "center", // The align of the column header
+                },
+                { name: "FIRST NAME", index: "b", align: "center"},
+                { name: "LAST NAME", index: "c", align: "center"},
+                { name: "COMPANY", index: "d", width: "50px", align: "right"},
+            ]
+        }
+    }
+}
+</script>
 ```
 
 ### Using scopes
@@ -90,46 +110,57 @@ But the main focus of this example is to show how to use the scopes of the table
 <strong>$columnname$rowIndex</strong>. E.g. age0 for first row and the column with the ages. Inside this slot you can add whatever you want (images, inline html, ...). The images can be changed dynamically. This is demonstrated with an intervall of four seocnds.
 
 ```vue
-// These are the items for the table
-const tableItems = [
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "anexia" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw", image: "idee" },
-    { age: 89, firstName: "Geneva", lastName: "Wilson", image: "eins" },
-    { age: 38, firstName: "Jami", lastName: "Carney", image: "stern" },
-    { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "check" },
-    { age: 21, firstName: "Larsen", lastName: "Shaw", image: "like" }
-];
-
-// This helper function simply returns the current cell name
-const getImgCellName = function(index) {
-    return "image" + index;
-};
-
-<anx-table
-    stripped
-    hover
-    bordered
-    scrollable
-    uppercase-title
-    height="200px"
-    :items="tableItems"
-    :widths="{ age: '50px' }"
->
-    <!-- This is an example for replacing content. In this case we change the styling for a specific cell -->
-    <template v-slot:firstName2="{ content }">
-        <span style="color: #003CA6">
-            <strong>
-            {{ content }} <!-- This is how you access the content that currently is in the cell -->
-            </strong>
-        </span>
-    </template>
-
-    <!-- Replace all cells with images with an image -->
-    <template
-    v-for="(item, i) in tableItems"
-    v-slot:[getImgCellName(i)]="{ content }"
+<template>
+    <anx-table
+        stripped
+        hover
+        bordered
+        scrollable
+        uppercase-title
+        height="200px"
+        :items="tableItems"
+        :widths="{ age: '50px' }"
     >
-    <anx-icon :icon="content" :key="i" width="25px" />
-    </template>
-</anx-table>
+        <!-- This is an example for replacing content. In this case we change the styling for a specific cell -->
+        <template v-slot:firstName2="{ content }">
+            <span style="color: #003CA6">
+                <strong>
+                {{ content }} <!-- This is how you access the content that currently is in the cell -->
+                </strong>
+            </span>
+        </template>
+
+        <!-- Replace all cells with images with an image -->
+        <template
+            v-for="(item, i) in tableItems"
+            v-slot:[getImgCellName(i)]="{ content }"
+        >
+            <anx-icon :icon="content" :key="i" width="25px" />
+        </template>
+    </anx-table>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            // These are the items for the table
+            tableItems: [
+                { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "anexia" },
+                { age: 21, firstName: "Larsen", lastName: "Shaw", image: "idee" },
+                { age: 89, firstName: "Geneva", lastName: "Wilson", image: "eins" },
+                { age: 38, firstName: "Jami", lastName: "Carney", image: "stern" },
+                { age: 40, firstName: "Dickerson", lastName: "Macdonald", image: "check" },
+                { age: 21, firstName: "Larsen", lastName: "Shaw", image: "like" }
+            ]
+        }
+    },
+    methods: {
+        // This helper function simply returns the current cell name
+        getImgCellName(index) {
+            return "image" + index;
+        }
+    }
+}
+</script>
 ```
