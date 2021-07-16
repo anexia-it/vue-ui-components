@@ -6,25 +6,8 @@ The request already includes the recaptcha. The whole request should be sent to 
 The request also has a WTS session id. It will be automatically set if a tracking script is included in the vue project. The contact form component does not include the tracking script!
 
 ```vue
-let error = "Test";
-let success;
-let enabled = true;
-
-const submitted = function(request) {
-    // You should now send this to your backend and validate the recaptcha token (request contains the information)
-
-    // Depending on you response, an error or success message should be showed
-    const serverResponse = { success: Math.random() < 0.5}; // Just for demonstration!
-    if (serverResponse.success === false) {
-        error = "Something went wrong!";
-    } else {
-        success =
-        "We have received your request and will conact you as soon as possible";
-        enabled = false;
-    }
-}
-
-<anx-container>
+<template>
+  <anx-container>
     <anx-contact
         recaptcha-sitekey="6Ld9pr4aAAAAAMenlr2xionxPM1sHQ-OgFaa2n2V"
         :invisible-captcha="false"
@@ -42,5 +25,33 @@ const submitted = function(request) {
 
         The labels for the input fields can be changed by using the respective property for the input.
     </anx-contact>
-</anx-container>
+  </anx-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      error: "Test",
+      success: false,
+      enabled: true
+    };
+  },
+  methods: {
+    submitted(request) {
+      // You should now send this to your backend and validate the recaptcha token (request contains the information)
+
+      // Depending on you response, an error or success message should be showed
+      const serverResponse = { success: Math.random() < 0.5}; // Just for demonstration!
+      if (serverResponse.success === false) {
+          this.error = "Something went wrong!";
+      } else {
+          this.success =
+          "We have received your request and will conact you as soon as possible";
+          this.enabled = false;
+      }
+    }
+  }
+}
+</script>
 ```

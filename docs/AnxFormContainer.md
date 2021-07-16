@@ -13,7 +13,6 @@ The *anx-form-container* can be used to group input components inside a *anx-for
         </anx-form-container>
 
         <anx-checkbox name="Checkbox out of form container" />
-
     </anx-form>
 </anx-container>
 ```
