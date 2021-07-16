@@ -1,6 +1,6 @@
 In the hierarchy of components, that contain your content *anx-paragraph* is the lowest. This component should be wrapped directly around your content. Below are some example for different paragraphs.
 
-```vue
+```html
 <anx-global disable-fullscreen>
     <anx-container>
         <anx-content inverse>

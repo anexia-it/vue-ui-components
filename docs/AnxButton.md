@@ -7,11 +7,20 @@ The *anx-button* works like any other button. The example below shows a standard
 By default, the *anx-button* emits the **@click** event. This can be changed by setting the *event-name* property, although using the standard **@click** event would be enough in most cases. The example below shows how to handle a click on the button correctly.
 
 ```vue
-const buttonClicked = function(event){
-  alert('Hello!')
-}
+<template>
+  <anx-button text="Show alert!" @click="buttonClicked" />
+</template>
 
-<anx-button text="Show alert!" @click="buttonClicked" />
+<script>
+export default {
+  methods: {
+    buttonClicked() {
+      // Here you can handle the click
+      alert('Hello!');
+    }
+  }
+}
+</script>
 ```
 
 The *anx-button* also offers some properties for its layout. The exmple below shows how to use buttons inline and how to genrate a *outline* button. **Note:** You should always use the *default* button for positive actions like save and the *outline* button for actions like cancel or delete.
@@ -24,6 +33,7 @@ The *anx-button* also offers some properties for its layout. The exmple below sh
     text="Save"
     style="margin-right: 20px"
   />
+  <br>
   <anx-button
     inline
     outline

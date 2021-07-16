@@ -1,32 +1,54 @@
 The following input is the simplest form of the *anx-input*. It does not have any validation or features. The v-model is used for two-way-databinding.
 
 ```html
-let value = "";
+<template>
+    <anx-input v-model="value" name="input" label="Input" />
+</template>
 
-<anx-input v-model="value" name="input" label="Input" />
+<script>
+export default {
+    data() {
+        return {
+            value: ""
+        }
+    }
+}
+</script>
 ```
 
 There are several properties to change the layout of the *anx-input*. The following examples show input fields with modified layouts. Furthermore, the *anx-input* also offers a **read-only** feature shown in the example below.
 
 ```html
-let value = "";
+<template>
+    <div>
+        <anx-input 
+            v-model="value"
+            id="my-password"
+            name="password"
+            label="Password"
+            assistive-text="Don't enter your real password!"
+            type="password"
+        />
 
-<anx-input 
-    v-model="value"
-    id="my-password"
-    name="password"
-    label="Password"
-    assistive-text="Don't enter your real password!"
-    type="password"
-/>
+        <anx-input
+            v-model="value"
+            name="read-only"
+            label="Read only input"
+            assistive-text="This is the text from the input field from above as read only"
+            readonly
+        />
+    </div>
+</template>
 
-<anx-input
-    v-model="value"
-    name="read-only"
-    label="Read only input"
-    assistive-text="This is the text from the input field from above as read only"
-    readonly
-/>
+<script>
+export default {
+    data() {
+        return {
+            value: ""
+        }
+    }
+}
+</script>
 ```
 
 You can use the slot of the *anx-input* to display some content on the right side of the element.
@@ -61,9 +83,17 @@ The *anx-input* also offers validation. You just have to pass the validation rul
 When a user enters input, the **@input** event will be emitted. The example below show how to react on user input.
 
 ```vue
-const userInput = function(input) {
-    alert(input)
-}
+<template>
+    <anx-input @input="userInput" label="Alert" assistive-text="When you enter some text, an alert will be shown" />
+</template>
 
-<anx-input @input="userInput" label="Alert" assistive-text="When you enter some text, an alert will be shown" />
+<script>
+export default {
+    methods: {
+        userInput(input) {
+            alert("User input: " + input);
+        }
+    }
+}
+</script>
 ```

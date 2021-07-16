@@ -27,23 +27,37 @@ The title of the *anx-icon* will be displayed when you hover over the icon. The 
 Below is a list of all icons available. Hover over the icon to see its name. You can use the icons like described above.
 
 ```vue
+<template>
+    <div>
+        <anx-icon
+            v-for="icon in icons"
+            :key="icon"
+            :icon="icon"
+            width="50px"
+            margin="20px"
+            :title="icon"
+        />
+    </div>
+</template>
+
+<script>
 import { AnxIconsNames } from "@/icons";
 
-const icons = [];
-AnxIconsNames.forEach(name => {
-    name = name[0].toLowerCase() + name.substring(1);
-    icons.push(name.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`));
-});
-
-
-<anx-icon
-    v-for="icon in icons"
-    :key="icon"
-    :icon="icon"
-    width="50px"
-    margin="20px"
-    :title="icon"
-/>
+export default {
+    data() {
+        return {
+            icons: []
+        }
+    },
+    mounted() {
+        // This just adds all available icons to the array
+        AnxIconsNames.forEach(name => {
+            name = name[0].toLowerCase() + name.substring(1);
+            this.icons.push(name.replace(/([A-Z])/g, g => `-${g[0].toLowerCase()}`));
+        });
+    }
+}
+</script>
 ```
 
 <details open>
