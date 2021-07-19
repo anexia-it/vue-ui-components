@@ -17,5 +17,5 @@ const UIPlugin = {
   }
 };
 
-export { Components, AnxIconsNames, AnxIconsPlugin };
+export { Components, AnxIconsNames, AnxIconsPlugin, AnxToastPlugin };
 export default UIPlugin;

@@ -17,8 +17,9 @@
     "styleguide": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
   },
-  "main": "lib/ui.umd.js",
-  "module": "lib/ui.common.js",
+  "source": "src/index.ts",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "browser": {
     "./sfc": "src/components/index.ts"
   },

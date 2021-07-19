@@ -1,0 +1,1 @@
+declare module '@anx/vue-ui-components';
