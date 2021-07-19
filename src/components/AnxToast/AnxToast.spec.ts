@@ -1,7 +1,5 @@
 import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
-import AnxToast from "@/components/AnxToast.vue";
-import Vue from "vue";
-import AnxContainer from "@/components/AnxContainer.vue";
+import { AnxToast } from "@/components";
 import { AnxToastPlugin } from "@/plugins";
 
 describe("AnxToast.vue", () => {

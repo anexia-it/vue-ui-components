@@ -1,4 +1,4 @@
-import AnxToast from "../../components/AnxToast.vue";
+import AnxToast from "../../components/AnxToast/AnxToast.vue";
 
 const Api = (Vue, globalOptions = {}) => {
   return {
