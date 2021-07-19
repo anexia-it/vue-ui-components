@@ -177,7 +177,7 @@ export default class AnxHeader extends Vue {
 
 <!-- Scoped css only for this component -->
 <style lang="scss" scoped>
-@import "@/assets/scss/_variables.scss";
+@import "../../assets/scss/_variables.scss";
 
 .header-container {
   margin-top: 30px;
@@ -261,7 +261,7 @@ export default class AnxHeader extends Vue {
 
 <!-- Style for injected header image -->
 <style lang="scss">
-@import "@/assets/scss/_variables.scss";
+@import "../../assets/scss/_variables.scss";
 
 .anx-header {
   .anx-header-image {

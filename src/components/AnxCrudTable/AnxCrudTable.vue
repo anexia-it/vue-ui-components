@@ -160,7 +160,7 @@ import AnxIcon from "../AnxIcon/AnxIcon.vue";
 import AnxModal from "../AnxModal/AnxModal.vue";
 import AnxButton from "../AnxButton/AnxButton.vue";
 import AnxInput from "../AnxInput/AnxInput.vue";
-import { AbstractModel } from "@/lib/models/AbstractModel";
+import { AbstractModel } from "../../lib/models/AbstractModel";
 
 /**
  * This component is based on the *anx-table* and fully automatically renders a CRUD table with your data.
