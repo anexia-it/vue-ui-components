@@ -972,7 +972,6 @@ export default class Kitchensink extends Vue {
   }
 
   private mounted() {
-    console.log(AnxAlert);
     /** This code demonstrates, that the images can be changed dynamically */
     this.seedTableImages();
     window.setInterval(() => {
