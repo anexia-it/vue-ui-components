@@ -3,7 +3,7 @@ If you want to include our library in an existing *Vue* project, you simply have
 ```javascript
 // src/main.js
 import Vue from 'vue'
-import AnxUIPlugin from '@anx/vue-ui-components/src'
+import AnxUIPlugin from '@anx/vue-ui-components'
 
 Vue.use(AnxUIPlugin);
 ```
