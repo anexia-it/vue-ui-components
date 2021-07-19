@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxLogin from "@/components/AnxLogin.vue";
+import { AnxLogin } from "@/components";
 
 describe("AnxLogin.vue", () => {
   it("renders component", () => {

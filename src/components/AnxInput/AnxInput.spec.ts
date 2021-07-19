@@ -1,5 +1,5 @@
 import { NameSelector, shallowMount, mount } from "@vue/test-utils";
-import AnxInput from "@/components/AnxInput.vue";
+import { AnxInput } from "@/components";
 import { ValidationProvider } from "vee-validate";
 import Vue from "vue";
 

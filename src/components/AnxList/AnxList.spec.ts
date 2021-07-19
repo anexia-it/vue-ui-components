@@ -1,6 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxList from "@/components/AnxList.vue";
-import AnxIcon from "@/components/AnxIcon.vue";
+import { AnxList, AnxIcon } from "@/components";
 
 describe("AnxList.vue", () => {
   it("renders component", () => {

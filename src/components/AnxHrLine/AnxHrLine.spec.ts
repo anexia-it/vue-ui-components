@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxHrLine from "@/components/AnxHrLine.vue";
+import { AnxHrLine } from "@/components";
 
 describe("AnxHrLine.vue", () => {
   it("renders component and has correct attributes", () => {

@@ -1,6 +1,5 @@
 import { shallowMount, mount } from "@vue/test-utils";
-import AnxButton from "@/components/AnxButton.vue";
-import AnxModal from "@/components/AnxModal.vue";
+import { AnxButton, AnxModal } from "@/components";
 
 describe("AnxModal.vue", () => {
   it("renders and destroys component correctly", () => {

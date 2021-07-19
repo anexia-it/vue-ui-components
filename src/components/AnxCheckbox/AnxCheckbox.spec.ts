@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxCheckbox from "@/components/AnxCheckbox.vue";
+import { AnxCheckbox } from "@/components";
 
 describe("AnxCheckbox.vue", () => {
   it("renders component", () => {

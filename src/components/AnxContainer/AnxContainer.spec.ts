@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxContainer from "@/components/AnxContainer.vue";
+import { AnxContainer } from "@/components";
 
 describe("AnxContainer.vue", () => {
   it("renders component and has correct properties", () => {

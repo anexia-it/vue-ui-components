@@ -1,7 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxHeader from "@/components/AnxHeader.vue";
-import AnxIcon from "@/components/AnxIcon.vue";
-import AnxLink from "@/components/AnxLink.vue";
+import { AnxHeader, AnxIcon, AnxLink } from "@/components";
 
 describe("AnxHeader.vue", () => {
   it("renders component", () => {

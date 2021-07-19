@@ -1,8 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxCard from "@/components/AnxCard.vue";
-import AnxParagraph from "@/components/AnxParagraph.vue";
-import AnxLink from "@/components/AnxLink.vue";
-import AnxIcon from "@/components/AnxIcon.vue";
+import { AnxCard, AnxParagraph, AnxLink, AnxIcon } from "@/components";
 
 describe("AnxCard.vue", () => {
   it("renders component", () => {

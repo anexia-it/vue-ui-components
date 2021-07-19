@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import AnxSelect from "@/components/AnxSelect.vue";
+import { AnxSelect } from "@/components";
 
 describe("AnxSelect.vue", () => {
   it("renders component", () => {

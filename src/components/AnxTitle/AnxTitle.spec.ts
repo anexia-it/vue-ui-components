@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxTitle from "@/components/AnxTitle.vue";
+import { AnxTitle } from "@/components";
 
 describe("AnxTitle.vue", () => {
   it("renders component", () => {

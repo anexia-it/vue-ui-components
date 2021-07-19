@@ -1,6 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxForm from "@/components/AnxForm.vue";
-import AnxButton from "@/components/AnxButton.vue";
+import { AnxForm, AnxButton } from "@/components";
 
 describe("AnxForm.vue", () => {
   it("renders component", () => {
@@ -22,7 +21,7 @@ describe("AnxForm.vue", () => {
     });
 
     const buttonComponent = wrapper.findComponent(AnxButton);
-    console.log(buttonComponent.attributes());
+
     expect(buttonComponent.exists()).toBe(true);
     expect(buttonComponent.attributes("text")).toMatch(submitButton.text);
     expect(buttonComponent.attributes("width")).toMatch(submitButton.width);

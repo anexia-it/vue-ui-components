@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxButton from "@/components/AnxButton.vue";
+import { AnxButton } from "@/components";
 
 describe("AnxButton.vue", () => {
   it("renders component", () => {

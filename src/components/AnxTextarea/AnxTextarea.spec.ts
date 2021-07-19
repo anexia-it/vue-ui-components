@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import AnxTextarea from "@/components/AnxTextarea.vue";
+import { AnxTextarea } from "@/components";
 
 describe("AnxTextarea.vue", () => {
   it("renders component", () => {

@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxAlert from "@/components/AnxAlert.vue";
+import { AnxAlert } from "@/components";
 
 describe("AnxAlert.vue", () => {
   it("renders component", () => {

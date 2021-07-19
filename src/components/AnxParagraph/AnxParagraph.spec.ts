@@ -1,6 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxParagraph from "@/components/AnxParagraph.vue";
-import AnxTitle from "@/components/AnxTitle.vue";
+import { AnxParagraph, AnxTitle } from "@/components";
 
 describe("AnxParagraph.vue", () => {
   it("renders component", () => {

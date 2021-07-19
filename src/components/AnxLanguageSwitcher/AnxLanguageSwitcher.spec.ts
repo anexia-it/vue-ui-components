@@ -1,6 +1,5 @@
 import { shallowMount, mount } from "@vue/test-utils";
-import AnxLink from "@/components/AnxLink.vue";
-import AnxLanguageSwitcher from "@/components/AnxLanguageSwitcher.vue";
+import { AnxLink, AnxLanguageSwitcher } from "@/components";
 import VueI18n from "vue-i18n";
 import Vue from "vue";
 

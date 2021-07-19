@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxReadonly from "@/components/AnxReadonly.vue";
+import { AnxReadonly } from "@/components";
 
 // Mocking the createRange function
 global.document.createRange = () => ({

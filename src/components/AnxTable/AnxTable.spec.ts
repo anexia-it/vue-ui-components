@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxTable from "@/components/AnxTable.vue";
+import { AnxTable } from "@/components";
 
 describe("AnxTable.vue", () => {
   it("renders component", () => {

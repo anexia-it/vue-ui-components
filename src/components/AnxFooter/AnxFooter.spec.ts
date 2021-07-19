@@ -1,8 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import AnxFooter from "@/components/AnxFooter.vue";
-import AnxIcon from "@/components/AnxIcon.vue";
-import AnxLink from "@/components/AnxLink.vue";
-import AnxHrLine from "@/components/AnxHrLine.vue";
+import { AnxFooter, AnxIcon, AnxLink, AnxHrLine } from "@/components";
 
 describe("AnxFooter.vue", () => {
   it("renders component", () => {

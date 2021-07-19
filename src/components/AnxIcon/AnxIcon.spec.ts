@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { AnxIconsPlugin } from "@/icons";
-import AnxIcon from "@/components/AnxIcon.vue";
+import { AnxIcon } from "@/components";
 import Vue from "vue";
 
 beforeEach(() => {
