@@ -29,5 +29,7 @@ export default class AnxContainer extends Vue {
 
 .anx-container {
   max-width: var(--width);
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

@@ -2,6 +2,7 @@ If you want to include our library in an existing *Vue* project, you simply have
 
 ```javascript
 // src/main.js
+
 import Vue from 'vue'
 import AnxUIPlugin from '@anx/vue-ui-components'
 
@@ -14,6 +15,7 @@ If you don't want to install the whole library, you can also import and install 
 
 ```javascript
 // src/main.js
+
 import Vue from 'vue'
 import { AnxButton, AnxInput, AnxIconsPlugin } from '@anx/vue-ui-components'
 

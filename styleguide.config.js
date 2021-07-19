@@ -40,6 +40,10 @@ module.exports = {
             {
               name: "Nuxt",
               content: "docs/installation/nuxt.md"
+            },
+            {
+              name: "Web",
+              content: "docs/installation/web.md"
             }
           ]
         },
