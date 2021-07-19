@@ -2,6 +2,11 @@
 // Sync object
 /** @type {import('@jest/types').Config.InitialOptions} */
 const config = {
+  testMatch: [
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/components/**/*.spec.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[jt]s?(x)"
+  ],
   verbose: true,
   transform: {
     ".*\\.(vue)$": "vue-jest",
@@ -13,7 +18,7 @@ const config = {
   preset: "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
   testEnvironment: "jsdom",
   collectCoverage: true,
-  collectCoverageFrom: ["**/components/*.{js,vue}", "!**/node_modules/**"],
+  collectCoverageFrom: ["**/components/**/*.vue", "!**/node_modules/**"],
   coverageDirectory: "<rootDir>/tests/unit/cov-report",
   reporters: ["default", "jest-junit"],
   automock: false,
