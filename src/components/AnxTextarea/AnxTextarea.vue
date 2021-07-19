@@ -13,9 +13,9 @@
       :name="name"
       :rows="rows"
       :disabled="disabled !== null"
-      v-model="updateInputField"
+      v-model="localValue"
       :class="{ filled, active, 'is-invalid': errors && errors.length > 0 }"
-      @input="$emit('input', updateInputField)"
+      @input="$emit('input', localValue)"
       @blur="inputBlur"
       @click="clickInputField()"
     />
@@ -62,7 +62,9 @@ export default class AnxTextarea extends Vue {
 
   private active = false;
   private filled = false;
-  public updateInputField = "";
+
+  /** This variable is used as v-model for the input field (Using the value variable directly is not allowed because props should not be mutated directly) */
+  private localValue = "";
 
   get cssProps() {
     return {
@@ -70,31 +72,36 @@ export default class AnxTextarea extends Vue {
     };
   }
 
-  /**Watch the updateInputField variable. When it changed, then it check if
-   * the input field should be active or not (User is typing)
+  /**
+   * Watch the localValue variable used as v-model for the textarea
+   * When it changes, the users is typing and changed some text, it has
+   * to be checked if the textarea should be active or not.
    */
-  @Watch("updateInputField")
-  nameChanged(newVal: string) {
+  @Watch("localValue")
+  localValueChanged(newVal: string) {
     if (newVal && newVal.length) {
       this.active = true;
     }
   }
 
   /**
-   * Watch the attribute/prop value. When the value change, then it set the updateInputField
-   * variabel with the new value (need to be pass to the parent) and set the input-field to filled.
+   * Watch the attribute/prop value.
+   * When this variable changes it means that the value for the textarea has been
+   * updated from the parent component programmatically. The localValue variable has to
+   * be assigned and it has to be checked, if the textarea is filled
    */
   @Watch("value")
   valueChanged() {
-    this.updateInputField = this.value !== null ? this.value : "";
+    this.localValue = this.value !== null ? this.value : "";
     this.isFilled();
   }
 
   /**
-   * When the component is mounted, we have to check if there is already some text in the value property
+   * After mount, the prop value has to be assigned to the localValue and it has to be checked,
+   * if the input field should be filled
    */
   private mounted() {
-    this.updateInputField = this.value !== null ? this.value : "";
+    this.localValue = this.value !== null ? this.value : "";
     this.isFilled();
   }
 
@@ -118,7 +125,7 @@ export default class AnxTextarea extends Vue {
 
   /** Check if the input-field is filled, Set class filled. */
   protected isFilled() {
-    if (this.updateInputField && this.updateInputField.length > 0) {
+    if (this.localValue && this.localValue.length > 0) {
       this.filled = true;
     } else {
       this.filled = false;
