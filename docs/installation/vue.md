@@ -15,9 +15,12 @@ If you don't want to install the whole library, you can also import and install 
 ```javascript
 // src/main.js
 import Vue from 'vue'
-import { AnxButton, AnxInput } from '@anx/vue-ui-components/src'
+import { AnxButton, AnxInput, AnxIconsPlugin } from '@anx/vue-ui-components'
 
-Vue.use(AnxButton);
-Vue.use(AnxInput);
+// Registering plugins manually
 Vue.use(AnxIconsPlugin);
+
+// Registering components manually
+Vue.component('AnxButton', AnxButton);
+Vue.component('AnxInput', AnxInput);
 ```
