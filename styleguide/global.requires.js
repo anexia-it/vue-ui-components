@@ -1,10 +1,11 @@
 import Vue from "vue";
-import { AnxIconsPlugin, AnxIconsNames } from "../src/icons";
+import { AnxIconsPlugin, AnxIconsNames, AnxToastPlugin } from "../src/plugins";
 import VueI18n from "vue-i18n";
 import Router from "./router.js";
 
 /** Register the AnxIconsPlugin (this registers all icons as components) */
 Vue.use(AnxIconsPlugin);
+Vue.use(AnxToastPlugin);
 Vue.use(Router);
 Vue.use(VueI18n);
 

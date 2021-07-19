@@ -28,6 +28,7 @@ import AnxTableContainer from "./AnxTableContainer/AnxTableContainer.vue";
 import AnxTableRow from "./AnxTableRow/AnxTableRow.vue";
 import AnxTextarea from "./AnxTextarea/AnxTextarea.vue";
 import AnxTitle from "./AnxTitle/AnxTitle.vue";
+import AnxToast from "./AnxToast/AnxToast.vue";
 
 // Default export
 export default {
@@ -60,7 +61,8 @@ export default {
   AnxTableContainer,
   AnxTableRow,
   AnxTextarea,
-  AnxTitle
+  AnxTitle,
+  AnxToast
 };
 
 // Exporting components separately
@@ -94,5 +96,6 @@ export {
   AnxTableContainer,
   AnxTableRow,
   AnxTextarea,
-  AnxTitle
+  AnxTitle,
+  AnxToast
 };
