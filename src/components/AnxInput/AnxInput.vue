@@ -4,11 +4,12 @@
     :name="dataVvAs === null ? name : dataVvAs"
     :rules="rules"
     tag="div"
-    class="anx-input"
     :class="{
+      'anx-input': true,
       active: active,
       filled: filled,
-      inline: inline !== null ? true : false
+      inline: inline !== null ? true : false,
+      'is-disabled': disabled !== null ? true : false
     }"
     :style="cssProps"
     ref="observer"
@@ -32,6 +33,7 @@
       @input="$emit('input', updateInputField)"
       :autocomplete="autocomplete"
       :readonly="readonly !== null ? true : false"
+      :disabled="disabled !== null"
     />
     <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
       {{ label }}
@@ -110,6 +112,8 @@ export default class AnxInput extends Vue {
   @Prop({ default: null }) inline!: boolean | null;
   /** HTML autocomplete attribute */
   @Prop({ default: "" }) autocomplete!: string;
+  /** With this property you can set the input field to disabled */
+  @Prop({ default: null }) disabled!: boolean | null;
 
   private active = false;
   private filled = false;
@@ -209,6 +213,13 @@ export default class AnxInput extends Vue {
   padding-top: 20px;
   position: relative;
   width: var(--input-width);
+
+  &.is-disabled {
+    opacity: 0.6;
+    input {
+      cursor: default;
+    }
+  }
 
   &.inline {
     width: 100% !important;
