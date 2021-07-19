@@ -39,10 +39,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
-import AnxContent from "@/components/AnxContent.vue";
-import AnxContainer from "@/components/AnxContainer.vue";
-import AnxCrudTable from "@/components/AnxCrudTable.vue";
-import AnxModal from "@/components/AnxModal.vue";
+import { AnxContent, AnxCrudTable, AnxContainer, AnxModal } from "@/components";
 import { AbstractModel } from "@/lib/models/AbstractModel";
 import { Posts } from "@/lib/models/test/Posts";
 

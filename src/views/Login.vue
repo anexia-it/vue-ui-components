@@ -37,11 +37,13 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AnxButton from "@/components/AnxButton.vue";
-import AnxLogin from "@/components/AnxLogin.vue";
-import AnxGlobal from "@/components/AnxGlobal.vue";
-import AnxModal from "@/components/AnxModal.vue";
-import AnxParagraph from "@/components/AnxParagraph.vue";
+import {
+  AnxButton,
+  AnxLogin,
+  AnxGlobal,
+  AnxModal,
+  AnxParagraph
+} from "@/components";
 
 @Component({
   components: {
