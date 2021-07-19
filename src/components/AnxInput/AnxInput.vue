@@ -4,11 +4,12 @@
     :name="dataVvAs === null ? name : dataVvAs"
     :rules="rules"
     tag="div"
-    class="anx-input"
     :class="{
+      'anx-input': true,
       active: active,
       filled: filled,
-      inline: inline !== null ? true : false
+      inline: inline !== null ? true : false,
+      'is-disabled': disabled !== null ? true : false
     }"
     :style="cssProps"
     ref="observer"
@@ -19,7 +20,7 @@
     -->
     <input
       :id="id"
-      v-model="updateInputField"
+      v-model="localValue"
       :type="type"
       :name="name"
       hide-details="true"
@@ -29,9 +30,10 @@
         'is-invalid': errors && errors.length > 0,
         'with-margin': (typeof valid !== 'boolean' || valid) && !assistiveText
       }"
-      @input="$emit('input', updateInputField)"
+      @input="$emit('input', localValue)"
       :autocomplete="autocomplete"
       :readonly="readonly !== null ? true : false"
+      :disabled="disabled !== null"
     />
     <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
       {{ label }}
@@ -110,35 +112,45 @@ export default class AnxInput extends Vue {
   @Prop({ default: null }) inline!: boolean | null;
   /** HTML autocomplete attribute */
   @Prop({ default: "" }) autocomplete!: string;
+  /** With this property you can set the input field to disabled */
+  @Prop({ default: null }) disabled!: boolean | null;
 
   private active = false;
   private filled = false;
-  public updateInputField = "";
 
-  /**Watch the updateInputField variable. When it changed, then it check if
-   * the input field should be active or not (User is typing)
+  /** This variable is used as v-model for the input field (Using the value variable directly is not allowed because props should not be mutated directly) */
+  private localValue = "";
+
+  /**
+   * Watch the localValue variable used as v-model for the input field
+   * When it changes, the users is typing and changed some text, it has
+   * to be checked if the input field should be active or not.
    */
-  @Watch("updateInputField")
-  nameChanged(newVal: string) {
+  @Watch("localValue")
+  localValueChanged(newVal: string) {
     if (newVal && newVal.length) {
       this.active = true;
     }
   }
+
   /**
-   * Watch the attribute/prop value. When the value change, then it set the updateInputField
-   * variabel with the new value (need to be pass to the parent) and set the input-field to filled.
+   * Watch the attribute/prop value.
+   * When this variable changes it means that the value for the input field has been
+   * updated from the parent component programmatically. The localValue variable has to
+   * be assigned and it has to be checked, if the input field is filled
    */
   @Watch("value")
   valueChanged() {
-    this.updateInputField = this.value !== null ? this.value : "";
+    this.localValue = this.value !== null ? this.value : "";
     this.isFilled();
   }
 
-  /**After creation the value will be save in the updateInputField and check if it has the
-   * state filled.
+  /**
+   * After mount, the prop value has to be assigned to the localValue and it has to be checked,
+   * if the input field should be filled
    */
   private mounted() {
-    this.updateInputField = this.value;
+    this.localValue = this.value !== null ? this.value : "";
     this.isFilled();
   }
 
@@ -156,7 +168,7 @@ export default class AnxInput extends Vue {
 
   /** Check if the input-field is filled, Set class filled. */
   protected isFilled() {
-    if (this.updateInputField && this.updateInputField.length > 0) {
+    if (this.localValue && this.localValue.length > 0) {
       this.filled = true;
     } else {
       this.filled = false;
@@ -209,6 +221,13 @@ export default class AnxInput extends Vue {
   padding-top: 20px;
   position: relative;
   width: var(--input-width);
+
+  &.is-disabled {
+    opacity: 0.6;
+    input {
+      cursor: default;
+    }
+  }
 
   &.inline {
     width: 100% !important;
