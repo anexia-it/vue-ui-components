@@ -668,7 +668,11 @@
             and hava a prop for the options (array&lt;{value: string, text:
             string}&gt;). Also the anx-select can be validated!
           </anx-paragraph>
-          <anx-select width="100%" v-model="selected1" />
+          <anx-select
+            width="100%"
+            v-model="selected1"
+            :options="selectOptions"
+          />
           <anx-select
             width="100%"
             id="anx-select"
@@ -825,29 +829,31 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { AnxIconsNames } from "@/icons";
-import AnxHeader from "@/components/AnxHeader.vue";
-import AnxFooter from "@/components/AnxFooter.vue";
-import AnxGlobal from "@/components/AnxGlobal.vue";
-import AnxContainer from "@/components/AnxContainer.vue";
-import AnxContent from "@/components/AnxContent.vue";
-import AnxAlert from "@/components/AnxAlert.vue";
-import AnxParagraph from "@/components/AnxParagraph.vue";
-import AnxCard from "@/components/AnxCard.vue";
-import AnxInput from "@/components/AnxInput.vue";
-import AnxButton from "@/components/AnxButton.vue";
-import AnxReadonly from "@/components/AnxReadonly.vue";
-import AnxTable from "@/components/AnxTable.vue";
-import AnxTableRow from "@/components/AnxTableRow.vue";
-import AnxModal from "@/components/AnxModal.vue";
-import AnxForm from "@/components/AnxForm.vue";
-import AnxFormContainer from "@/components/AnxFormContainer.vue";
-import AnxCheckbox from "@/components/AnxCheckbox.vue";
-import AnxSelect from "@/components/AnxSelect.vue";
-import AnxTextarea from "@/components/AnxTextarea.vue";
-import AnxIcon from "@/components/AnxIcon.vue";
-import AnxHrLine from "@/components/AnxHrLine.vue";
-import AnxList from "@/components/AnxList.vue";
-import AnxLink from "@/components/AnxLink.vue";
+import {
+  AnxHeader,
+  AnxFooter,
+  AnxGlobal,
+  AnxContainer,
+  AnxContent,
+  AnxAlert,
+  AnxParagraph,
+  AnxCard,
+  AnxInput,
+  AnxButton,
+  AnxReadonly,
+  AnxTable,
+  AnxTableRow,
+  AnxModal,
+  AnxForm,
+  AnxFormContainer,
+  AnxCheckbox,
+  AnxSelect,
+  AnxTextarea,
+  AnxIcon,
+  AnxHrLine,
+  AnxList,
+  AnxLink
+} from "@/components";
 
 @Component({
   components: {
@@ -966,6 +972,7 @@ export default class Kitchensink extends Vue {
   }
 
   private mounted() {
+    console.log(AnxAlert);
     /** This code demonstrates, that the images can be changed dynamically */
     this.seedTableImages();
     window.setInterval(() => {
