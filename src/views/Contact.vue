@@ -84,14 +84,16 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AnxContact from "@/components/AnxContact.vue";
-import AnxContent from "@/components/AnxContent.vue";
-import AnxCheckbox from "@/components/AnxCheckbox.vue";
-import AnxContainer from "@/components/AnxContainer.vue";
-import AnxFooter from "@/components/AnxFooter.vue";
-import AnxGlobal from "@/components/AnxGlobal.vue";
-import AnxParagraph from "@/components/AnxParagraph.vue";
-import AnxHeader from "@/components/AnxHeader.vue";
+import {
+  AnxContact,
+  AnxContent,
+  AnxCheckbox,
+  AnxContainer,
+  AnxFooter,
+  AnxGlobal,
+  AnxParagraph,
+  AnxHeader
+} from "@/components";
 
 @Component({
   components: {
