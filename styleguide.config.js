@@ -49,7 +49,21 @@ module.exports = {
         },
         {
           name: "Plugins",
-          content: "docs/plugins.md"
+          content: "docs/plugins/index.md",
+          sections: [
+            {
+              name: "AnxIconsPlugin",
+              content: "docs/plugins/anx-icons.md"
+            },
+            {
+              name: "AnxToastPlugin",
+              content: "docs/plugins/anx-toast.md"
+            }
+          ]
+        },
+        {
+          name: "FAQ",
+          content: "docs/faq.md"
         }
       ]
     },

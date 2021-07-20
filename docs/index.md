@@ -1,1 +1,1 @@
-**@anx/vue-ui-components** is a *Vue UI Library* containing several components and plugins for designing user interfaces. The library is based on *Vue.js* and can easily be integrated in any existing *Vue* project.
+**@anx/vue-ui-components** is a *Vue UI Library* containing several components and plugins for designing user interfaces. The library is based on *Vue.js* and can easily be integrated in any existing project.
