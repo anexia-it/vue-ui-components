@@ -11,15 +11,15 @@
     "lint": "vue-cli-service lint",
     "build:app": "npm run generate:icons && vue-cli-service build",
     "build:bundle": "npm run generate:icons && vue-cli-service build --target lib --inline-vue --dest lib ./src/index.ts",
+    "build:lib": "vue-cli-service build --target lib --dest lib --name anx ./src/index.ts",
     "generate:icons": "node ./src/plugins/icons/helpers/generate-files.js && npm run lint:icons",
     "git:add-bundle": "ts-node git/pre-commit.ts",
     "lint:icons": "vue-cli-service lint ./src/plugins/icons/*.js ./src/plugins/icons/*.ts",
     "styleguide": "vue-styleguidist server",
     "styleguide:build": "vue-styleguidist build"
   },
-  "source": "src/index.ts",
-  "main": "src/index.ts",
-  "module": "src/index.ts",
+  "main": "src/lib/anx.common.js",
+  "module": "src/lib/anx.umd.js",
   "browser": {
     "./sfc": "src/components/index.ts"
   },
@@ -92,5 +92,5 @@
       "pre-commit": "if git-branch-is integration; then npm run build:bundle && npm run git:add-bundle; fi"
     }
   },
-  "style": "lib/ui.css"
+  "style": "lib/anx.css"
 }
