@@ -1,5 +1,7 @@
 If you want to include our library in an existing *Vue* project, you simply have to install it in your apps entry point.
 
+# TOOD: external css file
+
 ```javascript
 // src/main.js
 

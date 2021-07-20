@@ -16,17 +16,15 @@
     "git:add-bundle": "ts-node git/pre-commit.ts",
     "lint:icons": "vue-cli-service lint ./src/plugins/icons/*.js ./src/plugins/icons/*.ts",
     "styleguide": "vue-styleguidist server",
-    "styleguide:build": "vue-styleguidist build"
+    "build:docs": "vue-styleguidist build"
   },
   "main": "lib/anx.common.js",
   "module": "lib/anx.umd.js",
-  "browser": {
-    "./sfc": "src/components/index.ts"
-  },
-  "unpkg": "lib/ui.umd.min.js",
+  "style": "lib/anx.css",
   "files": [
     "lib/*",
     "nuxt/*",
+    "src/*",
     "index.d.ts"
   ],
   "peerDependencies": {

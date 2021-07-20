@@ -134,7 +134,7 @@ npm run styleguide
 or build the documentation with
 
 ```
-npm run styleguide:build
+npm run build:docs
 ```
 
 ### Kitchensink
