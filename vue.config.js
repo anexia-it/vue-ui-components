@@ -44,5 +44,8 @@ module.exports = {
       .options({
         fix: true
       });
+  },
+  css: {
+    extract: false
   }
 };
