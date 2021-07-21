@@ -1,4 +1,6 @@
+The *anx-select* is a input component that renders a custom select input. The component is higly modifiable. The example below shows how to use the component correctly.  
 
+**Note:** The **options** property is required. If this property is not provided, the component cannot be mounted correctly.
 
 ```vue
 <template>

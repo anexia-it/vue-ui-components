@@ -1,0 +1,3 @@
+Our library contains a set of more than 150 icons. To make the usage of all those icons easier, the *AnxIconsPlugin* has been implemented.  
+
+The plugin automatically registers all the icons as components with inline SVG in your application. You don't have to care about import SVG files and can simply render all the icons. For a more detailed information and a documentation on how to use this plugin pleaser refer to the [AnxIcon Component Documentation](/#/Components?id=anxicon).

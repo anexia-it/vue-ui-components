@@ -1,4 +1,4 @@
 import Vue from "vue";
-import UIPlugin from "ui";
+import UIPlugin from "@anx/vue-ui-components";
 
 Vue.use(UIPlugin);

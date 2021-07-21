@@ -1,0 +1,3 @@
+The [AnxToast Component](http://localhost:6060/#/Components?id=anxtoast) is used to show push notifications on the screen. Witht the *AnxToastPlugin* those push notifications can be shown programmatically. The plugin automatically renderst the *AnxToast Component* and shows a push notification.  
+
+For a documentation on how to use this plugin please refer to the [AnxToast Component Documentation](http://localhost:6060/#/Components?id=anxtoast).
