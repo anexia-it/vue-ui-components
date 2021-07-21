@@ -8,11 +8,11 @@
 
 ## Installation
 
-For a detailed description of how to install the *vue-ui-component* library on your *Website* or in an existing *Vue* or *Nuxt* can be found in our [Installation Documentation](http://master.ui.marketing.staging/#/Documentation?id=installation).
+For a detailed description of how to install the *vue-ui-component* library on your *Website* or in an existing *Vue* or *Nuxt* project can be found in our [Installation Documentation](http://master.ui.marketing.staging/#/Documentation?id=installation).
 
 ## Usage
 
-You can find a detailed description with examples of how to use the components in our [Components Documentation](http://master.ui.marketing.staging/#/Components)
+You can find a detailed description with examples of how to use the components in our [Components Documentation](http://master.ui.marketing.staging/#/Components).
 
 ## License
 
