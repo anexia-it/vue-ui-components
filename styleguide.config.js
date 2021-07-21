@@ -63,7 +63,7 @@ module.exports = {
         },
         {
           name: "FAQ",
-          content: "docs/faq.md"
+          content: "docs/faq/index.md"
         }
       ]
     },
