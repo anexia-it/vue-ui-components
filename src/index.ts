@@ -1,7 +1,6 @@
 import _Vue from "vue";
 import Components from "./components";
 import { AnxIconsPlugin, AnxIconsNames, AnxToastPlugin } from "./plugins";
-import { AbstractModel } from "./lib/models/AbstractModel";
 
 // Default export is the UI Plugin
 const UIPlugin = {
@@ -24,10 +23,4 @@ export default UIPlugin;
 export * from "./components";
 
 // Export plugins and ohter helpful tools
-export {
-  Components,
-  AnxIconsNames,
-  AnxIconsPlugin,
-  AnxToastPlugin,
-  AbstractModel
-};
+export { Components, AnxIconsNames, AnxIconsPlugin, AnxToastPlugin };
