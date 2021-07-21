@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "npm run generate:icons && vue-styleguidist server",
+    "serve:kitchensink": "npm run generate:icons && vue-cli-service serve",
     "build": "npm run build:docs && npm run build:lib && npm run build wc",
     "build:docs": "npm run generate:icons && vue-styleguidist build",
     "build:lib": "npm run generate:icons && rm -rf lib && vue-cli-service build --target lib --dest lib --name anx ./src/index.ts",
