@@ -202,10 +202,10 @@
           The way, AnxIcons work is a little bit more complex. The serve/build
           npm script automatically trigger the
           <strong>generate:icons</strong> npm script. Now the
-          <i>/src/icons/helpers/generate-files.js</i> is executed. This file
-          automatically creates all the files located in
-          <i>/src/icons/</i> except for the index.js, index.d.ts and the files
-          inside the helper folder.<br />
+          <i>/src/plugins/icons/helpers/generate-files.js</i> is executed. This
+          file automatically creates all the files located in
+          <i>/src/plugins/icons/</i> except for the index.js, index.d.ts and the
+          files inside the helper folder.<br />
           Now all icons are exported as Vue Components in the icons.js and
           icons.d.ts files. So, each icon is an individual vue component. All
           this components are automatically registered into your vue application
@@ -828,7 +828,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { AnxIconsNames } from "@/icons";
+import { AnxIconsNames } from "@/plugins";
 import {
   AnxHeader,
   AnxFooter,

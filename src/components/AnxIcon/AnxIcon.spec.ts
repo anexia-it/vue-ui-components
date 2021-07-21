@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { AnxIconsPlugin } from "@/icons";
+import { AnxIconsPlugin } from "@/plugins";
 import { AnxIcon } from "@/components";
 import Vue from "vue";
 

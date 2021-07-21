@@ -4,7 +4,7 @@ console.log("\x1b[34mAuto generating files for AnxIcons\x1b[0m\n");
 const fs = require("fs");
 const path = require("path");
 const sutils = require("./string-utils");
-const __PATH__ = "src/icons/";
+const __PATH__ = "src/plugins/icons/";
 const __ICONS_PATH__ = "src/assets/icons/";
 
 const fileTitle = `// --- BEGIN AUTO-GENERATED FILE ---
