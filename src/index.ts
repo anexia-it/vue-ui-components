@@ -1,7 +1,9 @@
 import _Vue from "vue";
 import Components from "./components";
 import { AnxIconsPlugin, AnxIconsNames, AnxToastPlugin } from "./plugins";
+import { AbstractModel } from "./lib/models/AbstractModel";
 
+// Default export is the UI Plugin
 const UIPlugin = {
   install(Vue: typeof _Vue): void {
     /** Register all components, that have been loaded*/
@@ -16,7 +18,16 @@ const UIPlugin = {
     Vue.use(AnxToastPlugin);
   }
 };
-
-export { Components, AnxIconsNames, AnxIconsPlugin, AnxToastPlugin };
 export default UIPlugin;
+
+// Export all components as named exports
 export * from "./components";
+
+// Export plugins and ohter helpful tools
+export {
+  Components,
+  AnxIconsNames,
+  AnxIconsPlugin,
+  AnxToastPlugin,
+  AbstractModel
+};
