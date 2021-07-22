@@ -1,1 +1,1 @@
-declare module '@anx/vue-ui-components';
+declare module '@anexia/vue-ui-components';

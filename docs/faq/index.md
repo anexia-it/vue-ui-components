@@ -17,7 +17,7 @@ In this case, it can happen that your whole application won't work in IE, becaus
 
 module.exports = {
   transpileDependencies: [
-    '@anx/vue-ui-components'
+    '@anexia/vue-ui-components'
   ]
 }
 ```

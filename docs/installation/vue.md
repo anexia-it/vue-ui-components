@@ -4,8 +4,8 @@ If you want to include our library in an existing *Vue* project, you simply have
 // src/main.js
 
 import Vue from 'vue'
-import AnxUIPlugin from '@anx/vue-ui-components'
-import "@anx/vue-ui-components/lib/anx.css";
+import AnxUIPlugin from '@anexia/vue-ui-components'
+import "@anexia/vue-ui-components/lib/anx.css";
 
 Vue.use(AnxUIPlugin);
 ```
@@ -20,8 +20,8 @@ If you don't want to install the whole library, you can also import and install 
 // src/main.js
 
 import Vue from 'vue'
-import { AnxButton, AnxInput, AnxIconsPlugin } from '@anx/vue-ui-components'
-import "@anx/vue-ui-components/lib/anx.css";
+import { AnxButton, AnxInput, AnxIconsPlugin } from '@anexia/vue-ui-components'
+import "@anexia/vue-ui-components/lib/anx.css";
 
 // Registering plugins manually
 Vue.use(AnxIconsPlugin);
