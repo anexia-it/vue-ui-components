@@ -2,7 +2,7 @@
     <img src="https://anexia.com/fileadmin/anexia-www-3/images/anexia.svg" alt="Anexia logo" title="Anexia" align="right" height="60" />
 </a>
 
-# @anx/vue-ui-components
+# @anexia/vue-ui-components
 
 > This library contains a set of components, icons and plugins for developing user interfaces. All components match the *Anexia Corporate Design* guidelines.
 
