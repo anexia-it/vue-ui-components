@@ -1,8 +1,8 @@
 {
-  "name": "@anx/vue-ui-components",
-  "version": "1.19.0",
-  "description": "A Vue component library containing several components that match the ANEXIA style guidelines",
-  "author": "ANEXIA <marketing@anexia-it.com> (https://anexia.com)",
+  "name": "@anexia/vue-ui-components",
+  "version": "1.19.2",
+  "description": "A Vue component library containing several components, plugins and icons that match the Anexia Corporate Design guidelines",
+  "author": "ANEXIA Internetdienstleistungs Gmbh <marketing@anexia-it.com> (https://anexia.com)",
   "license": "MIT",
   "scripts": {
     "serve": "vue-styleguidist server",
@@ -89,5 +89,16 @@
     "hooks": {
       "pre-commit": "if git-branch-is integration; then npm run generate:icons && npm run build:lib && npm run git:add-bundle; fi"
     }
-  }
+  },
+  "keywords": [
+    "anexia",
+    "vue",
+    "vue framework",
+    "vue components library",
+    "ui framework",
+    "ui tool",
+    "vue components",
+    "vue plugin",
+    "icons"
+  ]
 }

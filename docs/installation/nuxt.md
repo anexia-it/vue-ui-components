@@ -5,10 +5,10 @@ Our library can also be integrated into an existing *Nuxt* project. You just hav
 
 module.exports = {
     modules: [
-        '@anx/vue-ui-components/nuxt'
+        '@anexia/vue-ui-components/nuxt'
     ],
     css: [
-        '@anx/vue-ui-components/lib/anx.css'
+        '@anexia/vue-ui-components/lib/anx.css'
     ]
 }
 ```
