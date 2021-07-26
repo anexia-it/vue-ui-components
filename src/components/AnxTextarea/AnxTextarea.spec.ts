@@ -108,12 +108,18 @@ describe("AnxTextarea.vue", () => {
   it("handles value change", async () => {
     const value = "This is a test";
     const wrapper = mount(AnxTextarea);
-    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(false);
+
+    const textarea = wrapper.get(".anx-textarea > textarea");
+    expect(textarea.classes("active")).toBe(false);
+    // @ts-ignore
+    expect(textarea.element.value).toMatch("");
 
     wrapper.setProps({ value });
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(true);
+    expect(textarea.classes("active")).toBe(true);
+    // @ts-ignore
+    expect(textarea.element.value).toMatch(value);
   });
 
   it("show initially set value", async () => {
