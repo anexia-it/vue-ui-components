@@ -135,7 +135,7 @@ describe("AnxSelect.vue", () => {
       { value: "second", text: "second" }
     ];
     const wrapper = mount(AnxSelect, {
-      propsData: { 
+      propsData: {
         options,
         validation: true
       },
@@ -198,5 +198,5 @@ describe("AnxSelect.vue", () => {
 
     jest.advanceTimersByTime(1000);
     expect(wrapper.get("div.anx-select").exists()).toBeTruthy();
-  })
+  });
 });

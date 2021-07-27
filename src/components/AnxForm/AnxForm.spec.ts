@@ -1,5 +1,5 @@
 import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
-import { AnxForm, AnxButton, AnxInput } from "@/components";
+import { AnxForm, AnxButton } from "@/components";
 import VeeValidate from "vee-validate";
 
 describe("AnxForm.vue", () => {
@@ -35,9 +35,9 @@ describe("AnxForm.vue", () => {
 
     const wrapper = mount(AnxForm, { localVue });
 
-    await wrapper.get("form").trigger("submit.prevent")
+    await wrapper.get("form").trigger("submit.prevent");
     await wrapper.vm.$nextTick();
-    
+
     expect(wrapper.emitted("submit"));
   });
 
@@ -48,7 +48,7 @@ describe("AnxForm.vue", () => {
 
     const wrapper = mount(AnxForm, {
       localVue
-    })
+    });
 
     // @ts-ignore
     expect(await wrapper.vm.isValid()).toBeTruthy();

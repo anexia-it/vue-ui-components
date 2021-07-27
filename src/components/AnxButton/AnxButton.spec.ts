@@ -30,19 +30,21 @@ describe("AnxButton.vue", () => {
   });
 
   it("generate css styles", () => {
-    const width = '100px', color = 'red', disabledColor = 'blue';
+    const width = "100px",
+      color = "red",
+      disabledColor = "blue";
     const wrapper = shallowMount(AnxButton, {
-      propsData: { 
+      propsData: {
         width,
         color,
         disabledColor
-       }
+      }
     });
-    
+
     // @ts-ignore
     const cssProps = wrapper.vm.cssProps;
-    expect(cssProps['--button-width']).toBe(width);
-    expect(cssProps['--button-color']).toBe(color);
-    expect(cssProps['--button-color-disabled']).toBe(disabledColor);
-  })
+    expect(cssProps["--button-width"]).toBe(width);
+    expect(cssProps["--button-color"]).toBe(color);
+    expect(cssProps["--button-color-disabled"]).toBe(disabledColor);
+  });
 });

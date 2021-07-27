@@ -30,7 +30,7 @@ describe("AnxCheckbox.vue", () => {
         value: false
       }
     });
-    
+
     // @ts-ignore
     expect(wrapper.get("input").element.checked).toBeFalsy();
 
@@ -39,11 +39,11 @@ describe("AnxCheckbox.vue", () => {
     await wrapper.vm.$nextTick();
     // @ts-ignore
     expect(wrapper.get("input").element.checked).toBeTruthy();
-    
+
     // Uncheck checkbox
     wrapper.setProps({ value: false });
     await wrapper.vm.$nextTick();
     // @ts-ignore
     expect(wrapper.get("input").element.checked).toBeFalsy();
-  })
+  });
 });

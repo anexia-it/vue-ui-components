@@ -1,6 +1,6 @@
-import { mount, shallowMount, NameSelector, createLocalVue } from "@vue/test-utils";
+import { mount, shallowMount, NameSelector } from "@vue/test-utils";
 import { AnxTextarea } from "@/components";
-import VeeValidate, { ValidationProvider } from "vee-validate";
+import { ValidationProvider } from "vee-validate";
 import Vue from "vue";
 
 describe("AnxTextarea.vue", () => {
@@ -40,8 +40,12 @@ describe("AnxTextarea.vue", () => {
     expect(validationProviderComponent.exists()).toBe(true);
     expect(validationProviderComponent.attributes("name")).toBe(dataVvAs);
 
-    expect(wrapper.get(".anx-textarea > textarea").attributes("id")).toMatch(id);
-    expect(wrapper.get(".anx-textarea > textarea").attributes("name")).toMatch(name);
+    expect(wrapper.get(".anx-textarea > textarea").attributes("id")).toMatch(
+      id
+    );
+    expect(wrapper.get(".anx-textarea > textarea").attributes("name")).toMatch(
+      name
+    );
     expect(
       wrapper.get(".anx-textarea > textarea").attributes("autocomplete")
     ).toMatch(autocomplete);
@@ -55,22 +59,30 @@ describe("AnxTextarea.vue", () => {
 
     // @ts-ignore
     expect(inputField.element.value).toMatch("");
-    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(false);
+    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(
+      false
+    );
 
     await inputField.setValue(text);
 
     // @ts-ignore
     expect(inputField.element.value).toMatch(text);
-    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(true);
+    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(
+      true
+    );
   });
 
   it("handles user click", async () => {
     const wrapper = shallowMount(AnxTextarea);
-    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(false);
+    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(
+      false
+    );
 
     await wrapper.get(".anx-textarea > textarea").trigger("click");
 
-    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(true);
+    expect(wrapper.get(".anx-textarea > textarea").classes("active")).toBe(
+      true
+    );
   });
 
   it("has correct validation and handles blur event", async () => {
@@ -133,7 +145,9 @@ describe("AnxTextarea.vue", () => {
     await wrapper.vm.$nextTick();
 
     // @ts-ignore
-    expect(wrapper.get(".anx-textarea > textarea").element.value).toMatch(value);
+    expect(wrapper.get(".anx-textarea > textarea").element.value).toMatch(
+      value
+    );
 
     wrapper.setProps({ value: null });
     await wrapper.vm.$nextTick();
@@ -149,8 +163,8 @@ describe("AnxTextarea.vue", () => {
       }
     });
 
-    const validationProvierdComponent = wrapper.find('validationprovider-stub');
+    const validationProvierdComponent = wrapper.find("validationprovider-stub");
     expect(validationProvierdComponent.exists()).toBeTruthy();
     expect(validationProvierdComponent.attributes("rules")).toMatch("required");
-  })
+  });
 });

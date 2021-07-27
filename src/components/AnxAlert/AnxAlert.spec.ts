@@ -31,7 +31,7 @@ describe("AnxAlert.vue", () => {
 
     await closeButton.trigger("click");
     await wrapper.vm.$nextTick();
-    
+
     expect(wrapper.emitted("input")).toBeTruthy();
   });
 
@@ -46,12 +46,12 @@ describe("AnxAlert.vue", () => {
     expect(wrapper.classes()).toContain("visible");
 
     // Closing by chaning the property value
-    wrapper.setProps({ value: false })
+    wrapper.setProps({ value: false });
     await wrapper.vm.$nextTick();
     expect(wrapper.classes()).toContain("hidden");
 
     // Setting to true again, should show the alert
-    wrapper.setProps({ value: true })
+    wrapper.setProps({ value: true });
     await wrapper.vm.$nextTick();
     expect(wrapper.classes()).toContain("visible");
   });
@@ -89,7 +89,7 @@ describe("AnxAlert.vue", () => {
     expect(wrapper.classes()).toContain("visible");
 
     // Closing by changing the property value
-    wrapper.setProps({ value: false })
+    wrapper.setProps({ value: false });
     await wrapper.vm.$nextTick();
     // Should still be visible
     jest.advanceTimersByTime(10);
@@ -99,5 +99,5 @@ describe("AnxAlert.vue", () => {
     jest.advanceTimersByTime(1000);
     await wrapper.vm.$nextTick();
     expect(wrapper.classes()).toContain("hidden");
-  })
+  });
 });

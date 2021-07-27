@@ -2,7 +2,30 @@ import { createLocalVue, shallowMount } from "@vue/test-utils";
 import { AnxLink } from "@/components";
 import VueRouter from "vue-router";
 
+// eslint-disable-next-line
 const Url = require("url-parse");
+
+// Helper function for creating anx link wrapper
+function createWrapperWithVueRouter(
+  propsData: {},
+  router: VueRouter | null = null
+) {
+  // Setting up VueRouter in local vue
+  const localVue = createLocalVue();
+  localVue.use(VueRouter);
+  if (router === null) {
+    router = new VueRouter();
+  }
+
+  // Create the AnxLink
+  const wrapper = shallowMount(AnxLink, {
+    propsData,
+    localVue,
+    router
+  });
+
+  return wrapper;
+}
 
 describe("AnxLink.vue", () => {
   it("renders component", () => {
@@ -89,7 +112,8 @@ describe("AnxLink.vue", () => {
     const router = new VueRouter();
 
     // Properties for AnxLink
-    const href = "/test", newTab = true;
+    const href = "/test",
+      newTab = true;
 
     // Create the wrapper
     const wrapper = createWrapperWithVueRouter({ href, newTab }, router);
@@ -139,23 +163,24 @@ describe("AnxLink.vue", () => {
     // Setting up routes
     const routes = [
       {
-        name: 'Test',
-        path: '/test'
+        name: "Test",
+        path: "/test"
       },
       {
-        name: 'Home',
-        path: '/'
+        name: "Home",
+        path: "/"
       }
-    ]
+    ];
 
     // Setting up VueRouter
     const router = new VueRouter({ routes });
 
     // Properties for AnxLink
-    const routeName = routes[0].name, newTab = true;
+    const routeName = routes[0].name,
+      newTab = true;
 
     // Create the wrapper
-    const wrapper = createWrapperWithVueRouter({ routeName, newTab }, router)
+    const wrapper = createWrapperWithVueRouter({ routeName, newTab }, router);
 
     // Check if the link has been rendered
     const link = wrapper.get("a.anx-link");
@@ -166,7 +191,8 @@ describe("AnxLink.vue", () => {
     await wrapper.vm.$nextTick();
 
     // Check if the url is correct and the router has pushed the user to the location
-    const expectedUrl = new Url(router.resolve({ name: routes[0].name }).href).href;
+    const expectedUrl = new Url(router.resolve({ name: routes[0].name }).href)
+      .href;
     expect(window.open).toHaveBeenCalledWith(expectedUrl);
   });
 
@@ -177,14 +203,14 @@ describe("AnxLink.vue", () => {
     // Setting up routes
     const routes = [
       {
-        name: 'Test',
-        path: '/test'
+        name: "Test",
+        path: "/test"
       },
       {
-        name: 'Home', // This is the default route
-        path: '/'
+        name: "Home", // This is the default route
+        path: "/"
       }
-    ]
+    ];
 
     // Setting up VueRouter
     const router = new VueRouter({ routes });
@@ -196,7 +222,7 @@ describe("AnxLink.vue", () => {
     const routeName = routes[1].name;
 
     // Create the wrapper
-    const wrapper = createWrapperWithVueRouter({ routeName }, router)
+    const wrapper = createWrapperWithVueRouter({ routeName }, router);
 
     // Check if the link has been rendered
     const link = wrapper.get("a.anx-link");
@@ -225,7 +251,7 @@ describe("AnxLink.vue", () => {
     const href = window.location.href;
 
     // Create the wrapper
-    const wrapper = createWrapperWithVueRouter({ href }, router)
+    const wrapper = createWrapperWithVueRouter({ href }, router);
 
     // Check if the link has been rendered
     const link = wrapper.get("a.anx-link");
@@ -251,10 +277,11 @@ describe("AnxLink.vue", () => {
     router.push = jest.fn();
 
     // Properties for AnxLink
-    const href = window.location.href, newTab = true;
+    const href = window.location.href,
+      newTab = true;
 
     // Create the wrapper
-    const wrapper = createWrapperWithVueRouter({ href, newTab }, router)
+    const wrapper = createWrapperWithVueRouter({ href, newTab }, router);
 
     // Check if the link has been rendered
     const link = wrapper.get("a.anx-link");
@@ -266,7 +293,7 @@ describe("AnxLink.vue", () => {
 
     // Neither push nor window.open should have been called
     const expectedUrl = new Url(window.location.href).href;
-    expect(window.open).toHaveBeenCalledWith(expectedUrl)
+    expect(window.open).toHaveBeenCalledWith(expectedUrl);
   });
 
   it("opens url in same tab if href includes hostname and is internal url when vue router is defined", async () => {
@@ -277,10 +304,10 @@ describe("AnxLink.vue", () => {
     router.push = jest.fn();
 
     // Properties for AnxLink
-    const href = new Url('/test').href
+    const href = new Url("/test").href;
 
     // Create the wrapper
-    const wrapper = createWrapperWithVueRouter({ href }, router)
+    const wrapper = createWrapperWithVueRouter({ href }, router);
 
     // Check if the link has been rendered
     const link = wrapper.get("a.anx-link");
@@ -291,24 +318,6 @@ describe("AnxLink.vue", () => {
     await wrapper.vm.$nextTick();
 
     // Neither push nor window.open should have been called
-    expect(router.push).toHaveBeenCalledWith('/test')
+    expect(router.push).toHaveBeenCalledWith("/test");
   });
 });
-
-function createWrapperWithVueRouter(propsData: {}, router: VueRouter | null = null) {
-  // Setting up VueRouter in local vue
-  const localVue = createLocalVue();
-  localVue.use(VueRouter);
-  if (router === null) {
-    router = new VueRouter();
-  }
-
-  // Create the AnxLink
-  const wrapper = shallowMount(AnxLink, {
-    propsData,
-    localVue,
-    router
-  });
-
-  return wrapper;
-}

@@ -1,6 +1,6 @@
 import { shallowMount, mount } from "@vue/test-utils";
 import { AnxFooter, AnxIcon, AnxLink, AnxHrLine } from "@/components";
-import Vue from 'vue';
+import Vue from "vue";
 import { AnxIconsPlugin } from "@/plugins";
 
 beforeEach(() => {
@@ -83,5 +83,5 @@ describe("AnxFooter.vue", () => {
     expect(footer.classes("bottom")).toBeFalsy();
 
     wrapper.destroy();
-  })
+  });
 });
