@@ -60,27 +60,35 @@ export default class AnxLink extends Vue {
 
       /** If a route name is defined, use it instead of the href */
       if (this.routeName && this.$route) {
-        /** Only push if the route is different */
-        if (this.$route.name !== this.routeName) {
-          if (this.newTab) {
-            /** Logic to open link in new tab by route name */
-            const routeData = this.$router.resolve({
-              name: "routeName"
-            });
-            window.open(routeData.href, "_blank");
-          } else {
+        /** If the window should be opened in a new tab, this is done independent from the route name */
+        if (this.newTab !== null) {
+          /** Logic to open link in new tab by route name */
+          const url = new this.Url(
+            this.$router.resolve({
+              name: this.routeName
+            }).href
+          );
+          window.open(url.href);
+          /** If the window should be opened in the same window, this is only done if the current route name and the provided route name differ */
+        } else {
+          if (this.$route.name !== this.routeName && this.newTab === null) {
             this.$router.push({ name: this.routeName });
           }
         }
-      } else if (this.isDifferentUrl) {
+      } else {
         /** Only push to the new route if the link is different from the current location */
         /** Check if the url should be opened in a new tab */
         if (this.newTab !== null) {
-          /** First resolve the url with router and then resolve the url with url-parser */
-          const url = new this.Url(this.$router.resolve(this.href).href);
+          /** If the url is internal, the href has to be parsed first to get the pathname that is then parsed with the vue router */
+          const pathname = new this.Url(this.href).pathname;
+          const url = new this.Url(this.$router.resolve(pathname).href);
           window.open(url.href);
         } else {
-          this.$router.push(this.href);
+          if (this.isDifferentUrl) {
+            /** Parse the url first to get the path name (in case a full href with hostname is provided) */
+            const pathname = new this.Url(this.href).pathname;
+            this.$router.push(pathname);
+          }
         }
       }
     }
