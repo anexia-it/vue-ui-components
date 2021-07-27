@@ -78,7 +78,6 @@ export default class AnxSelect extends Vue {
   @Prop({ default: "100%" }) width!: string;
   /**
    * If this property is set, a default required validation will be applied
-   * @deprecated Use **validationRules** instead to define the rules directly
    */
   @Prop({ default: null }) validation!: boolean | null;
   /** The rules for the validation */
@@ -167,14 +166,14 @@ export default class AnxSelect extends Vue {
       /** Check if the user clicked outside of the anx-select and close it */
       if (clickedElement) {
         if (!this.isElementOrChild(this.$el, clickedElement)) {
-          this.closeDialoag();
+          this.closeDialog();
         }
       }
     });
   }
 
   /** Handle a click outside the modal */
-  private closeDialoag() {
+  private closeDialog() {
     this.show = false;
   }
 
@@ -334,6 +333,7 @@ export default class AnxSelect extends Vue {
 
   &.is_invalid {
     margin-bottom: 0px;
+    border-bottom: 1px solid $anx-error;
 
     label {
       color: $anx-error;
