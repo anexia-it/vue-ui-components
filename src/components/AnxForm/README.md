@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         submitForm() {
-            alert('The form has been submitted\n User input: ' + this.formData.input + '');
+            this.$anxToast.show('The form has been submitted\n User input: ' + this.formData.input + '');
         }
     }
 }
@@ -61,7 +61,7 @@ export default {
     },
     methods: {
         submitForm() {
-            alert('The form has been submitted');
+            this.$anxToast.show('The form has been submitted');
         }
     }
 }
