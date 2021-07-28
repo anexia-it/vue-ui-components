@@ -229,7 +229,7 @@ export default class AnxToast extends Vue {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  z-index: 1000;
+  z-index: 1100;
 
   &.anx-toast-top {
     top: 15px;
