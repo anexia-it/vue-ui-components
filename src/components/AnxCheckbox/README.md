@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     handleInput(state) {
-      alert("The checkbox has been changed to " + state);
+      this.$anxToast.show("The checkbox has been changed to " + state);
     }
   }
 }

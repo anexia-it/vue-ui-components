@@ -61,7 +61,7 @@ Vue.use(VueI18n);
 export default {
     methods: {
         localeChange(locale) {
-            alert("Locale changed to " + locale)
+            this.$anxToast.show("Locale changed to " + locale)
         }
     }
 }

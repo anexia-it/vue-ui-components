@@ -60,7 +60,7 @@ export default {
         },
         // This function simulates a positive response from the api regarding the credentials
         dataCorrect() {
-            alert("Now you would be redirected to your users page");
+            this.$anxToast.show("Now you would be redirected to your users page");
             location.reload();
         },
         // This function simulates a negative response from the api regarding the credentials
