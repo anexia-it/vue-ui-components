@@ -11,6 +11,7 @@
     "build:docs": "vue-styleguidist build",
     "build:lib": "rm -rf lib && vue-cli-service build --target lib --dest lib --name anx ./src/index.ts",
     "build:wc": "rm -rf lib-wc && cross-env vue-cli-service build --target wc --dest lib-wc --name anx './src/components/**/*.vue'",
+    "build:kitchensink": "vue-cli-service build --dest kitchensink",
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "generate:icons": "node ./src/plugins/icons/helpers/generate-files.js && npm run lint:icons",
