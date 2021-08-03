@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { AnxContact } from "@/components";
+import flushPromises from "flush-promises";
 
 describe("AnxContact.vue", () => {
   it("renders component", () => {
@@ -53,5 +54,62 @@ describe("AnxContact.vue", () => {
 
     expect(errorAlert.text()).toContain(success);
     expect(errorAlert.classes("hidden")).toBeFalsy();
+  });
+
+  it("has correct validation", async () => {
+    // TODO:
+  });
+
+  it("emits submit event with correct data", async () => {
+    // This key is used for automated tesing
+    // https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha-v2-what-should-i-do
+    const recaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+    const firstName = "Max", lastName = "Mustermann", email = "max@mustermann.at", phone = "0123456789", message = "This is a test";
+
+    const wrapper = mount(AnxContact, {
+      propsData: {
+        showPhone: true,
+        showEmail: true
+      }
+    });
+
+    const firstNameInput = wrapper.get("#first_name");
+    const lastNameInput = wrapper.get("#last_name");
+    const emailInput = wrapper.get("#email");
+    const phoneInput = wrapper.get("#phone");
+    const messageInput = wrapper.get("#message");
+
+    // Check if elements exist
+    expect(firstNameInput.exists()).toBeTruthy();
+    expect(lastNameInput.exists()).toBeTruthy();
+    expect(emailInput.exists()).toBeTruthy();
+    expect(phoneInput.exists()).toBeTruthy();
+    expect(messageInput.exists()).toBeTruthy();
+
+    // Type in values
+    await firstNameInput.setValue(firstName);
+    await lastNameInput.setValue(lastName);
+    await emailInput.setValue(email);
+    await phoneInput.setValue(phone);
+    await messageInput.setValue(message);
+
+    await wrapper.get("form").trigger("submit");
+    await flushPromises();
+
+    expect(wrapper.emitted("submit")).toBeTruthy();
+    let submittedData = wrapper.emitted("submit");
+    if (submittedData && submittedData[0][0]) {
+      submittedData = submittedData[0][0];
+      // @ts-ignore
+      expect(submittedData.firstName).toMatch(firstName);
+      // @ts-ignore
+      expect(submittedData.lastName).toMatch(lastName);
+      // @ts-ignore
+      expect(submittedData.email).toMatch(email);
+      // @ts-ignore
+      expect(submittedData.phone).toMatch(phone);
+      // @ts-ignore
+      expect(submittedData.message).toMatch(message);
+    }
   });
 });
