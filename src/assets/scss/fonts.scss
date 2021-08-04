@@ -3,6 +3,10 @@
 body,  #app {
   font-family: $anx-font-family;
   font-weight: normal;
+
+  strong {
+    font-weight: 600;
+  }
 }
 
 /** Normal font settings */

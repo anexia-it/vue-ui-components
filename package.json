@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "vue-styleguidist server",
     "serve:kitchensink": "vue-cli-service serve",
-    "build": "npm run generate:icons && npm run build:docs && npm run build:lib && npm run build wc",
+    "build": "npm run generate:icons && npm run build:docs && npm run build:lib && npm run build:wc",
     "build:docs": "vue-styleguidist build",
     "build:lib": "rm -rf lib && vue-cli-service build --target lib --dest lib --name anx ./src/index.ts",
     "build:wc": "rm -rf lib-wc && cross-env vue-cli-service build --target wc --dest lib-wc --name anx './src/components/**/*.vue'",
