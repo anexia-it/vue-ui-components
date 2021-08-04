@@ -3,8 +3,23 @@ const Api = (Vue, globalOptions = {}) => {
     /**
      * Sets all variables to the default variables
      */
-    init() {
-      // TODO: set color via globalOptions
+    init(options) {
+      console.log(options);
+      // Check if there are any variables set in globalOptions
+      if ("variables" in globalOptions) {
+        for (const [key, value] of Object.entries(globalOptions.variables)) {
+          this.setVariable(key, value);
+        }
+      }
+
+      // Check if there are any variables set in options
+      if ("variables" in options) {
+        console.log("ise set");
+        for (const [key, value] of Object.entries(options.variables)) {
+          console.log(key, value);
+          this.setVariable(key, value);
+        }
+      }
     },
     /**
      * Sets a variable

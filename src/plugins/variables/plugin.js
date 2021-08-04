@@ -5,6 +5,6 @@ export const AnxVariablesPlugin = {
     const methods = Api(Vue, options);
     Vue.prototype.$anxVariables = methods;
     Vue.$anxVariables = methods;
-    methods.init();
+    methods.init(options);
   }
 };
