@@ -15,12 +15,17 @@
       :disabled="disabled !== null"
       v-model="localValue"
       :class="{ filled, active, 'is-invalid': errors && errors.length > 0 }"
+      :autocomplete="autocomplete"
       @input="$emit('input', localValue)"
       @blur="inputBlur"
       @click="clickInputField()"
     />
     <label id="textarea-label" :for="id">{{ label }}</label>
-    <span v-if="validationRules !== null" class="error">{{ errors[0] }}</span>
+    <span
+      v-if="validationRules !== null && errors && errors.length > 0"
+      class="error"
+      >{{ errors[0] }}</span
+    >
   </ValidationProvider>
 </template>
 <script lang="ts">
@@ -58,7 +63,9 @@ export default class AnxTextarea extends Vue {
   /** These are the rules for validation. See [VeeValidate Rules](https://vee-validate.logaretm.com/v2/guide/rules.html). */
   @Prop({ default: null }) rules!: string;
   /** This is the value passed automatically via v-model */
-  @Prop({ default: "" }) value!: string;
+  @Prop({ default: null }) value!: string;
+  /** HTML autocomplete attribute */
+  @Prop({ default: "" }) autocomplete!: string;
 
   private active = false;
   private filled = false;

@@ -110,4 +110,26 @@ describe("AnxInput.vue", () => {
     // Should be valid now
     expect(inputField.classes("is-invalid")).toBe(false);
   });
+
+  it("handles value change", async () => {
+    const value = "This is a test";
+    const wrapper = mount(AnxInput);
+
+    expect(wrapper.get(".anx-input").classes("active")).toBe(false);
+    // @ts-ignore
+    expect(wrapper.get(".anx-input > input").element.value).toMatch("");
+
+    wrapper.setProps({ value });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.get(".anx-input").classes("active")).toBe(true);
+    // @ts-ignore
+    expect(wrapper.get(".anx-input > input").element.value).toMatch(value);
+
+    wrapper.setProps({ value: null });
+    await wrapper.vm.$nextTick();
+
+    // @ts-ignore
+    expect(wrapper.get(".anx-input > input").element.value).toMatch("");
+  });
 });

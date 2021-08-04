@@ -1,9 +1,16 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, mount } from "@vue/test-utils";
 import { AnxFooter, AnxIcon, AnxLink, AnxHrLine } from "@/components";
+import Vue from "vue";
+import { AnxIconsPlugin } from "@/plugins";
+
+beforeEach(() => {
+  // For testing we have to install the AnxIconsPlugin manually
+  Vue.use(AnxIconsPlugin);
+});
 
 describe("AnxFooter.vue", () => {
   it("renders component", () => {
-    const wrapper = shallowMount(AnxFooter);
+    const wrapper = mount(AnxFooter);
 
     expect(wrapper.get("div.anx-footer").exists()).toBe(true);
   });
@@ -44,5 +51,37 @@ describe("AnxFooter.vue", () => {
     const hrLineComponent = wrapper.findComponent(AnxHrLine);
     expect(hrLineComponent.exists()).toBe(true);
     expect(hrLineComponent.attributes("margintop")).toMatch(marginTop);
+  });
+
+  it("fixes on body bottom when page is large", () => {
+    // Simulate a large window
+    // @ts-ignore
+    window.innerHeight = 1000;
+
+    const wrapper = mount(AnxFooter, {
+      attachTo: document.body
+    });
+
+    const footer = wrapper.get("#anx-footer");
+    expect(footer.exists()).toBeTruthy();
+    expect(footer.classes("bottom")).toBeTruthy();
+
+    wrapper.destroy();
+  });
+
+  it("does not fix on body bottom when page is small", () => {
+    // Simulate a small
+    // @ts-ignore
+    window.innerHeight = 0;
+
+    const wrapper = mount(AnxFooter, {
+      attachTo: document.body
+    });
+
+    const footer = wrapper.get("#anx-footer");
+    expect(footer.exists()).toBeTruthy();
+    expect(footer.classes("bottom")).toBeFalsy();
+
+    wrapper.destroy();
   });
 });
