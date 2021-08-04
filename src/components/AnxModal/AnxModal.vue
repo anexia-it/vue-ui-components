@@ -285,7 +285,7 @@ export default class AnxModal extends Vue {
   background: $anx-black-transparet;
 
   .modal-header {
-    background-color: $anx-primary-blue;
+    background-color: $anx-primary-color;
     padding: 25px 40px 15px 40px;
     height: 94px;
     border-bottom: 0px;

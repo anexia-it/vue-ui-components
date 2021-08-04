@@ -73,7 +73,7 @@ export default class AnxReadonly extends Vue {
 
 .anx-readonly {
   background-color: $anx-table-row-background;
-  border: 1px solid $anx-primary-grey-light;
+  border: 1px solid $anx-light-grey-color;
   margin: 30px 0;
   width: 100%;
   word-break: break-word;
@@ -81,7 +81,7 @@ export default class AnxReadonly extends Vue {
   .inner-text {
     line-height: 1.5em;
     padding: 16px;
-    color: $anx-lightest-grey-dark;
+    color: $anx-dark-grey-color-lightest;
 
     &.bold {
       font-weight: 800;

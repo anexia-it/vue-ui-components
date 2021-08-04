@@ -148,7 +148,7 @@ export default class AnxTable extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-table {
-  color: $anx-primary-grey-dark !important;
+  color: $anx-dark-grey-color !important;
   border-collapse: collapse;
   text-align: left;
   width: 100%;
