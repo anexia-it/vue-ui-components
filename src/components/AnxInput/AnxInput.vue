@@ -211,7 +211,7 @@ export default class AnxInput extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-input {
-  color: $anx-lightest-grey-dark;
+  color: $anx-dark-grey-color-lightest;
   display: block;
   font-family: $anx-font-family;
   font-size: 16px;
@@ -234,7 +234,7 @@ export default class AnxInput extends Vue {
   }
 
   .with-margin {
-    margin-bottom: $form-components-spacing;
+    margin-bottom: $anx-form-components-spacing;
   }
 
   input {
@@ -266,7 +266,7 @@ export default class AnxInput extends Vue {
 
 .anx-input label {
   bottom: 0;
-  color: $anx-lightest-grey-dark;
+  color: $anx-dark-grey-color-lightest;
   cursor: default;
   display: block;
   font-family: $anx-font-family;
@@ -291,7 +291,7 @@ export default class AnxInput extends Vue {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .anx-input label:after {
-  background-color: $anx-primary-green;
+  background-color: $anx-success-color;
   bottom: 15px;
   content: "";
   height: 1px;
@@ -303,8 +303,8 @@ export default class AnxInput extends Vue {
   background-color: transparent;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid $anx-second-grey-light;
-  color: $anx-lightest-grey-dark;
+  border-bottom: 1px solid $anx-hint-grey;
+  color: $anx-dark-grey-color-lightest;
   cursor: text;
   display: block;
   box-sizing: border-box;
@@ -346,7 +346,7 @@ export default class AnxInput extends Vue {
 
 .anx-input.active label,
 .anx-input.filled label {
-  color: $anx-primary-green;
+  color: $anx-success-color;
   font-size: 12px;
   height: 65px;
   line-height: 19.2px;
@@ -355,26 +355,26 @@ export default class AnxInput extends Vue {
 }
 
 .anx-input.active label:after {
-  background-color: $anx-primary-green;
+  background-color: $anx-success-color;
   left: 0;
   visibility: visible;
   width: 100%;
 }
 
 .anx-input.active input.is-invalid ~ label:after {
-  background-color: $anx-error !important;
+  background-color: $anx-error-color !important;
 }
 
 .anx-input.active input {
   background-color: transparent;
-  outline: 0 none $anx-lightest-grey-dark;
+  outline: 0 none $anx-dark-grey-color-lightest;
 }
 
 .anx-input > input.is-invalid {
-  border-bottom: 1px solid $anx-error !important;
+  border-bottom: 1px solid $anx-error-color !important;
 
   & ~ label {
-    color: $anx-error;
+    color: $anx-error-color;
   }
 
   &:read-only {
@@ -386,19 +386,19 @@ export default class AnxInput extends Vue {
   font-size: 12px;
   padding: 0;
   white-space: nowrap;
-  margin-bottom: $form-components-spacing;
+  margin-bottom: $anx-form-components-spacing;
   margin-top: 5px;
 
   .error {
-    color: $anx-error;
+    color: $anx-error-color;
   }
 
   .error::after {
-    background-color: $anx-error !important;
+    background-color: $anx-error-color !important;
   }
 
   .assistiv {
-    color: $anx-primary-grey-light;
+    color: $anx-light-grey-color;
   }
 }
 </style>

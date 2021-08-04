@@ -1,55 +1,127 @@
-/**
-  * Colors from:
-  * https://ais.anexia-it.com/display/QI/Anexia+Colors
-  */
+// Default values
+// The default values can be overwritte by the AnxVariablesPlugin
+:root {
+  // Primary color with gradations
+  --primary-color-lightest: #4B78C3;
+  --primary-color-light: #285AB4;
+  --primary-color: #003CA6;
+  --primary-color-dark: #002D6E;
 
-  $anx-primary-blue: #003CA6;
-  $anx-primary-green: #77BC1F;
-  $anx-primary-grey-dark: #414141;
-  $anx-primary-grey-light: #D7D7D7;
-  $anx-second-grey-light: #B5B5B5;
-  $anx-primary-white: #ffffff;
-  
-  $anx-dark-blue: #002D6E;
-  $anx-dark-green: #64A50A;
-  $anx-dark-grey-dark: #2D2D2D;
-  $anx-dark-grey-light: #2D2D2D;
-  
-  $anx-light-blue: #285AB4;
-  $anx-light-green: #A5D75F;
-  $anx-light-grey-dark: #555555;
-  $anx-light-grey-light: #E6E6E6;
-  
-  $anx-lightest-blue: #4B78C3;
-  $anx-lightest-green: #C3E187;
-  $anx-lightest-grey-dark: #686868;
-  $anx-lightest-grey-light: #F5F5F5;
-  
-  $anx-table-border: #DDDDDD;
-  $anx-table-header-background: #ECECEC;
-  $anx-table-row-background: #F8F8F8;
-  $anx-table-row-hover: $anx-table-row-background;
-  
-  $anx-black-transparet: #00000080; //80% transparent
-  
-  $anx-error: #d50000;
-  $anx-error-light: #fef7f7;
-  $anx-primary-green-light: #FBFDF8;
+  // Secondary color with gradations
+  --secondary-color-lightest: #C3E187;
+  --secondary-color-light: #A5D75F;
+  --secondary-color: #77BC1F;
+  --secondary-color-dark: #64A50A;
 
-  $screen-xs: 568px; 
-  $screen-sm: 768px;
-  $screen-md: 992px;
-  $screen-lg: 1200px;
+  // Dark grey with gradations
+  --dark-grey-color-lightest: #696969;
+  --dark-grey-color-light: #555555;
+  --dark-grey-color: #414141;
+  --dark-grey-color-dark: #2D2D2D;
 
-  $anx-content-spacing: 40px;
-  $form-components-spacing: 30px;
-  $anx-paragraph-spacing: 40px;
-  $anx-title-spacing: 20px;
-  
-  $anx-font-family: "Fira Sans", Arial, Helvetica, sans-serif;
-  
-  :export {
-    defaultButtonColor: $anx-primary-green;
-    defaultButtonColorDisabled: $anx-lightest-green;
-    titleSpacing: $anx-title-spacing;
-  }
+  // Light grey with gradations
+  --light-grey-color-lightest: #F5F5F5;
+  --light-grey-color-light: #E6E6E6;
+  --light-grey-color: #D7D7D7;
+  --light-grey-color-dark: #C8C8C8;
+
+  // Success; error and warning
+  --success-color: #77BC1F;
+  --success-color-light: #FBFDF8;
+  --warning-color: #FFB02F;
+  --warning-color-light: red; // TODO: farbe // TODO: auch alert in warning
+  --error-color: #C9302C;
+  --error-color-light: #FEF7F7;
+
+  // Black and white
+  --primary-white: #FFFFFF;
+  --primary-black: #000000;
+  --black-transparent: #00000080;
+
+  // Font family
+  --font-family: 'Fira Sans', Arial, Helvetica, sans-serif;
+
+  // Design of table
+  --anx-table-border: #DDDDDD;
+  --anx-table-header-background: #ECECEC;
+  --anx-table-row-background: #F8F8F8;
+  --anx-table-row-hover: #F8F8F8;
+
+  // Additional design
+  --anx-hint-grey: #B5B5B5; // The hints for inputs etc.
+
+  // Spacing
+  --anx-content-spacing: 40px;
+  --anx-form-components-spacing: 30px;
+  --anx-paragraph-spacing: 40px;
+  --anx-title-spacing: 20px
+}
+
+// SCSS variables
+
+// Primary color with gradations
+$anx-primary-color-lightest: var(--primary-color-lightest);
+$anx-primary-color-light: var(--primary-color-light);
+$anx-primary-color: var(--primary-color);
+$anx-primary-color-dark: var(--primary-color-dark);
+
+// Secondary color with gradations
+$anx-secondary-color-lightest: var(--secondary-color-lightest);
+$anx-secondary-color-light: var(--secondary-color-light);
+$anx-secondary-color: var(--secondary-color);
+$anx-secondary-color-dark: var(--secondary-color-dark);
+
+// Dark grey with gradations
+$anx-dark-grey-color-lightest: var(--dark-grey-color-lightest);
+$anx-dark-grey-color-light: var(--dark-grey-color-light);
+$anx-dark-grey-color:  var(--dark-grey-color);
+$anx-dark-grey-color-dark: var(--dark-grey-color-dark);
+
+// Light grey with gradations
+$anx-light-grey-color-lightest: var(--light-grey-color-lightest);
+$anx-light-grey-color-light: var(--light-grey-color-light);
+$anx-light-grey-color:  var(--light-grey-color);
+$anx-light-grey-color-dark: var(--light-grey-color-dark);
+
+// Success; error and warning
+$anx-error-color: var(--error-color);
+$anx-error-color-light: var(--error-color-light);
+$anx-warning-color: var(--warning-color);
+$anx-warning-color-light: var(--warning-color-light);
+$anx-success-color: var(--success-color);
+$anx-success-color-light: var(--success-color-light);
+
+// Black and white
+$anx-primary-white: var(--primary-white);
+$anx-primary-black: var(--primary-black);
+$anx-black-transparet: var(--black-transparent);
+
+// Font family
+$anx-font-family: var(--font-family);
+
+// Design of table
+$anx-table-border: var(--anx-table-border);
+$anx-table-header-background: var(--anx-table-header-background);
+$anx-table-row-background: var(--anx-table-row-background);
+$anx-table-row-hover: var(--anx-table-row-hover);
+
+// Additional design
+$anx-hint-grey: var(--anx-hint-grey);
+
+// Spacing
+$anx-content-spacing: var(--anx-content-spacing);
+$anx-form-components-spacing: var(--anx-form-components-spacing);
+$anx-paragraph-spacing: var(--anx-paragraph-spacing);
+$anx-title-spacing: var(--anx-title-spacing);
+
+// Screen sizes
+$screen-xs: 568px; 
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+:export {
+  defaultButtonColor: $anx-secondary-color;
+  defaultButtonColorDisabled: $anx-secondary-color-lightest;
+  titleSpacing: $anx-title-spacing;
+}

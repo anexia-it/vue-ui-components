@@ -1,6 +1,6 @@
 import _Vue from "vue";
 import Components from "./components";
-import { AnxIconsPlugin, AnxIconsNames, AnxToastPlugin } from "./plugins";
+import { AnxIconsPlugin, AnxIconsNames, AnxToastPlugin, AnxVariablesPlugin } from "./plugins";
 
 // Default export is the UI Plugin
 const UIPlugin = {
@@ -15,6 +15,9 @@ const UIPlugin = {
 
     /** Register the AnxToastPlugin */
     Vue.use(AnxToastPlugin);
+
+    /** Register the AnxVariablesPlugin */
+    Vue.use(AnxVariablesPlugin);
   }
 };
 export default UIPlugin;
@@ -23,4 +26,4 @@ export default UIPlugin;
 export * from "./components";
 
 // Export plugins and ohter helpful tools
-export { Components, AnxIconsNames, AnxIconsPlugin, AnxToastPlugin };
+export { Components, AnxIconsNames, AnxIconsPlugin, AnxToastPlugin, AnxVariablesPlugin };

@@ -124,7 +124,7 @@ button {
   }
 
   &:before {
-    //border: 1px solid $anx-primary-green;
+    //border: 1px solid $anx-secondary-color;
     opacity: 0;
     -webkit-transform: scale3d(1.2, 1.2, 1);
     transform: scale3d(1.2, 1.2, 1);

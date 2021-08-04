@@ -65,7 +65,7 @@ export default class Card extends Vue {
 .anx-card {
   margin-bottom: 20px;
   border-radius: 0px !important;
-  border: 1px solid $anx-primary-grey-light;
+  border: 1px solid $anx-light-grey-color;
 
   .anx-card-content {
     padding: 0 20px 0 20px;

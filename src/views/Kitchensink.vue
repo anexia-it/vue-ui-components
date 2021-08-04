@@ -547,7 +547,7 @@
 
               <br /><br />
               Buttons can also have different colors. The default color is
-              <strong>$anx-primary-green</strong> defined in
+              <strong>$anx-secondary-color</strong> defined in
               <i>_variables.scss</i>. You can simply change the color by using
               the <strong>color</strong> property. Note: The
               <strong>outline</strong> property will still be available.
@@ -722,8 +722,8 @@
 
           <anx-paragraph size="h3" title="anx-form-container">
             The default spacing between the input components is declared by the
-            $form-components-spacing variable in _variables.scss. The default
-            spacing is <strong>30px</strong>.<br />
+            $anx-form-components-spacing variable in _variables.scss. The
+            default spacing is <strong>30px</strong>.<br />
             <br />Sometimes you might want to group some input components
             together, to make it clear, that they belong to each other.
             Therefore, you can use the
