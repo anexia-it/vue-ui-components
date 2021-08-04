@@ -333,7 +333,7 @@ export default class AnxSelect extends Vue {
 
   &.is_invalid {
     margin-bottom: 0px;
-    border-bottom: 1px solid $anx-error;
+    border-bottom: 1px solid $anx-error-color;
 
     label {
       color: $anx-error-color;
