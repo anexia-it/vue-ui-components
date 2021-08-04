@@ -49,6 +49,7 @@
 
   // Additional design
   --anx-hint-grey: #B5B5B5; // The hints for inputs etc.
+  --anx-icons-color: var(--secondary-color);
 
   // Spacing
   --anx-content-spacing: 40px;
@@ -107,6 +108,7 @@ $anx-table-row-hover: var(--anx-table-row-hover);
 
 // Additional design
 $anx-hint-grey: var(--anx-hint-grey);
+$anx-icons-color: var(--anx-icons-color);
 
 // Spacing
 $anx-content-spacing: var(--anx-content-spacing);
