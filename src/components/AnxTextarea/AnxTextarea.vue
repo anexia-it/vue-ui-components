@@ -199,14 +199,14 @@ export default class AnxTextarea extends Vue {
   &:focus,
   &.filled {
     &.active {
-      border: 1px solid #77bc1f;
+      border: 1px solid $anx-success-color;
     }
     outline: 0;
 
     + label {
       color: $anx-success-color !important;
       margin-left: 15px;
-      background-color: #fff;
+      background-color: $anx-primary-white;
       font-size: 12px !important;
       opacity: 1 !important;
       z-index: 1;
