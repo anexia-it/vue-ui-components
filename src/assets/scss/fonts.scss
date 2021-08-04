@@ -3,97 +3,114 @@
 body,  #app {
   font-family: $anx-font-family;
   font-weight: normal;
+
+  strong {
+    font-weight: 600;
+  }
 }
 
 /** Normal font settings */
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProBlk.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-ExtraBold.ttf') format('truetype');
   font-weight: 900;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProBold.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-Bold.ttf') format('truetype');
   font-weight: 800;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProMedium.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-SemiBold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-Medium.ttf') format('truetype');
   font-weight: 600;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProBook.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-Regular.ttf') format('truetype');
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProRegular.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-Light.ttf') format('truetype');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProLight.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-ExtraLight.ttf') format('truetype');
   font-weight: 300;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProThin.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-Thin.ttf') format('truetype');
   font-weight: 200;
 }
 
 /** Italic font settings */
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProBlkIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-ExtraBoldItalic.ttf') format('truetype');
   font-weight: 900;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProBoldIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-BoldItalic.ttf') format('truetype');
   font-weight: 800;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProMedIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-MediumItalic.ttf') format('truetype');
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProBookIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-Italic.ttf') format('truetype');
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProRegIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-LightItalic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProLightIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-ExtraLightItalic.ttf') format('truetype');
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Meta';
-  src: url('../../assets/fonts/meta/FFMetaProThinIt.woff') format('woff');
+  font-family: 'Fira Sans';
+  src: url('../../assets/fonts/FiraSans-ThinItalic.ttf') format('truetype');
   font-weight: 200;
   font-style: italic;
 }
