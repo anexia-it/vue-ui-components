@@ -320,7 +320,7 @@ export default class AnxModal extends Vue {
       margin: 15px 15px 0 0;
       font-size: 12px;
       line-height: 12px;
-      font-family: MetaWebPro-Thin;
+      font-weight: 200;
       outline: 0 !important;
     }
 
