@@ -24,11 +24,6 @@ export default class AnxGlobal extends Vue {
    * By setting this propoerty, this behaviour can be suppressed.
    */
   @Prop({ default: null }) disableFullscreen!: boolean | null;
-
-  private mounted() {
-    this.$anxVariables.setVariable("--primary-color", "red");
-    this.$anxVariables.resetVariable("--primary-color");
-  }
 }
 </script>
 
