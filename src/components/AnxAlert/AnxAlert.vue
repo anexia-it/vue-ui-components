@@ -42,7 +42,7 @@ export default class AnxAlert extends Vue {
 
   /**
    * This is the type of the alert
-   * @values error, success
+   * @values error, warning, success
    */
   @Prop({ default: "error" }) type!: string;
 
@@ -190,6 +190,12 @@ export default class AnxAlert extends Vue {
     border: 1px solid $anx-success-color;
     background-color: $anx-success-color-light;
     color: $anx-success-color;
+  }
+
+  &.anx-alert-warning {
+    border: 1px solid $anx-warning-color;
+    background-color: $anx-warning-color-light;
+    color: $anx-warning-color;
   }
 }
 </style>
