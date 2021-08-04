@@ -9,6 +9,7 @@
         <div class="input-inline">
           <anx-input
             v-model="request.firstName"
+            id="first_name"
             :name="firstName.name"
             rules="required"
             :label="firstName.label ? firstName.label : firstName.name"
@@ -16,6 +17,7 @@
           />
           <anx-input
             v-model="request.lastName"
+            id="last_name"
             :name="lastName.name"
             rules="required"
             :label="lastName.label ? lastName.label : lastName.name"
@@ -26,6 +28,7 @@
         <anx-input
           v-if="showEmail"
           v-model="request.email"
+          id="email"
           :name="email.name"
           rules="required|email"
           :label="email.label ? email.label : email.name"
@@ -33,6 +36,7 @@
         <anx-input
           v-if="showPhone"
           v-model="request.phone"
+          id="phone"
           :name="phone.name"
           rules="required"
           :label="phone.label ? phone.label : phone.name"
@@ -40,6 +44,7 @@
 
         <anx-textarea
           v-model="request.message"
+          id="message"
           :name="message.name"
           :label="message.label ? message.label : message.name"
         />
@@ -265,7 +270,13 @@ export default class AnxContact extends Vue {
 
   /** Returns if the button should be enabled or not */
   private get isButtonEnabled(): boolean {
-    return this.request.captchaToken && this.enabled ? true : false;
+    if (this.useRecaptcha) {
+      // When using recaptcha, it has to be checked
+      return this.request.captchaToken && this.enabled ? true : false;
+    } else {
+      // Otherwise only check if the form is enabled
+      return this.enabled ? true : false;
+    }
   }
 
   /** Is called if the captcha has been verified. The captcha token is passed */
@@ -330,7 +341,7 @@ export default class AnxContact extends Vue {
   .recaptcha-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: $form-components-spacing;
+    margin-bottom: $anx-form-components-spacing;
   }
 }
 </style>

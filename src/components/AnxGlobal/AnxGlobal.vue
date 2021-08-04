@@ -41,8 +41,8 @@ html {
 
 .anx-global {
   margin: 0px !important;
-  background-color: $anx-dark-blue;
-  color: $anx-lightest-grey-dark;
+  background-color: $anx-primary-color-dark;
+  color: $anx-dark-grey-color-lightest;
   font-size: 16px;
   font-variant-numeric: lining-nums;
   line-height: 1.2em;
@@ -104,11 +104,11 @@ html {
     }
 
     &.attention {
-      color: $anx-primary-blue;
+      color: $anx-primary-color;
       font-weight: 600;
 
       &.attention-grey {
-        color: $anx-lightest-grey-dark;
+        color: $anx-dark-grey-color-lightest;
       }
     }
   }

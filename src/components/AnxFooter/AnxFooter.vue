@@ -239,13 +239,13 @@ export default class AnxFooter extends Vue {
     content: "\00A9";
   }
   a {
-    color: $anx-primary-green;
+    color: $anx-secondary-color;
     text-decoration: none;
     &:not(:last-of-type):after {
       content: " | ";
     }
     &:hover {
-      color: $anx-dark-green;
+      color: $anx-secondary-color-dark;
       -webkit-transition: all 0.2s ease-in-out;
       -moz-transition: all 0.2s ease-in-out;
       -o-transition: all 0.2s ease-in-out;
@@ -254,7 +254,7 @@ export default class AnxFooter extends Vue {
   }
 }
 hr {
-  background-color: $anx-primary-blue;
+  background-color: $anx-primary-color;
   height: 1px;
   margin-top: 1rem;
   margin-bottom: 20px;

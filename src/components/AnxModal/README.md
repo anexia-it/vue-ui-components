@@ -58,12 +58,12 @@ export default {
     methods: {
         close() {
             // Here you can handle the closing of the modal
-            alert('Closed');
+            this.$anxToast.show('Closed');
             this.showModal = false;
         },
         confirm() {
             // Here you can handle the confirmation of the modal
-            alert('Confirmed');
+            this.$anxToast.show('Confirmed');
             this.showModal = false;
         }
     }

@@ -229,7 +229,7 @@ export default class AnxToast extends Vue {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  z-index: 1000;
+  z-index: 1100;
 
   &.anx-toast-top {
     top: 15px;
@@ -271,16 +271,16 @@ export default class AnxToast extends Vue {
     cursor: pointer;
 
     &.anx-toast-success {
-      background-color: $anx-primary-green;
+      background-color: $anx-success-color;
       color: $anx-primary-white;
     }
 
     &.anx-toast-neutral {
-      background-color: $anx-primary-grey-light;
+      background-color: $anx-light-grey-color;
     }
 
     &.anx-toast-error {
-      background-color: $anx-error;
+      background-color: $anx-error-color;
       color: $anx-primary-white;
     }
 

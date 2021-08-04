@@ -93,12 +93,12 @@ export default class AnxCheckbox extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-checkbox {
-  margin-bottom: $form-components-spacing;
+  margin-bottom: $anx-form-components-spacing;
 
   label {
     display: ruby-base;
     margin: 0;
-    color: $anx-lightest-grey-dark !important;
+    color: $anx-dark-grey-color-lightest !important;
     font-size: 16px;
   }
 
@@ -106,7 +106,7 @@ export default class AnxCheckbox extends Vue {
     height: 13px !important;
     width: 13px !important;
     padding: 2px !important;
-    border: 1px solid $anx-primary-green !important;
+    border: 1px solid $anx-secondary-color !important;
     margin: 1px 10px 0px 0px !important;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -119,7 +119,7 @@ export default class AnxCheckbox extends Vue {
 
     /** IE9+ */
     &[type="checkbox"]::-ms-check {
-      border: 1px solid $anx-primary-green !important;
+      border: 1px solid $anx-secondary-color !important;
       background: transparent;
       content: " ";
       outline: none;
@@ -128,37 +128,37 @@ export default class AnxCheckbox extends Vue {
 
     &:checked {
       color: #fff;
-      border-color: $anx-primary-green !important;
-      background: $anx-primary-green url(../../assets/icons/check-white.svg)
+      border-color: $anx-secondary-color !important;
+      background: $anx-secondary-color url(../../assets/icons/check-white.svg)
         no-repeat center;
       border: 1px solid;
     }
     /**IE9+  */
     &:checked::-ms-check {
       color: #fff;
-      border-color: $anx-primary-green !important;
-      background: $anx-primary-green;
+      border-color: $anx-secondary-color !important;
+      background: $anx-secondary-color;
       border: 1px solid;
     }
 
     &:disabled {
-      border-color: $anx-second-grey-light !important;
+      border-color: $anx-hint-grey !important;
     }
 
     &.is-invalid {
-      border-color: $anx-error !important;
+      border-color: $anx-error-color !important;
 
       ~ .text {
-        color: $anx-error;
+        color: $anx-error-color;
       }
     }
 
     /**IE 9+ */
     &.is-invalid::-ms-check {
-      border-color: $anx-error !important;
+      border-color: $anx-error-color !important;
 
       ~ .text {
-        color: $anx-error;
+        color: $anx-error-color;
       }
     }
   }
@@ -172,7 +172,7 @@ export default class AnxCheckbox extends Vue {
 
   span.error {
     font-size: 12px;
-    color: $anx-error;
+    color: $anx-error-color;
     padding: 0;
     white-space: nowrap;
     display: block;

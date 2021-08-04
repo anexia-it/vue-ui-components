@@ -58,8 +58,16 @@ module.exports = {
             {
               name: "AnxToastPlugin",
               content: "docs/plugins/anx-toast.md"
+            },
+            {
+              name: "AnxVariablesPlugin",
+              content: "docs/plugins/anx-variables.md"
             }
           ]
+        },
+        {
+          name: "Design",
+          content: "docs/design/index.md"
         },
         {
           name: "FAQ",

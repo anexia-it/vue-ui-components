@@ -9,7 +9,7 @@
 @import "../../assets/scss/_variables.scss";
 
 .anx-form-container {
-  margin-bottom: $form-components-spacing;
+  margin-bottom: $anx-form-components-spacing;
 
   div {
     margin-bottom: 10px !important;

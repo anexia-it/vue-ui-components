@@ -46,15 +46,15 @@ export default class AnxHrLine extends Vue {
   box-sizing: inherit;
 
   &.grey {
-    background-color: $anx-primary-grey-light;
+    background-color: $anx-light-grey-color;
   }
 
   &.green {
-    background-color: $anx-primary-green;
+    background-color: $anx-secondary-color;
   }
 
   &.blue {
-    background-color: $anx-primary-blue;
+    background-color: $anx-primary-color;
   }
 }
 </style>

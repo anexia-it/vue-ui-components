@@ -16,7 +16,7 @@ export default {
   methods: {
     buttonClicked() {
       // Here you can handle the click
-      alert('Hello!');
+      this.$anxToast.show("Button clicked");
     }
   }
 }

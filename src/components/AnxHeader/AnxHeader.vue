@@ -191,7 +191,7 @@ export default class AnxHeader extends Vue {
     width: 100%;
     text-align: right;
     margin: auto 0 auto 0;
-    color: $anx-primary-blue;
+    color: $anx-primary-color;
   }
 }
 
@@ -248,7 +248,7 @@ export default class AnxHeader extends Vue {
       float: right;
       padding-top: 0;
       .active {
-        color: $anx-primary-green;
+        color: $anx-secondary-color;
       }
       @media screen and (max-width: 500px) {
         float: left;

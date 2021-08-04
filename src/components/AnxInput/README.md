@@ -91,7 +91,7 @@ When a user enters input, the **@input** event will be emitted. The example belo
 export default {
     methods: {
         userInput(input) {
-            alert("User input: " + input);
+            this.$anxToast.show("User input: " + input);
         }
     }
 }

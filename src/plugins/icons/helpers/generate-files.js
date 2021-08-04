@@ -117,6 +117,10 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
         svg = svg.replace(/cls-/g, `${sutils.kebab(fullName)}-cls`);
         /** Remove the title of the svg file; it will be set when exporting the compoennt dynamically */
         svg = svg.replace(/<title>[\s\S]*?<\/title>/, "");
+        /** Remove the hardcoded HEX color codes and set the CSS variable */
+        svg = svg.replace(/#77bc1f/g, "var(--anx-icons-color)");
+        svg = svg.replace(/#d50000/g, "var(--error-color)");
+        svg = svg.replace(/#c9302c/g, "var(--error-color)");
 
         /** Add the original and modified file names to the array */
         icons.push({
