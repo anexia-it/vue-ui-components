@@ -128,20 +128,20 @@ export default class AnxLink extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-link {
-  color: $anx-primary-green;
+  color: $anx-secondary-color;
   outline: none !important;
   text-decoration: none;
 
   &:hover {
-    color: $anx-primary-green;
+    color: $anx-secondary-color;
     cursor: pointer;
-    border-bottom: 1px solid $anx-primary-green;
+    border-bottom: 1px solid $anx-secondary-color;
   }
 
   &.disabled {
     &.disabled-style-default {
       color: $anx-primary-white;
-      border-bottom: 1px solid $anx-primary-green;
+      border-bottom: 1px solid $anx-secondary-color;
     }
 
     &.disabled-style-text {

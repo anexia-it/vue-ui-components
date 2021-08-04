@@ -341,7 +341,7 @@ export default class AnxContact extends Vue {
   .recaptcha-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: $form-components-spacing;
+    margin-bottom: $anx-form-components-spacing;
   }
 }
 </style>

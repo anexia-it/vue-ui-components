@@ -114,7 +114,7 @@ export default class AnxParagraph extends Vue {
   }
 
   &.hint {
-    color: $anx-second-grey-light;
+    color: $anx-hint-grey;
     font-size: 12px;
     line-height: 1.2em;
     margin-bottom: 0px;

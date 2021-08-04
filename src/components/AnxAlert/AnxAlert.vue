@@ -42,7 +42,7 @@ export default class AnxAlert extends Vue {
 
   /**
    * This is the type of the alert
-   * @values error, success
+   * @values error, warning, success
    */
   @Prop({ default: "error" }) type!: string;
 
@@ -126,7 +126,7 @@ export default class AnxAlert extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-alert {
-  margin-bottom: $form-components-spacing;
+  margin-bottom: $anx-form-components-spacing;
   display: none;
   opacity: 0;
 
@@ -181,15 +181,21 @@ export default class AnxAlert extends Vue {
   }
 
   &.anx-alert-error {
-    border: 1px solid $anx-error;
-    background-color: $anx-error-light;
-    color: $anx-error;
+    border: 1px solid $anx-error-color;
+    background-color: $anx-error-color-light;
+    color: $anx-error-color;
   }
 
   &.anx-alert-success {
-    border: 1px solid $anx-primary-green;
-    background-color: $anx-primary-green-light;
-    color: $anx-primary-green;
+    border: 1px solid $anx-success-color;
+    background-color: $anx-success-color-light;
+    color: $anx-success-color;
+  }
+
+  &.anx-alert-warning {
+    border: 1px solid $anx-warning-color;
+    background-color: $anx-warning-color-light;
+    color: $anx-warning-color;
   }
 }
 </style>

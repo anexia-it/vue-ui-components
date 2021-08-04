@@ -209,13 +209,13 @@ export default class AnxSelect extends Vue {
   display: inline-block;
   position: relative;
   width: var(--select-width);
-  color: $anx-lightest-grey-dark;
+  color: $anx-dark-grey-color-lightest;
   min-height: 25px;
   height: auto;
-  margin-bottom: $form-components-spacing;
+  margin-bottom: $anx-form-components-spacing;
   margin-top: 23px; /*real margin 53px, because all form-components has 30px margin-bottom*/
   font-size: 16px;
-  border-bottom: 1px solid $anx-second-grey-light;
+  border-bottom: 1px solid $anx-hint-grey;
 
   &.dynamic-height {
     .anx-select-div {
@@ -237,7 +237,7 @@ export default class AnxSelect extends Vue {
 
   .anx-select-div {
     float: right;
-    color: $anx-primary-green;
+    color: $anx-success-color;
     position: relative;
     top: 0;
     right: 0;
@@ -279,7 +279,7 @@ export default class AnxSelect extends Vue {
     padding: 0;
     list-style: none;
     background-color: #fff;
-    border: 1px solid $anx-second-grey-light;
+    border: 1px solid $anx-hint-grey;
     border-top: none;
     width: var(--select-width);
 
@@ -297,13 +297,13 @@ export default class AnxSelect extends Vue {
 
       &:hover {
         color: #fff;
-        background: $anx-primary-green;
+        background: $anx-success-color;
       }
 
       &.active {
         @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
           /* IE10+ CSS styles go here */
-          color: $anx-primary-green;
+          color: $anx-success-color;
 
           &:before {
             display: none;
@@ -336,10 +336,10 @@ export default class AnxSelect extends Vue {
     border-bottom: 1px solid $anx-error;
 
     label {
-      color: $anx-error;
+      color: $anx-error-color;
     }
     .anx-select-div {
-      color: $anx-error;
+      color: $anx-error-color;
       &:after {
         background-image: url(../../assets/icons/arrow-red-bottom.svg);
       }
@@ -348,11 +348,11 @@ export default class AnxSelect extends Vue {
 }
 
 .anx-select-error {
-  margin-bottom: $form-components-spacing;
+  margin-bottom: $anx-form-components-spacing;
 
   span {
     font-size: 12px;
-    color: $anx-error;
+    color: $anx-error-color;
     padding: 0;
     white-space: nowrap;
   }

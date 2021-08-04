@@ -57,7 +57,7 @@ export default class AnxContent extends Vue {
 
 .anx-title {
   text-transform: uppercase;
-  color: $anx-primary-blue;
+  color: $anx-primary-color;
   margin-top: 0px;
   line-height: 1.2em;
   margin-bottom: var(--margin-bottom);
@@ -81,7 +81,7 @@ export default class AnxContent extends Vue {
   &.size-h3 {
     font-size: 20px;
     font-weight: 500;
-    color: $anx-lightest-grey-dark;
+    color: $anx-dark-grey-color-lightest;
   }
 
   &:not(.no-line):after {

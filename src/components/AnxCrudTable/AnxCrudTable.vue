@@ -394,6 +394,8 @@ export default class AnxCrudTable extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "../../assets/scss/_variables.scss";
+
 .button-space {
   width: 20px;
 }
@@ -414,7 +416,7 @@ export default class AnxCrudTable extends Vue {
       cursor: pointer;
       font-size: 20px;
       padding: 0 5px;
-      color: #77bc1f;
+      color: $anx-secondary-color;
     }
     .fast-forward {
       font-size: 25px;

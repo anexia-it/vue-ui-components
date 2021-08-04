@@ -1,9 +1,10 @@
-Currently, there are two types of *anx-alert*s: *error* and *success*. By default, the *error* alert will be rendered. The example below shows some basic examples:
+Currently, there are three types of *anx-alert*s: *error*, *warning* and *success*. By default, the *error* alert will be rendered. The example below shows some basic examples:
 
 ```vue
 <template>
   <div>
     <anx-alert v-model="error">Error</anx-alert>
+    <anx-alert v-model="warning" type="warning">Warning</anx-alert>
     <anx-alert v-model="success" type="success">Success</anx-alert>
   </div>
 </template>
@@ -13,6 +14,7 @@ export default {
   data() {
     return {
       error: true,
+      warning: true,
       success: true
     }
   }

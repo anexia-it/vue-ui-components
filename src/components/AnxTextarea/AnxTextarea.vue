@@ -176,7 +176,7 @@ export default class AnxTextarea extends Vue {
   display: block;
   position: relative;
   padding-top: 9px;
-  margin-bottom: $form-components-spacing; /* real margin ~35px */
+  margin-bottom: $anx-form-components-spacing; /* real margin ~35px */
 
   @media only screen and (width: 1125px), only screen and (width: 1200px) {
     display: inline-block !important;
@@ -185,9 +185,9 @@ export default class AnxTextarea extends Vue {
   textarea {
     &.is-invalid,
     &.is-invalid:focus {
-      border: 1px solid $anx-error !important;
+      border: 1px solid $anx-error-color !important;
       ~ label {
-        color: $anx-error !important;
+        color: $anx-error-color !important;
       }
     }
   }
@@ -195,8 +195,8 @@ export default class AnxTextarea extends Vue {
 .anx-textarea textarea {
   width: var(--textarea-width);
   padding: 20px 17px 20px 17px;
-  border: 1px solid $anx-second-grey-light;
-  color: $anx-lightest-grey-dark !important;
+  border: 1px solid $anx-hint-grey;
+  color: $anx-dark-grey-color-lightest !important;
   font-family: $anx-font-family;
   font-variant-numeric: lining-nums;
   font-size: 16px;
@@ -206,14 +206,14 @@ export default class AnxTextarea extends Vue {
   &:focus,
   &.filled {
     &.active {
-      border: 1px solid #77bc1f;
+      border: 1px solid $anx-success-color;
     }
     outline: 0;
 
     + label {
-      color: $anx-primary-green !important;
+      color: $anx-success-color !important;
       margin-left: 15px;
-      background-color: #fff;
+      background-color: $anx-primary-white;
       font-size: 12px !important;
       opacity: 1 !important;
       z-index: 1;
@@ -231,7 +231,7 @@ export default class AnxTextarea extends Vue {
 }
 
 .anx-textarea textarea + label {
-  color: $anx-lightest-grey-dark !important;
+  color: $anx-dark-grey-color-lightest !important;
   margin-left: 17px;
   margin-bottom: 0;
   background-color: transparent;
@@ -255,7 +255,7 @@ export default class AnxTextarea extends Vue {
 
 span.error {
   font-size: 12px;
-  color: $anx-error;
+  color: $anx-error-color;
   padding: 0;
   white-space: nowrap;
   display: block;
