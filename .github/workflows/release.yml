@@ -1,0 +1,60 @@
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Use Node.js 12 🖥️
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Config ⚙️
+        run: |
+          git config --global user.name "GitHub CD bot"
+          git config --global user.email "marketing@anexia-it.com"
+      - name: Raise version ⭐
+        # Don't tag the version in git because this has already been done by release
+        run: npm version ${{ github.event.release.tag_name }} --git-tag-version false
+
+      - name: Install 🔧
+        run: npm ci
+
+      - name: Build 🏗️
+        run: npm run build
+
+      - name: Unit Test 🧪
+        run: npm run test
+
+      - name: Commit Changes 📋
+        run: git commit -m "${{ github.event.release.tag_name }}" -a
+
+      - name: Push Master 🚀
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+
+      - name: Merge Development ↩️
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: master
+          target_branch: dev
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish on NPM 📢
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Deploy Docs on GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: docs
+          folder: dist
