@@ -80,13 +80,17 @@ function generateIconsTsFile(icons) {
 
 /** Generates a file with the given content */
 function generateFile(name, content) {
-  fs.writeFile(path.join(__PATH__, name), content, () => {
-    console.log(`\x1b[32mGenerated ${name}\x1b[0m`);
+  return new Promise((resolve, reject) => {
+    fs.writeFile(path.join(__PATH__, name), content, error => {
+      if (error) reject(error);
+      console.log(`\x1b[32mGenerated ${name}\x1b[0m`);
+      resolve("file created");
+    });
   });
 }
 
 /** Get all the names of the icons from the files located in de icons folder */
-fs.readdir(__ICONS_PATH__, (err, files) => {
+fs.readdir(__ICONS_PATH__, async (err, files) => {
   if (err) {
     console.error("Error reading icon files directory!");
     console.error(err);
@@ -134,14 +138,16 @@ fs.readdir(__ICONS_PATH__, (err, files) => {
 
     /** Generate the plugins.js file */
     const pluginsJsFile = generatePluginsFileContent(icons);
-    generateFile("plugin.js", pluginsJsFile);
+    await generateFile("plugin.js", pluginsJsFile);
 
     /** Generate the icons.js file */
     const iconsJsFile = generateIconsFile(icons);
-    generateFile("icons.js", iconsJsFile);
+    await generateFile("icons.js", iconsJsFile);
 
     /** Generate the icons.d.ts declarations file */
     const iconsTsFile = generateIconsTsFile(icons);
-    generateFile("icons.d.ts", iconsTsFile);
+    await generateFile("icons.d.ts", iconsTsFile);
+
+    console.log(`\n\x1b[32mDone!\x1b[0m`);
   }
 });
