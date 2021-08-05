@@ -1,7 +1,7 @@
 <template>
   <anx-global id="app">
     <anx-login
-      :logo="require('../assets/img/anexia-logo.svg')"
+      logo="https://anexia.com/fileadmin/anexia-www-3/images/anexia.svg"
       customer-logo="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.jpg"
       :footer-text="[
         'Log-in to your ANX application',

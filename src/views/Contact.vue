@@ -9,7 +9,7 @@
       <template v-slot:icon>
         <img
           alt="anx-header-logo"
-          v-bind:src="require('../assets/img/anexia-logo.svg')"
+          src="https://anexia.com/fileadmin/anexia-www-3/images/anexia.svg"
         />
       </template>
     </anx-header>
@@ -73,7 +73,7 @@
         <img
           class="anx-logo-footer"
           alt="anx-logo-footer"
-          v-bind:src="require('../assets/img/anexia-logo.svg')"
+          src="https://anexia.com/fileadmin/anexia-www-3/images/anexia.svg"
           width="56px"
           height="23px"
         />
