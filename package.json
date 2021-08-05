@@ -15,7 +15,6 @@
     "test": "npm run generate:icons && vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "generate:icons": "node ./src/plugins/icons/helpers/generate-files.js",
-    "git:add-bundle": "ts-node git/pre-commit.ts",
     "lint:icons": "vue-cli-service lint ./src/plugins/icons/*.js ./src/plugins/icons/*.ts"
   },
   "main": "lib/anx.common.js",
@@ -61,7 +60,6 @@
     "eslint-plugin-vue": "^6.2.2",
     "flush-promises": "^1.0.2",
     "git-branch-is": "^4.0.0",
-    "husky": "^4.3.0",
     "jest-fetch-mock": "^3.0.3",
     "jest-junit": "^12.2.0",
     "jsdom-global": "^3.0.2",
@@ -86,11 +84,6 @@
     "vue-styleguidist": "^4.39.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "if git-branch-is integration; then npm run generate:icons && npm run build:lib && npm run git:add-bundle; fi"
-    }
   },
   "keywords": [
     "anexia",
