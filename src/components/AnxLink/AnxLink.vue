@@ -86,8 +86,8 @@ export default class AnxLink extends Vue {
         } else {
           if (this.isDifferentUrl) {
             /** Parse the url first to get the path name (in case a full href with hostname is provided) */
-            const pathname = new this.Url(this.href).pathname;
-            this.$router.push(pathname);
+            const url = new this.Url(this.href);
+            this.$router.push(url.pathname + url.hash);
           }
         }
       }

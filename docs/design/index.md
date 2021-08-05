@@ -75,7 +75,7 @@ These variables change the style for the whole application. This affects all com
 
             <anx-content title="Components">
                 <anx-paragraph>
-                    If you changed the design, the whole application will change its design, because the AnxVariablesPlugin actsl globally. At the <anx-link href="/#/Components">Components</anx-link> Documentation you can see all components with the new design.<br><br>
+                    If you changed the design, the whole application will change its design, because the AnxVariablesPlugin actsl globally. At the <anx-link href="/#/Components" external>Components</anx-link> Documentation you can see all components with the new design.<br><br>
                     Below are some example components so you can see what affects the design change has.
                 </anx-paragraph>
 
