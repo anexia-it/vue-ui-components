@@ -241,7 +241,7 @@ export default class AnxLogin extends Vue {
   .anx-login-header {
     padding: 0px;
     margin-bottom: 30px;
-    margin-top: 140px;
+    padding-top: 140px;
 
     img {
       height: 40px;

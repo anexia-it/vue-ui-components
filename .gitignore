@@ -8,6 +8,11 @@ kitchensink
 /tests/unit/cov-report
 junit.xml
 
+# Auto generated icon files
+/src/plugins/icons/icons.d.ts
+/src/plugins/icons/icons.js
+/src/plugins/icons/plugin.js
+
 # local env files
 .env.local
 .env.*.local
