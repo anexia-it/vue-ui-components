@@ -33,7 +33,7 @@ The *anx-button* also offers some properties for its layout. The exmple below sh
     text="Save"
     style="margin-right: 20px"
   />
-  <br>
+  <br><br>
   <anx-button
     inline
     outline
