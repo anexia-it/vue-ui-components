@@ -6,7 +6,7 @@
 
 > This library contains a set of components, icons and plugins for developing user interfaces. All components match the *Anexia Corporate Design* guidelines.
 
-![Demo](docs/img/icons.png)
+![Demo](https://github.com/anexia-it/vue-ui-components/blob/master/docs/img/icons.png)
 
 With more than 30 components, 150 icons and several plugins our *Vue Component Library* makes it easy to build beautiful user interfaces in a short time. There is no longer any need to put together different stylesheets. All guidelines from the *Anexia Corporate Design Guidelines* are contained in this library and ensure a uniform and consistent design.
 
