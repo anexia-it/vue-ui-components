@@ -1,25 +1,4 @@
-The *anx-toast* is used to notify your users with a small push notifications. The component is very simple and straightforward to use. There are two ways for generating a push notification. The first way is by using the component in combination with *v-model*:
-
-```vue
-<template>
-    <div>
-        <anx-button @click="toast = true">Click me!</anx-button>
-        <anx-toast v-model="toast">This is a notification!</anx-toast>
-    </div>
-</template>
-
-<script>
-export default {
-    data() {
-        return {
-            toast: false
-        }
-    }
-}
-</script>
-```
-
-If you don't want to write code for the *anx-toast* inside your template you can also use the **AnxToastPlugin**. In most cases, using the plugin will be an easier and more straightforward way for generating a toast as you don't have to use the v-model and need no extra variable. When using the plugin, you programmatically create the notification. The example below show how to do this. *Note:* The output will be the same, it only differs in the way of implementing.
+The *anx-toast* is used to notify your users with a small push notifications. The component is very simple and straightforward to use. The recommended way of using the *anx-toast* is via the [AnxToastPlugin](/#/Documentation/AnxToastPlugin). The example below shows hot to programmatically create a toast notification.
 
 ```vue
 <template>
@@ -68,8 +47,8 @@ export default {
         options() {
             this.$anxToast.show("This is a notification with additional options", {
                 autoCloseTimeout: 10000,
-                horizontalAlign: "right",
-                verticalAlign: "top",
+                horizontalAlign: "center",
+                verticalAlign: "bottom",
                 color: "white",
                 backgroundColor: "#003CA6"
             })
@@ -79,17 +58,15 @@ export default {
 </script>
 ```
 
-You may have noticed, that the *anx-toast* will automatically disappear after 2,5 seconds. You can either change the timeout for autmatic closing with the **autoCloseTimeout** property or disable the automatic close functionality. The notification in the example below won't be automatically closed. It can only be closed by clicking on the button again or by clicking on the notification itself.
+You may have noticed, that the *anx-toast* will automatically disappear after 2,5 seconds. You can either change the timeout for autmatic closing with the **autoCloseTimeout** property or disable the automatic close functionality. The notification in the example below won't be automatically closed. It can only be closed by clicking on the button again or by clicking on the notification itself. **Note:** Since the show method of the plugins returns an instance of the toast itself, you can also programmatically close the toast. In this example the toast can also be closed by clicking on the *Hide toast* button.
 
 ```vue
 <template>
     <div>
-        <anx-button @click="toast = !toast">
+        <anx-button @click="toggle">
             <span v-if="!toast">Show toast</span>
             <span v-else>Hide toast</span>
         </anx-button>
-
-        <anx-toast v-model="toast" :auto-close="false">This is a notification!</anx-toast>
     </div>
 </template>
 
@@ -97,7 +74,25 @@ You may have noticed, that the *anx-toast* will automatically disappear after 2,
 export default {
     data() {
         return {
-            toast: false
+            toast: null
+        }
+    },
+    methods: {
+        show() {
+            this.toast = this.$anxToast.show("This notification will only close on click!", { autoClose: false});
+
+            this.toast.$on("destroy", () => {
+                this.toast = null;
+            })
+        },
+        hide() {
+            if (this.toast) {
+                this.toast.hideAction();
+            }
+        },
+        toggle() {
+            if (this.toast) this.hide();
+            else this.show();
         }
     }
 }
