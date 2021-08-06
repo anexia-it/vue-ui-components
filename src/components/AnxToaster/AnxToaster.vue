@@ -78,7 +78,11 @@ export default class AnxToaster extends Vue {
 
       // After the toast has been hidden, it should be destroyed
       instance.$on("destroy", () => {
-        toaster.removeChild(instance.$el);
+        try {
+          toaster.removeChild(instance.$el);
+        } catch (ex) {
+          // This means that the toast has already been removed
+        }
 
         // If the toaster does not have any child nodes, it can be destroyed
         if (!toaster.hasChildNodes()) {
