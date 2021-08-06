@@ -45,9 +45,9 @@ To modify the *anx-toast* generated with the **AnxToastPlugin** you can simply p
 ```vue
 <template>
     <div>
-        <anx-button @click="neutral" color="#D7D7D7">Neutral</anx-button>
         <anx-button @click="success">Success</anx-button>
-        <anx-button @click="error" color="#d50000">Error</anx-button>
+        <anx-button @click="warning" color="#FFB02F">Warning</anx-button>
+        <anx-button @click="error" color="#C9302C">Error</anx-button>
         <anx-button @click="options" color="#003CA6">Toast with modified properties</anx-button>
     </div>
 </template>
@@ -55,9 +55,9 @@ To modify the *anx-toast* generated with the **AnxToastPlugin** you can simply p
 <script>
 export default {
     methods: {
-        neutral() {
+        warning() {
             // If no options are provided, the default options are applied
-            this.$anxToast.show("This is a neutral default notification");
+            this.$anxToast.warning("This is a warning default notification");
         },
         success() {
             this.$anxToast.success("This is a success notification!");

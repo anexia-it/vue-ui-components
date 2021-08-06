@@ -18,7 +18,7 @@ const Api = (Vue, globalOptions = {}) => {
         }
       });
 
-      // When the modal is closed, it should be hided
+      // When the modal is closed, it should be hidden
       instance.$on("input", value => {
         if (!value) {
           instance.hideAction();
@@ -50,6 +50,16 @@ const Api = (Vue, globalOptions = {}) => {
      */
     error(message, options = {}) {
       return this.show(message, { ...options, type: "error" });
+    },
+    /**
+     * Show a warning toast
+     * This is just a wrapper around the show function
+     *
+     * @param {string} message The message to show
+     * @param {Object} options The options for the toast
+     */
+    warning(message, options = {}) {
+      return this.show(message, { ...options, type: "warning" });
     }
   };
 };

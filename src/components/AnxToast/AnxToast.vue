@@ -51,21 +51,21 @@ export default class AnxToast extends Vue {
    *
    * @values top, bottom
    */
-  @Prop({ default: "bottom" }) verticalAlign!: string;
+  @Prop({ default: "top" }) verticalAlign!: string;
 
   /**
    * The horizontal align of the toast
    *
    * @values left, center, right
    */
-  @Prop({ default: "center" }) horizontalAlign!: string;
+  @Prop({ default: "right" }) horizontalAlign!: string;
 
   /**
    * This is the type of the toast (this only affetcs the design)
    *
-   * @values neutral, error, success
+   * @values error, warning, success
    */
-  @Prop({ default: "neutral" }) type!: string;
+  @Prop({ default: "success" }) type!: string;
 
   /** This is the value for the toast that can be accessed via *v-model* */
   @Prop({ default: null }) value!: boolean | null;
@@ -266,7 +266,7 @@ export default class AnxToast extends Vue {
     text-align: center;
     padding: 15px;
     max-width: 500px;
-    box-shadow: 0 0.25rem 0.75rem $anx-black-transparet;
+    box-shadow: 0 0.125rem 0.625rem rgb(50 50 50 / 50%);
     position: relative;
     cursor: pointer;
 
@@ -275,8 +275,9 @@ export default class AnxToast extends Vue {
       color: $anx-primary-white;
     }
 
-    &.anx-toast-neutral {
-      background-color: $anx-light-grey-color;
+    &.anx-toast-warning {
+      background-color: $anx-warning-color;
+      color: $anx-primary-white;
     }
 
     &.anx-toast-error {
