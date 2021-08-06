@@ -1,35 +1,62 @@
-import AnxToast from "../../components/AnxToast/AnxToast.vue";
+import AnxToaster from "../../components/AnxToaster/AnxToaster.vue";
 
 const Api = (Vue, globalOptions = {}) => {
+  // This are all the toasters
+  const toasters = {
+    top: {
+      left: null,
+      center: null,
+      right: null
+    },
+    bottom: {
+      left: null,
+      center: null,
+      right: null
+    }
+  };
+
+  function getToaster(propsData) {
+    const componentClass = Vue.extend(AnxToaster);
+    const instance = new componentClass({ propsData });
+    instance.$mount();
+
+    // Check if the instance has already been created or has to be created
+    if (toasters[instance._verticalAlign][instance._horizontalAlign]) {
+      return toasters[instance._verticalAlign][instance._horizontalAlign];
+    } else {
+      document.body.appendChild(instance.$el);
+
+      // Remove the element if it has to be destroyed
+      instance.$on("destroy", () => {
+        toasters[instance._verticalAlign][instance._horizontalAlign] = null;
+        try {
+          document.body.removeChild(instance.$el);
+        } catch (ex) {
+          // Dont't handle this exception
+        }
+      });
+
+      toasters[instance._verticalAlign][instance._horizontalAlign] = instance;
+      return instance;
+    }
+  }
+
   return {
     /**
      * Show a default toast
      */
     show(message, options = {}) {
       const localOptions = { message, ...options };
-      const componentClass = Vue.extend(AnxToast);
+      const propsData = {
+        ...globalOptions,
+        ...localOptions
+      };
 
-      // Create the instance of the toast and set the value to true
-      const instance = new componentClass({
-        propsData: {
-          ...globalOptions,
-          ...localOptions,
-          value: true
-        }
-      });
+      const toaster = getToaster(propsData);
 
-      // When the modal is closed, it should be hidden
-      instance.$on("input", value => {
-        if (!value) {
-          instance.hideAction();
-        }
-      });
+      const toast = toaster.addToast({ ...propsData, value: true });
 
-      // Mount the component in the body
-      const component = instance.$mount();
-      document.body.appendChild(component.$el);
-
-      return component;
+      return toast;
     },
     /**
      * Show a success toast

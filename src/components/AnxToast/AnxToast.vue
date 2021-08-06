@@ -1,9 +1,7 @@
 <template>
   <div
     v-if="visibility || fadeIn"
-    :class="
-      `anx-toast-container anx-toast-${verticalAlign} anx-toast-${horizontalAlign}`
-    "
+    :class="`anx-toast-container anx-toast-${horizontalAlign}`"
   >
     <div
       :class="[
@@ -45,13 +43,6 @@ export default class AnxToast extends Vue {
 
   /** This is the message in the toast. This will be overwritten by the default slot if used */
   @Prop({ default: "" }) message!: string;
-
-  /**
-   * The vertical align of the toast
-   *
-   * @values top, bottom
-   */
-  @Prop({ default: "top" }) verticalAlign!: string;
 
   /**
    * The horizontal align of the toast
@@ -122,6 +113,17 @@ export default class AnxToast extends Vue {
     return byUser;
   }
 
+  /**
+   * Emit the destroy event.
+   * This indicates that the toast can be removed from the DOM
+   *
+   * @event destroy
+   */
+  @Emit("destroy")
+  destroy() {
+    return true;
+  }
+
   /** Helper variables */
   private fadeIn = false;
   private fadeOut = false;
@@ -154,7 +156,7 @@ export default class AnxToast extends Vue {
   }
 
   /** Show the toast */
-  private showAction() {
+  public showAction() {
     if (this.animations) {
       this.fadeIn = true;
       if (typeof window !== "undefined") {
@@ -178,15 +180,17 @@ export default class AnxToast extends Vue {
   }
 
   /** Hide the toast */
-  private hideAction() {
+  public hideAction() {
     if (this.animations) {
       this.fadeOut = true;
       this.timeouts.hideAnimation = window.setTimeout(() => {
         this.fadeOut = false;
         this.visibility = false;
+        this.destroy();
       }, 480);
     } else {
       this.visibility = false;
+      this.destroy();
     }
   }
 
@@ -225,37 +229,29 @@ export default class AnxToast extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-toast-container {
-  position: fixed;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   z-index: 1100;
+  margin-bottom: 20px;
 
-  &.anx-toast-top {
-    top: 15px;
-  }
-
-  &.anx-toast-bottom {
-    bottom: 15px;
+  &.anx-toast-container:last-of-type {
+    margin-bottom: 0px;
   }
 
   &.anx-toast-left {
     justify-content: flex-start;
     align-items: flex-start;
-    left: 15px;
   }
 
   &.anx-toast-center {
     justify-content: center;
     align-items: center;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   &.anx-toast-right {
     justify-content: flex-end;
     align-items: flex-end;
-    right: 15px;
   }
 
   .anx-toast {
