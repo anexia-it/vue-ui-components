@@ -29,6 +29,7 @@ import AnxTableRow from "./AnxTableRow/AnxTableRow.vue";
 import AnxTextarea from "./AnxTextarea/AnxTextarea.vue";
 import AnxTitle from "./AnxTitle/AnxTitle.vue";
 import AnxToast from "./AnxToast/AnxToast.vue";
+import AnxToaster from "./AnxToaster/AnxToaster.vue";
 
 // Default export
 export default {
@@ -97,5 +98,6 @@ export {
   AnxTableRow,
   AnxTextarea,
   AnxTitle,
-  AnxToast
+  AnxToast,
+  AnxToaster
 };
