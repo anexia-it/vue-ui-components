@@ -1,9 +1,7 @@
 <template>
   <div
     v-if="visibility || fadeIn"
-    :class="
-      `anx-toast-container anx-toast-${verticalAlign} anx-toast-${horizontalAlign}`
-    "
+    :class="`anx-toast-container anx-toast-${horizontalAlign}`"
   >
     <div
       :class="[
@@ -47,25 +45,18 @@ export default class AnxToast extends Vue {
   @Prop({ default: "" }) message!: string;
 
   /**
-   * The vertical align of the toast
-   *
-   * @values top, bottom
-   */
-  @Prop({ default: "bottom" }) verticalAlign!: string;
-
-  /**
    * The horizontal align of the toast
    *
    * @values left, center, right
    */
-  @Prop({ default: "center" }) horizontalAlign!: string;
+  @Prop({ default: "right" }) horizontalAlign!: string;
 
   /**
    * This is the type of the toast (this only affetcs the design)
    *
-   * @values neutral, error, success
+   * @values error, warning, success
    */
-  @Prop({ default: "neutral" }) type!: string;
+  @Prop({ default: "success" }) type!: string;
 
   /** This is the value for the toast that can be accessed via *v-model* */
   @Prop({ default: null }) value!: boolean | null;
@@ -122,6 +113,17 @@ export default class AnxToast extends Vue {
     return byUser;
   }
 
+  /**
+   * Emit the destroy event.
+   * This indicates that the toast can be removed from the DOM
+   *
+   * @event destroy
+   */
+  @Emit("destroy")
+  destroy() {
+    return true;
+  }
+
   /** Helper variables */
   private fadeIn = false;
   private fadeOut = false;
@@ -154,7 +156,7 @@ export default class AnxToast extends Vue {
   }
 
   /** Show the toast */
-  private showAction() {
+  public showAction() {
     if (this.animations) {
       this.fadeIn = true;
       if (typeof window !== "undefined") {
@@ -178,15 +180,17 @@ export default class AnxToast extends Vue {
   }
 
   /** Hide the toast */
-  private hideAction() {
+  public hideAction() {
     if (this.animations) {
       this.fadeOut = true;
       this.timeouts.hideAnimation = window.setTimeout(() => {
         this.fadeOut = false;
         this.visibility = false;
+        this.destroy();
       }, 480);
     } else {
       this.visibility = false;
+      this.destroy();
     }
   }
 
@@ -225,37 +229,29 @@ export default class AnxToast extends Vue {
 @import "../../assets/scss/_variables.scss";
 
 .anx-toast-container {
-  position: fixed;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   z-index: 1100;
+  margin-bottom: 20px;
 
-  &.anx-toast-top {
-    top: 15px;
-  }
-
-  &.anx-toast-bottom {
-    bottom: 15px;
+  &.anx-toast-container:last-of-type {
+    margin-bottom: 0px;
   }
 
   &.anx-toast-left {
     justify-content: flex-start;
     align-items: flex-start;
-    left: 15px;
   }
 
   &.anx-toast-center {
     justify-content: center;
     align-items: center;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   &.anx-toast-right {
     justify-content: flex-end;
     align-items: flex-end;
-    right: 15px;
   }
 
   .anx-toast {
@@ -266,7 +262,7 @@ export default class AnxToast extends Vue {
     text-align: center;
     padding: 15px;
     max-width: 500px;
-    box-shadow: 0 0.25rem 0.75rem $anx-black-transparet;
+    box-shadow: 0 0.125rem 0.625rem rgb(50 50 50 / 50%);
     position: relative;
     cursor: pointer;
 
@@ -275,8 +271,9 @@ export default class AnxToast extends Vue {
       color: $anx-primary-white;
     }
 
-    &.anx-toast-neutral {
-      background-color: $anx-light-grey-color;
+    &.anx-toast-warning {
+      background-color: $anx-warning-color;
+      color: $anx-primary-white;
     }
 
     &.anx-toast-error {

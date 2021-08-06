@@ -140,7 +140,7 @@ button {
 
     &:hover {
       color: var(--button-color);
-      background-color: $anx-primary-white;
+      background-color: transparent;
       text-decoration: none;
 
       &:before {
@@ -162,7 +162,7 @@ button {
 .btn-outline {
   color: var(--button-color) !important;
   border: 1px solid var(--button-color) !important;
-  background-color: $anx-primary-white;
+  background-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
