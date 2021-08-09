@@ -1,0 +1,17 @@
+name: Prepare Release
+on:
+  release:
+    types: [published]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Delete hotfix branch 🗑️
+        if: ${{ github.event.release.target_commitish != 'dev' && github.event.release.target_commitish != 'master' }}
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branches: ${{ github.event.release.target_commitish }}
