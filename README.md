@@ -7,8 +7,13 @@
 > This library contains a set of components, icons and plugins for developing user interfaces. All components match the *Anexia Corporate Design* guidelines.
 
 <p align="center">
-    ![](https://img.shields.io/npm/dt/@anexia/vue-ui-components)
+    <a href="https://www.npmjs.com/package/@anexia/vue-ui-components">
+        <img src="https://img.shields.io/npm/dt/@anexia/vue-ui-components" />
+    </a>
 </p>
+
+![](https://img.shields.io/npm/dt/@anexia/vue-ui-components)
+
 
 
 ![Demo](https://github.com/anexia-it/vue-ui-components/blob/master/docs/img/icons.png)
