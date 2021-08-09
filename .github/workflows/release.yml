@@ -20,20 +20,10 @@ jobs:
           git config --global user.name "GitHub CD bot"
           git config --global user.email "marketing@anexia-it.com"
 
-      - name: Install 🔧
-        run: npm ci
-
-      - name: Build 🏗️
-        run: npm run build 
-
-      - name: Unit Test 🧪
-        run: npm run test
-
       - name: Get version #️⃣
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
-      # If build and test is successfull, begin the release
       - name: Raise version ⭐
         # Don't tag the version in git because this has already been done by release
         run: npm version ${{ steps.get_version.outputs.VERSION }} --git-tag-version false
@@ -46,6 +36,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: refs/heads/release-${{ steps.get_version.outputs.VERSION }}
+
+      - name: Install 🔧
+        run: npm ci
+
+      - name: Build 🏗️
+        run: npm run build 
+
+      - name: Unit Test 🧪
+        run: npm run test
 
       - name: Publish on NPM 📢
         uses: JS-DevTools/npm-publish@v1
