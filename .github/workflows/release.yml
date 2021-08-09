@@ -1,7 +1,8 @@
 name: Release
 on:
-  release:
-    types: [published]
+  push:
+    tags: 
+      - 'v*'
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -18,35 +19,33 @@ jobs:
         run: |
           git config --global user.name "GitHub CD bot"
           git config --global user.email "marketing@anexia-it.com"
-      - name: Raise version ⭐
-        # Don't tag the version in git because this has already been done by release
-        run: npm version ${{ github.event.release.tag_name }} --git-tag-version false
 
       - name: Install 🔧
         run: npm ci
 
       - name: Build 🏗️
-        run: npm run build
+        run: npm run build 
 
       - name: Unit Test 🧪
         run: npm run test
 
-      - name: Commit Changes 📋
-        run: git commit -m "${{ github.event.release.tag_name }}" -a
+      - name: Get version #️⃣
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
-      - name: Push Master 🚀
+      # If build and test is successfull, begin the release
+      - name: Raise version ⭐
+        # Don't tag the version in git because this has already been done by release
+        run: npm version ${{ steps.get_version.outputs.VERSION }} --git-tag-version false
+
+      - name: Commit Changes 📋
+        run: git commit -m "${{ steps.get_version.outputs.VERSION }}" -a
+
+      - name: Push Release Branch 🚀
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
-
-      - name: Merge Development ↩️
-        uses: devmasx/merge-branch@v1.3.1
-        with:
-          type: now
-          from_branch: master
-          target_branch: dev
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: refs/heads/release-${{ steps.get_version.outputs.VERSION }}
 
       - name: Publish on NPM 📢
         uses: JS-DevTools/npm-publish@v1
@@ -54,8 +53,20 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
 
-      - name: Deploy Docs on GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+      - name: Pull-Request dev 🦸
+        uses: repo-sync/pull-request@v2
         with:
-          branch: docs
-          folder: dist
+          destination_branch: "dev"
+          source_branch: "refs/heads/release-${{ steps.get_version.outputs.VERSION }}"
+          pr_title: "${{ steps.get_version.outputs.VERSION }} dev"
+          pr_body: "Automated pull request to merge new version into development"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull-Request master 🦸
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "master"
+          source_branch: "refs/heads/release-${{ steps.get_version.outputs.VERSION }}"
+          pr_title: "${{ steps.get_version.outputs.VERSION }} master"
+          pr_body: "Automated pull request to merge new version into master"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
