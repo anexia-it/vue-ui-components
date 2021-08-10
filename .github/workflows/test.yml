@@ -20,3 +20,10 @@ jobs:
 
       - name: Unit Test 🧪
         run: npm run test
+
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./junit.xml,./tests/unit/cov-report/clover.xml
+          flags: unittests
+          verbose: true
