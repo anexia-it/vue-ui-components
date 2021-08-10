@@ -8,10 +8,13 @@
 
 <p align="center">
     <a href="https://www.npmjs.com/package/@anexia/vue-ui-components">
-        <img src="https://img.shields.io/npm/v/@anexia/vue-ui-components" />
+        <img src="https://img.shields.io/npm/v/@anexia/vue-ui-components?logo=npm" />
+    </a>
+    <a href="https://app.codecov.io/gh/anexia-it/vue-ui-components">
+        <img src="https://img.shields.io/codecov/c/github/anexia-it/vue-ui-components?logo=Codecov" />
     </a>
     <a href="https://github.com/anexia-it/vue-ui-components/actions/workflows/test.yml">
-        <img src="https://img.shields.io/github/workflow/status/anexia-it/vue-ui-components/Test/dev" />
+        <img src="https://img.shields.io/github/workflow/status/anexia-it/vue-ui-components/Test/dev?logo=GitHub" />
     </a>
     <a href="https://www.npmjs.com/package/@anexia/vue-ui-components">
         <img src="https://img.shields.io/npm/dt/@anexia/vue-ui-components" />
