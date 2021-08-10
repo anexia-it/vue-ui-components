@@ -1,0 +1,21 @@
+name: Update Dev
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  update_dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Pull-Request dev 🦸
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "dev"
+          source_branch: "master"
+          pr_title: "Master update to Dev"
+          pr_body: "Automated pull request to merge new version into development"
+          pr_allow_empty: false 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
