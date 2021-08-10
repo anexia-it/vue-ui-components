@@ -1,11 +1,23 @@
 name: Test
 on: [pull_request, workflow_dispatch]
 jobs:
-  test:
+  test_build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
+
+      - name: Cache node modules 🔃
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Use Node.js 12 🖥️
         uses: actions/setup-node@v1
@@ -17,6 +29,31 @@ jobs:
 
       - name: Testing Build Process 🏗️
         run: npm run build
+  test_unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Cache node modules 🔃
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Use Node.js 12 🖥️
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install 🔧
+        run: npm ci
 
       - name: Unit Test 🧪
         run: npm run test
