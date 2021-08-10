@@ -64,15 +64,6 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           access: public
 
-      - name: Pull-Request dev 🦸
-        uses: repo-sync/pull-request@v2
-        with:
-          destination_branch: "dev"
-          source_branch: "refs/heads/release-${{ steps.get_version.outputs.VERSION }}"
-          pr_title: "${{ steps.get_version.outputs.VERSION }} dev"
-          pr_body: "Automated pull request to merge new version into development"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Pull-Request master 🦸
         uses: repo-sync/pull-request@v2
         with:
