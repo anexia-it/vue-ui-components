@@ -20,12 +20,14 @@
   "main": "lib/anx.common.js",
   "module": "lib/anx.umd.js",
   "style": "lib/anx.css",
+  "types": "src/index.d.ts",
   "files": [
     "lib/*",
     "nuxt/*",
     "src/lib/*",
     "src/assets/scss/_variables*",
-    "index.d.ts"
+    "src/index.d.ts",
+    "src/**/*.d.ts"
   ],
   "peerDependencies": {
     "vue": "^2.6.11"
