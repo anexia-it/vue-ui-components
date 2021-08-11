@@ -1,4 +1,6 @@
 import Vue from "vue";
 import UIPlugin from "@anexia/vue-ui-components";
 
-Vue.use(UIPlugin);
+const options = <%= JSON.stringify(options || {}) %>;
+
+Vue.use(UIPlugin, options);
