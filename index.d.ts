@@ -1,1 +1,0 @@
-declare module '@anexia/vue-ui-components';
