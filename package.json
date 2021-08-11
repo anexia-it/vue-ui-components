@@ -27,7 +27,8 @@
     "src/lib/*",
     "src/assets/scss/_variables*",
     "src/index.d.ts",
-    "src/**/*.d.ts"
+    "src/plugins/**/*.d.ts",
+    "src/components/**/*.d.ts"
   ],
   "peerDependencies": {
     "vue": "^2.6.11"
