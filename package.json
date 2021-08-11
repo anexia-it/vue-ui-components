@@ -1,6 +1,6 @@
 {
   "name": "@anexia/vue-ui-components",
-  "version": "1.19.23",
+  "version": "1.20.0",
   "description": "A Vue component library containing several components, plugins and icons that match the Anexia Corporate Design guidelines",
   "author": "ANEXIA Internetdienstleistungs Gmbh <marketing@anexia-it.com> (https://anexia.com)",
   "license": "MIT",
@@ -20,12 +20,15 @@
   "main": "lib/anx.common.js",
   "module": "lib/anx.umd.js",
   "style": "lib/anx.css",
+  "types": "src/index.d.ts",
   "files": [
     "lib/*",
     "nuxt/*",
     "src/lib/*",
     "src/assets/scss/_variables*",
-    "index.d.ts"
+    "src/index.d.ts",
+    "src/plugins/**/*.d.ts",
+    "src/components/**/*.d.ts"
   ],
   "peerDependencies": {
     "vue": "^2.6.11"
