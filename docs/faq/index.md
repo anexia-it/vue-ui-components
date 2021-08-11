@@ -73,3 +73,42 @@ export default {
 ### The components don't render correctly after integrating a new version of the *vue-ui-components* library
 
 If you have just installed a new version of the library and your project compiles without any errors but nevertheless your components don't render correctly a solution might be to delete the ```node_modules/``` folder and execute a ```npm install``` after deletion. If you still get some errors, delete your ```node_modules/``` folder and your ```package-lock.json``` file and execute ```npm install``` again.
+
+### Property '$anxToast' does not exist on type when using typescript
+
+When using the [AnxToastPlugin](/#/Plugins/AnxToastPlugin) with *typescript* it might happen, that the following code
+
+```javascript
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+
+@Component({})
+export default class Component extends Vue {
+  private mounted() {
+    this.$anxToast.show('Test'); // This causes an error in the IDE
+  }
+}
+</script>
+```
+
+produces the following error in your IDE
+
+```text
+Property '$anxToast' does not exist on type 'Component'.
+```
+
+In this case, you simply have to import the **AnxToastPlugin** in your component, although you are not using it directly. This will declare the correct types for typescript and will fix the error in the IDE.
+
+```javascript
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+import { AnxToastPlugin } from '@anexia/vue-ui-components' // This fixes the error in the IDE
+
+@Component({})
+export default class Component extends Vue {
+  private mounted() {
+    this.$anxToast.show('Test');
+  }
+}
+</script>
+```
