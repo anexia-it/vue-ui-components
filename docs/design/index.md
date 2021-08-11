@@ -4,6 +4,8 @@ For a description on how to change design variables during runtime please refer 
 
 In most cases you don't need to change the design during runtime. You can simply adapt the design when installing our library. Therefore you have to pass options with a ```variables``` key containing you variables.
 
+### Vue
+
 ```javascript
 import Vue from 'vue'
 import AnxUIPlugin from '@anexia/vue-ui-components'
@@ -16,6 +18,26 @@ Vue.use(AnxUIPlugin, {
         '--secondary-color': '8ecae6'
     }
 });
+```
+
+### Nuxt
+```javascript
+// nuxt.config.js
+
+module.exports = {
+    modules: [
+        [
+            '@anexia/vue-ui-components/nuxt', {
+                variables: {
+                    '--font-family': "'Meta', Arial, Helvetica, sans-serif"
+                }
+            }
+        ]
+    ],
+    css: [
+        '@anexia/vue-ui-components/lib/anx.css'
+    ]
+}
 ```
 
 These variables change the style for the whole application. This affects all components (AnxTitle, AnxInput, AnxIcon, ...). In the example below you can change some variables and the [AnxVariablesPlugin ](/#/Documentation/Plugins?id=anxvariablesplugin) will change the styles during runtime. Just click the **Change design** button.  
