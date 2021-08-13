@@ -47,7 +47,7 @@ describe("AnxToast.vue", () => {
     const message = "This is a test message", animations = false;
     const wrapper = mount(AnxToaster);
 
-    // Add two toasts toast
+    // Add two toasts
     // @ts-ignore
     wrapper.vm.addToast({ message, animations });
     // @ts-ignore
@@ -71,10 +71,42 @@ describe("AnxToast.vue", () => {
   });
 
   it("appends toast on beginning when align top", () => {
-    // TODO:
+    const message1 = "This is the first toast", message2 = "This is another toast", verticalAlign = "top";
+    const wrapper = mount(AnxToaster, {
+      propsData: {
+        verticalAlign
+      }
+    });
+
+    // Add two toasts
+    // @ts-ignore
+    wrapper.vm.addToast({ message: message1 });
+    // @ts-ignore
+    wrapper.vm.addToast({ message: message2 });
+
+    // The toast that has been added secondly should be on top
+    let toast = wrapper.get(".anx-toast");
+    expect(toast.exists()).toBeTruthy();
+    expect(toast.text()).toMatch(message2);
   });
 
   it("appends toast at the end when align is bottom", () => {
-    // TODO:
+    const message1 = "This is the first toast", message2 = "This is another toast", verticalAlign = "bottom";
+    const wrapper = mount(AnxToaster, {
+      propsData: {
+        verticalAlign
+      }
+    });
+
+    // Add two toasts
+    // @ts-ignore
+    wrapper.vm.addToast({ message: message1 });
+    // @ts-ignore
+    wrapper.vm.addToast({ message: message2 });
+
+    // The toast that has been added secondly should be at the bottom
+    let toast = wrapper.get(".anx-toast");
+    expect(toast.exists()).toBeTruthy();
+    expect(toast.text()).toMatch(message1);
   });
 });
