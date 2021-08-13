@@ -49,12 +49,18 @@ export default class AnxToaster extends Vue {
   }
 
   public VERTICAL_POSITIONS = ["top", "bottom"];
-  public HORIZONTAL_POSITIONS = ["left", "right", "center"];
+  public HORIZONTAL_POSITIONS = ["left", "center", "right"];
 
   public numberToasts = 0;
 
   /** Add a toast to the toaster */
   public addToast(propsData = {}): AnxToast | null {
+    // Set the value to true, because it should always be true when adding a toast
+    propsData = {
+      ...propsData,
+      value: true
+    };
+
     const componentClass = Vue.extend(AnxToast);
     const instance = new componentClass({ propsData }) as AnxToast;
     if (this.$refs.anxToaster) {
