@@ -64,7 +64,11 @@ describe("AnxContact.vue", () => {
     // This key is used for automated tesing
     // https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha-v2-what-should-i-do
     const recaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-    const firstName = "Max", lastName = "Mustermann", email = "max@mustermann.at", phone = "0123456789", message = "This is a test";
+    const firstName = "Max",
+      lastName = "Mustermann",
+      email = "max@mustermann.at",
+      phone = "0123456789",
+      message = "This is a test";
 
     const wrapper = mount(AnxContact, {
       propsData: {
