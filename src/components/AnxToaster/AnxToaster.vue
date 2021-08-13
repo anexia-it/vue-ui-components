@@ -63,43 +63,40 @@ export default class AnxToaster extends Vue {
 
     const componentClass = Vue.extend(AnxToast);
     const instance = new componentClass({ propsData }) as AnxToast;
-    if (this.$refs.anxToaster) {
-      // Mount the toast in the toaster
-      const toaster = this.$refs.anxToaster as HTMLElement;
-      instance.$mount();
 
-      // Check if the toast has to be inserted on the begin or the end
-      if (this.verticalAlign === "top") {
-        toaster.insertBefore(instance.$el, toaster.firstChild);
-      } else {
-        toaster.appendChild(instance.$el);
-      }
+    // Mount the toast in the toaster
+    const toaster = this.$refs.anxToaster as HTMLElement;
+    instance.$mount();
 
-      // When the toast is closed, it should be hidden
-      instance.$on("input", (value: boolean) => {
-        if (!value) {
-          instance.hideAction();
-        }
-      });
-
-      // After the toast has been hidden, it should be destroyed
-      instance.$on("destroy", () => {
-        try {
-          toaster.removeChild(instance.$el);
-        } catch (ex) {
-          // This means that the toast has already been removed
-        }
-
-        // If the toaster does not have any child nodes, it can be destroyed
-        if (!toaster.hasChildNodes()) {
-          this.destroy();
-        }
-      });
-
-      return instance;
+    // Check if the toast has to be inserted on the begin or the end
+    if (this.verticalAlign === "top") {
+      toaster.insertBefore(instance.$el, toaster.firstChild);
+    } else {
+      toaster.appendChild(instance.$el);
     }
 
-    return null;
+    // When the toast is closed, it should be hidden
+    instance.$on("input", (value: boolean) => {
+      if (!value) {
+        instance.hideAction();
+      }
+    });
+
+    // After the toast has been hidden, it should be destroyed
+    instance.$on("destroy", () => {
+      try {
+        toaster.removeChild(instance.$el);
+      } catch (ex) {
+        // This means that the toast has already been removed
+      }
+
+      // If the toaster does not have any child nodes, it can be destroyed
+      if (!toaster.hasChildNodes()) {
+        this.destroy();
+      }
+    });
+
+    return instance;
   }
 
   /** Getter for validated vertical align */
