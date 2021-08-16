@@ -9,6 +9,7 @@
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
           <button
+            id="close-button-x"
             type="button"
             class="close"
             data-dismiss="modal"
@@ -39,7 +40,12 @@
 
             @event close
           -->
-          <anx-button :text="closeButtonText" @click="$emit('close')" outline />
+          <anx-button
+            id="close-button"
+            :text="closeButtonText"
+            @click="$emit('close')"
+            outline
+          />
           <div class="space"></div>
           <!--
             This event will be emitted when the confirms the modal
@@ -47,7 +53,11 @@
 
             @event confirm
           -->
-          <anx-button :text="confirmButtonText" @click="$emit('confirm')" />
+          <anx-button
+            id="confirm-button"
+            :text="confirmButtonText"
+            @click="$emit('confirm')"
+          />
           <!-- @slot Use this slot to add something to the footer -->
           <slot name="modal-footer" />
         </div>
@@ -58,6 +68,7 @@
           "
         >
           <anx-button
+            id="close-button"
             :text="closeButtonText"
             v-if="hasCloseButton !== null"
             @click="$emit('close')"
