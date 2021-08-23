@@ -1,7 +1,7 @@
 <template>
   <div class="anx-crud-table">
     <div class="anx-crud-header">
-      <div :class="{ 'anx-crud-header-row': true, 'with-input': true }">
+      <div :class="{ 'anx-crud-header-row': true, 'with-input': useSearch }">
         <!-- @slot This slot can be used to change the title -->
         <slot name="title">
           <anx-title size="h1" noline no-margin v-if="modelClass && showHeader">
