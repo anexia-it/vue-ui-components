@@ -16,6 +16,36 @@ describe("AnxToast.vue", () => {
     expect(wrapper.get(".anx-toast").exists()).toBeTruthy();
   });
 
+  it("mounts correctly with properties", () => {
+    const message = "This is a test message",
+      type = "warning",
+      horizontalAlign = "center";
+
+    const wrapper = mount(AnxToast, {
+      propsData: {
+        animations: false,
+        autoClose: false,
+        backgroundColor: "#ffffff",
+        color: "#000000",
+        disableCloseOnClick: true,
+        horizontalAlign,
+        message,
+        type,
+        value: true
+      }
+    });
+
+    const toast = wrapper.get(".anx-toast");
+    expect(toast.exists()).toBeTruthy();
+    expect(toast.attributes("style")).toContain(
+      "background-color: rgb(255, 255, 255)"
+    );
+    expect(toast.attributes("style")).toContain("color: rgb(0, 0, 0)");
+    expect(wrapper.classes("anx-toast-" + horizontalAlign)).toBeTruthy();
+    expect(toast.classes("anx-toast-" + type)).toBeTruthy();
+    expect(toast.text()).toMatch(message);
+  });
+
   it("mounts correctly via AnxToastPlugin", async () => {
     const testMessage = "This is a test message";
 
@@ -86,5 +116,65 @@ describe("AnxToast.vue", () => {
 
     // Check if the dismiss event has been emitted
     expect(wrapper.emitted("dismiss")).toBeTruthy();
+  });
+
+  it("closes on v-model value changed", async () => {
+    const wrapper = shallowMount(AnxToast, {
+      propsData: { value: true, autoClose: false, animations: false }
+    });
+
+    // Toast should exist before closing
+    expect(wrapper.get(".anx-toast").exists()).toBeTruthy();
+
+    // Set value to false
+    wrapper.setProps({ value: false });
+    await wrapper.vm.$nextTick();
+
+    // Check if the dismiss event has been emitted
+    expect(wrapper.find(".anx-toast").exists()).toBeFalsy();
+  });
+
+  it("has working animations", async () => {
+    // Use fake timers
+    jest.useFakeTimers();
+
+    const wrapper = mount(AnxToast, {
+      propsData: { value: true, autoClose: false, animations: true }
+    });
+
+    // Should fade in correctly
+    const toast = wrapper.get(".anx-toast");
+    expect(toast.exists()).toBeTruthy();
+    expect(toast.classes("fade-in")).toBeTruthy();
+    jest.advanceTimersByTime(1000);
+
+    // Should fade out when closing
+    wrapper.setProps({ value: false });
+    await wrapper.vm.$nextTick();
+    expect(toast.classes("fade-out")).toBeTruthy();
+    jest.advanceTimersByTime(1000);
+    expect(wrapper.find(".axn-toast").exists()).toBeFalsy();
+  });
+
+  it("cancel auto close timeout when closing before timeout", async () => {
+    window.clearTimeout = jest.fn();
+
+    const wrapper = mount(AnxToast, {
+      propsData: {
+        value: true,
+        autoClose: true,
+        autoCloseTimeout: 5000,
+        animations: true
+      }
+    });
+
+    // Toast should exist before closing
+    expect(wrapper.get(".anx-toast").exists()).toBeTruthy();
+
+    // Set value to false
+    wrapper.setProps({ value: false });
+    await wrapper.vm.$nextTick();
+
+    expect(window.clearTimeout).toHaveBeenCalled();
   });
 });

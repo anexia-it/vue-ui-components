@@ -7,6 +7,7 @@
       @event createActionClicked
     -->
     <anx-button
+      id="crud-create"
       @click="
         createInstance = new modelClass();
         showCreateModal = true;
@@ -33,7 +34,7 @@
         </span>
         <template slot="modal-footer">
           <span class="button-space"></span>
-          <anx-button @click="createItem">Save </anx-button>
+          <anx-button @click="createItem">Save</anx-button>
         </template>
       </anx-modal>
     </slot>
@@ -59,6 +60,7 @@
             -->
             <anx-icon
               v-if="editable"
+              :id="`crud-update-icon-${i}`"
               icon="einstellungen-verwaltung"
               class="action"
               width="40px"
@@ -70,6 +72,7 @@
             />
             <anx-icon
               v-if="deletable"
+              :id="`crud-delete-icon-${i}`"
               icon="loeschen"
               class="action"
               width="40px"
@@ -188,7 +191,7 @@ export default class AnxCrudTable extends Vue {
   /** Authorization header for API requests */
   @Prop({ default: "" }) authorization!: string;
 
-  /** Default column sorting */
+  /** The sorting for the table. The *name of the column* and the *order* (ASC, DESC) have to be provided as object */
   @Prop({
     default: () => {
       return { name: 0, order: "ASC" };
@@ -219,9 +222,8 @@ export default class AnxCrudTable extends Vue {
   page = 0;
 
   mounted() {
-    if (this.modelClass) {
-      this.fetch();
-    }
+    this.fetch();
+
     if (this.sort) {
       this.internalSort = this.sort;
     }
@@ -357,9 +359,14 @@ export default class AnxCrudTable extends Vue {
     if (!this.modelClass) {
       return;
     }
-    this.instances = await this.modelClass.getAll({
-      authorization: this.authorization
-    });
+
+    try {
+      this.instances = await this.modelClass.getAll({
+        authorization: this.authorization
+      });
+    } catch (ex) {
+      this.instances = [];
+    }
   }
 
   async deleteSelectedItem() {
