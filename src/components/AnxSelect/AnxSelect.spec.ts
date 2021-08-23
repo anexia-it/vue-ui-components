@@ -81,6 +81,19 @@ describe("AnxSelect.vue", () => {
     paragraphWrapper.destroy();
   });
 
+  it("has correct value when mounting", () => {
+    const options = [
+      { value: "null", text: "Select something" },
+      { value: "first", text: "first text" },
+      { value: "second", text: "second text" }
+    ];
+    const wrapper = mount(AnxSelect, {
+      propsData: { options, value: "second" }
+    });
+
+    expect(wrapper.get(".anx-select-div").text()).toBe(options[2].text);
+  });
+
   it("emits event on selection change", async () => {
     const options = [
       { value: "null", text: "Select something" },

@@ -63,8 +63,6 @@ export default class AnxSelect extends Vue {
   @Prop({ default: "anx-select" }) id!: string;
   /** This is the label that will be displayed as description for the select input field */
   @Prop({ default: "" }) label!: string;
-  /** This is the index that should be selected */
-  @Prop({ default: 0 }) selectedIndex!: number;
   /**
    * This are the options for the select input field.
    * The properry should be an array of objcets with the following two properties: <br>
@@ -76,6 +74,8 @@ export default class AnxSelect extends Vue {
   @Prop({ required: true }) options!: Array<{ value: string; text: string }>;
   /** The width for the select field */
   @Prop({ default: "100%" }) width!: string;
+  /** This is the value that can be used via **v-model** */
+  @Prop({ default: null }) value!: string;
   /**
    * If this property is set, a default required validation will be applied
    */
@@ -96,8 +96,8 @@ export default class AnxSelect extends Vue {
     return "";
   }
 
-  private selected = this.options[this.selectedIndex].value;
-  private selectedText = this.options[this.selectedIndex].text;
+  private selected = this.getOptionFromValue(this.value).value;
+  private selectedText = this.getOptionFromValue(this.value).text;
   private show = false;
   private error: string[] = [];
   private dynamicHeight = false;
@@ -192,6 +192,20 @@ export default class AnxSelect extends Vue {
 
     /** This emits the input event with the selected user input */
     this.$emit("input", this.selected);
+  }
+
+  /**
+   * Returns the options object by providing a value
+   * If no options is found, the first options in the array is returned
+   */
+  private getOptionFromValue(value: string): { value: string; text: string } {
+    for (let i = this.options.length - 1; i > 0; i--) {
+      if (this.options[i].value === value) {
+        return this.options[i];
+      }
+    }
+
+    return this.options[0];
   }
 }
 </script>
