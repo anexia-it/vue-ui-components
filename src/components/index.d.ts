@@ -1,4 +1,4 @@
-import Vue, { Component as VueComponent } from 'vue'
+import Vue, { Component as VueComponent } from "vue";
 
 export declare class AnxAlert extends Vue {}
 export declare class AnxButton extends Vue {}
@@ -34,37 +34,37 @@ export declare class AnxToast extends Vue {}
 export declare class AnxToaster extends Vue {}
 
 declare const Components: {
-  AnxAlert: VueComponent,
-  AnxButton: VueComponent,
-  AnxCard: VueComponent,
-  AnxCheckbox: VueComponent,
-  AnxContact: VueComponent,
-  AnxContainer: VueComponent,
-  AnxContent: VueComponent,
-  AnxCrudTable: VueComponent,
-  AnxFooter: VueComponent,
-  AnxForm: VueComponent,
-  AnxFormContainer: VueComponent,
-  AnxGlobal: VueComponent,
-  AnxHeader: VueComponent,
-  AnxHrLine: VueComponent,
-  AnxIcon: VueComponent,
-  AnxInput: VueComponent,
-  AnxLanguageSwitcher: VueComponent,
-  AnxLink: VueComponent,
-  AnxList: VueComponent,
-  AnxLogin: VueComponent,
-  AnxModal: VueComponent,
-  AnxParagraph: VueComponent,
-  AnxReadonly: VueComponent,
-  AnxSelect: VueComponent,
-  AnxTable: VueComponent,
-  AnxTableCol: VueComponent,
-  AnxTableContainer: VueComponent,
-  AnxTableRow: VueComponent,
-  AnxTextarea: VueComponent,
-  AnxTitle: VueComponent,
-  AnxToast: VueComponent
-}
+  AnxAlert: VueComponent;
+  AnxButton: VueComponent;
+  AnxCard: VueComponent;
+  AnxCheckbox: VueComponent;
+  AnxContact: VueComponent;
+  AnxContainer: VueComponent;
+  AnxContent: VueComponent;
+  AnxCrudTable: VueComponent;
+  AnxFooter: VueComponent;
+  AnxForm: VueComponent;
+  AnxFormContainer: VueComponent;
+  AnxGlobal: VueComponent;
+  AnxHeader: VueComponent;
+  AnxHrLine: VueComponent;
+  AnxIcon: VueComponent;
+  AnxInput: VueComponent;
+  AnxLanguageSwitcher: VueComponent;
+  AnxLink: VueComponent;
+  AnxList: VueComponent;
+  AnxLogin: VueComponent;
+  AnxModal: VueComponent;
+  AnxParagraph: VueComponent;
+  AnxReadonly: VueComponent;
+  AnxSelect: VueComponent;
+  AnxTable: VueComponent;
+  AnxTableCol: VueComponent;
+  AnxTableContainer: VueComponent;
+  AnxTableRow: VueComponent;
+  AnxTextarea: VueComponent;
+  AnxTitle: VueComponent;
+  AnxToast: VueComponent;
+};
 
-export default Components
+export default Components;
