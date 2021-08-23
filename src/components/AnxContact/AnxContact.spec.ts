@@ -57,7 +57,27 @@ describe("AnxContact.vue", () => {
   });
 
   it("has correct validation", async () => {
-    // TODO:
+    const wrapper = mount(AnxContact, {
+      propsData: {
+        showEmail: true,
+        showPhone: true,
+      }
+    });
+
+    const form = wrapper.get("form");
+    expect(form.exists()).toBeTruthy();
+
+    await form.trigger("submit");
+    expect(wrapper.emitted("submit")).toBeFalsy();
+
+    await wrapper.get("#first_name").setValue("first name");
+    await wrapper.get("#last_name").setValue("last name");
+    await wrapper.get("#email").setValue("email@example.com");
+    await wrapper.get("#phone").setValue("1234567890");
+    await form.trigger("submit");
+    await flushPromises();
+
+    expect(wrapper.emitted("submit")).toBeTruthy();
   });
 
   it("emits submit event with correct data", async () => {
@@ -115,5 +135,17 @@ describe("AnxContact.vue", () => {
       // @ts-ignore
       expect(submittedData.message).toMatch(message);
     }
+  });
+
+  it("renders recapcaptcha", () => {
+    const wrapper = mount(AnxContact, {
+      propsData: {
+        recaptchaSitekey: "6Ld9pr4aAAAAAMenlr2xionxPM1sHQ-OgFaa2n2V",
+        showEmail: false,
+        showPhone: false,
+      }
+    });
+
+    expect(wrapper.get(".recaptcha-wrapper").exists()).toBeTruthy();
   });
 });
