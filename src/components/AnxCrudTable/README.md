@@ -1,25 +1,46 @@
+When using the *anx-crud-table* you only have to pass the model class and all the data will automatically be loaded. It is important, that the modal class is a child class of the **AbstractModel** class.  
+
+The following example shows a standard crud table with **DESC** sorting based on the id and **search functionality**.
+
 ```vue
 <template>
   <anx-container width="1000px">
     <anx-content>
-      <h1>Standard CRUD table with ID DESC sorting</h1>
       <anx-crud-table
           :modelClass="postsModelClass"
           :sort="{ name: 'id', order: 'DESC' }"
           :hideColumns="['userId']"
           :maxItems="5"
-      >
-      </anx-crud-table>
+          :searchColumns="['title','body']"
+      />
+    </anx-content>
+  </anx-container>
+</template>
 
-      <br />
-      <br />
+<script>
+import { Posts } from "@/lib/models/test/Posts";
 
-      <h1>CRUD table with custom edit modal</h1>
+export default {
+  data() {
+    return {
+        postsModelClass: Posts
+    }
+  }
+}
+</script>
+```
+
+You also have the possibilty to override some slots (all slots are described above). The example below shows how to create a **custom edit modal**.
+
+```vue
+<template>
+  <anx-container width="1000px">
+    <anx-content>
       <anx-crud-table
           :modelClass="postsModelClass"
           :sort="{ name: 'id', order: 'DESC' }"
           @editActionClicked="showEditModal = true"
-          :maxItems="10"
+          :maxItems="3"
       >
         <template slot="editModal">
             <div>
@@ -44,11 +65,8 @@ export default {
   data() {
     return {
         showEditModal: false,
-        postsModelClass: null
+        postsModelClass: Posts
     }
-  },
-  mounted() {
-    this.postsModelClass = Posts;
   }
 }
 </script>

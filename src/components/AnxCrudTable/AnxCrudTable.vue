@@ -1,43 +1,43 @@
 <template>
-  <div>
-    <h1 v-if="modelClass">{{ modelClass.name }}</h1>
-    <!--
-      Will be emitted when the create action has been clicked for an entry in the table
+  <div class="anx-crud-table">
+    <div class="anx-crud-header">
+      <div :class="{ 'anx-crud-header-row': true, 'with-input': useSearch }">
+        <!-- @slot This slot can be used to change the title -->
+        <slot name="title">
+          <anx-title size="h1" noline no-margin v-if="modelClass && showHeader">
+            {{ modelClass.name }}
+          </anx-title>
+        </slot>
+        <!--
+          Will be emitted when the create action has been clicked for an entry in the table
 
-      @event createActionClicked
-    -->
-    <anx-button
-      id="crud-create"
-      @click="
-        createInstance = new modelClass();
-        showCreateModal = true;
-        $emit('createActionClicked');
-      "
-      >Create new
-    </anx-button>
-    <br />
-    <br />
+          @event createActionClicked
+        -->
+        <div class="flex-end">
+          <anx-input
+            v-if="useSearch"
+            class="crud-search"
+            :label="searchFieldLabel"
+            width="200px"
+            v-model="searchValue"
+          />
 
-    <!-- @slot This can be used for modifing the create modal -->
-    <slot name="createModal">
-      <anx-modal
-        title="Create"
-        v-if="showCreateModal"
-        has-close-button
-        close-button-align="right"
-        @close="showCreateModal = false"
-      >
-        <span v-for="(instanceProp, i) in createInstance" :key="i">
-          <div v-if="i !== 'id'">
-            <anx-input :label="i" v-model="createInstance[i]" />
+          <div>
+            <anx-button
+              id="crud-create"
+              @click="
+                createInstance = new modelClass();
+                showCreateModal = true;
+                $emit('createActionClicked');
+              "
+            >
+              {{ createButtonText }}
+            </anx-button>
           </div>
-        </span>
-        <template slot="modal-footer">
-          <span class="button-space"></span>
-          <anx-button @click="createItem">Save</anx-button>
-        </template>
-      </anx-modal>
-    </slot>
+        </div>
+      </div>
+    </div>
+
     <anx-table stripped bordered hover :columns="tableColumns">
       <template v-slot:tbody>
         <anx-table-row
@@ -92,7 +92,7 @@
           >&laquo;</span
         >
         <span
-          class="page-switch-link"
+          class="page-switch-link backward"
           @click="
             () => {
               if (page > 0) page--;
@@ -103,7 +103,7 @@
         Page {{ Math.ceil(page) + 1 }} of
         {{ Math.ceil(sortedInstances.length / maxItems) }}
         <span
-          class="page-switch-link"
+          class="page-switch-link forward"
           @click="
             () => {
               if (page < sortedInstances.length / maxItems - 1) page++;
@@ -119,17 +119,43 @@
       </div>
     </div>
 
-    <anx-modal
-      title="Confirm delete"
-      v-if="showDeleteModal"
-      confirm
-      has-close-button
-      close-button-align="right"
-      @close="showDeleteModal = false"
-      @confirm="deleteSelectedItem"
-    >
-      Do you really want to delete?
-    </anx-modal>
+    <!-- ========================== -->
+    <!-- Modals -->
+    <!-- @slot This can be used for modifing the create modal -->
+    <slot name="createModal">
+      <anx-modal
+        title="Create"
+        v-if="showCreateModal"
+        has-close-button
+        close-button-align="right"
+        @close="showCreateModal = false"
+      >
+        <span v-for="(instanceProp, i) in createInstance" :key="i">
+          <div v-if="i !== 'id'">
+            <anx-input :label="i" v-model="createInstance[i]" />
+          </div>
+        </span>
+        <template slot="modal-footer">
+          <span class="button-space"></span>
+          <anx-button @click="createItem">Save</anx-button>
+        </template>
+      </anx-modal>
+    </slot>
+
+    <!-- @slot This can be used for modifing the delete modal -->
+    <slot name="deleteModal">
+      <anx-modal
+        title="Confirm delete"
+        v-if="showDeleteModal"
+        confirm
+        has-close-button
+        close-button-align="right"
+        @close="showDeleteModal = false"
+        @confirm="deleteSelectedItem"
+      >
+        Do you really want to delete?
+      </anx-modal>
+    </slot>
 
     <!-- @slot This can be used for modifing the edit modal -->
     <slot name="editModal">
@@ -159,6 +185,7 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 import AnxTable from "../AnxTable/AnxTable.vue";
 import AnxTableRow from "../AnxTableRow/AnxTableRow.vue";
 import AnxTableCol from "../AnxTableCol/AnxTableCol.vue";
+import AnxTitle from "../AnxTitle/AnxTitle.vue";
 import AnxIcon from "../AnxIcon/AnxIcon.vue";
 import AnxModal from "../AnxModal/AnxModal.vue";
 import AnxButton from "../AnxButton/AnxButton.vue";
@@ -173,6 +200,7 @@ import { AbstractModel } from "../../lib/models/AbstractModel";
     AnxTable,
     AnxTableRow,
     AnxTableCol,
+    AnxTitle,
     AnxIcon,
     AnxModal,
     AnxButton,
@@ -180,10 +208,23 @@ import { AbstractModel } from "../../lib/models/AbstractModel";
   }
 })
 export default class AnxCrudTable extends Vue {
+  /** This is the model class the crud table uses to retrieve data */
   @Prop({ default: null }) modelClass!: typeof AbstractModel | null;
+
+  /** With this property the header can be hidden */
+  @Prop({ default: true }) showHeader!: boolean;
+
+  /** Here you can provide columns that will be used for the search field. The columns have to match the properties of the model class. If no columns are provided, the search field will not be displayed */
+  @Prop({ default: null }) searchColumns!: Array<string> | null;
+
+  /** This is the text for the label of the search field */
+  @Prop({ default: "Search" }) searchFieldLabel!: string;
 
   /** Show delete action */
   @Prop({ default: true }) deletable!: boolean;
+
+  /** This is the text for the create button */
+  @Prop({ default: "Create new" }) createButtonText!: string;
 
   /** Show edit action */
   @Prop({ default: true }) editable!: boolean;
@@ -220,6 +261,7 @@ export default class AnxCrudTable extends Vue {
     order: string;
   } = { name: 0, order: "ASC" };
   page = 0;
+  searchValue = "";
 
   mounted() {
     this.fetch();
@@ -260,11 +302,6 @@ export default class AnxCrudTable extends Vue {
         if (Object.prototype.hasOwnProperty.call(instance, column)) {
           // eslint-disable-next-line
           delete (instance as any)[column];
-        } else {
-          // eslint-disable-next-line
-          console.warn(
-            "Tried to hide a non existend column! Are you sure you set hideColumn correct for the CRUD table?"
-          );
         }
       });
     });
@@ -285,15 +322,67 @@ export default class AnxCrudTable extends Vue {
     return this.maxItems > 0;
   }
 
+  get useSearch() {
+    // Check if search columns are defined
+    if (!this.searchColumns || this.searchColumns.length === 0) {
+      return false;
+    }
+
+    // If there are no instances we can't use search
+    if (!this.instances || this.instances.length === 0) {
+      return false;
+    }
+
+    // Check if all search columns are right, otherwise don't use the search
+    for (let i = 0; i < this.searchColumns.length; i++) {
+      if (!(this.searchColumns[i] in this.instances[0])) {
+        // eslint-disable-next-line
+        console.error(
+          `Unknown search column ${this.searchColumns[i]}! Check if you are using the property properly.`
+        );
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  get searchFilteredInstances() {
+    // Check if the search should be used
+    if (!this.useSearch || !this.searchValue || this.searchValue == "") {
+      return this.instances;
+    }
+
+    const instances: AbstractModel[] = [];
+    this.instances.forEach((instance: AbstractModel) => {
+      if (this.searchColumns) {
+        this.searchColumns.forEach((column: string) => {
+          if (column in instance) {
+            if (
+              // eslint-disable-next-line
+              (instance as any)[column]
+                .toLowerCase()
+                .indexOf(this.searchValue.toLowerCase()) >= 0
+            ) {
+              instances.push(instance);
+            }
+          }
+        });
+      }
+    });
+
+    return instances;
+  }
+
   get sortedInstances() {
     if (
       !this.internalSort ||
       !this.internalSort.name ||
       !this.internalSort.order
     ) {
-      return this.instances;
+      return this.searchFilteredInstances;
     }
-    const sort = this.instances.sort((a, b) => {
+    const sort = this.searchFilteredInstances.sort((a, b) => {
       /*eslint-disable */ 
       /**
        * We need to access the object dynamically here but 
@@ -403,30 +492,79 @@ export default class AnxCrudTable extends Vue {
 <style lang="scss" scoped>
 @import "../../assets/scss/_variables.scss";
 
-.button-space {
-  width: 20px;
-}
-.actions {
-  .action {
-    padding: 5px;
-    cursor: pointer;
+.anx-crud-table {
+  .anx-crud-header {
+    background-color: $anx-table-header-background;
+    border: 1px solid $anx-table-border;
+
+    .anx-crud-header-row {
+      width: 100%;
+      display: flex;
+      padding: 20px;
+      align-items: flex-end;
+
+      &.with-input {
+        padding-top: 10px;
+      }
+
+      .anx-button {
+        float: right;
+      }
+
+      .flex-end {
+        margin-left: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+      }
+
+      .anx-input {
+        margin-right: 20px;
+      }
+    }
+  }
+
+  .button-space {
+    width: 20px;
+  }
+  .actions {
+    .action {
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .pagination {
+    width: 100%;
+    display: flex;
+    .page-switch {
+      margin-left: auto;
+
+      .page-switch-link {
+        cursor: pointer;
+        font-size: 20px;
+        padding: 0 5px;
+        color: $anx-secondary-color;
+      }
+      .fast-forward {
+        font-size: 25px;
+      }
+    }
   }
 }
+</style>
 
-.pagination {
-  width: 100%;
-  display: flex;
-  .page-switch {
-    margin-left: auto;
-
-    .page-switch-link {
-      cursor: pointer;
-      font-size: 20px;
-      padding: 0 5px;
-      color: $anx-secondary-color;
-    }
-    .fast-forward {
-      font-size: 25px;
+<style lang="scss">
+.anx-crud-table {
+  .anx-crud-header {
+    .anx-crud-header-row {
+      .flex-end {
+        .anx-input {
+          input {
+            margin-bottom: 0px !important;
+          }
+        }
+      }
     }
   }
 }

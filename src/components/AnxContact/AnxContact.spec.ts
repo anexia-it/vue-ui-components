@@ -60,7 +60,7 @@ describe("AnxContact.vue", () => {
     const wrapper = mount(AnxContact, {
       propsData: {
         showEmail: true,
-        showPhone: true,
+        showPhone: true
       }
     });
 
@@ -142,7 +142,7 @@ describe("AnxContact.vue", () => {
       propsData: {
         recaptchaSitekey: "6Ld9pr4aAAAAAMenlr2xionxPM1sHQ-OgFaa2n2V",
         showEmail: false,
-        showPhone: false,
+        showPhone: false
       }
     });
 
