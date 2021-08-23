@@ -57,14 +57,38 @@ describe("AnxContact.vue", () => {
   });
 
   it("has correct validation", async () => {
-    // TODO:
+    const wrapper = mount(AnxContact, {
+      propsData: {
+        showEmail: true,
+        showPhone: true,
+      }
+    });
+
+    const form = wrapper.get("form");
+    expect(form.exists()).toBeTruthy();
+
+    await form.trigger("submit");
+    expect(wrapper.emitted("submit")).toBeFalsy();
+
+    await wrapper.get("#first_name").setValue("first name");
+    await wrapper.get("#last_name").setValue("last name");
+    await wrapper.get("#email").setValue("email@example.com");
+    await wrapper.get("#phone").setValue("1234567890");
+    await form.trigger("submit");
+    await flushPromises();
+
+    expect(wrapper.emitted("submit")).toBeTruthy();
   });
 
   it("emits submit event with correct data", async () => {
     // This key is used for automated tesing
     // https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha-v2-what-should-i-do
     const recaptchaSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-    const firstName = "Max", lastName = "Mustermann", email = "max@mustermann.at", phone = "0123456789", message = "This is a test";
+    const firstName = "Max",
+      lastName = "Mustermann",
+      email = "max@mustermann.at",
+      phone = "0123456789",
+      message = "This is a test";
 
     const wrapper = mount(AnxContact, {
       propsData: {
@@ -111,5 +135,17 @@ describe("AnxContact.vue", () => {
       // @ts-ignore
       expect(submittedData.message).toMatch(message);
     }
+  });
+
+  it("renders recapcaptcha", () => {
+    const wrapper = mount(AnxContact, {
+      propsData: {
+        recaptchaSitekey: "6Ld9pr4aAAAAAMenlr2xionxPM1sHQ-OgFaa2n2V",
+        showEmail: false,
+        showPhone: false,
+      }
+    });
+
+    expect(wrapper.get(".recaptcha-wrapper").exists()).toBeTruthy();
   });
 });
