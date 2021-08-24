@@ -51,9 +51,9 @@ const mockData = [
   {
     userId: 1,
     id: 7,
-    title: "magnam facilis autem",
+    title: "The hidden title",
     body:
-      "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
+      "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nsome hidden search text quidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas"
   },
   {
     userId: 1,
@@ -110,7 +110,7 @@ describe("AnxCrudTable.vue", () => {
   it("displays data received from api endpoint", async () => {
     const modelClass = Posts;
     const wrapper = mount(AnxCrudTable, {
-      propsData: { modelClass }
+      propsData: { modelClass, hideColumns: ["abc"], sort: null }
     });
 
     // Data is loaded asynchronously, so we have to flush promises
@@ -121,6 +121,33 @@ describe("AnxCrudTable.vue", () => {
     expect(tableRow.exists()).toBeTruthy();
     expect(tableRow.text()).toContain(mockData[0].title);
     expect(tableRow.text()).toContain(mockData[0].body);
+  });
+
+  it("has working pagination", async () => {
+    const modelClass = Posts;
+    const wrapper = mount(AnxCrudTable, {
+      propsData: { modelClass, maxItems: 1, editable: false, deleteable: false }
+    });
+
+    // Data is loaded asynchronously, so we have to flush promises
+    await flushPromises();
+
+    // Check if the first table row contains the text
+    let tableRow = wrapper.get(".anx-table-row");
+    expect(tableRow.exists()).toBeTruthy();
+    expect(tableRow.text()).toContain(mockData[0].title);
+    expect(tableRow.text()).toContain(mockData[0].body);
+
+    // Check if the forward button exists and click it
+    const forwardButton = wrapper.get(".pagination .page-switch-link.forward");
+    expect(forwardButton.exists()).toBeTruthy();
+    await forwardButton.trigger("click");
+
+    // Check if the first table row contains the text
+    tableRow = wrapper.get(".anx-table-row");
+    expect(tableRow.exists()).toBeTruthy();
+    expect(tableRow.text()).toContain(mockData[1].title);
+    expect(tableRow.text()).toContain(mockData[1].body);
   });
 
   it("sorts table on sort changed", async () => {
@@ -144,6 +171,13 @@ describe("AnxCrudTable.vue", () => {
     await wrapper.setProps({ sort: { name: "id", order: "DESC" } });
 
     // Should be in descending order
+    tableRow = wrapper.get(".anx-table-row");
+    expect(tableRow.exists()).toBeTruthy();
+    expect(tableRow.text()).toContain(mockData[mockData.length - 1].title);
+    expect(tableRow.text()).toContain(mockData[mockData.length - 1].body);
+
+    // Change sort to null (nothing should be changed)
+    await wrapper.setProps({ sort: null });
     tableRow = wrapper.get(".anx-table-row");
     expect(tableRow.exists()).toBeTruthy();
     expect(tableRow.text()).toContain(mockData[mockData.length - 1].title);
@@ -188,22 +222,6 @@ describe("AnxCrudTable.vue", () => {
     expect(tableRow.text()).toContain(mockData[0].body);
     // Title should be hidden
     expect(tableRow.text()).not.toContain(mockData[0].title);
-  });
-
-  it("shows warning when hiding wrong column", async () => {
-    console.warn = jest.fn();
-    const modelClass = Posts;
-    mount(AnxCrudTable, {
-      propsData: { modelClass, hideColumns: ["someWrongColumn"] }
-    });
-
-    // Data is loaded asynchronously, so we have to flush promises
-    await flushPromises();
-
-    // When hiding the wrong column a warning should be shown
-    expect(console.warn).toHaveBeenCalledWith(
-      "Tried to hide a non existend column! Are you sure you set hideColumn correct for the CRUD table?"
-    );
   });
 
   it("deletes entry", async () => {
@@ -299,5 +317,47 @@ describe("AnxCrudTable.vue", () => {
     // Check if the enpoint for deletion has been called
     expect(fetchMock.mock.calls[0][0]).toMatch("/api/posts");
     expect(fetchMock.mock.calls[0][1]?.method).toMatch("POST");
+  });
+
+  it("has working search function", async () => {
+    const modelClass = Posts;
+    const wrapper = mount(AnxCrudTable, {
+      propsData: { modelClass, searchColumns: ["body"] }
+    });
+
+    // Data is loaded asynchronously, so we have to flush promises
+    await flushPromises();
+
+    const searchInput = wrapper.get(".anx-crud-header .crud-search input");
+    expect(searchInput.exists()).toBeTruthy();
+    await searchInput.setValue("some hidden search text");
+    await searchInput.trigger("input");
+
+    // Check if the first table row contains the text
+    const tableRow = wrapper.get(".anx-table-row");
+    expect(tableRow.exists()).toBeTruthy();
+    expect(tableRow.text()).toContain(mockData[6].title);
+    expect(tableRow.text()).toContain(mockData[6].body);
+  });
+
+  it("shows error when using wrong search column", async () => {
+    console.error = jest.fn();
+    const modelClass = Posts;
+    const searchColumns = ["wrongColumn"];
+    const wrapper = mount(AnxCrudTable, {
+      propsData: { modelClass, searchColumns }
+    });
+
+    // Data is loaded asynchronously, so we have to flush promises
+    await flushPromises();
+
+    // The search field should not be rendered
+    const searchInput = wrapper.find(".anx-crud-header .crud-search input");
+    expect(searchInput.exists()).toBeFalsy();
+
+    // The console error should have been called
+    expect(console.error).toHaveBeenCalledWith(
+      `Unknown search column ${searchColumns[0]}! Check if you are using the property properly.`
+    );
   });
 });

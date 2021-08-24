@@ -35,9 +35,11 @@
       :readonly="readonly !== null ? true : false"
       :disabled="disabled !== null"
     />
-    <label :for="id" :class="errors && errors.length > 0 ? 'error' : ''">
-      {{ label }}
-    </label>
+    <label
+      :for="id"
+      :class="errors && errors.length > 0 ? 'error' : ''"
+      v-text="label"
+    />
     <div
       v-if="
         (errors && errors.length > 0) ||

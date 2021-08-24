@@ -66,9 +66,7 @@
         <anx-alert v-model="showError_">{{ error }}</anx-alert>
 
         <!-- Alert for success messages -->
-        <anx-alert v-model="showSuccess_" type="success">
-          {{ success }}
-        </anx-alert>
+        <anx-alert v-model="showSuccess_" type="success" :text="success" />
 
         <!-- Internal recaptcha error -->
         <anx-alert v-model="internalRecaptchaError">Recaptcha error</anx-alert>
@@ -83,9 +81,7 @@
           @error="errorCaptcha"
           @expired="expiredCaptcha"
         >
-          <anx-button width="100%">
-            {{ sendButton.text }}
-          </anx-button>
+          <anx-button width="100%" :text="sendButton.text" />
         </vue-recaptcha>
 
         <!-- submit button -->
@@ -94,9 +90,8 @@
           id="anx-contact-form-send-button"
           width="100%"
           :disabled="!isButtonEnabled"
-        >
-          {{ sendButton.text }}
-        </anx-button>
+          :text="sendButton.text"
+        />
       </anx-form>
     </anx-content>
   </div>

@@ -57,9 +57,8 @@
                 class="anx-link-header"
                 :disabled="isLinkActive(menu) ? null : true"
                 :external="menu.external ? true : null"
-              >
-                {{ menu.menu }}
-              </anx-link>
+                :text="menu.menu"
+              />
             </div>
             <div
               class="menu-text right header-lang-switcher-bottom-nav"

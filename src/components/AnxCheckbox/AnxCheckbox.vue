@@ -22,9 +22,7 @@
         />
         <div class="text">
           <!-- @slot You can use this slot to change the label for the anx-checkbox -->
-          <slot>
-            {{ name }}
-          </slot>
+          <slot>{{ name }}</slot>
         </div>
       </label>
       <span class="error">{{ errors[0] }}</span>

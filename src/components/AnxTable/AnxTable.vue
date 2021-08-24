@@ -24,9 +24,8 @@
             scope="col"
             :width="column.width"
             :class="column.align ? `text-${column.align}` : ''"
-          >
-            {{ column.name }}
-          </th>
+            v-text="column.name"
+          />
         </tr>
       </thead>
       <tbody>
@@ -37,13 +36,12 @@
               :key="`col-${i}-${column.index}`"
               :width="column.width"
               :align="column.align ? column.align : 'left'"
+              :content="item[column.index]"
             >
               <slot
                 :name="`${column.index}${i}`"
                 v-bind:content="item[column.index]"
-              >
-                {{ item[column.index] }}
-              </slot>
+              />
             </anx-table-col>
           </anx-table-row>
         </slot>

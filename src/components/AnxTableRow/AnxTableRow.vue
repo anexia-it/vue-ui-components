@@ -1,9 +1,7 @@
 <template>
   <tr class="anx-table-row">
     <slot>
-      <td v-for="(content, name) in item" :key="name">
-        {{ content }}
-      </td>
+      <td v-for="(content, name) in item" :key="name">{{ content }}</td>
     </slot>
   </tr>
 </template>
