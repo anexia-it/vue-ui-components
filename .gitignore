@@ -1,9 +1,9 @@
 .DS_Store
-node_modules
-dist
-kitchensink
-lib
-lib-wc
+/node_modules
+/dist
+/kitchensink
+/lib
+/lib-wc
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
