@@ -6,9 +6,13 @@
         (first !== null ? 'first-no-nav ' : '')
     "
   >
-    <anx-title v-if="title !== null" :size="size" :noline="noline">
-      {{ title }}
-    </anx-title>
+    <anx-title
+      v-if="title !== null"
+      :size="size"
+      :noline="noline"
+      :text="title"
+    />
+
     <!-- @slot use this for the actual content -->
     <slot />
   </div>

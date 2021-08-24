@@ -7,7 +7,7 @@
     :target="newTab !== null ? '_blank' : '_self'"
   >
     <!-- @slot Use this slot for the link text -->
-    <slot />
+    <slot>{{ text }}</slot>
   </a>
   <span
     v-else
@@ -17,7 +17,7 @@
         (noStyle != null ? ' no-style' : '')
     "
   >
-    <slot />
+    <slot>{{ text }}</slot>
   </span>
 </template>
 
@@ -49,6 +49,8 @@ export default class AnxLink extends Vue {
    * is wrapped around already has its own design; e.g. image)
    */
   @Prop({ default: null }) noStyle!: boolean | null;
+  /** This is the text of the link. This can be used instead of the slot */
+  @Prop({ default: "" }) text!: string;
 
   /** Emit the click event */
   @Emit("click")

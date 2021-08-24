@@ -18,9 +18,7 @@
           >
             <div class="close-symbol"></div>
           </button>
-          <div class="h2 modal-title heading">
-            {{ title }}
-          </div>
+          <div class="h2 modal-title heading" v-text="title" />
           <div class="small-line h2">
             &mdash;
           </div>

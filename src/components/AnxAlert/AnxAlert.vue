@@ -12,7 +12,7 @@
     <div class="message">
       <span>
         <!-- @slot This is used for the displayed message -->
-        <slot />
+        <slot>{{ text }}</slot>
       </span>
     </div>
     <div class="dismiss" @click="input(!visibility)">&times;</div>
@@ -51,6 +51,9 @@ export default class AnxAlert extends Vue {
 
   /** This is the timeout for the auto close logic */
   @Prop({ default: 5000 }) autoCloseTimeout!: number;
+
+  /** This is the text of the alert. This can be used instead of the slot */
+  @Prop({ default: "" }) text!: string;
 
   /** Watcher for show changes */
   @Watch("value")

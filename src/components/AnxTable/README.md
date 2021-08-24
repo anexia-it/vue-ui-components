@@ -124,9 +124,7 @@ But the main focus of this example is to show how to use the scopes of the table
         <!-- This is an example for replacing content. In this case we change the styling for a specific cell -->
         <template v-slot:firstName2="{ content }">
             <span style="color: #003CA6">
-                <strong>
-                {{ content }} <!-- This is how you access the content that currently is in the cell -->
-                </strong>
+                <strong>{{ content }}</strong> <!-- This is how you access the content that currently is in the cell -->
             </span>
         </template>
 

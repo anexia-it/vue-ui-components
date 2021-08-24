@@ -34,10 +34,10 @@ describe("AnxHeader.vue", () => {
     // This is the url for the first menu
     expect(linkComponents.at(1).exists()).toBe(true);
     expect(linkComponents.at(1).attributes("href")).toMatch(menus[0].link);
-    expect(linkComponents.at(1).text()).toMatch(menus[0].menu);
+    expect(linkComponents.at(1).attributes("text")).toMatch(menus[0].menu);
     // This is the link for the second menu
     expect(linkComponents.at(2).exists()).toBe(true);
     expect(linkComponents.at(2).attributes("href")).toMatch(menus[1].link);
-    expect(linkComponents.at(2).text()).toMatch(menus[1].menu);
+    expect(linkComponents.at(2).attributes("text")).toMatch(menus[1].menu);
   });
 });
