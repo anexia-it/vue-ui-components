@@ -9,9 +9,7 @@
     "
   >
     <!-- @slot This slot can be used for setting the text of the title -->
-    <slot>
-      {{ text }}
-    </slot>
+    <slot>{{ text }}</slot>
   </component>
 </template>
 

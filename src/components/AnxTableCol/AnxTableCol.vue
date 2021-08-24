@@ -1,8 +1,6 @@
 <template>
   <td :class="`anx-table-col text-${align}`">
-    <slot>
-      {{ content }}
-    </slot>
+    <slot>{{ content }}</slot>
   </td>
 </template>
 <script lang="ts">

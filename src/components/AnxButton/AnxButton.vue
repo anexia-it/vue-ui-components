@@ -10,9 +10,7 @@
     @click="$emit(eventName)"
   >
     <!-- @slot Use this slot for the button text -->
-    <slot>
-      {{ text }}
-    </slot>
+    <slot>{{ text }}</slot>
   </button>
 </template>
 

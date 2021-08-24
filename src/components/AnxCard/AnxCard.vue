@@ -12,7 +12,7 @@
         <!-- @slot The text to be displayed in the card -->
         <slot />
         <br v-if="linkText" />
-        <anx-link v-if="linkText" :href="link"> {{ linkText }}</anx-link>
+        <anx-link v-if="linkText" :href="link">{{ linkText }}</anx-link>
       </anx-paragraph>
     </div>
   </div>
