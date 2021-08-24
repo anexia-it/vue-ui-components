@@ -4,9 +4,13 @@
       <div :class="{ 'anx-crud-header-row': true, 'with-input': useSearch }">
         <!-- @slot This slot can be used to change the title -->
         <slot name="title">
-          <anx-title size="h1" noline no-margin v-if="modelClass && showHeader">
-            {{ modelClass.name }}
-          </anx-title>
+          <anx-title
+            size="h1"
+            noline
+            no-margin
+            v-if="modelClass && showHeader"
+            :text="modelClass.name"
+          />
         </slot>
         <!--
           Will be emitted when the create action has been clicked for an entry in the table
@@ -30,9 +34,8 @@
                 showCreateModal = true;
                 $emit('createActionClicked');
               "
-            >
-              {{ createButtonText }}
-            </anx-button>
+              :text="createButtonText"
+            />
           </div>
         </div>
       </div>
@@ -49,9 +52,8 @@
             v-for="(instanceProp, j) in instance"
             :key="j"
             align="center"
-          >
-            {{ instanceProp }}
-          </anx-table-col>
+            :content="instanceProp"
+          />
           <anx-table-col class="actions" align="center">
             <!--
               Will be emitted when the update action has been clicked for an entry in the table
