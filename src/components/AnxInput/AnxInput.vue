@@ -143,7 +143,7 @@ export default class AnxInput extends Vue {
    */
   @Watch("value")
   valueChanged() {
-    this.localValue = this.value !== null ? this.value : "";
+    this.localValue = this.value !== null ? this.stringValue : "";
     this.isFilled();
   }
 
@@ -152,7 +152,7 @@ export default class AnxInput extends Vue {
    * if the input field should be filled
    */
   private mounted() {
-    this.localValue = this.value !== null ? this.value : "";
+    this.localValue = this.value !== null ? this.stringValue : "";
     this.isFilled();
   }
 
@@ -160,6 +160,15 @@ export default class AnxInput extends Vue {
   private updated() {
     /** Only validate, if the value is set */
     if (this.value && this.value !== "") this.validate();
+  }
+
+  /** This returns the string value of the value from the v-model */
+  get stringValue() {
+    if (typeof this.value === "string") {
+      return this.value;
+    }
+
+    return String(this.value);
   }
 
   get cssProps() {

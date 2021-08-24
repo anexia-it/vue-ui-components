@@ -27,11 +27,14 @@ const Api = (Vue, globalOptions = {}) => {
      * @returns false       On error
      */
     setVariable(key, value) {
-      if (document) {
-        document.documentElement.style.setProperty(key, value);
-        return true;
-      } else {
-        console.error("Unable to set variable via AnxVariablesPlugin!");
+      try {
+        if (document) {
+          document.documentElement.style.setProperty(key, value);
+          return true;
+        } else {
+          throw true;
+        }
+      } catch (ex) {
         return false;
       }
     },
@@ -39,7 +42,11 @@ const Api = (Vue, globalOptions = {}) => {
      * Resets a variable to the default value
      */
     resetVariable(key) {
-      document.documentElement.style.removeProperty(key);
+      try {
+        document.documentElement.style.removeProperty(key);
+      } catch (ex) {
+        return false;
+      }
     }
   };
 };

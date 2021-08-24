@@ -48,7 +48,7 @@ module.exports = {
           ]
         },
         {
-          name: "Plugins",
+          name: "Plugins and Tools",
           content: "docs/plugins/index.md",
           sections: [
             {
@@ -62,6 +62,10 @@ module.exports = {
             {
               name: "AnxVariablesPlugin",
               content: "docs/plugins/anx-variables.md"
+            },
+            {
+              name: "AbstractModel",
+              content: "docs/plugins/abstract-model.md"
             }
           ]
         },
