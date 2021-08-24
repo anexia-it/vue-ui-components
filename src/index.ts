@@ -1,5 +1,6 @@
 import _Vue from "vue";
 import Components from "./components";
+import { AbstractModel } from "./lib/models/AbstractModel";
 import {
   AnxIconsPlugin,
   AnxIconsNames,
@@ -33,6 +34,7 @@ export * from "./components";
 // Export plugins and ohter helpful tools
 export {
   Components,
+  AbstractModel,
   AnxIconsNames,
   AnxIconsPlugin,
   AnxToastPlugin,
