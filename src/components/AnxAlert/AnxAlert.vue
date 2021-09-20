@@ -1,6 +1,6 @@
 <template>
   <div
-    :id="name"
+    v-bind="attributes"
     :class="
       'anx-alert ' +
         `anx-alert-${type} ` +
@@ -28,8 +28,14 @@ import { Vue, Component, Prop, Watch, Emit } from "vue-property-decorator";
  */
 @Component({})
 export default class AnxAlert extends Vue {
-  /** This is the name of the alert and will be used as id too */
-  @Prop({ default: "anx-alert" }) name!: string;
+  /** This is the id of the alert and will override the default unique id */
+  @Prop({ default: "" }) id!: string;
+
+  /**
+   * Can also be used for setting the id but is deprecated. Use the *id* property instead
+   * @deprecated
+   */
+  @Prop({ default: "" }) name!: string;
 
   /**
    * This is the state of the alert is is usually passed via *v-model*
@@ -75,6 +81,22 @@ export default class AnxAlert extends Vue {
   visibility = false;
   fadeOut = false;
   fadeIn = false;
+
+  /**
+   * Attrbibutes for the component
+   * Passing this attributes with v-bind allows to not pass unused items
+   */
+  private get attributes() {
+    const attributes: { id?: string } = {};
+
+    if (this.id && this.id !== "") {
+      attributes.id = this.id;
+    } else if (this.name && this.name !== "") {
+      attributes.id = this.name;
+    }
+
+    return attributes;
+  }
 
   /** Set visibility when mounting */
   private created() {

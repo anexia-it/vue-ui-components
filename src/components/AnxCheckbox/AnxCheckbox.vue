@@ -13,8 +13,7 @@
         @property {bool} value - The state of the checkbox
         -->
         <input
-          :id="name"
-          :name="name"
+          v-bind="attributes"
           type="checkbox"
           v-model="valueModel"
           :class="errors && errors.length > 0 ? 'is-invalid' : ''"
@@ -32,8 +31,7 @@
   <div v-else class="anx-checkbox">
     <label :for="name">
       <input
-        :id="name"
-        :name="name"
+        v-bind="attributes"
         type="checkbox"
         v-model="valueModel"
         @change="$emit('input', valueModel)"
@@ -64,7 +62,9 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxCheckbox extends Vue {
-  /** This is the name of the input with type checkbox. This will be used as id and also as label for the checkbox */
+  /** This is the id for the checkbox */
+  @Prop() id!: string;
+  /** This is the name of the input with type checkbox. This will be used as label for the checkbox */
   @Prop() name!: string;
   /** If the validation property is set, a ValidationProvider with "required" validation will be added */
   @Prop({ default: null }) validation!: boolean | null;
@@ -75,6 +75,24 @@ export default class AnxCheckbox extends Vue {
   @Watch("value")
   onValueChanged(newVal: boolean) {
     this.valueModel = newVal;
+  }
+
+  /**
+   * Attrbibutes for the component
+   * Passing this attributes with v-bind allows to not pass unused items
+   */
+  private get attributes() {
+    const attributes: { id?: string; name?: string } = {};
+
+    if (this.id && this.id !== "") {
+      attributes.id = this.id;
+    }
+
+    if (this.name && this.name !== "") {
+      attributes.name = this.name;
+    }
+
+    return attributes;
   }
 
   /** Use a seperate variable for v-model in the AnxCheckbox component to avoid mutating the parent property directly */
