@@ -88,6 +88,14 @@
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anexia-it/vue-ui-components.git"
+  },
+  "homepage": "https://anexia-it.github.io/vue-ui-components/",
+  "bugs": {
+    "url": "https://github.com/anexia-it/vue-ui-components/issues"
+  },
   "keywords": [
     "anexia",
     "vue",
