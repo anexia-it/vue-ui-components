@@ -1,5 +1,5 @@
 <template>
-  <div class="anx-footer-container" id="anx-footer">
+  <div class="anx-footer-container" v-bind="attributes">
     <div class="anx-footer" :style="cssProps">
       <div class="container">
         <div class="row">
@@ -63,6 +63,7 @@
 </template>
 
 <script lang="ts">
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 import { Vue, Component, Prop } from "vue-property-decorator";
 import AnxIcon from "../AnxIcon/AnxIcon.vue";
 import AnxHrLine from "../AnxHrLine/AnxHrLine.vue";
@@ -73,6 +74,9 @@ import AnxLink from "../AnxLink/AnxLink.vue";
  */
 @Component({ components: { AnxIcon, AnxHrLine, AnxLink } })
 export default class AnxFooter extends Vue {
+  /** The id for the footer */
+  @Prop({ default: null }) id!: string | null;
+
   /** The links for the footer */
   @Prop({ default: null }) links!: Array<{ text: string; link: string }> | null;
 
@@ -133,6 +137,14 @@ export default class AnxFooter extends Vue {
     window.addEventListener("resize", this.setFooter);
     /** Additionally add a listener for height change of document.body */
     this.onElementHeightChange(document.body, this.setFooter);
+  }
+
+  /**
+   * Attrbibutes for the component
+   * Passing this attributes with v-bind allows to not pass unused items
+   */
+  private get attributes() {
+    return AttributesHelper.attributes(this);
   }
 
   /** Custom function to listen on height change of elements */

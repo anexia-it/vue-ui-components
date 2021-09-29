@@ -28,17 +28,17 @@ global.window.getSelection = () => ({
 
 describe("AnxReadonly.vue", () => {
   it("renders component", () => {
-    const name = "test_read_only";
+    const id = "test_read_only";
     const message = "This is a test";
     const bold = true;
     const wrapper = shallowMount(AnxReadonly, {
       slots: {
         default: message
       },
-      propsData: { name, bold }
+      propsData: { id, bold }
     });
 
-    expect(wrapper.attributes("id")).toMatch(name);
+    expect(wrapper.attributes("id")).toMatch(id);
     expect(wrapper.text()).toMatch(message);
     expect(wrapper.get(".bold").exists()).toBeTruthy();
   });

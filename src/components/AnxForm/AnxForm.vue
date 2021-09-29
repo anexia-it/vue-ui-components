@@ -1,6 +1,10 @@
 <template>
-  <ValidationObserver :ref="name" v-slot="{ invalid }">
-    <form :id="name" class="anx-form" @submit.prevent="checkValidation">
+  <ValidationObserver ref="anxForm" v-slot="{ invalid }">
+    <form
+      v-bind="attributes"
+      class="anx-form"
+      @submit.prevent="checkValidation"
+    >
       <!-- @slot put your input components inside here -->
       <slot />
       <div class="submit-button-wrapper" v-if="submitButton !== null">
@@ -20,6 +24,7 @@
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import { ValidationObserver, Validator } from "vee-validate";
 import AnxButton from "../AnxButton/AnxButton.vue";
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 
 /**
  * A simple form used for collecting user input
@@ -38,8 +43,8 @@ export default class AnxForm extends Vue {
     width: string;
   } | null;
 
-  /** The name of the form. This is important when using several forms on one page */
-  @Prop({ default: "anx-form" }) name!: string;
+  /** This is the id of the form */
+  @Prop({ default: null }) id!: string | null;
 
   /** Emit the submit event */
   @Emit("submit")
@@ -53,7 +58,7 @@ export default class AnxForm extends Vue {
    * If a field is required but has never had any input, the { valid } prop of the observer would be true.
    */
   private async checkValidation() {
-    const validator = (this.$refs[this.name] as unknown) as Validator;
+    const validator = (this.$refs.anxForm as unknown) as Validator;
     if (await validator.validate()) {
       this.submit();
     }
@@ -61,12 +66,20 @@ export default class AnxForm extends Vue {
 
   /** Checks if the form is valid and does validation */
   public async isValid() {
-    const validator = (this.$refs[this.name] as unknown) as Validator;
+    const validator = (this.$refs.anxForm as unknown) as Validator;
     if (await validator.validate()) {
       return true;
     }
 
     return false;
+  }
+
+  /**
+   * Attrbibutes for the component
+   * Passing this attributes with v-bind allows to not pass unused items
+   */
+  private get attributes() {
+    return AttributesHelper.attributes(this);
   }
 }
 </script>

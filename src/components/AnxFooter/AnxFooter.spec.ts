@@ -59,7 +59,10 @@ describe("AnxFooter.vue", () => {
     window.innerHeight = 1000;
 
     const wrapper = mount(AnxFooter, {
-      attachTo: document.body
+      attachTo: document.body,
+      propsData: {
+        id: "anx-footer"
+      }
     });
 
     const footer = wrapper.get("#anx-footer");
@@ -75,7 +78,10 @@ describe("AnxFooter.vue", () => {
     window.innerHeight = 0;
 
     const wrapper = mount(AnxFooter, {
-      attachTo: document.body
+      attachTo: document.body,
+      propsData: {
+        id: "anx-footer"
+      }
     });
 
     const footer = wrapper.get("#anx-footer");

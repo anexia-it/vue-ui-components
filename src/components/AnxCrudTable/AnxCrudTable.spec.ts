@@ -242,7 +242,7 @@ describe("AnxCrudTable.vue", () => {
     await deleteButton.trigger("click");
 
     // Confirm the deletion
-    const confirmButton = wrapper.get("#confirm-button");
+    const confirmButton = wrapper.get(".anx-modal .confirm-button");
     expect(confirmButton.exists()).toBeTruthy();
     await confirmButton.trigger("click");
 

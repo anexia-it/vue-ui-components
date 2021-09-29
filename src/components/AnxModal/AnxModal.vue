@@ -9,9 +9,8 @@
       <div class="modal-content anx-modal-content">
         <div class="modal-header  anx-modal-header">
           <button
-            id="close-button-x"
             type="button"
-            class="close"
+            class="close close-button-x"
             data-dismiss="modal"
             aria-label="Close"
             @click="$emit('close')"
@@ -39,7 +38,7 @@
             @event close
           -->
           <anx-button
-            id="close-button"
+            class="close-button"
             :text="closeButtonText"
             @click="$emit('close')"
             outline
@@ -52,7 +51,7 @@
             @event confirm
           -->
           <anx-button
-            id="confirm-button"
+            class="confirm-button"
             :text="confirmButtonText"
             @click="$emit('confirm')"
           />
@@ -66,7 +65,7 @@
           "
         >
           <anx-button
-            id="close-button"
+            class="close-button"
             :text="closeButtonText"
             v-if="hasCloseButton !== null"
             @click="$emit('close')"

@@ -3,16 +3,16 @@ import { AnxAlert } from "@/components";
 
 describe("AnxAlert.vue", () => {
   it("renders component", () => {
-    const name = "test_alert";
+    const id = "test_alert";
     const message = "This is a test alert";
     const wrapper = shallowMount(AnxAlert, {
       slots: {
         default: message
       },
-      propsData: { name }
+      propsData: { id }
     });
 
-    expect(wrapper.attributes("id")).toMatch(name);
+    expect(wrapper.attributes("id")).toMatch(id);
     expect(wrapper.text()).toMatch(message);
   });
 

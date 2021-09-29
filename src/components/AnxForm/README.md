@@ -5,7 +5,6 @@ The *anx-form* is used for grouping input components together in a form. Everyti
     <anx-container>
         <anx-form
             @submit="submitForm"
-            name="ip-form"
             :submit-button="{ text: 'Send >', disabled: false, width: 'auto' }"
         >
             <anx-input v-model="formData.input" name="input" label="Input"/>
@@ -38,7 +37,7 @@ If you are using input components that have validation rules, the *anx-form* wil
     <anx-container>
         <anx-form
             @submit="submitForm"
-            name="my-form"
+            id="my-form"
             :submit-button="{ text: 'Send >', disabled: false, width: 'auto' }"
         >
             <anx-input v-model="formData.input" name="input" label="Input" rules="required|email"/>
