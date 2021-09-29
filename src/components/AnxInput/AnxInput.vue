@@ -152,15 +152,20 @@ export default class AnxInput extends Vue {
   }
 
   /**
-   * After mount, the prop value has to be assigned to the localValue and it has to be checked,
-   * if the input field should be filled
+   * Set the id for the component when created
    */
-  private mounted() {
+  private created() {
     this.inputId = AttributesHelper.attributes(this, {
       uniqueId: true,
       uniqueIdPrefix: "anx-input-"
     }).id;
+  }
 
+  /**
+   * After mount, the prop value has to be assigned to the localValue and it has to be checked,
+   * if the input field should be filled
+   */
+  private mounted() {
     this.localValue = this.value !== null ? this.stringValue : "";
     this.isFilled();
   }

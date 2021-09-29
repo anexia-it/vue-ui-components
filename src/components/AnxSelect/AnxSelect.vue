@@ -142,14 +142,19 @@ export default class AnxSelect extends Vue {
   }
 
   /**
-   * Reset the error, because after mount it shouldn't show the error message
+   * Set the id for the component when created
    */
-  public mounted() {
+  private created() {
     this.inputId = AttributesHelper.attributes(this, {
       uniqueId: true,
       uniqueIdPrefix: "anx-select-"
     }).id;
+  }
 
+  /**
+   * Reset the error, because after mount it shouldn't show the error message
+   */
+  public mounted() {
     this.error = [];
 
     this.closeOnClickOutsideElement();
