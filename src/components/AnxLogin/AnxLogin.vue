@@ -51,6 +51,7 @@
             v-if="rememberMe !== null"
             v-model="rememberMeCheckbox"
             name="remember-me-checkbox"
+            id="remember-me-checkbox"
           >
             {{ rememberMeText }}
           </anx-checkbox>
