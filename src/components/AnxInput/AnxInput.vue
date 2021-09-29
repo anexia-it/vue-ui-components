@@ -19,10 +19,9 @@
       @event input
     -->
     <input
-      :id="id"
+      v-bind="attributes"
       v-model="localValue"
       :type="type"
-      :name="name"
       hide-details="true"
       @blur="inputBlur"
       @click="clickInputField()"
@@ -72,6 +71,7 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
 import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 
 /**
  * This component is a advanced version of the simple HTML input tag. This component is used for user input via a textbox.
@@ -87,7 +87,7 @@ export default class AnxInput extends Vue {
   /** This will be shown as field name in error messages. Can be used for localization */
   @Prop({ default: null }) dataVvAs!: string | null;
   /** This is the id of the input field */
-  @Prop({ default: "input-text-field" }) id!: string;
+  @Prop({ default: null }) id!: string | null;
   /** This is the label of the input field that will be displayed */
   @Prop({ default: "Input" }) label!: string;
   /** This property will be directly translated to HTML input type of the input field */
@@ -214,6 +214,14 @@ export default class AnxInput extends Vue {
     if (this.readonly === null) {
       this.active = true;
     }
+  }
+
+  /**
+   * Attrbibutes for the component
+   * Passing this attributes with v-bind allows to not pass unused items
+   */
+  private get attributes() {
+    return AttributesHelper.attributes(this);
   }
 }
 </script>

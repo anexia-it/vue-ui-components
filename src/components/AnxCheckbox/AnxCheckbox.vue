@@ -50,6 +50,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationProvider } from "vee-validate";
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 
 /**
  * The *anx-checkbox* renders a simple checkbox.
@@ -82,17 +83,7 @@ export default class AnxCheckbox extends Vue {
    * Passing this attributes with v-bind allows to not pass unused items
    */
   private get attributes() {
-    const attributes: { id?: string; name?: string } = {};
-
-    if (this.id && this.id !== "") {
-      attributes.id = this.id;
-    }
-
-    if (this.name && this.name !== "") {
-      attributes.name = this.name;
-    }
-
-    return attributes;
+    return AttributesHelper.attributes(this);
   }
 
   /** Use a seperate variable for v-model in the AnxCheckbox component to avoid mutating the parent property directly */

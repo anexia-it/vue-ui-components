@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 import { Vue, Component, Prop, Watch, Emit } from "vue-property-decorator";
 
 /**
@@ -87,15 +88,7 @@ export default class AnxAlert extends Vue {
    * Passing this attributes with v-bind allows to not pass unused items
    */
   private get attributes() {
-    const attributes: { id?: string } = {};
-
-    if (this.id && this.id !== "") {
-      attributes.id = this.id;
-    } else if (this.name && this.name !== "") {
-      attributes.id = this.name;
-    }
-
-    return attributes;
+    return AttributesHelper.attributes(this);
   }
 
   /** Set visibility when mounting */
