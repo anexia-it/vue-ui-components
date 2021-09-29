@@ -33,12 +33,6 @@ export default class AnxAlert extends Vue {
   @Prop({ default: "" }) id!: string;
 
   /**
-   * Can also be used for setting the id but is deprecated. Use the *id* property instead
-   * @deprecated
-   */
-  @Prop({ default: "" }) name!: string;
-
-  /**
    * This is the state of the alert is is usually passed via *v-model*
    * @model
    */
