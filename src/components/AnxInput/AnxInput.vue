@@ -19,7 +19,8 @@
       @event input
     -->
     <input
-      v-bind="attributes"
+      :id="inputId"
+      :name="name"
       v-model="localValue"
       :type="type"
       hide-details="true"
@@ -35,7 +36,7 @@
       :disabled="disabled !== null"
     />
     <label
-      :for="id"
+      :for="inputId"
       :class="errors && errors.length > 0 ? 'error' : ''"
       v-text="label"
     />
@@ -86,7 +87,7 @@ export default class AnxInput extends Vue {
   @Prop({ default: "anx-input" }) name!: string;
   /** This will be shown as field name in error messages. Can be used for localization */
   @Prop({ default: null }) dataVvAs!: string | null;
-  /** This is the id of the input field */
+  /** This is the id of the input field. A unqiue id will be created if this attribute is unset */
   @Prop({ default: null }) id!: string | null;
   /** This is the label of the input field that will be displayed */
   @Prop({ default: "Input" }) label!: string;
@@ -120,6 +121,9 @@ export default class AnxInput extends Vue {
   private active = false;
   private filled = false;
 
+  /** The id that is actually used */
+  private inputId: string | undefined = "";
+
   /** This variable is used as v-model for the input field (Using the value variable directly is not allowed because props should not be mutated directly) */
   private localValue = "";
 
@@ -152,6 +156,11 @@ export default class AnxInput extends Vue {
    * if the input field should be filled
    */
   private mounted() {
+    this.inputId = AttributesHelper.attributes(this, {
+      uniqueId: true,
+      uniqueIdPrefix: "anx-input-"
+    }).id;
+
     this.localValue = this.value !== null ? this.stringValue : "";
     this.isFilled();
   }
@@ -214,14 +223,6 @@ export default class AnxInput extends Vue {
     if (this.readonly === null) {
       this.active = true;
     }
-  }
-
-  /**
-   * Attrbibutes for the component
-   * Passing this attributes with v-bind allows to not pass unused items
-   */
-  private get attributes() {
-    return AttributesHelper.attributes(this);
   }
 }
 </script>

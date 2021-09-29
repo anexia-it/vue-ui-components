@@ -9,7 +9,7 @@
     ref="observer"
   >
     <textarea
-      :id="id"
+      :id="inputId"
       :name="name"
       :rows="rows"
       :disabled="disabled !== null"
@@ -20,7 +20,7 @@
       @blur="inputBlur"
       @click="clickInputField()"
     />
-    <label id="textarea-label" :for="id">{{ label }}</label>
+    <label id="textarea-label" :for="inputId">{{ label }}</label>
     <span
       v-if="validationRules !== null && errors && errors.length > 0"
       class="error"
@@ -31,6 +31,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 
 /**
  * This component is an advanced input textarea
@@ -41,8 +42,8 @@ import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxTextarea extends Vue {
-  /** This is the name of the textarea */
-  @Prop({ default: "anx-textarea" }) id!: string;
+  /** This is the name of the textarea. A unqiue id will be created if this attribute is unset */
+  @Prop({ default: null }) id!: string | null;
   /** This is the name of the textarea */
   @Prop({ default: "anx-textarea" }) name!: string;
   /** This will be shown as field name in error messages. Can be used for localization */
@@ -69,6 +70,9 @@ export default class AnxTextarea extends Vue {
 
   private active = false;
   private filled = false;
+
+  /** The id that is actually used */
+  private inputId: string | undefined = "";
 
   /** This variable is used as v-model for the input field (Using the value variable directly is not allowed because props should not be mutated directly) */
   private localValue = "";
@@ -108,6 +112,11 @@ export default class AnxTextarea extends Vue {
    * if the input field should be filled
    */
   private mounted() {
+    this.inputId = AttributesHelper.attributes(this, {
+      uniqueId: true,
+      uniqueIdPrefix: "anx-textarea-"
+    }).id;
+
     this.localValue = this.value !== null ? this.value : "";
     this.isFilled();
   }
