@@ -5,7 +5,8 @@ import {
   AnxIconsPlugin,
   AnxIconsNames,
   AnxToastPlugin,
-  AnxVariablesPlugin
+  AnxVariablesPlugin,
+  AnxModalPlugin
 } from "./plugins";
 
 declare module "@anexia/vue-ui-components";
@@ -24,6 +25,7 @@ export {
   AnxIconsPlugin,
   AnxToastPlugin,
   AnxVariablesPlugin,
+  AnxModalPlugin,
   Components
 };
 
