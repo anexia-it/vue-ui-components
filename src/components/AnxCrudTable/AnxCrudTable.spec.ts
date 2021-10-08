@@ -58,9 +58,9 @@ const mockData = [
   {
     userId: 1,
     id: 8,
-    title: "dolorem dolore est ipsam",
+    title: "searchtext_anx in title",
     body:
-      "dignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
+      "searchtext_anx in body\ndignissimos aperiam dolorem qui eum\nfacilis quibusdam animi sint suscipit qui sint possimus cum\nquaerat magni maiores excepturi\nipsam ut commodi dolor voluptatum modi aut vitae"
   },
   {
     userId: 1,
@@ -359,5 +359,30 @@ describe("AnxCrudTable.vue", () => {
     expect(console.error).toHaveBeenCalledWith(
       `Unknown search column ${searchColumns[0]}! Check if you are using the property properly.`
     );
+  });
+
+  it("displays search result only once when found in several columns", async () => {
+    const modelClass = Posts;
+    const wrapper = mount(AnxCrudTable, {
+      propsData: { modelClass, searchColumns: ["title", "body"] }
+    });
+
+    // Data is loaded asynchronously, so we have to flush promises
+    await flushPromises();
+
+    const searchInput = wrapper.get(".anx-crud-header .crud-search input");
+    expect(searchInput.exists()).toBeTruthy();
+    await searchInput.setValue("searchtext_anx");
+    await searchInput.trigger("input");
+
+    // Check if the correct table row is displayed
+    const tableRow = wrapper.get(".anx-table-row");
+    expect(tableRow.exists()).toBeTruthy();
+    expect(tableRow.text()).toContain(mockData[7].title);
+    expect(tableRow.text()).toContain(mockData[7].body);
+
+    // Check if there is only one table row displayed
+    const rows = wrapper.findAll(".anx-table-row");
+    expect(rows).toHaveLength(1);
   });
 });
