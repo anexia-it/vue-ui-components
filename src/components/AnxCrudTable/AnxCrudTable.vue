@@ -93,29 +93,12 @@
         <span class="page-switch-link fast-forward" @click="page = 0"
           >&laquo;</span
         >
-        <span
-          class="page-switch-link backward"
-          @click="
-            () => {
-              if (page > 0) page--;
-            }
-          "
-          >&lt;</span
-        >
-        Page {{ Math.ceil(page) + 1 }} of
-        {{ Math.ceil(sortedInstances.length / maxItems) }}
-        <span
-          class="page-switch-link forward"
-          @click="
-            () => {
-              if (page < sortedInstances.length / maxItems - 1) page++;
-            }
-          "
-          >&gt;</span
-        >
+        <span class="page-switch-link backward" @click="page--">&lt;</span>
+        Page {{ page + 1 }} of {{ numberPages }}
+        <span class="page-switch-link forward" @click="page++">&gt;</span>
         <span
           class="page-switch-link fast-forward"
-          @click="page = sortedInstances.length / maxItems - 1"
+          @click="page = numberPages - 1"
           >&raquo;</span
         >
       </div>
@@ -262,8 +245,39 @@ export default class AnxCrudTable extends Vue {
     name: number;
     order: string;
   } = { name: 0, order: "ASC" };
-  page = 0;
+
   searchValue = "";
+
+  /** Number of pages should be at least 1 (even if there are no entries: "Page 1 of 1") */
+  private get numberPages() {
+    const num = Math.ceil(this.sortedInstances.length / this.maxItems);
+    if (num <= 0) {
+      return 1;
+    } else {
+      return num;
+    }
+  }
+
+  /** _page cannot be used as name for internal page */
+  page_ = 0;
+  private get page(): number {
+    if (this.page_ < this.numberPages) {
+      return this.page_;
+    } else {
+      this.page = this.numberPages - 1;
+      return this.page_;
+    }
+  }
+
+  private set page(page: number) {
+    if (page < 0 || this.numberPages <= 0) {
+      this.page_ = 0;
+    } else if (page >= this.numberPages && this.numberPages > 0) {
+      this.page_ = this.numberPages - 1;
+    } else {
+      this.page_ = page;
+    }
+  }
 
   mounted() {
     this.fetch();
