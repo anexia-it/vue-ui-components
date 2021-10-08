@@ -385,4 +385,28 @@ describe("AnxCrudTable.vue", () => {
     const rows = wrapper.findAll(".anx-table-row");
     expect(rows).toHaveLength(1);
   });
+
+  it("changes pagination on search", async() => {
+    const maxItems = 2;
+    const expectedPages = Math.ceil(mockData.length / maxItems);
+
+    const modelClass = Posts;
+    const wrapper = mount(AnxCrudTable, {
+      propsData: { modelClass, searchColumns: ["title", "body"], maxItems }
+    });
+
+    // Data is loaded asynchronously, so we have to flush promises
+    await flushPromises();
+
+    // Check page switch text
+    const pageSwitch = wrapper.get(".anx-crud-table .page-switch");
+    expect(pageSwitch.exists()).toBeTruthy();
+    expect(pageSwitch.text()).toContain("1 of " + expectedPages);
+
+    // Search for something and page switch should change
+    const searchInput = wrapper.get(".anx-crud-header .crud-search input");
+    await searchInput.setValue("searchtext_anx");
+    await searchInput.trigger("input");
+    expect(pageSwitch.text()).toContain("1 of 1");
+  })
 });
