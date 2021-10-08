@@ -386,7 +386,7 @@ describe("AnxCrudTable.vue", () => {
     expect(rows).toHaveLength(1);
   });
 
-  it("changes pagination on search", async() => {
+  it("changes pagination on search", async () => {
     const maxItems = 2;
     const expectedPages = Math.ceil(mockData.length / maxItems);
 
@@ -408,5 +408,5 @@ describe("AnxCrudTable.vue", () => {
     await searchInput.setValue("searchtext_anx");
     await searchInput.trigger("input");
     expect(pageSwitch.text()).toContain("1 of 1");
-  })
+  });
 });
