@@ -1,3 +1,3 @@
-The [AnxToast Component](/vue-ui-components/#/Components/AnxToast) and the [AnxToaster Component](/#/Components/AnxToaster) are used to show push notifications on the screen. Witht the *AnxToastPlugin* those push notifications can be shown programmatically. The plugin automatically renderst the *AnxToast Component* and shows a push notification.  
+The [AnxToast Component](/vue-ui-components/#/Components/AnxToast) and the [AnxToaster Component](/vue-ui-components/#/Components/AnxToaster) are used to show push notifications on the screen. Witht the *AnxToastPlugin* those push notifications can be shown programmatically. The plugin automatically renderst the *AnxToast Component* and shows a push notification.  
 
-For a documentation on how to use this plugin please refer to the [AnxToast Component Documentation](/#/Components/AnxToast).
+For a documentation on how to use this plugin please refer to the [AnxToast Component Documentation](/vue-ui-components/#/Components/AnxToast).

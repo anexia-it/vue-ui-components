@@ -11,5 +11,5 @@ this.$anxVariables.setVariable('--secondary-color', '#FE87E2');
 this.$anxVariables.resetVariable('--primary-color');
 ```
 
-You can find a detailed description of the design and how to change it in the [Design Documentation](/#/Documentation/Design).  
+You can find a detailed description of the design and how to change it in the [Design Documentation](/vue-ui-components/#/Documentation/Design).  
 
