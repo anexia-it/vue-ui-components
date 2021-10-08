@@ -358,18 +358,19 @@ export default class AnxCrudTable extends Vue {
     const instances: AbstractModel[] = [];
     this.instances.forEach((instance: AbstractModel) => {
       if (this.searchColumns) {
-        this.searchColumns.forEach((column: string) => {
-          if (column in instance) {
+        for (let i = 0; i < this.searchColumns.length; i++) {
+          if (this.searchColumns[i] in instance) {
             if (
               // eslint-disable-next-line
-              (instance as any)[column]
+              (instance as any)[this.searchColumns[i]]
                 .toLowerCase()
                 .indexOf(this.searchValue.toLowerCase()) >= 0
             ) {
               instances.push(instance);
+              break;
             }
           }
-        });
+        }
       }
     });
 
