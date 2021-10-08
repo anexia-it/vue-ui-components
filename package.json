@@ -1,6 +1,6 @@
 {
   "name": "@anexia/vue-ui-components",
-  "version": "1.20.5",
+  "version": "1.20.6",
   "description": "A Vue component library containing several components, plugins and icons that match the Anexia Corporate Design guidelines",
   "author": "ANEXIA Internetdienstleistungs Gmbh <marketing@anexia-it.com> (https://anexia.com)",
   "license": "MIT",
@@ -87,6 +87,14 @@
     "vue-styleguidist": "^4.39.0",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anexia-it/vue-ui-components.git"
+  },
+  "homepage": "https://anexia-it.github.io/vue-ui-components/",
+  "bugs": {
+    "url": "https://github.com/anexia-it/vue-ui-components/issues"
   },
   "keywords": [
     "anexia",

@@ -3,15 +3,17 @@ import { AnxCheckbox } from "@/components";
 
 describe("AnxCheckbox.vue", () => {
   it("renders component", () => {
-    const name = "test_checkbox";
+    const id = "test_checkbox_id";
+    const name = "test_checkbox_name";
     const text = "This is a test checkbox";
     const wrapper = shallowMount(AnxCheckbox, {
       slots: {
         default: text
       },
-      propsData: { name }
+      propsData: { name, id }
     });
-    expect(wrapper.get("input").attributes("id")).toMatch(name);
+    expect(wrapper.get("input").attributes("id")).toMatch(id);
+    expect(wrapper.get("input").attributes("name")).toMatch(name);
     expect(wrapper.text()).toMatch(text);
   });
 

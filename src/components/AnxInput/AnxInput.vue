@@ -19,10 +19,10 @@
       @event input
     -->
     <input
-      :id="id"
+      :id="inputId"
+      :name="name"
       v-model="localValue"
       :type="type"
-      :name="name"
       hide-details="true"
       @blur="inputBlur"
       @click="clickInputField()"
@@ -36,7 +36,7 @@
       :disabled="disabled !== null"
     />
     <label
-      :for="id"
+      :for="inputId"
       :class="errors && errors.length > 0 ? 'error' : ''"
       v-text="label"
     />
@@ -72,6 +72,7 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
 import { ValidationObserverInstance, ValidationProvider } from "vee-validate";
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 
 /**
  * This component is a advanced version of the simple HTML input tag. This component is used for user input via a textbox.
@@ -86,8 +87,8 @@ export default class AnxInput extends Vue {
   @Prop({ default: "anx-input" }) name!: string;
   /** This will be shown as field name in error messages. Can be used for localization */
   @Prop({ default: null }) dataVvAs!: string | null;
-  /** This is the id of the input field */
-  @Prop({ default: "input-text-field" }) id!: string;
+  /** This is the id of the input field. A unqiue id will be created if this attribute is unset */
+  @Prop({ default: null }) id!: string | null;
   /** This is the label of the input field that will be displayed */
   @Prop({ default: "Input" }) label!: string;
   /** This property will be directly translated to HTML input type of the input field */
@@ -120,6 +121,9 @@ export default class AnxInput extends Vue {
   private active = false;
   private filled = false;
 
+  /** The id that is actually used */
+  private inputId: string | undefined = "";
+
   /** This variable is used as v-model for the input field (Using the value variable directly is not allowed because props should not be mutated directly) */
   private localValue = "";
 
@@ -145,6 +149,16 @@ export default class AnxInput extends Vue {
   valueChanged() {
     this.localValue = this.value !== null ? this.stringValue : "";
     this.isFilled();
+  }
+
+  /**
+   * Set the id for the component when created
+   */
+  private created() {
+    this.inputId = AttributesHelper.attributes(this, {
+      uniqueId: true,
+      uniqueIdPrefix: "anx-input-"
+    }).id;
   }
 
   /**

@@ -1,5 +1,5 @@
 <template>
-  <div :id="name" class="anx-readonly" @click="click">
+  <div class="anx-readonly" @click="click">
     <div :class="'inner-text ' + (bold !== null ? 'bold ' : '')">
       <!-- @slot Use this slot for your content -->
       <slot />
@@ -16,9 +16,6 @@ import { Vue, Component, Prop } from "vue-property-decorator";
  */
 @Component({})
 export default class AnxReadonly extends Vue {
-  /** This is the name of the readonly and will also be used as id */
-  @Prop({ default: "anx-readonly" }) name!: string;
-
   /** If this attribute is set, the text will be selected and copied when a user clicks on it */
   @Prop({ default: null }) copyOnClick!: boolean | null;
 

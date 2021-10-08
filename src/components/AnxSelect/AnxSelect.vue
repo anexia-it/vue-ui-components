@@ -15,8 +15,8 @@
       :style="cssProps"
       ref="anxSelect"
     >
-      <label :for="id" @click.prevent> {{ label }}</label>
-      <select :id="id" :name="id" v-model="selected">
+      <label :for="inputId" @click.prevent> {{ label }}</label>
+      <select :id="inputId" :name="name || inputId" v-model="selected">
         <option
           v-for="option in options"
           :key="option.value"
@@ -49,6 +49,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { ValidationProvider } from "vee-validate";
+import { AttributesHelper } from "../../lib/utils/AttributesHelper";
 
 /**
  * This component is an advanced version of the HTML select tag that matches our style guidelines
@@ -59,10 +60,13 @@ import { ValidationProvider } from "vee-validate";
   }
 })
 export default class AnxSelect extends Vue {
-  /** This is the id of the select field */
-  @Prop({ default: "anx-select" }) id!: string;
+  /** This is the id of the select field. A unqiue id will be created if this attribute is unset */
+  @Prop({ default: null }) id!: string | null;
+  /** This is the name for the select input. The id will be used as fallback */
+  @Prop({ default: null }) name!: string | null;
   /** This is the label that will be displayed as description for the select input field */
-  @Prop({ default: "" }) label!: string;
+  @Prop({ default: "" })
+  label!: string;
   /**
    * This are the options for the select input field.
    * The properry should be an array of objcets with the following two properties: <br>
@@ -101,6 +105,7 @@ export default class AnxSelect extends Vue {
   private show = false;
   private error: string[] = [];
   private dynamicHeight = false;
+  private inputId: string | undefined = "";
 
   get cssProps() {
     return {
@@ -134,6 +139,16 @@ export default class AnxSelect extends Vue {
       }
     );
     this.error = errors;
+  }
+
+  /**
+   * Set the id for the component when created
+   */
+  private created() {
+    this.inputId = AttributesHelper.attributes(this, {
+      uniqueId: true,
+      uniqueIdPrefix: "anx-select-"
+    }).id;
   }
 
   /**
