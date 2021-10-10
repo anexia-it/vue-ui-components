@@ -1,4 +1,4 @@
-The *anx-toast* is used to notify your users with a small push notifications. The component is very simple and straightforward to use. The recommended way of using the *anx-toast* is via the [AnxToastPlugin](/#/Documentation/AnxToastPlugin). The example below shows hot to programmatically create a toast notification.
+The *anx-toast* is used to notify your users with a small push notifications. The component is very simple and straightforward to use. The recommended way of using the *anx-toast* is via the [AnxToastPlugin](/vue-ui-components/#/Documentation/AnxToastPlugin). The example below shows hot to programmatically create a toast notification.
 
 ```vue
 <template>
