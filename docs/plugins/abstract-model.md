@@ -1,4 +1,4 @@
-The **AbstractModel** is an abstract class that should be used as parent class for models. It offers some base functions for handling models (save, update, delete, get). Models derived from the **AbstractModel** can easily be used in combination with the [AnxCrudTable](/#/Components/AnxCrudTable). A model could look like follows:
+The **AbstractModel** is an abstract class that should be used as parent class for models. It offers some base functions for handling models (save, update, delete, get). Models derived from the **AbstractModel** can easily be used in combination with the [AnxCrudTable](/vue-ui-components/#/Components/AnxCrudTable). A model could look like follows:
 
 ```javascript
 import { AbstractModel } from "@anexia/vue-ui-components";
@@ -13,4 +13,4 @@ export class Posts extends AbstractModel {
 }
 ```
 
-With this model you can then easily create a CRUD table. See [AnxCrudTable](/#/Components/AnxCrudTable) for an example.
+With this model you can then easily create a CRUD table. See [AnxCrudTable](/vue-ui-components/#/Components/AnxCrudTable) for an example.

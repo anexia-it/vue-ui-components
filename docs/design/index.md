@@ -1,6 +1,6 @@
 Our library has been built to match the **Anexia Corporate Design Guidelines**. This makes it very easy and straight forward to build projects matching these guidelines. If you don't want to follow these guidelines, you can simply change them.
 
-For a description on how to change design variables during runtime please refer to the [AnxVariablesPlugin Documentation](/#/Documentation/Plugins?id=anxvariablesplugin).
+For a description on how to change design variables during runtime please refer to the [AnxVariablesPlugin Documentation](/vue-ui-components/#/Documentation/Plugins%20and%20Tools?id=anxvariablesplugin).
 
 In most cases you don't need to change the design during runtime. You can simply adapt the design when installing our library. Therefore you have to pass options with a ```variables``` key containing you variables.
 
@@ -40,7 +40,7 @@ module.exports = {
 }
 ```
 
-These variables change the style for the whole application. This affects all components (AnxTitle, AnxInput, AnxIcon, ...). In the example below you can change some variables and the [AnxVariablesPlugin ](/#/Documentation/Plugins?id=anxvariablesplugin) will change the styles during runtime. Just click the **Change design** button.  
+These variables change the style for the whole application. This affects all components (AnxTitle, AnxInput, AnxIcon, ...). In the example below you can change some variables and the [AnxVariablesPlugin ](/vue-ui-components/#/Documentation/Plugins?id=anxvariablesplugin) will change the styles during runtime. Just click the **Change design** button.  
 
 **Note:** Since the design is set programmatically during runtime, the design is lost when refreshing the page. This can be avoided, for example, by setting the colors when installing our library (described above).
 
@@ -97,7 +97,7 @@ These variables change the style for the whole application. This affects all com
 
             <anx-content title="Components">
                 <anx-paragraph>
-                    If you changed the design, the whole application will change its design, because the AnxVariablesPlugin actsl globally. At the <anx-link href="/#/Components" external>Components</anx-link> Documentation you can see all components with the new design.<br><br>
+                    If you changed the design, the whole application will change its design, because the AnxVariablesPlugin actsl globally. At the <anx-link href="/vue-ui-components/#/Components" external>Components</anx-link> Documentation you can see all components with the new design.<br><br>
                     Below are some example components so you can see what affects the design change has.
                 </anx-paragraph>
 
