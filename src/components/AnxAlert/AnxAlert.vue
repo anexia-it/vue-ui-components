@@ -1,4 +1,4 @@
-<template>
+kit<template>
   <div
     :id="name"
     :class="
@@ -68,6 +68,10 @@ export default class AnxAlert extends Vue {
   /** Emit the dismiss event */
   @Emit("input")
   input(val: boolean) {
+    if (!val) {
+      this.hideAction();
+    }
+
     return val;
   }
 
@@ -79,7 +83,6 @@ export default class AnxAlert extends Vue {
   /** Set visibility when mounting */
   private created() {
     this.visibility = this.value;
-
     /** If the Alert is visible by default, the show action has to be called at the beginning */
     if (this.value) {
       this.showAction();

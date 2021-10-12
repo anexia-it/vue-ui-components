@@ -1,4 +1,4 @@
-<template>
+hacktoberfest-accepted<template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
     <anx-header :i18n="$i18n">
@@ -111,6 +111,11 @@
           <strong>5</strong> seconds.
         </anx-alert>
 
+        <anx-paragraph title="AnxAlertPlugin" size="h3"> </anx-paragraph>
+
+        <div class="pluginTarget"></div>
+        <anx-button @click="anxAlertPlugin()"> ALERT </anx-button>
+        <br /><br />
         <anx-paragraph hint>
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
@@ -901,6 +906,10 @@ export default class Kitchensink extends Vue {
   checkbox = [false, true];
   mail = "";
 
+  private anxAlertPlugin() {
+    // success
+    this.$anxAlert.show("hee", ".pluginTarget", { type: "success" });
+  }
   private selectOptions = [
     { value: "null", text: "Auswahl treffen" },
     { value: "Auswahl 1", text: "Auswahl 1" },

@@ -1,6 +1,7 @@
 import Vue from "vue";
 import {
   AnxIconsPlugin,
+  AnxAlertPlugin,
   AnxIconsNames,
   AnxToastPlugin,
   AnxVariablesPlugin
@@ -12,6 +13,7 @@ import VeeValidate from "vee-validate";
 /** Register the AnxIconsPlugin (this registers all icons as components) */
 Vue.use(AnxIconsPlugin);
 Vue.use(AnxToastPlugin);
+Vue.use(AnxAlertPlugin);
 Vue.use(AnxVariablesPlugin);
 Vue.use(Router);
 Vue.use(VueI18n);
