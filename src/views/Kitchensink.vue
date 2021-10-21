@@ -357,6 +357,51 @@
         </anx-paragraph>
 
         <anx-paragraph>
+          This is an example of a <i>anx-modal</i> with a long content. In this
+          case, a scrollbar is displayed and the modal can be scrolled. <br />
+          <br />
+
+          <anx-modal
+            v-if="exampleModalWithLongContent"
+            title="AnxModal"
+            @close="exampleModalWithLongContent = false"
+            has-close-button
+          >
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+            sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
+            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+            dolor sit amet.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModalWithLongContent = true"
+          />
+        </anx-paragraph>
+
+        <anx-paragraph>
           The align of the close button can be changed using the
           <strong>close-button-align</strong> property.<br /><br />
           <anx-modal
@@ -1022,6 +1067,7 @@ export default class Kitchensink extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleModalWithLongContent = false;
   private exampleModalCloseButtonAlign = false;
   private exampleCustomModal = false;
   private exampleCustomModalSmall = false;

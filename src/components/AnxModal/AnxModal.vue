@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import AnxButton from "../AnxButton/AnxButton.vue";
 
 /**
@@ -107,7 +107,7 @@ export default class AnxModal extends Vue {
    */
   @Prop({ default: "center" }) closeButtonAlign!: string;
 
-  /** Show confirmation modal. A 'close' or a 'confirm' event will be emited, depending on the user input */
+  /** Show confirmation modal. A 'close' or a 'confirm' event will be emitted, depending on the user input */
   @Prop({ default: null }) confirm!: boolean | null;
 
   /** If the confirm option is true, this is the text for the confirm button */
@@ -126,7 +126,7 @@ export default class AnxModal extends Vue {
   /** This is the number of currently opened modals */
   private static numberModalsOpened = 0;
 
-  /** This is the layer of our modal (neccessary for displaying modals inside of modals) */
+  /** This is the layer of our modal (necessary for displaying modals inside of modals) */
   private modalLayer = 0;
 
   /** Add event listeners for click event on mount */
@@ -242,19 +242,24 @@ export default class AnxModal extends Vue {
   }
 
   .anx-modal-content {
+    display: flex;
+    flex-direction: column;
     background-color: $anx-primary-white;
     position: relative;
     border-radius: 0px;
     border: none !important;
+    max-height: 90vh;
+
     .anx-modal-header {
-      border-radius: 0px;
+      border-radius: 0;
       color: $anx-primary-white;
     }
     .anx-modal-body {
-      border-radius: 0px;
+      border-radius: 0;
+      overflow-y: auto;
     }
     .anx-modal-footer {
-      border-radius: 0px;
+      border-radius: 0;
 
       /**
        * Show buttons below each other on mobile
@@ -272,13 +277,13 @@ export default class AnxModal extends Vue {
           margin: 0 0 20px 0 !important;
 
           &:last-child {
-            margin-bottom: 0px !important;
+            margin-bottom: 0 !important;
           }
         }
       }
 
       .button {
-        margin-right: 0px !important;
+        margin-right: 0 !important;
 
         &.center {
           margin: auto !important;
@@ -296,7 +301,7 @@ export default class AnxModal extends Vue {
     background-color: $anx-primary-color;
     padding: 25px 40px 15px 40px;
     height: 94px;
-    border-bottom: 0px;
+    border-bottom: 0;
     display: block;
     text-align: left;
 
@@ -316,7 +321,7 @@ export default class AnxModal extends Vue {
       color: #fff;
       text-shadow: none;
       opacity: 1;
-      font-weight: ligther;
+      font-weight: lighter;
       max-width: 1px;
       font-size: medium;
       right: 0;
@@ -366,8 +371,7 @@ export default class AnxModal extends Vue {
   }
 
   .modal-body {
-    margin: 40px;
-    padding: 0 !important;
+    padding: 40px 40px 0 40px;
     text-align: center;
 
     @media screen and (max-width: 500px) {
@@ -377,7 +381,7 @@ export default class AnxModal extends Vue {
 
   .modal-footer {
     border: none;
-    padding: 0 2.5rem 2.5rem 2.5rem;
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
     display: flex;
 
     &.footer-content-left {
