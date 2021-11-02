@@ -1,4 +1,9 @@
-import { AnxIconsPlugin, AnxToastPlugin, AnxVariablesPlugin } from "./plugins";
+import {
+  AnxIconsPlugin,
+  AnxToastPlugin,
+  AnxVariablesPlugin,
+  AnxModalPlugin
+} from "./plugins";
 import Vue from "vue";
 import App from "./App.vue";
 import i18n from "./i18n";
@@ -11,6 +16,7 @@ Vue.config.productionTip = false;
 Vue.use(VeeValidate);
 Vue.use(AnxIconsPlugin);
 Vue.use(AnxToastPlugin);
+Vue.use(AnxModalPlugin);
 Vue.use(AnxVariablesPlugin);
 
 new Vue({
