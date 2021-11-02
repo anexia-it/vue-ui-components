@@ -64,6 +64,10 @@ module.exports = {
               content: "docs/plugins/anx-variables.md"
             },
             {
+              name: "AnxAlertPlugin",
+              content: "docs/plugins/anx-alert.md"
+            },
+            {
               name: "AbstractModel",
               content: "docs/plugins/abstract-model.md"
             }

@@ -2,6 +2,7 @@ import _Vue from "vue";
 import Components from "./components";
 import { AbstractModel } from "./lib/models/AbstractModel";
 import {
+  AnxAlertPlugin,
   AnxIconsPlugin,
   AnxIconsNames,
   AnxToastPlugin,
@@ -15,6 +16,8 @@ const UIPlugin = {
     for (const name in Components) {
       Vue.component(name, (Components as any)[name]);
     }
+    /** Register AnxAlertPlugin */
+    Vue.use(AnxAlertPlugin, options);
 
     /** Register the AnxIconsPlugin (this registers all icons as components) */
     Vue.use(AnxIconsPlugin, options);
@@ -34,6 +37,7 @@ export * from "./components";
 // Export plugins and ohter helpful tools
 export {
   Components,
+  AnxAlertPlugin,
   AbstractModel,
   AnxIconsNames,
   AnxIconsPlugin,
