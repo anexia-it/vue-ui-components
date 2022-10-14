@@ -1,6 +1,6 @@
 import {
   AnxIconsPlugin,
-  AnxModalPlugin
+  AnxModalPlugin,
   AnxAlertPlugin,
   AnxToastPlugin,
   AnxVariablesPlugin

@@ -1,4 +1,4 @@
-kit<template>
+<template>
   <div
     v-bind="attributes"
     :class="
