@@ -32,7 +32,6 @@ export declare class AnxTextarea extends Vue {}
 export declare class AnxTitle extends Vue {}
 export declare class AnxToast extends Vue {}
 export declare class AnxToaster extends Vue {}
-
 declare const Components: {
   AnxAlert: VueComponent;
   AnxButton: VueComponent;
