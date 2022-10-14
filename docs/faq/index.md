@@ -76,7 +76,7 @@ If you have just installed a new version of the library and your project compile
 
 ### "Property '$anxToast' does not exist on type" when using typescript
 
-When using the [AnxToastPlugin](/#/Plugins/AnxToastPlugin) with *typescript* it might happen, that the following code
+When using the [AnxToastPlugin](/vue-ui-components/#/Plugins/AnxToastPlugin) with *typescript* it might happen, that the following code
 
 ```javascript
 <script lang="ts">

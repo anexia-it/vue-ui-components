@@ -1,6 +1,7 @@
 import Vue from "vue";
 import {
   AnxIconsPlugin,
+  AnxAlertPlugin,
   AnxIconsNames,
   AnxToastPlugin,
   AnxVariablesPlugin,
@@ -14,6 +15,7 @@ import VeeValidate from "vee-validate";
 Vue.use(AnxIconsPlugin);
 Vue.use(AnxToastPlugin);
 Vue.use(AnxModalPlugin);
+Vue.use(AnxAlertPlugin);
 Vue.use(AnxVariablesPlugin);
 Vue.use(Router);
 Vue.use(VueI18n);

@@ -1,4 +1,4 @@
-<template>
+hacktoberfest-accepted<template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
     <anx-header :i18n="$i18n">
@@ -111,6 +111,11 @@
           <strong>5</strong> seconds.
         </anx-alert>
 
+        <anx-paragraph title="AnxAlertPlugin" size="h3"> </anx-paragraph>
+
+        <div class="pluginTarget"></div>
+        <anx-button @click="anxAlertPlugin()"> ALERT </anx-button>
+        <br /><br />
         <anx-paragraph hint>
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
@@ -354,6 +359,51 @@
             This is an example <i>&lt;anx-modal&gt;</i>.
           </anx-modal>
           <anx-button text="Show Modal >" @click="exampleModal = true" />
+        </anx-paragraph>
+
+        <anx-paragraph>
+          This is an example of a <i>anx-modal</i> with a long content. In this
+          case, a scrollbar is displayed and the modal can be scrolled. <br />
+          <br />
+
+          <anx-modal
+            v-if="exampleModalWithLongContent"
+            title="AnxModal"
+            @close="exampleModalWithLongContent = false"
+            has-close-button
+          >
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+            sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
+            duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+            sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+            eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+            dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+            voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+            dolor sit amet.
+          </anx-modal>
+          <anx-button
+            text="Show Modal >"
+            @click="exampleModalWithLongContent = true"
+          />
         </anx-paragraph>
 
         <anx-paragraph>
@@ -910,6 +960,12 @@ export default class Kitchensink extends Vue {
   checkbox = [false, true];
   mail = "";
   modalPluginText = "This is an example for a <i>&lt;anx-modal-plugin&gt;</i>.";
+
+  private anxAlertPlugin() {
+    // success
+    this.$anxAlert.show("hee", ".pluginTarget", { type: "success" });
+  }
+
   private selectOptions = [
     { value: "null", text: "Auswahl treffen" },
     { value: "Auswahl 1", text: "Auswahl 1" },
@@ -1031,6 +1087,7 @@ export default class Kitchensink extends Vue {
 
   /*example Modal */
   private exampleModal = false;
+  private exampleModalWithLongContent = false;
   private exampleModalCloseButtonAlign = false;
   private exampleCustomModal = false;
   private exampleCustomModalSmall = false;

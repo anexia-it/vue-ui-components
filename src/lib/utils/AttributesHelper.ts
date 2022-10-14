@@ -20,27 +20,35 @@ export class AttributesHelper {
    *   - uniqueIdPrefix: The prefix for the unique id
    */
   static attributes(
-    instance: {
-      id?: string | null;
-      name?: string | null;
-    },
+    instance: Vue,
     options?: { uniqueId?: boolean; uniqueIdPrefix?: string }
   ): { id?: string; name?: string } {
     const attributes: { id?: string; name?: string } = {};
 
-    /** Check if id is set */
-    if ("id" in instance && instance.id && instance.id !== "") {
-      attributes.id = instance.id;
-    } else if (options && options.uniqueId === true) {
-      /** Assign a unique id based on the counter */
-      attributes.id = AttributesHelper.getUniqueId({
-        prefix: options.uniqueIdPrefix
-      });
-    }
+    if (
+      instance &&
+      "$options" in instance &&
+      "propsData" in instance.$options
+    ) {
+      const properties = instance.$options.propsData as {
+        id?: string;
+        name?: string;
+      };
 
-    /** Check if the name is set */
-    if ("name" in instance && instance.name && instance.name !== "") {
-      attributes.name = instance.name;
+      /** Check if id is set */
+      if ("id" in properties && properties.id && properties.id !== "") {
+        attributes.id = properties.id;
+      } else if (options && options.uniqueId === true) {
+        /** Assign a unique id based on the counter */
+        attributes.id = AttributesHelper.getUniqueId({
+          prefix: options.uniqueIdPrefix
+        });
+      }
+
+      /** Check if the name is set */
+      if ("name" in properties && properties.name && properties.name !== "") {
+        attributes.name = properties.name;
+      }
     }
 
     return attributes;
