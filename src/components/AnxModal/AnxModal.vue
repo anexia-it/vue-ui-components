@@ -23,9 +23,8 @@
           </div>
         </div>
         <div class="modal-body  anx-modal-body">
-          <slot>
-            <span v-html="content"></span>
-          </slot>
+          <!-- @slot Use this slot for your content -->
+          <slot />
         </div>
         <div
           v-if="confirm !== null"
@@ -94,7 +93,6 @@ import AnxButton from "../AnxButton/AnxButton.vue";
 export default class AnxModal extends Vue {
   /** This is the title of the modal */
   @Prop({ default: "Enter a title for the modal" }) title!: string;
-  @Prop({ default: "Enter a title for the modal" }) content!: string;
 
   /** Defines whether the modal has a close button or not */
   @Prop({ default: null }) hasCloseButton!: boolean | null;

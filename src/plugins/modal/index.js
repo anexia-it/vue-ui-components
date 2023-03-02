@@ -1,1 +1,0 @@
-export { AnxModalPlugin } from "./plugin";

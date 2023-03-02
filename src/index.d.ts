@@ -2,12 +2,10 @@ import Vue from "vue";
 import Components from "./components";
 import { AbstractModel } from "./lib";
 import {
-  AnxAlertPlugin,
   AnxIconsPlugin,
   AnxIconsNames,
   AnxToastPlugin,
-  AnxVariablesPlugin,
-  AnxModalPlugin
+  AnxVariablesPlugin
 } from "./plugins";
 
 declare module "@anexia/vue-ui-components";
@@ -21,13 +19,11 @@ export * from "./components";
 
 // Exporting plugins separately
 export {
-  AnxAlertPlugin,
   AbstractModel,
   AnxIconsNames,
   AnxIconsPlugin,
   AnxToastPlugin,
   AnxVariablesPlugin,
-  AnxModalPlugin,
   Components
 };
 
