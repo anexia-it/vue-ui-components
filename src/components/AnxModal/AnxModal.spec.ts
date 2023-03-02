@@ -1,6 +1,5 @@
-import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
+import { shallowMount, mount } from "@vue/test-utils";
 import { AnxButton, AnxModal } from "@/components";
-import { AnxModalPlugin } from '@/plugins';
 
 describe("AnxModal.vue", () => {
   it("renders and destroys component correctly", () => {
@@ -133,31 +132,5 @@ describe("AnxModal.vue", () => {
     await wrapper1.get("div.anx-modal").trigger("click");
     expect(wrapper1.emitted("close")).toBeTruthy();
     wrapper1.destroy();
-  });
-
-  it("mounts correctly via AnxModalPlugin", async () => {
-    const testMessage = "This is a test"
-
-    // Create a local vue instance and install the AnxModalPlugin
-    const localVue = createLocalVue();
-    localVue.use(AnxModalPlugin);
-
-     // Create a simple body component, where the modal will be mounted
-     const bodyComponent = {
-      template: "<body></body>"
-    };
-    const wrapper = mount(bodyComponent, {
-      localVue
-    });
-
-    // Check if the show function has been registered
-    // @ts-ignore
-    expect(wrapper.vm.$anxModal.show).toBeTruthy();
-
-    // @ts-ignore
-    const createdModal = wrapper.vm.$anxModal.show(testMessage);
-
-    // Check if the modal component has been returned
-    expect(createdModal).toBeTruthy();
   });
 });

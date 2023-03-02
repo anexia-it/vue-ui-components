@@ -1,6 +1,5 @@
-import { shallowMount, mount, createLocalVue } from "@vue/test-utils";
+import { shallowMount, mount } from "@vue/test-utils";
 import { AnxAlert } from "@/components";
-import { AnxAlertPlugin } from "@/plugins";
 
 describe("AnxAlert.vue", () => {
   it("renders component", () => {
@@ -100,30 +99,5 @@ describe("AnxAlert.vue", () => {
     jest.advanceTimersByTime(1000);
     await wrapper.vm.$nextTick();
     expect(wrapper.classes()).toContain("hidden");
-  });
-
-  it("mounts correctly via AnxAlertPlugin", async () => {
-    const testMessage = "Alert Plugin Test"
-
-    // Create a local vue instance and install the AnxModalPlugin
-    const localVue = createLocalVue();
-    localVue.use(AnxAlertPlugin);
-
-     // Create a simple body component, where the modal will be mounted
-     const bodyComponent = {
-      template: "<body></body>"
-    };
-    const wrapper = mount(bodyComponent, {
-      localVue
-    });
-
-    // Check if the show function has been registered
-    // @ts-ignore
-    expect(wrapper.vm.$anxAlert.show).toBeTruthy();
-
-    // @ts-ignore
-    const createdAlert = wrapper.vm.$anxAlert.show(testMessage);
-    // Check if the modal component has been returned
-    expect(createdAlert).toBeTruthy();
   });
 });

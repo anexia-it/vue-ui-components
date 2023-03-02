@@ -32,13 +32,13 @@
                       </span>
                       {{ companyName }}
                     </div>
-                    <div
+                    <anx-link
                       v-for="(link, i) in links"
                       :key="i"
-                      class="anx-footer-link"
+                      :href="link.link"
                     >
-                      <anx-link :href="link.link">{{ link.text }}</anx-link>
-                    </div>
+                      {{ link.text }}
+                    </anx-link>
                   </slot>
                 </div>
               </div>
@@ -227,12 +227,6 @@ export default class AnxFooter extends Vue {
 .anx-footer-elements {
   display: flex;
 }
-.anx-footer-link {
-  display: inline;
-}
-.anx-footer-link:not(:last-of-type):after {
-  content: " | ";
-}
 .anx-footer-right {
   text-align: right;
   width: 100%;
@@ -259,6 +253,9 @@ export default class AnxFooter extends Vue {
   a {
     color: $anx-secondary-color;
     text-decoration: none;
+    &:not(:last-of-type):after {
+      content: " | ";
+    }
     &:hover {
       color: $anx-secondary-color-dark;
       -webkit-transition: all 0.2s ease-in-out;
