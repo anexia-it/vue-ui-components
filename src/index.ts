@@ -6,6 +6,7 @@ import {
   AnxIconsPlugin,
   AnxIconsNames,
   AnxToastPlugin,
+  AnxModalPlugin,
   AnxVariablesPlugin
 } from "./plugins";
 
@@ -25,6 +26,9 @@ const UIPlugin = {
     /** Register the AnxToastPlugin */
     Vue.use(AnxToastPlugin, options);
 
+    /** Register the AnxModalPlugin */
+    Vue.use(AnxModalPlugin, options);
+
     /** Register the AnxVariablesPlugin */
     Vue.use(AnxVariablesPlugin, options);
   }
@@ -42,5 +46,6 @@ export {
   AnxIconsNames,
   AnxIconsPlugin,
   AnxToastPlugin,
+  AnxModalPlugin,
   AnxVariablesPlugin
 };

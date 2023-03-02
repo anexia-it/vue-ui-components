@@ -1,5 +1,6 @@
 import {
   AnxIconsPlugin,
+  AnxModalPlugin,
   AnxAlertPlugin,
   AnxToastPlugin,
   AnxVariablesPlugin
@@ -17,6 +18,7 @@ Vue.use(VeeValidate);
 Vue.use(AnxAlertPlugin);
 Vue.use(AnxIconsPlugin);
 Vue.use(AnxToastPlugin);
+Vue.use(AnxModalPlugin);
 Vue.use(AnxVariablesPlugin);
 
 new Vue({
