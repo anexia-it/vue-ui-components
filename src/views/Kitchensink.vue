@@ -1,4 +1,4 @@
-<template>
+hacktoberfest-accepted<template>
   <anx-global id="app">
     <!-- you can set a image as prop or default img just a anx-logo -->
     <anx-header :i18n="$i18n">
@@ -111,6 +111,11 @@
           <strong>5</strong> seconds.
         </anx-alert>
 
+        <anx-paragraph title="AnxAlertPlugin" size="h3"> </anx-paragraph>
+
+        <div class="pluginTarget"></div>
+        <anx-button @click="anxAlertPlugin()"> ALERT </anx-button>
+        <br /><br />
         <anx-paragraph hint>
           Hint: An AnxParagraph can also be set as hint. You just have to add
           the <strong>hint</strong> property to the component
@@ -488,6 +493,13 @@
           </anx-modal>
         </anx-paragraph>
 
+        <!-- Anx Modal Plugin -->
+        <anx-paragraph size="h3" title="anx-Modal-Plugin">
+          The following button will open a model, this modal uses the
+          anx-modal-plugin<br /><br />
+          <anx-button @click="showAlert"> ALERT!! </anx-button>
+        </anx-paragraph>
+
         <!-- Anx Read Only -->
         <anx-paragraph size="h3" title="anx-readonly">
           The <i>&lt;anx-readonly&gt;</i> differs from the
@@ -851,7 +863,9 @@
         </anx-paragraph>
       </anx-content>
     </anx-container>
-
+    <anx-container>
+      <anx-button @click="handleToast"> Toast </anx-button>
+    </anx-container>
     <anx-footer
       :links="[
         { text: 'Impressum', link: '#' },
@@ -945,6 +959,12 @@ export default class Kitchensink extends Vue {
   text2 = "";
   checkbox = [false, true];
   mail = "";
+  modalPluginText = "This is an example for a <i>&lt;anx-modal-plugin&gt;</i>.";
+
+  private anxAlertPlugin() {
+    // success
+    this.$anxAlert.show("hee", ".pluginTarget", { type: "success" });
+  }
 
   private selectOptions = [
     { value: "null", text: "Auswahl treffen" },
@@ -1099,6 +1119,16 @@ export default class Kitchensink extends Vue {
       );
     }
     return result;
+  }
+
+  handleToast() {
+    this.$anxToast.show("Toast ist fertig");
+  }
+
+  showAlert() {
+    this.$anxModal.show("AnxModal Plugin", this.modalPluginText, {
+      hasCloseButton: true
+    });
   }
 }
 </script>

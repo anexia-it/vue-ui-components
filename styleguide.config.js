@@ -60,8 +60,16 @@ module.exports = {
               content: "docs/plugins/anx-toast.md"
             },
             {
+              name: "AnxModalPlugin",
+              content: "docs/plugins/anx-modal.md"
+            },
+            {
               name: "AnxVariablesPlugin",
               content: "docs/plugins/anx-variables.md"
+            },
+            {
+              name: "AnxAlertPlugin",
+              content: "docs/plugins/anx-alert.md"
             },
             {
               name: "AbstractModel",

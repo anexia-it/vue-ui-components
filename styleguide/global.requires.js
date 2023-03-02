@@ -1,9 +1,11 @@
 import Vue from "vue";
 import {
   AnxIconsPlugin,
+  AnxAlertPlugin,
   AnxIconsNames,
   AnxToastPlugin,
-  AnxVariablesPlugin
+  AnxVariablesPlugin,
+  AnxModalPlugin
 } from "../src/plugins";
 import VueI18n from "vue-i18n";
 import Router from "./router.js";
@@ -12,6 +14,8 @@ import VeeValidate from "vee-validate";
 /** Register the AnxIconsPlugin (this registers all icons as components) */
 Vue.use(AnxIconsPlugin);
 Vue.use(AnxToastPlugin);
+Vue.use(AnxModalPlugin);
+Vue.use(AnxAlertPlugin);
 Vue.use(AnxVariablesPlugin);
 Vue.use(Router);
 Vue.use(VueI18n);

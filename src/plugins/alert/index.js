@@ -1,0 +1,1 @@
+export { AnxAlertPlugin } from "./plugin";
